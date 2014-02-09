@@ -62,18 +62,30 @@
         if (!error) {
             // Parse the data received
             NSDictionary *userData = (NSDictionary *)result;
-            NSString *facebookID = userData[@"id"];
-            NSURL *pictureURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1", facebookID]];
-            
             NSMutableDictionary *userProfile = [NSMutableDictionary dictionaryWithCapacity:7];
-            userProfile[@"facebookId"] = facebookID;
-            userProfile[@"name"] = userData[@"name"];
-            userProfile[@"email"] = userData[@"email"];
-            userProfile[@"location"] = userData[@"location"][@"name"];
-            userProfile[@"gender"] = userData[@"gender"];
-            userProfile[@"birthday"] = userData[@"birthday"];
-            userProfile[@"relationship"] = userData[@"relationship_status"];
-            userProfile[@"pictureURL"] = [pictureURL absoluteString];
+            if (userData[@"id"]) {
+                userProfile[@"facebookId"] = userData[@"id"];
+                NSURL *pictureURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1", userData[@"id"]]];
+                userProfile[@"pictureURL"] = [pictureURL absoluteString];
+            }
+            if (userData[@"name"]) {
+                userProfile[@"name"] = userData[@"name"];
+            }
+            if (userData[@"email"]) {
+                userProfile[@"email"] = userData[@"email"];
+            }
+            if (userData[@"location"]) {
+                userProfile[@"location"] = userData[@"location"][@"name"];
+            }
+            if (userData[@"gender"]) {
+                userProfile[@"gender"] = userData[@"gender"];
+            }
+            if (userData[@"birthday"]) {
+                userProfile[@"birthday"] = userData[@"birthday"];
+            }
+            if (userData[@"relationship_status"]) {
+                userProfile[@"relationship"] = userData[@"relationship_status"];
+            }
             
             FBRequest *coverPictureRequest = [FBRequest requestForGraphPath:[NSString stringWithFormat:@"%@/?fields=cover&&return_ssl_resources=1", userProfile[@"facebookId"]]];
             [coverPictureRequest startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
