@@ -1,0 +1,23 @@
+//
+//  Album.m
+//  Gift
+//
+//  Created by Upkar Lidder on 2014-02-09.
+//
+//
+
+#import "Album.h"
+#import <Parse/PFObject+Subclass.h>
+
+@implementation Album
+
+@dynamic title;
+@dynamic user;
+@dynamic x;
+
+
++ (NSString *)parseClassName {
+    return @"Album";
+}
+
+@end

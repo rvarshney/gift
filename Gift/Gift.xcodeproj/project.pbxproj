@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		30C949AC1829561000B17666 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30C949AB1829561000B17666 /* FacebookSDK.framework */; };
-		30C949AE1829561800B17666 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30C949AD1829561800B17666 /* Parse.framework */; };
 		6D10F48316DD68E000690A0F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D10F48216DD68E000690A0F /* CoreLocation.framework */; };
 		6F90497218A6A3BC005326ED /* AlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F90497018A6A3BC005326ED /* AlbumViewController.m */; };
 		6F90497318A6A3BC005326ED /* AlbumViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F90497118A6A3BC005326ED /* AlbumViewController.xib */; };
@@ -21,6 +20,9 @@
 		6F90498E18A71819005326ED /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F90498D18A71819005326ED /* CoreImage.framework */; };
 		6FA1812918A81E3F007F4EAC /* EmailHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C2156718A816D800A210AC /* EmailHelper.m */; };
 		A8C2156518A8148500A210AC /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C2156418A8148500A210AC /* MessageUI.framework */; };
+		A8C2156C18A82FC300A210AC /* Album.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C2156B18A82FC300A210AC /* Album.m */; };
+		A8C2156F18A8304900A210AC /* Picture.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C2156E18A8304900A210AC /* Picture.m */; };
+		A8C2157118A83CDC00A210AC /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C2157018A83CDC00A210AC /* Parse.framework */; };
 		C425016D161BBAE400474BCD /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4250169161BBAE400474BCD /* StoreKit.framework */; };
 		C4250170161BBAEE00474BCD /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C425016F161BBAEE00474BCD /* libz.dylib */; };
 		C4BB20D7161BC4FB00A7884A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4BB20D4161BC4FB00A7884A /* Default-568h@2x.png */; };
@@ -53,7 +55,6 @@
 
 /* Begin PBXFileReference section */
 		30C949AB1829561000B17666 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
-		30C949AD1829561800B17666 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		400A3945A7A04690BB32CBDF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		689293C421184EF494D23F05 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		6D10F48216DD68E000690A0F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -73,6 +74,11 @@
 		A8C2156418A8148500A210AC /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		A8C2156618A816D800A210AC /* EmailHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EmailHelper.h; path = ../EmailHelper.h; sourceTree = "<group>"; };
 		A8C2156718A816D800A210AC /* EmailHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EmailHelper.m; path = ../EmailHelper.m; sourceTree = "<group>"; };
+		A8C2156A18A82FC300A210AC /* Album.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Album.h; sourceTree = "<group>"; };
+		A8C2156B18A82FC300A210AC /* Album.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Album.m; sourceTree = "<group>"; };
+		A8C2156D18A8304900A210AC /* Picture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Picture.h; sourceTree = "<group>"; };
+		A8C2156E18A8304900A210AC /* Picture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Picture.m; sourceTree = "<group>"; };
+		A8C2157018A83CDC00A210AC /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		C4250169161BBAE400474BCD /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		C425016F161BBAEE00474BCD /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		C4BB20D4161BC4FB00A7884A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -119,13 +125,13 @@
 				6D10F48316DD68E000690A0F /* CoreLocation.framework in Frameworks */,
 				C4250170161BBAEE00474BCD /* libz.dylib in Frameworks */,
 				D4DA7A0E14D334F30055F672 /* AudioToolbox.framework in Frameworks */,
+				A8C2157118A83CDC00A210AC /* Parse.framework in Frameworks */,
 				D4DA7A0F14D334F30055F672 /* CFNetwork.framework in Frameworks */,
 				D4DA7A1114D334F30055F672 /* MobileCoreServices.framework in Frameworks */,
 				D4DA7A1214D334F30055F672 /* QuartzCore.framework in Frameworks */,
 				D4DA7A1314D334F30055F672 /* Security.framework in Frameworks */,
 				30C949AC1829561000B17666 /* FacebookSDK.framework in Frameworks */,
 				D4DA7A1414D334F30055F672 /* SystemConfiguration.framework in Frameworks */,
-				30C949AE1829561800B17666 /* Parse.framework in Frameworks */,
 				D4DA79EF14D3345A0055F672 /* UIKit.framework in Frameworks */,
 				D4DA79F114D3345A0055F672 /* Foundation.framework in Frameworks */,
 				D4DA79F314D3345A0055F672 /* CoreGraphics.framework in Frameworks */,
@@ -136,6 +142,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A8C2156918A82FA700A210AC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A8C2156A18A82FC300A210AC /* Album.h */,
+				A8C2156B18A82FC300A210AC /* Album.m */,
+				A8C2156D18A8304900A210AC /* Picture.h */,
+				A8C2156E18A8304900A210AC /* Picture.m */,
+			);
+			name = Model;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		D4DA79DF14D3345A0055F672 = {
 			isa = PBXGroup;
 			children = (
@@ -157,9 +175,9 @@
 		D4DA79ED14D3345A0055F672 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A8C2157018A83CDC00A210AC /* Parse.framework */,
 				A8C2156418A8148500A210AC /* MessageUI.framework */,
 				6F90498D18A71819005326ED /* CoreImage.framework */,
-				30C949AD1829561800B17666 /* Parse.framework */,
 				30C949AB1829561000B17666 /* FacebookSDK.framework */,
 				6D10F48216DD68E000690A0F /* CoreLocation.framework */,
 				D4DA7A0714D334F30055F672 /* AudioToolbox.framework */,
@@ -181,6 +199,7 @@
 		D4DA79F414D3345A0055F672 /* Gift */ = {
 			isa = PBXGroup;
 			children = (
+				A8C2156918A82FA700A210AC /* Model */,
 				D4DA79FD14D3345A0055F672 /* AppDelegate.h */,
 				D4DA79FE14D3345A0055F672 /* AppDelegate.m */,
 				D4DA7A7114D393DA0055F672 /* LoginViewController.h */,
@@ -342,6 +361,8 @@
 				D4DA79FB14D3345A0055F672 /* main.m in Sources */,
 				D4DA79FF14D3345A0055F672 /* AppDelegate.m in Sources */,
 				6F90498118A6A520005326ED /* ShippingViewController.m in Sources */,
+				A8C2156C18A82FC300A210AC /* Album.m in Sources */,
+				A8C2156F18A8304900A210AC /* Picture.m in Sources */,
 				6F90497C18A6A451005326ED /* AlbumCollectionViewController.m in Sources */,
 				6F90498B18A6A858005326ED /* TemplatesViewController.m in Sources */,
 				6F90497218A6A3BC005326ED /* AlbumViewController.m in Sources */,
@@ -436,6 +457,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
+					/Users/ulidder/Documents/gift/Gift,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Gift/Gift-Prefix.pch";
@@ -458,6 +480,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
+					/Users/ulidder/Documents/gift/Gift,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Gift/Gift-Prefix.pch";
