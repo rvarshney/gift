@@ -22,6 +22,7 @@
 		6F90498C18A6A858005326ED /* TemplatesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F90498A18A6A858005326ED /* TemplatesViewController.xib */; };
 		6F90498E18A71819005326ED /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F90498D18A71819005326ED /* CoreImage.framework */; };
 		A8C2156518A8148500A210AC /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C2156418A8148500A210AC /* MessageUI.framework */; };
+		A8C2156818A816D800A210AC /* EmailHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C2156718A816D800A210AC /* EmailHelper.m */; };
 		C425016D161BBAE400474BCD /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4250169161BBAE400474BCD /* StoreKit.framework */; };
 		C4250170161BBAEE00474BCD /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C425016F161BBAEE00474BCD /* libz.dylib */; };
 		C4BB20D7161BC4FB00A7884A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4BB20D4161BC4FB00A7884A /* Default-568h@2x.png */; };
@@ -75,6 +76,8 @@
 		6F90498A18A6A858005326ED /* TemplatesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TemplatesViewController.xib; sourceTree = "<group>"; };
 		6F90498D18A71819005326ED /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		A8C2156418A8148500A210AC /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		A8C2156618A816D800A210AC /* EmailHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EmailHelper.h; path = ../EmailHelper.h; sourceTree = "<group>"; };
+		A8C2156718A816D800A210AC /* EmailHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EmailHelper.m; path = ../EmailHelper.m; sourceTree = "<group>"; };
 		C4250169161BBAE400474BCD /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		C425016F161BBAEE00474BCD /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		C4BB20D4161BC4FB00A7884A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -200,6 +203,8 @@
 				6F90496F18A6A3BC005326ED /* AlbumViewController.h */,
 				6F90497018A6A3BC005326ED /* AlbumViewController.m */,
 				6F90497118A6A3BC005326ED /* AlbumViewController.xib */,
+				A8C2156618A816D800A210AC /* EmailHelper.h */,
+				A8C2156718A816D800A210AC /* EmailHelper.m */,
 				6F90498318A6A809005326ED /* EmailViewController.h */,
 				6F90498418A6A809005326ED /* EmailViewController.m */,
 				6F90498518A6A809005326ED /* EmailViewController.xib */,
@@ -351,6 +356,7 @@
 				6F90497218A6A3BC005326ED /* AlbumViewController.m in Sources */,
 				D4DA7A7414D393DA0055F672 /* LoginViewController.m in Sources */,
 				D4DA7AA814D39BCE0055F672 /* ProfileViewController.m in Sources */,
+				A8C2156818A816D800A210AC /* EmailHelper.m in Sources */,
 				6F90498618A6A809005326ED /* EmailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
