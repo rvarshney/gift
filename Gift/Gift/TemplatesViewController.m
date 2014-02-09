@@ -7,8 +7,12 @@
 //
 
 #import "TemplatesViewController.h"
+#import "AlbumViewController.h"
+
 
 @interface TemplatesViewController ()
+- (IBAction)albumButtonHandler:(id)sender;
+
 
 @end
 
@@ -26,7 +30,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    self.title = @"Templates";
 }
 
 - (void)didReceiveMemoryWarning
@@ -35,4 +40,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)albumButtonHandler:(id)sender
+{
+    [self.navigationController pushViewController:[[AlbumViewController alloc] init] animated:YES];
+}
 @end

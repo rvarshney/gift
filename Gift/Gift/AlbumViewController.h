@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MessageUI.h>
 
-@interface AlbumViewController : UIViewController
+@interface AlbumViewController : UIViewController <MFMailComposeViewControllerDelegate>
 
 @end

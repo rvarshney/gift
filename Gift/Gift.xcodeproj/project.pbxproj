@@ -16,13 +16,11 @@
 		6F90497D18A6A451005326ED /* AlbumCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F90497B18A6A451005326ED /* AlbumCollectionViewController.xib */; };
 		6F90498118A6A520005326ED /* ShippingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F90497F18A6A520005326ED /* ShippingViewController.m */; };
 		6F90498218A6A520005326ED /* ShippingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F90498018A6A520005326ED /* ShippingViewController.xib */; };
-		6F90498618A6A809005326ED /* EmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F90498418A6A809005326ED /* EmailViewController.m */; };
-		6F90498718A6A809005326ED /* EmailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F90498518A6A809005326ED /* EmailViewController.xib */; };
 		6F90498B18A6A858005326ED /* TemplatesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F90498918A6A858005326ED /* TemplatesViewController.m */; };
 		6F90498C18A6A858005326ED /* TemplatesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F90498A18A6A858005326ED /* TemplatesViewController.xib */; };
 		6F90498E18A71819005326ED /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F90498D18A71819005326ED /* CoreImage.framework */; };
+		6FA1812918A81E3F007F4EAC /* EmailHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C2156718A816D800A210AC /* EmailHelper.m */; };
 		A8C2156518A8148500A210AC /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C2156418A8148500A210AC /* MessageUI.framework */; };
-		A8C2156818A816D800A210AC /* EmailHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C2156718A816D800A210AC /* EmailHelper.m */; };
 		C425016D161BBAE400474BCD /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4250169161BBAE400474BCD /* StoreKit.framework */; };
 		C4250170161BBAEE00474BCD /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C425016F161BBAEE00474BCD /* libz.dylib */; };
 		C4BB20D7161BC4FB00A7884A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4BB20D4161BC4FB00A7884A /* Default-568h@2x.png */; };
@@ -68,9 +66,6 @@
 		6F90497E18A6A520005326ED /* ShippingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShippingViewController.h; sourceTree = "<group>"; };
 		6F90497F18A6A520005326ED /* ShippingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShippingViewController.m; sourceTree = "<group>"; };
 		6F90498018A6A520005326ED /* ShippingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShippingViewController.xib; sourceTree = "<group>"; };
-		6F90498318A6A809005326ED /* EmailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmailViewController.h; sourceTree = "<group>"; };
-		6F90498418A6A809005326ED /* EmailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmailViewController.m; sourceTree = "<group>"; };
-		6F90498518A6A809005326ED /* EmailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmailViewController.xib; sourceTree = "<group>"; };
 		6F90498818A6A858005326ED /* TemplatesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplatesViewController.h; sourceTree = "<group>"; };
 		6F90498918A6A858005326ED /* TemplatesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplatesViewController.m; sourceTree = "<group>"; };
 		6F90498A18A6A858005326ED /* TemplatesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TemplatesViewController.xib; sourceTree = "<group>"; };
@@ -205,9 +200,6 @@
 				6F90497118A6A3BC005326ED /* AlbumViewController.xib */,
 				A8C2156618A816D800A210AC /* EmailHelper.h */,
 				A8C2156718A816D800A210AC /* EmailHelper.m */,
-				6F90498318A6A809005326ED /* EmailViewController.h */,
-				6F90498418A6A809005326ED /* EmailViewController.m */,
-				6F90498518A6A809005326ED /* EmailViewController.xib */,
 				6F90497E18A6A520005326ED /* ShippingViewController.h */,
 				6F90497F18A6A520005326ED /* ShippingViewController.m */,
 				6F90498018A6A520005326ED /* ShippingViewController.xib */,
@@ -304,7 +296,6 @@
 				C4CF27E9161E3BAA008AB8CC /* login-button-small@2x.png in Resources */,
 				C4DDA8AD16EE8A1900B5C174 /* Icon@2x.png in Resources */,
 				C4DDA8AE16EE8A1900B5C174 /* Icon.png in Resources */,
-				6F90498718A6A809005326ED /* EmailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,8 +347,7 @@
 				6F90497218A6A3BC005326ED /* AlbumViewController.m in Sources */,
 				D4DA7A7414D393DA0055F672 /* LoginViewController.m in Sources */,
 				D4DA7AA814D39BCE0055F672 /* ProfileViewController.m in Sources */,
-				A8C2156818A816D800A210AC /* EmailHelper.m in Sources */,
-				6F90498618A6A809005326ED /* EmailViewController.m in Sources */,
+				6FA1812918A81E3F007F4EAC /* EmailHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,6 +8,7 @@
 
 #import "AlbumCollectionViewController.h"
 #import "ProfileViewController.h"
+#import "TemplatesViewController.h"
 
 @interface AlbumCollectionViewController ()
 
@@ -30,8 +31,11 @@
 
     self.title = @"My Albums";
 
-    UIBarButtonItem *profileButton = [[UIBarButtonItem alloc] initWithTitle:@"Profile" style:UIBarButtonItemStyleBordered target:self action:@selector(profileButtonHandle:)];
+    UIBarButtonItem *profileButton = [[UIBarButtonItem alloc] initWithTitle:@"Profile" style:UIBarButtonItemStyleBordered target:self action:@selector(profileButtonHandler:)];
     self.navigationItem.leftBarButtonItem = profileButton;
+    
+    UIBarButtonItem *newButton = [[UIBarButtonItem alloc] initWithTitle:@"New" style:UIBarButtonItemStyleBordered target:self action:@selector(newButtonHandler:)];
+    self.navigationItem.rightBarButtonItem = newButton;
 }
 
 - (void)didReceiveMemoryWarning
@@ -40,10 +44,15 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)profileButtonHandle:(id)sender
+- (void)profileButtonHandler:(id)sender
 {
     // Return to login view controller
     [self.navigationController pushViewController:[[ProfileViewController alloc] init] animated:YES];
 }
 
+- (void)newButtonHandler:(id)sender
+{
+    // Push templates view controller
+    [self.navigationController pushViewController:[[TemplatesViewController alloc] init] animated:YES];
+}
 @end
