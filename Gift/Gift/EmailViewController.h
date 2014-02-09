@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MessageUI.h>
 
-@interface EmailViewController : UIViewController
+@interface EmailViewController : UIViewController<UINavigationControllerDelegate, MFMailComposeViewControllerDelegate>
+@property (weak, nonatomic) IBOutlet UIButton *sendEmailButton;
+- (IBAction)sendEmail:(id)sender;
 
 @end
