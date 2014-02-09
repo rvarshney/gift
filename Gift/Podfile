@@ -1,2 +1,2 @@
 pod 'AFNetworking'
-
+pod 'TWSReleaseNotesView', '~> 1.2.0'

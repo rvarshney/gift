@@ -17,11 +17,14 @@ PODS:
   - AFNetworking/Serialization (2.1.0)
   - AFNetworking/UIKit (2.1.0):
     - AFNetworking/NSURLConnection
+  - TWSReleaseNotesView (1.2.0)
 
 DEPENDENCIES:
   - AFNetworking
+  - TWSReleaseNotesView (~> 1.2.0)
 
 SPEC CHECKSUMS:
   AFNetworking: c7d7901a83f631414c7eda1737261f696101a5cd
+  TWSReleaseNotesView: ea7e62a767f0d690c2e8de2ca5e6311bd66d29d7
 
 COCOAPODS: 0.29.0
