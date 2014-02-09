@@ -94,7 +94,7 @@
     }];
 }
 
-#pragma mark - ()
+#pragma mark - Private methods
 
 - (void)logoutButtonTouchHandler:(id)sender
 {
@@ -102,7 +102,7 @@
     [PFUser logOut];
     
     // Return to login view controller
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)updateProfile

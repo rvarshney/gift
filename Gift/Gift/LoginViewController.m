@@ -2,7 +2,7 @@
 //  Copyright (c) 2013 Parse. All rights reserved.
 
 #import "LoginViewController.h"
-#import "ProfileViewController.h"
+#import "AlbumCollectionViewController.h"
 #import <Parse/Parse.h>
 
 @interface LoginViewController ()
@@ -22,7 +22,7 @@
     
     // Check if user is cached and linked to Facebook, if so, bypass login    
     if ([PFUser currentUser] && [PFFacebookUtils isLinkedWithUser:[PFUser currentUser]]) {
-        [self.navigationController pushViewController:[[ProfileViewController alloc] init] animated:NO];
+        [self presentAlbumCollection];
     }
 }
 
@@ -44,12 +44,19 @@
             }
         } else if (user.isNew) {
             NSLog(@"User with facebook signed up and logged in!");
-            [self.navigationController pushViewController:[[ProfileViewController alloc] init] animated:YES];
+            [self presentAlbumCollection];
         } else {
             NSLog(@"User with facebook logged in!");
-            [self.navigationController pushViewController:[[ProfileViewController alloc] init] animated:YES];
+            [self presentAlbumCollection];
         }
     }];
+}
+
+- (void)presentAlbumCollection
+{
+    AlbumCollectionViewController *albumCollectionViewController = [[AlbumCollectionViewController alloc] init];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:albumCollectionViewController];
+    [self presentViewController:navigationController animated:NO completion:nil];
 }
 
 @end

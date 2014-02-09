@@ -7,6 +7,7 @@
 //
 
 #import "AlbumCollectionViewController.h"
+#import "ProfileViewController.h"
 
 @interface AlbumCollectionViewController ()
 
@@ -26,13 +27,23 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+
+    self.title = @"My Albums";
+
+    UIBarButtonItem *profileButton = [[UIBarButtonItem alloc] initWithTitle:@"Profile" style:UIBarButtonItemStyleBordered target:self action:@selector(profileButtonHandle:)];
+    self.navigationItem.leftBarButtonItem = profileButton;
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)profileButtonHandle:(id)sender
+{
+    // Return to login view controller
+    [self.navigationController pushViewController:[[ProfileViewController alloc] init] animated:YES];
 }
 
 @end
