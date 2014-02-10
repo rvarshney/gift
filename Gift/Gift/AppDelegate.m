@@ -28,7 +28,7 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
-    [self createDummyData];
+    [self testClient];
     
     return YES;
 }
@@ -56,7 +56,7 @@
     [[PFFacebookUtils session] close];
 }
 
--(void)createDummyData
+-(void)testClient
 {
     Album *album = [[Client instance] createAlbumWithTitle:@"My New Cool Album" user:[PFUser currentUser] completion:nil];
     
@@ -66,6 +66,17 @@
     NSString *fullPath = [[NSBundle mainBundle] pathForResource:fileName ofType:extension];
     
     [[Client instance] createPictureForAlbum:album imagePath:fullPath pageNumber:1 rotationAngle:30 x:10 y:10 height:20 width:20 completion:nil];
+
+    [[Client instance] albumsForUser:[PFUser currentUser] completion:^(NSArray *albums, NSError *error) {
+        NSLog(@"Albums: %@", albums);
+    }];
+
+    [NSThread sleepForTimeInterval:5];
+    NSLog(@"ID %@", album.objectId);
+
+    [[Client instance] picturesForAlbum:album completion:^(NSArray *pictures, NSError *error) {
+        NSLog(@"Pictures: %@", pictures);
+    }];
 }
 
 @end
