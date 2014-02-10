@@ -5,8 +5,7 @@
 
 #import <Parse/Parse.h>
 #import "LoginViewController.h"
-#import "Album.h"
-#import "Picture.h"
+#import "Client.h"
 
 @implementation AppDelegate
 
@@ -28,6 +27,9 @@
     self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[LoginViewController alloc] init]];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
+    [self createDummyData];
+    
     return YES;
 }
 
@@ -54,23 +56,16 @@
     [[PFFacebookUtils session] close];
 }
 
--(void)createDummyData{
-    Album *album = [[Album alloc]init];
-    album.title = @"My cool album";
-    album.user = [PFUser currentUser];
-    [album saveInBackground];
+-(void)createDummyData
+{
+    Album *album = [[Client instance] createAlbumWithTitle:@"My New Cool Album" user:[PFUser currentUser] completion:nil];
     
-    Picture *pic = [[Picture alloc]init];
-    UIImage *img = [UIImage imageNamed:@"icon.png"];
-    NSData *data = [NSData dataWithData:UIImagePNGRepresentation(img)];
-    pic.album = album;
-    pic.image = [PFFile fileWithName:@"icon.png" data:data];
-    pic.x = [NSNumber numberWithInt:10];
-    pic.y = [NSNumber numberWithInt:10];
-    pic.height = [NSNumber numberWithInt:220];
-    pic.width = [NSNumber numberWithInt:220];
-    pic.rotationAngle = [NSNumber numberWithInt:10];
-    [pic saveInBackground];
+    NSString *fullFileName = @"Icon.png";
+    NSString *fileName = [[fullFileName lastPathComponent] stringByDeletingPathExtension];
+    NSString *extension = [fullFileName pathExtension];
+    NSString *fullPath = [[NSBundle mainBundle] pathForResource:fileName ofType:extension];
+    
+    [[Client instance] createPictureForAlbum:album imagePath:fullPath pageNumber:1 rotationAngle:30 x:10 y:10 height:20 width:20 completion:nil];
 }
 
 @end

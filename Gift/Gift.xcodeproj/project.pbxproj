@@ -19,6 +19,7 @@
 		6F90498C18A6A858005326ED /* TemplatesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F90498A18A6A858005326ED /* TemplatesViewController.xib */; };
 		6F90498E18A71819005326ED /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F90498D18A71819005326ED /* CoreImage.framework */; };
 		6FA1812918A81E3F007F4EAC /* EmailHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C2156718A816D800A210AC /* EmailHelper.m */; };
+		6FA1812E18A840E0007F4EAC /* Client.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FA1812D18A840E0007F4EAC /* Client.m */; };
 		A8C2156518A8148500A210AC /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C2156418A8148500A210AC /* MessageUI.framework */; };
 		A8C2156C18A82FC300A210AC /* Album.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C2156B18A82FC300A210AC /* Album.m */; };
 		A8C2156F18A8304900A210AC /* Picture.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C2156E18A8304900A210AC /* Picture.m */; };
@@ -71,6 +72,8 @@
 		6F90498918A6A858005326ED /* TemplatesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplatesViewController.m; sourceTree = "<group>"; };
 		6F90498A18A6A858005326ED /* TemplatesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TemplatesViewController.xib; sourceTree = "<group>"; };
 		6F90498D18A71819005326ED /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		6FA1812C18A840E0007F4EAC /* Client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Client.h; sourceTree = "<group>"; };
+		6FA1812D18A840E0007F4EAC /* Client.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Client.m; sourceTree = "<group>"; };
 		A8C2156418A8148500A210AC /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		A8C2156618A816D800A210AC /* EmailHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EmailHelper.h; path = ../EmailHelper.h; sourceTree = "<group>"; };
 		A8C2156718A816D800A210AC /* EmailHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EmailHelper.m; path = ../EmailHelper.m; sourceTree = "<group>"; };
@@ -142,7 +145,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A8C2156918A82FA700A210AC /* Model */ = {
+		6FA1812A18A84052007F4EAC /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D4DA7A7114D393DA0055F672 /* LoginViewController.h */,
+				D4DA7A7214D393DA0055F672 /* LoginViewController.m */,
+				D4DA7A7314D393DA0055F672 /* LoginViewController.xib */,
+				D4DA7AA514D39BCE0055F672 /* ProfileViewController.h */,
+				D4DA7AA614D39BCE0055F672 /* ProfileViewController.m */,
+				D4DA7AA714D39BCE0055F672 /* ProfileViewController.xib */,
+				6F90497918A6A451005326ED /* AlbumCollectionViewController.h */,
+				6F90497A18A6A451005326ED /* AlbumCollectionViewController.m */,
+				6F90497B18A6A451005326ED /* AlbumCollectionViewController.xib */,
+				6F90498818A6A858005326ED /* TemplatesViewController.h */,
+				6F90498918A6A858005326ED /* TemplatesViewController.m */,
+				6F90498A18A6A858005326ED /* TemplatesViewController.xib */,
+				6F90496F18A6A3BC005326ED /* AlbumViewController.h */,
+				6F90497018A6A3BC005326ED /* AlbumViewController.m */,
+				6F90497118A6A3BC005326ED /* AlbumViewController.xib */,
+				A8C2156618A816D800A210AC /* EmailHelper.h */,
+				A8C2156718A816D800A210AC /* EmailHelper.m */,
+				6F90497E18A6A520005326ED /* ShippingViewController.h */,
+				6F90497F18A6A520005326ED /* ShippingViewController.m */,
+				6F90498018A6A520005326ED /* ShippingViewController.xib */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		6FA1812B18A84090007F4EAC /* API */ = {
+			isa = PBXGroup;
+			children = (
+				6FA1812C18A840E0007F4EAC /* Client.h */,
+				6FA1812D18A840E0007F4EAC /* Client.m */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
+		A8C2156918A82FA700A210AC /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				A8C2156A18A82FC300A210AC /* Album.h */,
@@ -150,7 +189,7 @@
 				A8C2156D18A8304900A210AC /* Picture.h */,
 				A8C2156E18A8304900A210AC /* Picture.m */,
 			);
-			name = Model;
+			name = Models;
 			path = ..;
 			sourceTree = "<group>";
 		};
@@ -199,29 +238,11 @@
 		D4DA79F414D3345A0055F672 /* Gift */ = {
 			isa = PBXGroup;
 			children = (
-				A8C2156918A82FA700A210AC /* Model */,
+				6FA1812B18A84090007F4EAC /* API */,
+				A8C2156918A82FA700A210AC /* Models */,
+				6FA1812A18A84052007F4EAC /* View Controllers */,
 				D4DA79FD14D3345A0055F672 /* AppDelegate.h */,
 				D4DA79FE14D3345A0055F672 /* AppDelegate.m */,
-				D4DA7A7114D393DA0055F672 /* LoginViewController.h */,
-				D4DA7A7214D393DA0055F672 /* LoginViewController.m */,
-				D4DA7A7314D393DA0055F672 /* LoginViewController.xib */,
-				D4DA7AA514D39BCE0055F672 /* ProfileViewController.h */,
-				D4DA7AA614D39BCE0055F672 /* ProfileViewController.m */,
-				D4DA7AA714D39BCE0055F672 /* ProfileViewController.xib */,
-				6F90497918A6A451005326ED /* AlbumCollectionViewController.h */,
-				6F90497A18A6A451005326ED /* AlbumCollectionViewController.m */,
-				6F90497B18A6A451005326ED /* AlbumCollectionViewController.xib */,
-				6F90498818A6A858005326ED /* TemplatesViewController.h */,
-				6F90498918A6A858005326ED /* TemplatesViewController.m */,
-				6F90498A18A6A858005326ED /* TemplatesViewController.xib */,
-				6F90496F18A6A3BC005326ED /* AlbumViewController.h */,
-				6F90497018A6A3BC005326ED /* AlbumViewController.m */,
-				6F90497118A6A3BC005326ED /* AlbumViewController.xib */,
-				A8C2156618A816D800A210AC /* EmailHelper.h */,
-				A8C2156718A816D800A210AC /* EmailHelper.m */,
-				6F90497E18A6A520005326ED /* ShippingViewController.h */,
-				6F90497F18A6A520005326ED /* ShippingViewController.m */,
-				6F90498018A6A520005326ED /* ShippingViewController.xib */,
 				D4DA79F514D3345A0055F672 /* Supporting Files */,
 			);
 			path = Gift;
@@ -360,6 +381,7 @@
 			files = (
 				D4DA79FB14D3345A0055F672 /* main.m in Sources */,
 				D4DA79FF14D3345A0055F672 /* AppDelegate.m in Sources */,
+				6FA1812E18A840E0007F4EAC /* Client.m in Sources */,
 				6F90498118A6A520005326ED /* ShippingViewController.m in Sources */,
 				A8C2156C18A82FC300A210AC /* Album.m in Sources */,
 				A8C2156F18A8304900A210AC /* Picture.m in Sources */,

@@ -13,8 +13,8 @@
 
 + (NSString *)parseClassName;
 
-@property(nonatomic, strong) NSString* title;
-@property(nonatomic, strong) PFUser* user;
+@property(nonatomic, strong) NSString *title;
+@property(nonatomic, strong) PFUser *user;
 @property int x;
 
 @end
