@@ -19,7 +19,7 @@
 
 - (Album *)createAlbumWithTitle:(NSString *)title user:(PFUser *)user completion:(void (^)(BOOL succeeded, NSError *error))completion
 {
-    Album *album = [[Album alloc] init];
+    Album *album = [Album object];
     album.title = title;
     album.user = user;
     [album saveInBackgroundWithBlock:completion];
@@ -28,14 +28,14 @@
 
 - (void)albumsForUser:(PFUser *)user completion:(void (^)(NSArray *, NSError *))completion
 {
-    PFQuery *query = [PFQuery queryWithClassName:[Album parseClassName]];
+    PFQuery *query = [Album query];
     [query whereKey:@"user" equalTo:user];
     [query findObjectsInBackgroundWithBlock:completion];
 }
 
 - (Picture *)createPictureForAlbum:(Album *)album imagePath:(NSString *)imagePath pageNumber:(int)pageNumber rotationAngle:(CGFloat)rotationAngle x:(int)x y:(int)y height:(int)height width:(int)width completion:(void (^)(BOOL, NSError *))completion
 {
-    Picture *picture = [[Picture alloc] init];
+    Picture *picture = [Picture object];
     picture.album = album;
     picture.image = [PFFile fileWithName:[imagePath lastPathComponent] contentsAtPath:imagePath];
     picture.x = [NSNumber numberWithInteger:x];
@@ -50,7 +50,7 @@
 
 - (void)picturesForAlbum:(Album *)album completion:(void (^)(NSArray *, NSError *))completion
 {
-    PFQuery *query = [PFQuery queryWithClassName:[Picture parseClassName]];
+    PFQuery *query = [Picture query];
     [query whereKey:@"album" equalTo:album];
     [query findObjectsInBackgroundWithBlock:completion];
 }
