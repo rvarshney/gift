@@ -17,14 +17,24 @@ PODS:
   - AFNetworking/Serialization (2.1.0)
   - AFNetworking/UIKit (2.1.0):
     - AFNetworking/NSURLConnection
+  - PaymentKit (1.0.2)
+  - Stripe (1.0.2):
+    - PaymentKit
   - TWSReleaseNotesView (1.2.0)
 
 DEPENDENCIES:
   - AFNetworking
+  - Stripe (from `https://github.com/stripe/stripe-ios.git`)
   - TWSReleaseNotesView (~> 1.2.0)
+
+EXTERNAL SOURCES:
+  Stripe:
+    :git: https://github.com/stripe/stripe-ios.git
 
 SPEC CHECKSUMS:
   AFNetworking: c7d7901a83f631414c7eda1737261f696101a5cd
+  PaymentKit: be75a5398a9465edd84f7249a9e57d707da025fb
+  Stripe: d939af1f258e8b69482205eafa44e0f27f3e74d6
   TWSReleaseNotesView: ea7e62a767f0d690c2e8de2ca5e6311bd66d29d7
 
 COCOAPODS: 0.29.0

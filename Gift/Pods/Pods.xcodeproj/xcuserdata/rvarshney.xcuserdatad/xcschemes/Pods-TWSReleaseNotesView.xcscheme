@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "AA893F6214B2412483223125"
+               BlueprintIdentifier = "813291BE3C3240189E3B82AD"
                BuildableName = "libPods-TWSReleaseNotesView.a"
                BlueprintName = "Pods-TWSReleaseNotesView"
                ReferencedContainer = "container:Pods.xcodeproj">

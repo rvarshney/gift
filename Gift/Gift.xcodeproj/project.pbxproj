@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		30C949AC1829561000B17666 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30C949AB1829561000B17666 /* FacebookSDK.framework */; };
 		6D10F48316DD68E000690A0F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D10F48216DD68E000690A0F /* CoreLocation.framework */; };
+		6F51ED6718AB82CE00D6AF01 /* Album.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F51ED6618AB82CE00D6AF01 /* Album.m */; };
+		6F51ED6A18AB82E500D6AF01 /* Picture.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F51ED6918AB82E500D6AF01 /* Picture.m */; };
+		6F51ED6D18AB830100D6AF01 /* EmailHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F51ED6C18AB830100D6AF01 /* EmailHelper.m */; };
 		6F90497218A6A3BC005326ED /* AlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F90497018A6A3BC005326ED /* AlbumViewController.m */; };
 		6F90497318A6A3BC005326ED /* AlbumViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F90497118A6A3BC005326ED /* AlbumViewController.xib */; };
 		6F90497C18A6A451005326ED /* AlbumCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F90497A18A6A451005326ED /* AlbumCollectionViewController.m */; };
@@ -18,11 +21,8 @@
 		6F90498B18A6A858005326ED /* TemplatesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F90498918A6A858005326ED /* TemplatesViewController.m */; };
 		6F90498C18A6A858005326ED /* TemplatesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F90498A18A6A858005326ED /* TemplatesViewController.xib */; };
 		6F90498E18A71819005326ED /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F90498D18A71819005326ED /* CoreImage.framework */; };
-		6FA1812918A81E3F007F4EAC /* EmailHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C2156718A816D800A210AC /* EmailHelper.m */; };
 		6FA1812E18A840E0007F4EAC /* Client.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FA1812D18A840E0007F4EAC /* Client.m */; };
 		A8C2156518A8148500A210AC /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C2156418A8148500A210AC /* MessageUI.framework */; };
-		A8C2156C18A82FC300A210AC /* Album.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C2156B18A82FC300A210AC /* Album.m */; };
-		A8C2156F18A8304900A210AC /* Picture.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C2156E18A8304900A210AC /* Picture.m */; };
 		A8C2157118A83CDC00A210AC /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C2157018A83CDC00A210AC /* Parse.framework */; };
 		C425016D161BBAE400474BCD /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4250169161BBAE400474BCD /* StoreKit.framework */; };
 		C4250170161BBAEE00474BCD /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C425016F161BBAEE00474BCD /* libz.dylib */; };
@@ -59,6 +59,12 @@
 		400A3945A7A04690BB32CBDF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		689293C421184EF494D23F05 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		6D10F48216DD68E000690A0F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		6F51ED6518AB82CE00D6AF01 /* Album.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Album.h; path = Gift/Album.h; sourceTree = "<group>"; };
+		6F51ED6618AB82CE00D6AF01 /* Album.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Album.m; path = Gift/Album.m; sourceTree = "<group>"; };
+		6F51ED6818AB82E500D6AF01 /* Picture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Picture.h; path = Gift/Picture.h; sourceTree = "<group>"; };
+		6F51ED6918AB82E500D6AF01 /* Picture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Picture.m; path = Gift/Picture.m; sourceTree = "<group>"; };
+		6F51ED6B18AB830100D6AF01 /* EmailHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmailHelper.h; sourceTree = "<group>"; };
+		6F51ED6C18AB830100D6AF01 /* EmailHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmailHelper.m; sourceTree = "<group>"; };
 		6F90496F18A6A3BC005326ED /* AlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumViewController.h; sourceTree = "<group>"; };
 		6F90497018A6A3BC005326ED /* AlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumViewController.m; sourceTree = "<group>"; };
 		6F90497118A6A3BC005326ED /* AlbumViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlbumViewController.xib; sourceTree = "<group>"; };
@@ -75,12 +81,6 @@
 		6FA1812C18A840E0007F4EAC /* Client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Client.h; sourceTree = "<group>"; };
 		6FA1812D18A840E0007F4EAC /* Client.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Client.m; sourceTree = "<group>"; };
 		A8C2156418A8148500A210AC /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
-		A8C2156618A816D800A210AC /* EmailHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EmailHelper.h; path = ../EmailHelper.h; sourceTree = "<group>"; };
-		A8C2156718A816D800A210AC /* EmailHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EmailHelper.m; path = ../EmailHelper.m; sourceTree = "<group>"; };
-		A8C2156A18A82FC300A210AC /* Album.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Album.h; sourceTree = "<group>"; };
-		A8C2156B18A82FC300A210AC /* Album.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Album.m; sourceTree = "<group>"; };
-		A8C2156D18A8304900A210AC /* Picture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Picture.h; sourceTree = "<group>"; };
-		A8C2156E18A8304900A210AC /* Picture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Picture.m; sourceTree = "<group>"; };
 		A8C2157018A83CDC00A210AC /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		C4250169161BBAE400474BCD /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		C425016F161BBAEE00474BCD /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -163,8 +163,8 @@
 				6F90496F18A6A3BC005326ED /* AlbumViewController.h */,
 				6F90497018A6A3BC005326ED /* AlbumViewController.m */,
 				6F90497118A6A3BC005326ED /* AlbumViewController.xib */,
-				A8C2156618A816D800A210AC /* EmailHelper.h */,
-				A8C2156718A816D800A210AC /* EmailHelper.m */,
+				6F51ED6B18AB830100D6AF01 /* EmailHelper.h */,
+				6F51ED6C18AB830100D6AF01 /* EmailHelper.m */,
 				6F90497E18A6A520005326ED /* ShippingViewController.h */,
 				6F90497F18A6A520005326ED /* ShippingViewController.m */,
 				6F90498018A6A520005326ED /* ShippingViewController.xib */,
@@ -184,10 +184,10 @@
 		A8C2156918A82FA700A210AC /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				A8C2156A18A82FC300A210AC /* Album.h */,
-				A8C2156B18A82FC300A210AC /* Album.m */,
-				A8C2156D18A8304900A210AC /* Picture.h */,
-				A8C2156E18A8304900A210AC /* Picture.m */,
+				6F51ED6818AB82E500D6AF01 /* Picture.h */,
+				6F51ED6918AB82E500D6AF01 /* Picture.m */,
+				6F51ED6518AB82CE00D6AF01 /* Album.h */,
+				6F51ED6618AB82CE00D6AF01 /* Album.m */,
 			);
 			name = Models;
 			path = ..;
@@ -383,14 +383,14 @@
 				D4DA79FF14D3345A0055F672 /* AppDelegate.m in Sources */,
 				6FA1812E18A840E0007F4EAC /* Client.m in Sources */,
 				6F90498118A6A520005326ED /* ShippingViewController.m in Sources */,
-				A8C2156C18A82FC300A210AC /* Album.m in Sources */,
-				A8C2156F18A8304900A210AC /* Picture.m in Sources */,
 				6F90497C18A6A451005326ED /* AlbumCollectionViewController.m in Sources */,
 				6F90498B18A6A858005326ED /* TemplatesViewController.m in Sources */,
+				6F51ED6A18AB82E500D6AF01 /* Picture.m in Sources */,
 				6F90497218A6A3BC005326ED /* AlbumViewController.m in Sources */,
+				6F51ED6718AB82CE00D6AF01 /* Album.m in Sources */,
+				6F51ED6D18AB830100D6AF01 /* EmailHelper.m in Sources */,
 				D4DA7A7414D393DA0055F672 /* LoginViewController.m in Sources */,
 				D4DA7AA814D39BCE0055F672 /* ProfileViewController.m in Sources */,
-				6FA1812918A81E3F007F4EAC /* EmailHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -479,7 +479,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
-					/Users/ulidder/Documents/gift/Gift,
+					/Users/rvarshney/Dropbox/Projects/codepath/gift/Gift,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Gift/Gift-Prefix.pch";
@@ -502,7 +502,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
-					/Users/ulidder/Documents/gift/Gift,
+					/Users/rvarshney/Dropbox/Projects/codepath/gift/Gift,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Gift/Gift-Prefix.pch";
