@@ -17,7 +17,7 @@
 + (Client *)instance;
 
 // Albums API
-- (Album *)createAlbumWithTitle:(NSString *)title user:(PFUser *)user completion:(void (^)(BOOL succeeded, NSError *error))completion;
+- (Album *)createAlbumWithTitle:(NSString *)title user:(PFUser *)user numPages:(NSUInteger)numPages completion:(void (^)(BOOL succeeded, NSError *error))completion;
 
 - (void)albumsForUser:(PFUser *)user completion:(void (^)(NSArray *albums, NSError *error))completion;
 

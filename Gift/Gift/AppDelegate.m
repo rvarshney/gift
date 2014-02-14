@@ -58,7 +58,7 @@
 
 -(void)testClient
 {
-    Album *album = [[Client instance] createAlbumWithTitle:@"My New Cool Album" user:[PFUser currentUser] completion:nil];
+    Album *album = [[Client instance] createAlbumWithTitle:@"My New Cool Album" user:[PFUser currentUser] numPages: 1 completion:nil];
     
     NSString *fullFileName = @"Icon.png";
     NSString *fileName = [[fullFileName lastPathComponent] stringByDeletingPathExtension];

@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "STPView.h"
+#import "Album.h"
 
-@interface ShippingViewController : UIViewController
+@interface ShippingViewController : UIViewController <STPViewDelegate, UITextFieldDelegate>
+
+@property (nonatomic, strong) Album *album;
+@property (nonatomic, strong) NSString *albumPath;
 
 @end

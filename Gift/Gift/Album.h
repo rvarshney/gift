@@ -15,6 +15,6 @@
 
 @property(nonatomic, strong) NSString *title;
 @property(nonatomic, strong) PFUser *user;
-@property int x;
+@property NSUInteger numPages;
 
 @end

@@ -13,7 +13,7 @@
 
 @dynamic title;
 @dynamic user;
-@dynamic x;
+@dynamic numPages;
 
 
 + (NSString *)parseClassName {

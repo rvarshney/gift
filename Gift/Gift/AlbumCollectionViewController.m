@@ -9,8 +9,12 @@
 #import "AlbumCollectionViewController.h"
 #import "ProfileViewController.h"
 #import "TemplatesViewController.h"
+#import "AlbumViewController.h"
+#import "Client.h"
 
 @interface AlbumCollectionViewController ()
+
+@property (nonatomic, strong) NSArray *albums;
 
 @end
 
@@ -36,12 +40,22 @@
     
     UIBarButtonItem *newButton = [[UIBarButtonItem alloc] initWithTitle:@"New" style:UIBarButtonItemStyleBordered target:self action:@selector(newButtonHandler:)];
     self.navigationItem.rightBarButtonItem = newButton;
+    
+    [self loadAlbums];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)loadAlbums
+{    
+    [[Client instance] albumsForUser:[PFUser currentUser] completion:^(NSArray *albums, NSError *error) {
+        NSLog(@"Albums: %@", albums);
+        self.albums = albums;
+    }];
 }
 
 - (void)profileButtonHandler:(id)sender
@@ -53,6 +67,9 @@
 - (void)newButtonHandler:(id)sender
 {
     // Push templates view controller
-    [self.navigationController pushViewController:[[TemplatesViewController alloc] init] animated:YES];
+    //[self.navigationController pushViewController:[[TemplatesViewController alloc] init] animated:YES];
+    AlbumViewController *albumViewController = [[AlbumViewController alloc] init];
+    albumViewController.album = self.albums[0];
+    [self.navigationController pushViewController:albumViewController animated:YES];
 }
 @end

@@ -17,11 +17,12 @@
     return instance;
 }
 
-- (Album *)createAlbumWithTitle:(NSString *)title user:(PFUser *)user completion:(void (^)(BOOL succeeded, NSError *error))completion
+- (Album *)createAlbumWithTitle:(NSString *)title user:(PFUser *)user numPages:(NSUInteger)numPages completion:(void (^)(BOOL succeeded, NSError *error))completion
 {
     Album *album = [Album object];
     album.title = title;
     album.user = user;
+    album.numPages = numPages;
     [album saveInBackgroundWithBlock:completion];
     return album;
 }

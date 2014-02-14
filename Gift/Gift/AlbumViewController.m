@@ -60,6 +60,8 @@
 - (void)printButtonHandler:(id)sender
 {
     ShippingViewController *shippingViewController = [[ShippingViewController alloc] init];
+    shippingViewController.album = self.album;
+    shippingViewController.albumPath = @"ronnie-header-2.pdf";
     [self.navigationController pushViewController:shippingViewController animated:YES];
 }
 

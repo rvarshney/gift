@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import <MessageUI/MessageUI.h>
+#import "Album.h"
 
 @interface AlbumViewController : UIViewController <MFMailComposeViewControllerDelegate>
+
+@property (nonatomic, strong) Album *album;
 
 @end

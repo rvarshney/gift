@@ -20,7 +20,7 @@
         [mailComposeVC setMessageBody:body isHTML:isHTML];
         [mailComposeVC setToRecipients:toArray];
         
-        for(NSString *file in filesArray){
+        for (NSString *file in filesArray) {
             // Determine the file name and extension
             NSArray *filepart = [file componentsSeparatedByString:@"."];
             NSString *filename = [filepart objectAtIndex:0];
