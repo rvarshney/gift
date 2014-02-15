@@ -8,11 +8,13 @@
 
 #import "TemplatesViewController.h"
 #import "AlbumViewController.h"
+#import "TemplateCell.h"
 
 
-@interface TemplatesViewController ()
-- (IBAction)albumButtonHandler:(id)sender;
 
+@interface TemplatesViewController (){
+    NSArray *imagesArray;
+}
 
 @end
 
@@ -29,8 +31,11 @@
 
 - (void)viewDidLoad
 {
+    imagesArray = [[NSArray alloc]initWithObjects:@"hearts.png", @"happybirthday.jpg", @"birthday.png", @"winter.png", @"graduation.png", @"baby.png", nil];
     [super viewDidLoad];
-    
+    [self.collectionView registerNib:[UINib nibWithNibName:@"TemplateCell" bundle:nil] forCellWithReuseIdentifier:@"TemplateCell"];
+    self.collectionView.delegate = self;
+    self.collectionView.dataSource = self;
     self.title = @"Templates";
 }
 
@@ -40,8 +45,32 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)albumButtonHandler:(id)sender
-{
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    TemplateCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TemplateCell" forIndexPath:indexPath];
+    [cell.templateImage setImage:[UIImage imageNamed:imagesArray[indexPath.row]]];
+    
+    
+    //only add if cell does not already have a uitaprecognizer as cells are recycled
+    bool alreadyContainsUITapGesureRecognizer = false;
+    NSArray *gestureRecognizers = cell.contentView.gestureRecognizers;
+    for(UIGestureRecognizer *recog in gestureRecognizers){
+        if([recog isMemberOfClass:[UITapGestureRecognizer class]]){
+            alreadyContainsUITapGesureRecognizer = true;
+            break;
+        }
+    }
+    
+    if(!alreadyContainsUITapGesureRecognizer){
+        [cell.contentView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSelect:)]];
+    }
+    return cell;
+}
+
+-(void)handleSelect:(UITapGestureRecognizer*) tapGestureRecog{
     [self.navigationController pushViewController:[[AlbumViewController alloc] init] animated:YES];
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    return [imagesArray count];
 }
 @end
