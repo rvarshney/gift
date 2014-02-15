@@ -7,6 +7,8 @@
 //
 
 #import "AlbumCollectionViewController.h"
+#import "AlbumCollectionViewLayout.h"
+#import "AlbumCell.h"
 #import "ProfileViewController.h"
 #import "TemplatesViewController.h"
 #import "AlbumViewController.h"
@@ -14,7 +16,8 @@
 
 @interface AlbumCollectionViewController ()
 
-@property (nonatomic, strong) NSArray *albums;
+@property (nonatomic, strong) NSMutableArray *albums;
+@property (nonatomic, strong) NSMutableDictionary *coverPictures;
 
 @end
 
@@ -40,23 +43,88 @@
     
     UIBarButtonItem *newButton = [[UIBarButtonItem alloc] initWithTitle:@"New" style:UIBarButtonItemStyleBordered target:self action:@selector(newButtonHandler:)];
     self.navigationItem.rightBarButtonItem = newButton;
-    
+
+    [self.collectionView registerClass:[AlbumCell class] forCellWithReuseIdentifier:@"AlbumCell"];
+
+    // Load the data
+    self.coverPictures = [[NSMutableDictionary alloc] init];
     [self loadAlbums];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)loadAlbums
 {    
     [[Client instance] albumsForUser:[PFUser currentUser] completion:^(NSArray *albums, NSError *error) {
-        NSLog(@"Albums: %@", albums);
-        self.albums = albums;
+        if (!error) {
+            NSLog(@"Albums: %@", albums);
+            self.albums = [albums mutableCopy];
+            // Get the cover picture for each album
+            for (NSUInteger i = 0; i < albums.count; i++) {
+                Album *album = albums[i];
+                [[Client instance] coverPictureForAlbum:album completion:^(NSArray *pictures, NSError *error) {
+                    if (!error) {
+                        [self.coverPictures setObject:pictures[0] forKey:album.objectId];
+                        [self.collectionView reloadData];
+                    } else {
+                        NSLog(@"No cover picture for album %@", album);
+                    }
+                }];
+            }
+        } else {
+            NSLog(@"Error %@", [error localizedDescription]);
+        }
     }];
 }
+
+#pragma mark - UICollectionViewDataSource
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    return self.albums.count;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return 1;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    AlbumCell *albumCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"AlbumCell" forIndexPath:indexPath];
+    
+    Album *album = self.albums[indexPath.section];
+    albumCell.coverPictureImageView.file = ((Picture *)self.coverPictures[album.objectId]).image;
+    [albumCell.coverPictureImageView loadInBackground];
+
+    return albumCell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    Album *album = self.albums[indexPath.section];
+    NSLog(@"Selected album: %@", album);
+
+    AlbumViewController *albumViewController = [[AlbumViewController alloc] init];
+    albumViewController.album = album;
+    [self.navigationController pushViewController:albumViewController animated:YES];
+}
+
+#pragma mark - View Rotation
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    if (UIInterfaceOrientationIsLandscape(toInterfaceOrientation)) {
+        ((AlbumCollectionViewLayout *)self.collectionViewLayout).numColumns = 4;
+    } else {
+        ((AlbumCollectionViewLayout *)self.collectionViewLayout).numColumns = 3;
+    }
+}
+
+#pragma mark - Private methods
 
 - (void)profileButtonHandler:(id)sender
 {
@@ -67,9 +135,7 @@
 - (void)newButtonHandler:(id)sender
 {
     // Push templates view controller
-    //[self.navigationController pushViewController:[[TemplatesViewController alloc] init] animated:YES];
-    AlbumViewController *albumViewController = [[AlbumViewController alloc] init];
-    albumViewController.album = self.albums[0];
-    [self.navigationController pushViewController:albumViewController animated:YES];
+    [self.navigationController pushViewController:[[TemplatesViewController alloc] init] animated:YES];
 }
+
 @end

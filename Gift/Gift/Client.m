@@ -31,10 +31,11 @@
 {
     PFQuery *query = [Album query];
     [query whereKey:@"user" equalTo:user];
+    [query orderByDescending:@"createdAt"];
     [query findObjectsInBackgroundWithBlock:completion];
 }
 
-- (Picture *)createPictureForAlbum:(Album *)album imagePath:(NSString *)imagePath pageNumber:(int)pageNumber rotationAngle:(CGFloat)rotationAngle x:(int)x y:(int)y height:(int)height width:(int)width completion:(void (^)(BOOL, NSError *))completion
+- (Picture *)createPictureForAlbum:(Album *)album imagePath:(NSString *)imagePath pageNumber:(NSUInteger)pageNumber rotationAngle:(CGFloat)rotationAngle x:(NSUInteger)x y:(NSUInteger)y height:(NSUInteger)height width:(NSUInteger)width completion:(void (^)(BOOL, NSError *))completion
 {
     Picture *picture = [Picture object];
     picture.album = album;
@@ -53,6 +54,16 @@
 {
     PFQuery *query = [Picture query];
     [query whereKey:@"album" equalTo:album];
+    [query orderByAscending:@"createdAt"];
+    [query findObjectsInBackgroundWithBlock:completion];
+}
+
+- (void)coverPictureForAlbum:(Album *)album completion:(void (^)(NSArray *, NSError *))completion
+{
+    PFQuery *query = [Picture query];
+    [query whereKey:@"album" equalTo:album];
+    [query orderByAscending:@"createdAt"];
+    query.limit = 1;
     [query findObjectsInBackgroundWithBlock:completion];
 }
 

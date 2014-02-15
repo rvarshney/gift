@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AlbumCollectionViewController : UIViewController
+@interface AlbumCollectionViewController : UICollectionViewController <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @end

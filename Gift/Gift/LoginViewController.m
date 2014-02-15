@@ -2,6 +2,7 @@
 //  Copyright (c) 2013 Parse. All rights reserved.
 
 #import "LoginViewController.h"
+#import "AlbumCollectionViewLayout.h"
 #import "AlbumCollectionViewController.h"
 #import <Parse/Parse.h>
 
@@ -54,7 +55,8 @@
 
 - (void)presentAlbumCollection
 {
-    AlbumCollectionViewController *albumCollectionViewController = [[AlbumCollectionViewController alloc] init];
+    AlbumCollectionViewLayout *albumCollectionViewLayout = [[AlbumCollectionViewLayout alloc] init];
+    AlbumCollectionViewController *albumCollectionViewController = [[AlbumCollectionViewController alloc] initWithCollectionViewLayout:albumCollectionViewLayout];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:albumCollectionViewController];
     [self presentViewController:navigationController animated:NO completion:nil];
 }

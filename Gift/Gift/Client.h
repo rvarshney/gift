@@ -22,8 +22,10 @@
 - (void)albumsForUser:(PFUser *)user completion:(void (^)(NSArray *albums, NSError *error))completion;
 
 // Pictures API
-- (Picture *)createPictureForAlbum:(Album *)album imagePath:(NSString *)imagePath pageNumber:(int)pageNumber rotationAngle:(CGFloat)rotationAngle x:(int)x y:(int)y height:(int)height width:(int)width completion:(void (^)(BOOL succeeded, NSError *error))completion;
+- (Picture *)createPictureForAlbum:(Album *)album imagePath:(NSString *)imagePath pageNumber:(NSUInteger)pageNumber rotationAngle:(CGFloat)rotationAngle x:(NSUInteger)x y:(NSUInteger)y height:(NSUInteger)height width:(NSUInteger)width completion:(void (^)(BOOL succeeded, NSError *error))completion;
 
 - (void)picturesForAlbum:(Album *)album completion:(void (^)(NSArray *pictures, NSError *error))completion;
-                            
+
+- (void)coverPictureForAlbum:(Album *)album completion:(void (^)(NSArray *pictures, NSError *error))completion;
+
 @end

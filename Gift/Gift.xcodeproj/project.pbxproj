@@ -22,6 +22,9 @@
 		6F90498C18A6A858005326ED /* TemplatesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F90498A18A6A858005326ED /* TemplatesViewController.xib */; };
 		6F90498E18A71819005326ED /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F90498D18A71819005326ED /* CoreImage.framework */; };
 		6FA1812E18A840E0007F4EAC /* Client.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FA1812D18A840E0007F4EAC /* Client.m */; };
+		6FEF468B18ADFBA400CB6C3B /* ronnie-header-2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 6FEF468A18ADFBA400CB6C3B /* ronnie-header-2.pdf */; };
+		6FEF470E18AE811800CB6C3B /* AlbumCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FEF470D18AE811800CB6C3B /* AlbumCollectionViewLayout.m */; };
+		6FEF471218AF0D8000CB6C3B /* AlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FEF471118AF0D8000CB6C3B /* AlbumCell.m */; };
 		A8C2156518A8148500A210AC /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C2156418A8148500A210AC /* MessageUI.framework */; };
 		A8C2157118A83CDC00A210AC /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C2157018A83CDC00A210AC /* Parse.framework */; };
 		C425016D161BBAE400474BCD /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4250169161BBAE400474BCD /* StoreKit.framework */; };
@@ -80,6 +83,11 @@
 		6F90498D18A71819005326ED /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		6FA1812C18A840E0007F4EAC /* Client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Client.h; sourceTree = "<group>"; };
 		6FA1812D18A840E0007F4EAC /* Client.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Client.m; sourceTree = "<group>"; };
+		6FEF468A18ADFBA400CB6C3B /* ronnie-header-2.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "ronnie-header-2.pdf"; sourceTree = "<group>"; };
+		6FEF470C18AE811800CB6C3B /* AlbumCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumCollectionViewLayout.h; sourceTree = "<group>"; };
+		6FEF470D18AE811800CB6C3B /* AlbumCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumCollectionViewLayout.m; sourceTree = "<group>"; };
+		6FEF471018AF0D8000CB6C3B /* AlbumCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlbumCell.h; path = Gift/AlbumCell.h; sourceTree = "<group>"; };
+		6FEF471118AF0D8000CB6C3B /* AlbumCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlbumCell.m; path = Gift/AlbumCell.m; sourceTree = "<group>"; };
 		A8C2156418A8148500A210AC /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		A8C2157018A83CDC00A210AC /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		C4250169161BBAE400474BCD /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -157,6 +165,8 @@
 				6F90497918A6A451005326ED /* AlbumCollectionViewController.h */,
 				6F90497A18A6A451005326ED /* AlbumCollectionViewController.m */,
 				6F90497B18A6A451005326ED /* AlbumCollectionViewController.xib */,
+				6FEF470C18AE811800CB6C3B /* AlbumCollectionViewLayout.h */,
+				6FEF470D18AE811800CB6C3B /* AlbumCollectionViewLayout.m */,
 				6F90498818A6A858005326ED /* TemplatesViewController.h */,
 				6F90498918A6A858005326ED /* TemplatesViewController.m */,
 				6F90498A18A6A858005326ED /* TemplatesViewController.xib */,
@@ -179,6 +189,16 @@
 				6FA1812D18A840E0007F4EAC /* Client.m */,
 			);
 			name = API;
+			sourceTree = "<group>";
+		};
+		6FEF470F18AF0D1300CB6C3B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6FEF471018AF0D8000CB6C3B /* AlbumCell.h */,
+				6FEF471118AF0D8000CB6C3B /* AlbumCell.m */,
+			);
+			name = Views;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		A8C2156918A82FA700A210AC /* Models */ = {
@@ -240,6 +260,7 @@
 			children = (
 				6FA1812B18A84090007F4EAC /* API */,
 				A8C2156918A82FA700A210AC /* Models */,
+				6FEF470F18AF0D1300CB6C3B /* Views */,
 				6FA1812A18A84052007F4EAC /* View Controllers */,
 				D4DA79FD14D3345A0055F672 /* AppDelegate.h */,
 				D4DA79FE14D3345A0055F672 /* AppDelegate.m */,
@@ -251,6 +272,7 @@
 		D4DA79F514D3345A0055F672 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6FEF468A18ADFBA400CB6C3B /* ronnie-header-2.pdf */,
 				C4DDA8AB16EE8A1900B5C174 /* Icon@2x.png */,
 				C4DDA8AC16EE8A1900B5C174 /* Icon.png */,
 				C4CF27E2161E3BAA008AB8CC /* login-button-small-pressed.png */,
@@ -323,6 +345,7 @@
 				D4DA79F914D3345A0055F672 /* InfoPlist.strings in Resources */,
 				D4DA7A7514D393DA0055F672 /* LoginViewController.xib in Resources */,
 				D4DA7AA914D39BCE0055F672 /* ProfileViewController.xib in Resources */,
+				6FEF468B18ADFBA400CB6C3B /* ronnie-header-2.pdf in Resources */,
 				6F90498218A6A520005326ED /* ShippingViewController.xib in Resources */,
 				C4BB20D7161BC4FB00A7884A /* Default-568h@2x.png in Resources */,
 				C4BB20D8161BC4FB00A7884A /* Default.png in Resources */,
@@ -379,6 +402,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6FEF470E18AE811800CB6C3B /* AlbumCollectionViewLayout.m in Sources */,
+				6FEF471218AF0D8000CB6C3B /* AlbumCell.m in Sources */,
 				D4DA79FB14D3345A0055F672 /* main.m in Sources */,
 				D4DA79FF14D3345A0055F672 /* AppDelegate.m in Sources */,
 				6FA1812E18A840E0007F4EAC /* Client.m in Sources */,
