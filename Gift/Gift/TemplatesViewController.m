@@ -47,8 +47,11 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     TemplateCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TemplateCell" forIndexPath:indexPath];
+    
     [cell.templateImage setImage:[UIImage imageNamed:imagesArray[indexPath.row]]];
     
+    //set the tag of the image so that we know which template was clicked. Can also add other properties here. Change UICollectionViewCell+Tag
+    [cell setTag:indexPath.row];
     
     //only add if cell does not already have a uitaprecognizer as cells are recycled
     bool alreadyContainsUITapGesureRecognizer = false;

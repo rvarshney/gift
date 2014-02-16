@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UICollectionViewCell+Tag.h"
 
 @interface TemplateCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UILabel *templateLabel;
