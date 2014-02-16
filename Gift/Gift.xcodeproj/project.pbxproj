@@ -34,7 +34,6 @@
 		A857FEE218B0306C00226E92 /* TemplateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A857FEE018B0306C00226E92 /* TemplateCell.m */; };
 		A857FEE318B0306C00226E92 /* TemplateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A857FEE118B0306C00226E92 /* TemplateCell.xib */; };
 		A857FEE818B030C400226E92 /* TemplatesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A857FEE618B030C400226E92 /* TemplatesViewController.xib */; };
-		A857FEEE18B0357600226E92 /* UICollectionViewCell+Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = A857FEED18B0357600226E92 /* UICollectionViewCell+Tag.m */; };
 		A8C2156518A8148500A210AC /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C2156418A8148500A210AC /* MessageUI.framework */; };
 		A8C2157118A83CDC00A210AC /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C2157018A83CDC00A210AC /* Parse.framework */; };
 		C425016D161BBAE400474BCD /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4250169161BBAE400474BCD /* StoreKit.framework */; };
@@ -110,8 +109,6 @@
 		A857FEE418B030C400226E92 /* TemplatesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplatesViewController.h; sourceTree = "<group>"; };
 		A857FEE518B030C400226E92 /* TemplatesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplatesViewController.m; sourceTree = "<group>"; };
 		A857FEE618B030C400226E92 /* TemplatesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TemplatesViewController.xib; sourceTree = "<group>"; };
-		A857FEEC18B0357600226E92 /* UICollectionViewCell+Tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UICollectionViewCell+Tag.h"; sourceTree = "<group>"; };
-		A857FEED18B0357600226E92 /* UICollectionViewCell+Tag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UICollectionViewCell+Tag.m"; sourceTree = "<group>"; };
 		A8C2156418A8148500A210AC /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		A8C2157018A83CDC00A210AC /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		C4250169161BBAE400474BCD /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -208,8 +205,6 @@
 				6F90497E18A6A520005326ED /* ShippingViewController.h */,
 				6F90497F18A6A520005326ED /* ShippingViewController.m */,
 				6F90498018A6A520005326ED /* ShippingViewController.xib */,
-				A857FEEC18B0357600226E92 /* UICollectionViewCell+Tag.h */,
-				A857FEED18B0357600226E92 /* UICollectionViewCell+Tag.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -457,7 +452,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6FEF470E18AE811800CB6C3B /* AlbumCollectionViewLayout.m in Sources */,
-				A857FEEE18B0357600226E92 /* UICollectionViewCell+Tag.m in Sources */,
 				6FEF471218AF0D8000CB6C3B /* AlbumCell.m in Sources */,
 				D4DA79FB14D3345A0055F672 /* main.m in Sources */,
 				D4DA79FF14D3345A0055F672 /* AppDelegate.m in Sources */,

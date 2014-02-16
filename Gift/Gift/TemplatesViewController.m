@@ -51,8 +51,8 @@
     [cell.templateImage setImage:[UIImage imageNamed:imagesArray[indexPath.row]]];
     
     //set the tag of the image so that we know which template was clicked. Can also add other properties here. Change UICollectionViewCell+Tag
-    [cell setTag:indexPath.row];
-    
+    [cell.contentView setTag:indexPath.row];
+
     //only add if cell does not already have a uitaprecognizer as cells are recycled
     bool alreadyContainsUITapGesureRecognizer = false;
     NSArray *gestureRecognizers = cell.contentView.gestureRecognizers;
@@ -70,6 +70,8 @@
 }
 
 -(void)handleSelect:(UITapGestureRecognizer*) tapGestureRecog{
+    NSLog(@"%s", object_getClassName([[tapGestureRecog view] class]));
+    NSLog(@"%d clicked", [tapGestureRecog view].tag);
     [self.navigationController pushViewController:[[AlbumViewController alloc] init] animated:YES];
 }
 
