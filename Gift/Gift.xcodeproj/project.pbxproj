@@ -25,6 +25,7 @@
 		6FEF468B18ADFBA400CB6C3B /* ronnie-header-2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 6FEF468A18ADFBA400CB6C3B /* ronnie-header-2.pdf */; };
 		6FEF470E18AE811800CB6C3B /* AlbumCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FEF470D18AE811800CB6C3B /* AlbumCollectionViewLayout.m */; };
 		6FEF471218AF0D8000CB6C3B /* AlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FEF471118AF0D8000CB6C3B /* AlbumCell.m */; };
+		6FF8496018B1493000B44161 /* AlbumTitleReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FF8495F18B1493000B44161 /* AlbumTitleReusableView.m */; };
 		A857FED918B0302F00226E92 /* baby.png in Resources */ = {isa = PBXBuildFile; fileRef = A857FED318B0302F00226E92 /* baby.png */; };
 		A857FEDA18B0302F00226E92 /* birthday.png in Resources */ = {isa = PBXBuildFile; fileRef = A857FED418B0302F00226E92 /* birthday.png */; };
 		A857FEDB18B0302F00226E92 /* graduation.png in Resources */ = {isa = PBXBuildFile; fileRef = A857FED518B0302F00226E92 /* graduation.png */; };
@@ -33,7 +34,6 @@
 		A857FEDE18B0302F00226E92 /* winter.png in Resources */ = {isa = PBXBuildFile; fileRef = A857FED818B0302F00226E92 /* winter.png */; };
 		A857FEE218B0306C00226E92 /* TemplateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A857FEE018B0306C00226E92 /* TemplateCell.m */; };
 		A857FEE318B0306C00226E92 /* TemplateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A857FEE118B0306C00226E92 /* TemplateCell.xib */; };
-		A857FEE818B030C400226E92 /* TemplatesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A857FEE618B030C400226E92 /* TemplatesViewController.xib */; };
 		A8C2156518A8148500A210AC /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C2156418A8148500A210AC /* MessageUI.framework */; };
 		A8C2157118A83CDC00A210AC /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C2157018A83CDC00A210AC /* Parse.framework */; };
 		C425016D161BBAE400474BCD /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4250169161BBAE400474BCD /* StoreKit.framework */; };
@@ -97,18 +97,17 @@
 		6FEF470D18AE811800CB6C3B /* AlbumCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumCollectionViewLayout.m; sourceTree = "<group>"; };
 		6FEF471018AF0D8000CB6C3B /* AlbumCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlbumCell.h; path = Gift/AlbumCell.h; sourceTree = "<group>"; };
 		6FEF471118AF0D8000CB6C3B /* AlbumCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlbumCell.m; path = Gift/AlbumCell.m; sourceTree = "<group>"; };
+		6FF8495E18B1493000B44161 /* AlbumTitleReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlbumTitleReusableView.h; path = Gift/AlbumTitleReusableView.h; sourceTree = "<group>"; };
+		6FF8495F18B1493000B44161 /* AlbumTitleReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlbumTitleReusableView.m; path = Gift/AlbumTitleReusableView.m; sourceTree = "<group>"; };
 		A857FED318B0302F00226E92 /* baby.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = baby.png; sourceTree = "<group>"; };
 		A857FED418B0302F00226E92 /* birthday.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = birthday.png; sourceTree = "<group>"; };
 		A857FED518B0302F00226E92 /* graduation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = graduation.png; sourceTree = "<group>"; };
 		A857FED618B0302F00226E92 /* happybirthday.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = happybirthday.jpg; sourceTree = "<group>"; };
 		A857FED718B0302F00226E92 /* hearts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hearts.png; sourceTree = "<group>"; };
 		A857FED818B0302F00226E92 /* winter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = winter.png; sourceTree = "<group>"; };
-		A857FEDF18B0306C00226E92 /* TemplateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplateCell.h; sourceTree = "<group>"; };
-		A857FEE018B0306C00226E92 /* TemplateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplateCell.m; sourceTree = "<group>"; };
-		A857FEE118B0306C00226E92 /* TemplateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TemplateCell.xib; sourceTree = "<group>"; };
-		A857FEE418B030C400226E92 /* TemplatesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplatesViewController.h; sourceTree = "<group>"; };
-		A857FEE518B030C400226E92 /* TemplatesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplatesViewController.m; sourceTree = "<group>"; };
-		A857FEE618B030C400226E92 /* TemplatesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TemplatesViewController.xib; sourceTree = "<group>"; };
+		A857FEDF18B0306C00226E92 /* TemplateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TemplateCell.h; path = Gift/TemplateCell.h; sourceTree = "<group>"; };
+		A857FEE018B0306C00226E92 /* TemplateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TemplateCell.m; path = Gift/TemplateCell.m; sourceTree = "<group>"; };
+		A857FEE118B0306C00226E92 /* TemplateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TemplateCell.xib; path = Gift/TemplateCell.xib; sourceTree = "<group>"; };
 		A8C2156418A8148500A210AC /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		A8C2157018A83CDC00A210AC /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		C4250169161BBAE400474BCD /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -177,12 +176,6 @@
 		6FA1812A18A84052007F4EAC /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				A857FEE418B030C400226E92 /* TemplatesViewController.h */,
-				A857FEE518B030C400226E92 /* TemplatesViewController.m */,
-				A857FEE618B030C400226E92 /* TemplatesViewController.xib */,
-				A857FEDF18B0306C00226E92 /* TemplateCell.h */,
-				A857FEE018B0306C00226E92 /* TemplateCell.m */,
-				A857FEE118B0306C00226E92 /* TemplateCell.xib */,
 				D4DA7A7114D393DA0055F672 /* LoginViewController.h */,
 				D4DA7A7214D393DA0055F672 /* LoginViewController.m */,
 				D4DA7A7314D393DA0055F672 /* LoginViewController.xib */,
@@ -221,16 +214,22 @@
 		6FEF470F18AF0D1300CB6C3B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A857FEDF18B0306C00226E92 /* TemplateCell.h */,
+				A857FEE018B0306C00226E92 /* TemplateCell.m */,
+				A857FEE118B0306C00226E92 /* TemplateCell.xib */,
 				6FEF471018AF0D8000CB6C3B /* AlbumCell.h */,
 				6FEF471118AF0D8000CB6C3B /* AlbumCell.m */,
+				6FF8495E18B1493000B44161 /* AlbumTitleReusableView.h */,
+				6FF8495F18B1493000B44161 /* AlbumTitleReusableView.m */,
 			);
 			name = Views;
 			path = ..;
 			sourceTree = "<group>";
 		};
-		A857FED218B0302400226E92 /* images */ = {
+		A857FED218B0302400226E92 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				6FEF468A18ADFBA400CB6C3B /* ronnie-header-2.pdf */,
 				A857FED318B0302F00226E92 /* baby.png */,
 				A857FED418B0302F00226E92 /* birthday.png */,
 				A857FED518B0302F00226E92 /* graduation.png */,
@@ -238,7 +237,7 @@
 				A857FED718B0302F00226E92 /* hearts.png */,
 				A857FED818B0302F00226E92 /* winter.png */,
 			);
-			name = images;
+			name = Images;
 			sourceTree = "<group>";
 		};
 		A8C2156918A82FA700A210AC /* Models */ = {
@@ -298,7 +297,7 @@
 		D4DA79F414D3345A0055F672 /* Gift */ = {
 			isa = PBXGroup;
 			children = (
-				A857FED218B0302400226E92 /* images */,
+				A857FED218B0302400226E92 /* Images */,
 				6FA1812B18A84090007F4EAC /* API */,
 				A8C2156918A82FA700A210AC /* Models */,
 				6FEF470F18AF0D1300CB6C3B /* Views */,
@@ -313,7 +312,6 @@
 		D4DA79F514D3345A0055F672 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				6FEF468A18ADFBA400CB6C3B /* ronnie-header-2.pdf */,
 				C4DDA8AB16EE8A1900B5C174 /* Icon@2x.png */,
 				C4DDA8AC16EE8A1900B5C174 /* Icon.png */,
 				C4CF27E2161E3BAA008AB8CC /* login-button-small-pressed.png */,
@@ -386,7 +384,6 @@
 				D4DA79F914D3345A0055F672 /* InfoPlist.strings in Resources */,
 				D4DA7A7514D393DA0055F672 /* LoginViewController.xib in Resources */,
 				D4DA7AA914D39BCE0055F672 /* ProfileViewController.xib in Resources */,
-				A857FEE818B030C400226E92 /* TemplatesViewController.xib in Resources */,
 				A857FEDB18B0302F00226E92 /* graduation.png in Resources */,
 				6FEF468B18ADFBA400CB6C3B /* ronnie-header-2.pdf in Resources */,
 				6F90498218A6A520005326ED /* ShippingViewController.xib in Resources */,
@@ -455,6 +452,7 @@
 				6FEF471218AF0D8000CB6C3B /* AlbumCell.m in Sources */,
 				D4DA79FB14D3345A0055F672 /* main.m in Sources */,
 				D4DA79FF14D3345A0055F672 /* AppDelegate.m in Sources */,
+				6FF8496018B1493000B44161 /* AlbumTitleReusableView.m in Sources */,
 				6FA1812E18A840E0007F4EAC /* Client.m in Sources */,
 				A857FEE218B0306C00226E92 /* TemplateCell.m in Sources */,
 				6F90498118A6A520005326ED /* ShippingViewController.m in Sources */,

@@ -9,6 +9,7 @@
 #import "AlbumCollectionViewController.h"
 #import "AlbumCollectionViewLayout.h"
 #import "AlbumCell.h"
+#import "AlbumTitleReusableView.h"
 #import "ProfileViewController.h"
 #import "TemplatesViewController.h"
 #import "AlbumViewController.h"
@@ -45,6 +46,7 @@
     self.navigationItem.rightBarButtonItem = newButton;
 
     [self.collectionView registerClass:[AlbumCell class] forCellWithReuseIdentifier:@"AlbumCell"];
+    [self.collectionView registerClass:[AlbumTitleReusableView class] forSupplementaryViewOfKind:@"AlbumTitle"withReuseIdentifier:@"AlbumTitle"];
 
     // Load the data
     self.coverPictures = [[NSMutableDictionary alloc] init];
@@ -101,6 +103,16 @@
     [albumCell.coverPictureImageView loadInBackground];
 
     return albumCell;
+}
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath;
+{
+    AlbumTitleReusableView *titleView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"AlbumTitle" forIndexPath:indexPath];
+
+    Album *album = self.albums[indexPath.section];
+    titleView.titleLabel.text = album.title;
+
+    return titleView;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath

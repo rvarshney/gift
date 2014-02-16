@@ -40,6 +40,7 @@
     self.cellSize = CGSizeMake(220.0f, 220.f);
     self.interCellSpacing = 27.0f;
     self.numColumns = 3;
+    self.titleHeight = 30.0f;
 }
 
 #pragma mark - Properties
@@ -80,10 +81,20 @@
     [self invalidateLayout];
 }
 
+- (void)setTitleHeight:(CGFloat)titleHeight
+{
+    if (_titleHeight == titleHeight) {
+        return;
+    }
+    _titleHeight = titleHeight;
+    [self invalidateLayout];
+}
+
 - (void)prepareLayout
 {
-    NSMutableDictionary *newLayoutInfo = [NSMutableDictionary dictionary];
-    NSMutableDictionary *cellLayoutInfo = [NSMutableDictionary dictionary];
+    NSMutableDictionary *newLayoutInfo = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *cellLayoutInfo = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *titleLayoutInfo = [[NSMutableDictionary alloc] init];
 
     NSInteger sectionCount = [self.collectionView numberOfSections];
     NSIndexPath *indexPath = [NSIndexPath indexPathForItem:0 inSection:0];
@@ -92,14 +103,21 @@
         NSInteger itemCount = [self.collectionView numberOfItemsInSection:section];
         for (NSInteger item = 0; item < itemCount; item++) {
             indexPath = [NSIndexPath indexPathForItem:item inSection:section];
-            UICollectionViewLayoutAttributes *itemAttributes =
-            [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
+
+            UICollectionViewLayoutAttributes *itemAttributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
             itemAttributes.frame = [self frameForAlbumPhotoAtIndexPath:indexPath];
             cellLayoutInfo[indexPath] = itemAttributes;
+
+            if (indexPath.item == 0) {
+                UICollectionViewLayoutAttributes *titleAttributes = [UICollectionViewLayoutAttributes layoutAttributesForSupplementaryViewOfKind:@"AlbumTitle" withIndexPath:indexPath];
+                titleAttributes.frame = [self frameForAlbumTitleAtIndexPath:indexPath];
+                titleLayoutInfo[indexPath] = titleAttributes;
+            }
         }
     }
 
     newLayoutInfo[@"AlbumCell"] = cellLayoutInfo;
+    newLayoutInfo[@"AlbumTitle"] = titleLayoutInfo;
 
     self.layoutInfo = newLayoutInfo;
 }
@@ -116,8 +134,16 @@
     }
 
     CGFloat originX = floorf(self.cellInsets.left + (self.cellSize.width + spacing) * column);
-    CGFloat originY = floor(self.cellInsets.top + (self.cellSize.height + self.interCellSpacing) * row);
+    CGFloat originY = floor(self.cellInsets.top + (self.cellSize.height + self.titleHeight + self.interCellSpacing) * row);
     return CGRectMake(originX, originY, self.cellSize.width, self.cellSize.height);
+}
+
+- (CGRect)frameForAlbumTitleAtIndexPath:(NSIndexPath *)indexPath
+{
+    CGRect frame = [self frameForAlbumPhotoAtIndexPath:indexPath];
+    frame.origin.y += frame.size.height;
+    frame.size.height = self.titleHeight;
+    return frame;
 }
 
 - (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect
@@ -139,13 +165,19 @@
     return self.layoutInfo[@"AlbumCell"][indexPath];
 }
 
+- (UICollectionViewLayoutAttributes *)layoutAttributesForSupplementaryViewOfKind:(NSString *)kind
+                                                                     atIndexPath:(NSIndexPath *)indexPath
+{
+    return self.layoutInfo[@"AlbumTitle"][indexPath];
+}
+
 - (CGSize)collectionViewContentSize
 {
     NSInteger rowCount = [self.collectionView numberOfSections] / self.numColumns;
     if ([self.collectionView numberOfSections] % self.numColumns) {
         rowCount++;
     }
-    CGFloat height = self.cellInsets.top + rowCount * self.cellSize.height + (rowCount - 1) * self.interCellSpacing + self.cellInsets.bottom;
+    CGFloat height = self.cellInsets.top + rowCount * self.cellSize.height + (rowCount - 1) * self.interCellSpacing + rowCount * self.titleHeight + self.cellInsets.bottom;
     return CGSizeMake(self.collectionView.bounds.size.width, height);
 }
 

@@ -14,5 +14,6 @@
 @property (nonatomic) CGSize cellSize;
 @property (nonatomic) CGFloat interCellSpacing;
 @property (nonatomic) NSInteger numColumns;
+@property (nonatomic) CGFloat titleHeight;
 
 @end
