@@ -39,6 +39,8 @@
 
     self.title = @"My Albums";
 
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loggedOutHandler:) name:@"logout" object:nil];
+
     UIBarButtonItem *profileButton = [[UIBarButtonItem alloc] initWithTitle:@"Profile" style:UIBarButtonItemStyleBordered target:self action:@selector(profileButtonHandler:)];
     self.navigationItem.leftBarButtonItem = profileButton;
     
@@ -51,15 +53,6 @@
     // Load the data
     self.coverPictures = [[NSMutableDictionary alloc] init];
     [self loadAlbums];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    if (UIInterfaceOrientationIsLandscape([UIDevice currentDevice].orientation)) {
-        ((AlbumCollectionViewLayout *)self.collectionViewLayout).numColumns = 4;
-    } else {
-        ((AlbumCollectionViewLayout *)self.collectionViewLayout).numColumns = 3;
-    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -149,14 +142,21 @@
 
 - (void)profileButtonHandler:(id)sender
 {
-    // Return to login view controller
-    [self.navigationController pushViewController:[[ProfileViewController alloc] init] animated:YES];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:[[ProfileViewController alloc] init]];
+    [navigationController setModalPresentationStyle:UIModalPresentationFormSheet];
+    [self presentViewController:navigationController animated:YES completion:nil];
 }
 
 - (void)newButtonHandler:(id)sender
 {
     // Push templates view controller
     [self.navigationController pushViewController:[[TemplatesViewController alloc] init] animated:YES];
+}
+
+- (void)loggedOutHandler:(id)sender
+{
+    // Dismiss to login view
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

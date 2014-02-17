@@ -16,7 +16,6 @@
 @interface ProfileViewController ()
 
 @property (nonatomic, strong) IBOutlet UILabel *nameLabel;
-@property (nonatomic, strong) IBOutlet UILabel *emailLabel;
 @property (nonatomic, strong) IBOutlet UIImageView *profilePicture;
 @property (nonatomic, strong) IBOutlet UIImageView *coverPicture;
 @property (nonatomic, strong) IBOutlet UILabel *locationLabel;
@@ -41,6 +40,9 @@
     // Set title
     self.title = @"Profile";
     
+    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(cancelButtonTouchHandler:)];
+    self.navigationItem.leftBarButtonItem = cancelButton;
+
     // Add logout navigation bar button
     UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc] initWithTitle:@"Log Out" style:UIBarButtonItemStyleBordered target:self action:@selector(logoutButtonTouchHandler:)];
     self.navigationItem.rightBarButtonItem = logoutButton;
@@ -108,13 +110,20 @@
 
 #pragma mark - Private methods
 
+- (void)cancelButtonTouchHandler:(id)sender
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 - (void)logoutButtonTouchHandler:(id)sender
 {
     // Logout user, this automatically clears the cache
     [PFUser logOut];
     
     // Return to login view controller
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"logout" object:self];
+    }];
 }
 
 - (void)updateProfile
@@ -122,7 +131,6 @@
     NSDictionary *userProfile = [[PFUser currentUser] objectForKey:@"profile"];
     self.nameLabel.text = userProfile[@"name"];
     self.locationLabel.text = userProfile[@"location"];
-    self.emailLabel.text = userProfile[@"email"];
 
     NSDate *memberSinceDate = [PFUser currentUser].createdAt;
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
@@ -138,6 +146,8 @@
     [postOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         UIImage *blurredImage = [responseObject applyBlurWithRadius:10 tintColor:[UIColor colorWithRed:0.133 green:0.133 blue:0.133 alpha:0.4f] saturationDeltaFactor:1.0f maskImage:nil];
         self.coverPicture.image = blurredImage;
+        self.coverPicture.layer.cornerRadius = 5.0f;
+        self.coverPicture.layer.masksToBounds = YES;
     } failure:nil];
     [postOperation start];
 }
