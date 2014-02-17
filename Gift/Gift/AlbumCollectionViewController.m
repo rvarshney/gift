@@ -106,7 +106,7 @@
     albumViewController.picturesForAlbum = self.picturesForAlbums[album.objectId];
     [self.navigationController pushViewController:albumViewController animated:YES];
 }
-
+   
 #pragma mark - View Rotation
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
