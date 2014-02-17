@@ -19,15 +19,21 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"Facebook Profile";
-    
+
+    [self setNeedsStatusBarAppearanceUpdate];
+
     // Check if user is cached and linked to Facebook, if so, bypass login    
     if ([PFUser currentUser] && [PFFacebookUtils isLinkedWithUser:[PFUser currentUser]]) {
         [self presentAlbumCollection];
     }
 }
 
-#pragma mark - Login mehtods
+-(UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
+
+#pragma mark - Login methods
 
 /* Login to facebook method */
 - (IBAction)loginButtonTouchHandler:(id)sender

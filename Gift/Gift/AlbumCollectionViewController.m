@@ -53,33 +53,18 @@
     [self loadAlbums];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    if (UIInterfaceOrientationIsLandscape([UIDevice currentDevice].orientation)) {
+        ((AlbumCollectionViewLayout *)self.collectionViewLayout).numColumns = 4;
+    } else {
+        ((AlbumCollectionViewLayout *)self.collectionViewLayout).numColumns = 3;
+    }
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-}
-
-- (void)loadAlbums
-{    
-    [[Client instance] albumsForUser:[PFUser currentUser] completion:^(NSArray *albums, NSError *error) {
-        if (!error) {
-            NSLog(@"Albums: %@", albums);
-            self.albums = [albums mutableCopy];
-            // Get the cover picture for each album
-            for (NSUInteger i = 0; i < albums.count; i++) {
-                Album *album = albums[i];
-                [[Client instance] coverPictureForAlbum:album completion:^(NSArray *pictures, NSError *error) {
-                    if (!error) {
-                        [self.coverPictures setObject:pictures[0] forKey:album.objectId];
-                        [self.collectionView reloadData];
-                    } else {
-                        NSLog(@"No cover picture for album %@", album);
-                    }
-                }];
-            }
-        } else {
-            NSLog(@"Error %@", [error localizedDescription]);
-        }
-    }];
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -137,6 +122,30 @@
 }
 
 #pragma mark - Private methods
+
+- (void)loadAlbums
+{
+    [[Client instance] albumsForUser:[PFUser currentUser] completion:^(NSArray *albums, NSError *error) {
+        if (!error) {
+            NSLog(@"Albums: %@", albums);
+            self.albums = [albums mutableCopy];
+            // Get the cover picture for each album
+            for (NSUInteger i = 0; i < albums.count; i++) {
+                Album *album = albums[i];
+                [[Client instance] coverPictureForAlbum:album completion:^(NSArray *pictures, NSError *error) {
+                    if (!error) {
+                        [self.coverPictures setObject:pictures[0] forKey:album.objectId];
+                        [self.collectionView reloadData];
+                    } else {
+                        NSLog(@"No cover picture for album %@", album);
+                    }
+                }];
+            }
+        } else {
+            NSLog(@"Error %@", [error localizedDescription]);
+        }
+    }];
+}
 
 - (void)profileButtonHandler:(id)sender
 {

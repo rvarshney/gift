@@ -39,7 +39,11 @@
     self.cellInsets = UIEdgeInsetsMake(25.0f, 25.0f, 25.0f, 25.0f);
     self.cellSize = CGSizeMake(220.0f, 220.f);
     self.interCellSpacing = 27.0f;
-    self.numColumns = 3;
+    if (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation)) {
+        self.numColumns = 4;
+    } else {
+        self.numColumns = 3;
+    }
     self.titleHeight = 30.0f;
 }
 

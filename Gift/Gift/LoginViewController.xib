@@ -11,20 +11,28 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="1">
-            <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
+            <rect key="frame" x="0.0" y="0.0" width="646" height="737"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6">
-                    <rect key="frame" x="165" y="139" width="151" height="43"/>
+                <imageView userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="albums.png" translatesAutoresizingMaskIntoConstraints="NO" id="58u-kU-vWm">
+                    <rect key="frame" x="0.0" y="0.0" width="646" height="737"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6">
+                    <rect key="frame" x="173" y="591" width="300" height="46"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="300" id="eSZ-E0-c0M"/>
+                        <constraint firstAttribute="height" constant="46" id="kXs-Dr-cu7"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="boldSystem" size="button"/>
                     <inset key="contentEdgeInsets" minX="44" minY="0.0" maxX="0.0" maxY="0.0"/>
-                    <state key="normal" title="Log In" backgroundImage="login-button-small.png">
+                    <state key="normal" backgroundImage="login-button-small.png">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <state key="disabled" backgroundImage="login-button-small.png"/>
-                    <state key="selected" title="Login" backgroundImage="login-button-small-pressed.png"/>
+                    <state key="selected" backgroundImage="login-button-small-pressed.png"/>
                     <state key="highlighted" backgroundImage="login-button-small-pressed.png">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -32,19 +40,35 @@
                         <action selector="loginButtonTouchHandler:" destination="-1" eventType="touchUpInside" id="9"/>
                     </connections>
                 </button>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Memories" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VyW-Pb-HkR">
+                    <rect key="frame" x="50" y="250" width="546" height="91"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="Zapfino" family="Zapfino" pointSize="50"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="centerX" secondItem="6" secondAttribute="centerX" id="jap-Tg-n3I"/>
-                <constraint firstAttribute="centerY" secondItem="6" secondAttribute="centerY" id="tvb-61-xVr"/>
+                <constraint firstAttribute="trailing" secondItem="58u-kU-vWm" secondAttribute="trailing" id="2Gb-bI-Ugd"/>
+                <constraint firstAttribute="bottom" secondItem="58u-kU-vWm" secondAttribute="bottom" id="2mF-Kr-ozS"/>
+                <constraint firstItem="58u-kU-vWm" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="6DV-g5-lnA"/>
+                <constraint firstAttribute="bottom" secondItem="6" secondAttribute="bottom" constant="100" id="O6H-lY-3P9"/>
+                <constraint firstAttribute="trailing" secondItem="VyW-Pb-HkR" secondAttribute="trailing" constant="50" id="VN4-bB-5vG"/>
+                <constraint firstItem="58u-kU-vWm" firstAttribute="top" secondItem="1" secondAttribute="top" id="VuH-no-U9p"/>
+                <constraint firstItem="VyW-Pb-HkR" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="50" id="ZSh-PC-FQn"/>
+                <constraint firstAttribute="centerX" secondItem="6" secondAttribute="centerX" id="ZXL-Ku-GXj"/>
+                <constraint firstItem="VyW-Pb-HkR" firstAttribute="top" secondItem="1" secondAttribute="top" constant="250" id="dci-Ez-92d"/>
+                <constraint firstItem="6" firstAttribute="top" secondItem="VyW-Pb-HkR" secondAttribute="bottom" constant="250" id="tzS-Nl-4o8"/>
             </constraints>
-            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>
     <resources>
-        <image name="login-button-small-pressed.png" width="151" height="43"/>
-        <image name="login-button-small.png" width="151" height="43"/>
+        <image name="albums.png" width="332" height="500"/>
+        <image name="login-button-small-pressed.png" width="300" height="46"/>
+        <image name="login-button-small.png" width="300" height="46"/>
     </resources>
 </document>
