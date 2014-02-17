@@ -18,7 +18,7 @@
 @interface AlbumCollectionViewController ()
 
 @property (nonatomic, strong) NSMutableArray *albums;
-@property (nonatomic, strong) NSMutableDictionary *coverPictures;
+@property (nonatomic, strong) NSMutableDictionary *picturesForAlbums;
 
 @end
 
@@ -51,7 +51,8 @@
     [self.collectionView registerClass:[AlbumTitleReusableView class] forSupplementaryViewOfKind:@"AlbumTitle"withReuseIdentifier:@"AlbumTitle"];
 
     // Load the data
-    self.coverPictures = [[NSMutableDictionary alloc] init];
+    self.picturesForAlbums = [[NSMutableDictionary alloc] init];
+
     [self loadAlbums];
 }
 
@@ -77,9 +78,11 @@
     AlbumCell *albumCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"AlbumCell" forIndexPath:indexPath];
     
     Album *album = self.albums[indexPath.section];
-    albumCell.coverPictureImageView.file = ((Picture *)self.coverPictures[album.objectId]).image;
-    [albumCell.coverPictureImageView loadInBackground];
-
+    NSArray *pictures = self.picturesForAlbums[album.objectId];
+    if (pictures) {
+        albumCell.coverPictureImageView.file = ((Picture *)pictures[0]).image;
+        [albumCell.coverPictureImageView loadInBackground];
+    }
     return albumCell;
 }
 
@@ -100,6 +103,7 @@
 
     AlbumViewController *albumViewController = [[AlbumViewController alloc] init];
     albumViewController.album = album;
+    albumViewController.picturesForAlbum = self.picturesForAlbums[album.objectId];
     [self.navigationController pushViewController:albumViewController animated:YES];
 }
 
@@ -122,12 +126,11 @@
         if (!error) {
             NSLog(@"Albums: %@", albums);
             self.albums = [albums mutableCopy];
-            // Get the cover picture for each album
-            for (NSUInteger i = 0; i < albums.count; i++) {
-                Album *album = albums[i];
-                [[Client instance] coverPictureForAlbum:album completion:^(NSArray *pictures, NSError *error) {
+            // Get the pictures for each album
+            for (Album *album in albums) {
+                [[Client instance] picturesForAlbum:album completion:^(NSArray *pictures, NSError *error) {
                     if (!error) {
-                        [self.coverPictures setObject:pictures[0] forKey:album.objectId];
+                        [self.picturesForAlbums setObject:pictures forKey:album.objectId];
                         [self.collectionView reloadData];
                     } else {
                         NSLog(@"No cover picture for album %@", album);

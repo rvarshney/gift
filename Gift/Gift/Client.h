@@ -26,6 +26,4 @@
 
 - (void)picturesForAlbum:(Album *)album completion:(void (^)(NSArray *pictures, NSError *error))completion;
 
-- (void)coverPictureForAlbum:(Album *)album completion:(void (^)(NSArray *pictures, NSError *error))completion;
-
 @end

@@ -58,13 +58,4 @@
     [query findObjectsInBackgroundWithBlock:completion];
 }
 
-- (void)coverPictureForAlbum:(Album *)album completion:(void (^)(NSArray *, NSError *))completion
-{
-    PFQuery *query = [Picture query];
-    [query whereKey:@"album" equalTo:album];
-    [query orderByAscending:@"createdAt"];
-    query.limit = 1;
-    [query findObjectsInBackgroundWithBlock:completion];
-}
-
 @end

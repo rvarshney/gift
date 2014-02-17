@@ -22,6 +22,8 @@
 		6F90498C18A6A858005326ED /* TemplatesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F90498A18A6A858005326ED /* TemplatesViewController.xib */; };
 		6F90498E18A71819005326ED /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F90498D18A71819005326ED /* CoreImage.framework */; };
 		6FA1812E18A840E0007F4EAC /* Client.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FA1812D18A840E0007F4EAC /* Client.m */; };
+		6FD04F9C18B2A45400EBF752 /* AlbumContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FD04F9A18B2A45400EBF752 /* AlbumContentViewController.m */; };
+		6FD04F9D18B2A45400EBF752 /* AlbumContentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FD04F9B18B2A45400EBF752 /* AlbumContentViewController.xib */; };
 		6FEAF6A318B1CDB200D26D34 /* albums.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FEAF6A218B1CDB200D26D34 /* albums.png */; };
 		6FEF468B18ADFBA400CB6C3B /* ronnie-header-2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 6FEF468A18ADFBA400CB6C3B /* ronnie-header-2.pdf */; };
 		6FEF470E18AE811800CB6C3B /* AlbumCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FEF470D18AE811800CB6C3B /* AlbumCollectionViewLayout.m */; };
@@ -93,6 +95,9 @@
 		6F90498D18A71819005326ED /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		6FA1812C18A840E0007F4EAC /* Client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Client.h; sourceTree = "<group>"; };
 		6FA1812D18A840E0007F4EAC /* Client.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Client.m; sourceTree = "<group>"; };
+		6FD04F9918B2A45400EBF752 /* AlbumContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumContentViewController.h; sourceTree = "<group>"; };
+		6FD04F9A18B2A45400EBF752 /* AlbumContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumContentViewController.m; sourceTree = "<group>"; };
+		6FD04F9B18B2A45400EBF752 /* AlbumContentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlbumContentViewController.xib; sourceTree = "<group>"; };
 		6FEAF6A218B1CDB200D26D34 /* albums.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = albums.png; sourceTree = "<group>"; };
 		6FEF468A18ADFBA400CB6C3B /* ronnie-header-2.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "ronnie-header-2.pdf"; sourceTree = "<group>"; };
 		6FEF470C18AE811800CB6C3B /* AlbumCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumCollectionViewLayout.h; sourceTree = "<group>"; };
@@ -178,28 +183,11 @@
 		6FA1812A18A84052007F4EAC /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				D4DA7A7114D393DA0055F672 /* LoginViewController.h */,
-				D4DA7A7214D393DA0055F672 /* LoginViewController.m */,
-				D4DA7A7314D393DA0055F672 /* LoginViewController.xib */,
-				D4DA7AA514D39BCE0055F672 /* ProfileViewController.h */,
-				D4DA7AA614D39BCE0055F672 /* ProfileViewController.m */,
-				D4DA7AA714D39BCE0055F672 /* ProfileViewController.xib */,
-				6F90497918A6A451005326ED /* AlbumCollectionViewController.h */,
-				6F90497A18A6A451005326ED /* AlbumCollectionViewController.m */,
-				6F90497B18A6A451005326ED /* AlbumCollectionViewController.xib */,
-				6FEF470C18AE811800CB6C3B /* AlbumCollectionViewLayout.h */,
-				6FEF470D18AE811800CB6C3B /* AlbumCollectionViewLayout.m */,
-				6F90498818A6A858005326ED /* TemplatesViewController.h */,
-				6F90498918A6A858005326ED /* TemplatesViewController.m */,
-				6F90498A18A6A858005326ED /* TemplatesViewController.xib */,
-				6F90496F18A6A3BC005326ED /* AlbumViewController.h */,
-				6F90497018A6A3BC005326ED /* AlbumViewController.m */,
-				6F90497118A6A3BC005326ED /* AlbumViewController.xib */,
-				6F51ED6B18AB830100D6AF01 /* EmailHelper.h */,
-				6F51ED6C18AB830100D6AF01 /* EmailHelper.m */,
-				6F90497E18A6A520005326ED /* ShippingViewController.h */,
-				6F90497F18A6A520005326ED /* ShippingViewController.m */,
-				6F90498018A6A520005326ED /* ShippingViewController.xib */,
+				6FD04FA218B2A4A900EBF752 /* Album */,
+				6FD04FA118B2A49600EBF752 /* Shipping */,
+				6FD04FA018B2A48900EBF752 /* Templates */,
+				6FD04F9F18B2A47C00EBF752 /* Profile */,
+				6FD04F9E18B2A46F00EBF752 /* Login */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -211,6 +199,66 @@
 				6FA1812D18A840E0007F4EAC /* Client.m */,
 			);
 			name = API;
+			sourceTree = "<group>";
+		};
+		6FD04F9E18B2A46F00EBF752 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				D4DA7A7114D393DA0055F672 /* LoginViewController.h */,
+				D4DA7A7214D393DA0055F672 /* LoginViewController.m */,
+				D4DA7A7314D393DA0055F672 /* LoginViewController.xib */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		6FD04F9F18B2A47C00EBF752 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				D4DA7AA514D39BCE0055F672 /* ProfileViewController.h */,
+				D4DA7AA614D39BCE0055F672 /* ProfileViewController.m */,
+				D4DA7AA714D39BCE0055F672 /* ProfileViewController.xib */,
+			);
+			name = Profile;
+			sourceTree = "<group>";
+		};
+		6FD04FA018B2A48900EBF752 /* Templates */ = {
+			isa = PBXGroup;
+			children = (
+				6F90498818A6A858005326ED /* TemplatesViewController.h */,
+				6F90498918A6A858005326ED /* TemplatesViewController.m */,
+				6F90498A18A6A858005326ED /* TemplatesViewController.xib */,
+			);
+			name = Templates;
+			sourceTree = "<group>";
+		};
+		6FD04FA118B2A49600EBF752 /* Shipping */ = {
+			isa = PBXGroup;
+			children = (
+				6F51ED6B18AB830100D6AF01 /* EmailHelper.h */,
+				6F51ED6C18AB830100D6AF01 /* EmailHelper.m */,
+				6F90497E18A6A520005326ED /* ShippingViewController.h */,
+				6F90497F18A6A520005326ED /* ShippingViewController.m */,
+				6F90498018A6A520005326ED /* ShippingViewController.xib */,
+			);
+			name = Shipping;
+			sourceTree = "<group>";
+		};
+		6FD04FA218B2A4A900EBF752 /* Album */ = {
+			isa = PBXGroup;
+			children = (
+				6F90497918A6A451005326ED /* AlbumCollectionViewController.h */,
+				6F90497A18A6A451005326ED /* AlbumCollectionViewController.m */,
+				6F90497B18A6A451005326ED /* AlbumCollectionViewController.xib */,
+				6FEF470C18AE811800CB6C3B /* AlbumCollectionViewLayout.h */,
+				6FEF470D18AE811800CB6C3B /* AlbumCollectionViewLayout.m */,
+				6FD04F9918B2A45400EBF752 /* AlbumContentViewController.h */,
+				6FD04F9A18B2A45400EBF752 /* AlbumContentViewController.m */,
+				6FD04F9B18B2A45400EBF752 /* AlbumContentViewController.xib */,
+				6F90496F18A6A3BC005326ED /* AlbumViewController.h */,
+				6F90497018A6A3BC005326ED /* AlbumViewController.m */,
+				6F90497118A6A3BC005326ED /* AlbumViewController.xib */,
+			);
+			name = Album;
 			sourceTree = "<group>";
 		};
 		6FEF470F18AF0D1300CB6C3B /* Views */ = {
@@ -405,6 +453,7 @@
 				6F90497D18A6A451005326ED /* AlbumCollectionViewController.xib in Resources */,
 				6F90498C18A6A858005326ED /* TemplatesViewController.xib in Resources */,
 				A857FEDD18B0302F00226E92 /* hearts.png in Resources */,
+				6FD04F9D18B2A45400EBF752 /* AlbumContentViewController.xib in Resources */,
 				A857FEE318B0306C00226E92 /* TemplateCell.xib in Resources */,
 				A857FEDE18B0302F00226E92 /* winter.png in Resources */,
 				A857FEDC18B0302F00226E92 /* happybirthday.jpg in Resources */,
@@ -461,6 +510,7 @@
 				6FEF471218AF0D8000CB6C3B /* AlbumCell.m in Sources */,
 				D4DA79FB14D3345A0055F672 /* main.m in Sources */,
 				D4DA79FF14D3345A0055F672 /* AppDelegate.m in Sources */,
+				6FD04F9C18B2A45400EBF752 /* AlbumContentViewController.m in Sources */,
 				6FF8496018B1493000B44161 /* AlbumTitleReusableView.m in Sources */,
 				6FA1812E18A840E0007F4EAC /* Client.m in Sources */,
 				A857FEE218B0306C00226E92 /* TemplateCell.m in Sources */,

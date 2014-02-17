@@ -10,8 +10,9 @@
 #import <MessageUI/MessageUI.h>
 #import "Album.h"
 
-@interface AlbumViewController : UIViewController <MFMailComposeViewControllerDelegate>
+@interface AlbumViewController : UIViewController <MFMailComposeViewControllerDelegate, UIPageViewControllerDelegate, UIPageViewControllerDataSource>
 
 @property (nonatomic, strong) Album *album;
+@property (nonatomic, strong) NSMutableArray *picturesForAlbum;
 
 @end
