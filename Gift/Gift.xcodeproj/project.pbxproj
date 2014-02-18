@@ -11,7 +11,6 @@
 		6D10F48316DD68E000690A0F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D10F48216DD68E000690A0F /* CoreLocation.framework */; };
 		6F51ED6718AB82CE00D6AF01 /* Album.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F51ED6618AB82CE00D6AF01 /* Album.m */; };
 		6F51ED6A18AB82E500D6AF01 /* Picture.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F51ED6918AB82E500D6AF01 /* Picture.m */; };
-		6F51ED6D18AB830100D6AF01 /* EmailHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F51ED6C18AB830100D6AF01 /* EmailHelper.m */; };
 		6F90497218A6A3BC005326ED /* AlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F90497018A6A3BC005326ED /* AlbumViewController.m */; };
 		6F90497318A6A3BC005326ED /* AlbumViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F90497118A6A3BC005326ED /* AlbumViewController.xib */; };
 		6F90497C18A6A451005326ED /* AlbumCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F90497A18A6A451005326ED /* AlbumCollectionViewController.m */; };
@@ -72,8 +71,6 @@
 		6F51ED6618AB82CE00D6AF01 /* Album.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Album.m; path = Gift/Album.m; sourceTree = "<group>"; };
 		6F51ED6818AB82E500D6AF01 /* Picture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Picture.h; path = Gift/Picture.h; sourceTree = "<group>"; };
 		6F51ED6918AB82E500D6AF01 /* Picture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Picture.m; path = Gift/Picture.m; sourceTree = "<group>"; };
-		6F51ED6B18AB830100D6AF01 /* EmailHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmailHelper.h; sourceTree = "<group>"; };
-		6F51ED6C18AB830100D6AF01 /* EmailHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmailHelper.m; sourceTree = "<group>"; };
 		6F90496F18A6A3BC005326ED /* AlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumViewController.h; sourceTree = "<group>"; };
 		6F90497018A6A3BC005326ED /* AlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumViewController.m; sourceTree = "<group>"; };
 		6F90497118A6A3BC005326ED /* AlbumViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlbumViewController.xib; sourceTree = "<group>"; };
@@ -223,8 +220,6 @@
 		6FD04FA118B2A49600EBF752 /* Shipping */ = {
 			isa = PBXGroup;
 			children = (
-				6F51ED6B18AB830100D6AF01 /* EmailHelper.h */,
-				6F51ED6C18AB830100D6AF01 /* EmailHelper.m */,
 				6F90497E18A6A520005326ED /* ShippingViewController.h */,
 				6F90497F18A6A520005326ED /* ShippingViewController.m */,
 				6F90498018A6A520005326ED /* ShippingViewController.xib */,
@@ -498,7 +493,6 @@
 				6F51ED6A18AB82E500D6AF01 /* Picture.m in Sources */,
 				6F90497218A6A3BC005326ED /* AlbumViewController.m in Sources */,
 				6F51ED6718AB82CE00D6AF01 /* Album.m in Sources */,
-				6F51ED6D18AB830100D6AF01 /* EmailHelper.m in Sources */,
 				D4DA7A7414D393DA0055F672 /* LoginViewController.m in Sources */,
 				D4DA7AA814D39BCE0055F672 /* ProfileViewController.m in Sources */,
 			);

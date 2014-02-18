@@ -8,7 +8,6 @@
 
 #import "AlbumViewController.h"
 #import "AlbumContentViewController.h"
-#import "EmailHelper.h"
 #import "ShippingViewController.h"
 #import "Client.h"
 
@@ -80,6 +79,8 @@
     [super didReceiveMemoryWarning];
 }
 
+# pragma mark - Private methods
+
 - (void)setupAlbumPageViewController
 {
     self.pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStylePageCurl navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
@@ -109,20 +110,79 @@
 
 - (void)emailButtonHandler:(id)sender
 {
-    NSError *error = nil;
-    BOOL isEmailSent = [EmailHelper sendEmailWithNavigationController:self.navigationController subject:@"My Cool Album" to:[NSArray arrayWithObject:@""] cc:nil bcc:nil body:@"My Cool Album!" isHTML:YES delegate:self files:[NSArray arrayWithObjects:@"album.png",nil] error:&error];
+    NSString *albumPDFPath = [self printAlbumToPDF];
     
-    if (!isEmailSent) {
+    NSError *error = nil;
+    BOOL emailSent = [self sendEmailWithSubject:self.album.title to:[NSArray arrayWithObject:@""] cc:nil bcc:nil body:@"Check out my new album built on the Memories app!" isHTML:YES delegate:self files:[NSArray arrayWithObjects:albumPDFPath, nil] error:&error];
+    
+    if (!emailSent) {
         NSLog(@"Failed with error: %@",error);
     }
 }
 
 - (void)printButtonHandler:(id)sender
 {
+    NSString *albumPDFPath = [self printAlbumToPDF];
+    
     ShippingViewController *shippingViewController = [[ShippingViewController alloc] init];
     shippingViewController.album = self.album;
-    shippingViewController.albumPath = @"album.png";
+    shippingViewController.albumPath = albumPDFPath;
     [self.navigationController pushViewController:shippingViewController animated:YES];
+}
+
+- (NSString *)printAlbumToPDF
+{
+    NSMutableData *pdfData = [NSMutableData data];
+    UIGraphicsBeginPDFContextToData(pdfData, CGRectZero, nil);
+    CGContextRef pdfContext = UIGraphicsGetCurrentContext();
+    
+    NSArray *pages = [self.picturesForPages allKeys];
+    for (NSNumber *page in pages) {
+        NSUInteger pageNum = [page unsignedIntegerValue];
+        AlbumContentViewController *contentViewController = [[AlbumContentViewController alloc] init];
+        contentViewController.pageNum = pageNum;
+        UIGraphicsBeginPDFPageWithInfo(contentViewController.view.bounds, nil);
+        [contentViewController.view.layer renderInContext:pdfContext];
+    }
+    
+    UIGraphicsEndPDFContext();
+    
+    NSArray *documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    
+    NSString *documentDirectory = [documentDirectories objectAtIndex:0];
+    NSString *documentDirectoryFilename = [documentDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.pdf", self.album.title]];
+    
+    [pdfData writeToFile:documentDirectoryFilename atomically:YES];
+    NSLog(@"documentDirectoryFileName: %@", documentDirectoryFilename);
+    
+    return documentDirectoryFilename;
+}
+
+#pragma mark - MFMailComposeViewControllerDelegate methods
+
+- (BOOL)sendEmailWithSubject:(NSString *)subject to:(NSArray *)toArray cc:(NSArray *)ccArray bcc:(NSArray *)bccArray body:(NSString *)body isHTML:(BOOL)isHTML delegate:(id<MFMailComposeViewControllerDelegate>)delegate files:(NSArray *)filesArray error:(NSError **)error {
+    
+    if ([MFMailComposeViewController canSendMail])
+    {
+        MFMailComposeViewController *mailComposeViewController = [[MFMailComposeViewController alloc] init];
+        mailComposeViewController.mailComposeDelegate = delegate;
+        [mailComposeViewController setSubject:subject];
+        [mailComposeViewController setMessageBody:body isHTML:isHTML];
+        [mailComposeViewController setToRecipients:toArray];
+        
+        for (NSString *file in filesArray) {
+            NSData *fileData = [NSData dataWithContentsOfFile:file];
+            NSString *mimeType = @"application/pdf";
+            
+            // Add attachment
+            [mailComposeViewController addAttachmentData:fileData mimeType:mimeType fileName:file];
+        }
+        [self.navigationController presentViewController:mailComposeViewController animated:YES completion:Nil];
+        return YES;
+    } else {
+        *error = [NSError errorWithDomain:@"Device not setup to send emails" code:200 userInfo:nil];
+        return NO;
+    }
 }
 
 -(void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
