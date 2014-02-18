@@ -9,13 +9,14 @@
 #import "TemplatesViewController.h"
 #import "AlbumViewController.h"
 #import "TemplateCell.h"
+#import "Client.h"
+#import "Album.h"
+#import <Parse/Parse.h>
 
 
 
-@interface TemplatesViewController (){
-    NSArray *imagesArray;
-}
-
+@interface TemplatesViewController ()
+@property (nonatomic, strong)NSArray *templates;
 @end
 
 @implementation TemplatesViewController
@@ -31,8 +32,13 @@
 
 - (void)viewDidLoad
 {
-    imagesArray = [[NSArray alloc]initWithObjects:@"hearts.png", @"happybirthday.jpg", @"birthday.png", @"winter.png", @"graduation.png", @"baby.png", nil];
     [super viewDidLoad];
+    
+    [[Client instance] templates:^(NSArray *templates, NSError *error) {
+        self.templates = templates;
+        [self.collectionView reloadData];
+    }];
+    
     [self.collectionView registerNib:[UINib nibWithNibName:@"TemplateCell" bundle:nil] forCellWithReuseIdentifier:@"TemplateCell"];
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
@@ -48,34 +54,25 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     TemplateCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TemplateCell" forIndexPath:indexPath];
     
-    [cell.templateImage setImage:[UIImage imageNamed:imagesArray[indexPath.row]]];
-    
-    //set the tag of the image so that we know which template was clicked. Can also add other properties here. Change UICollectionViewCell+Tag
-    [cell.contentView setTag:indexPath.row];
+    cell.templateImage.file = ((Template*)self.templates[indexPath.row]).themeCover;
+    [cell.templateImage loadInBackground];
 
-    //only add if cell does not already have a uitaprecognizer as cells are recycled
-    bool alreadyContainsUITapGesureRecognizer = false;
-    NSArray *gestureRecognizers = cell.contentView.gestureRecognizers;
-    for(UIGestureRecognizer *recog in gestureRecognizers){
-        if([recog isMemberOfClass:[UITapGestureRecognizer class]]){
-            alreadyContainsUITapGesureRecognizer = true;
-            break;
-        }
-    }
-    
-    if(!alreadyContainsUITapGesureRecognizer){
-        [cell.contentView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSelect:)]];
-    }
     return cell;
 }
 
--(void)handleSelect:(UITapGestureRecognizer*) tapGestureRecog{
-    NSLog(@"%s", object_getClassName([[tapGestureRecog view] class]));
-    NSLog(@"%d clicked", [tapGestureRecog view].tag);
-    [self.navigationController pushViewController:[[AlbumViewController alloc] init] animated:YES];
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    AlbumViewController *albumVC = [[AlbumViewController alloc]init];
+    
+    Album *album = [[Client instance] createAlbumWithTitle:@"Untitled Album" user:[PFUser currentUser] numPages:1 template:self.templates[indexPath.row] completion:^(BOOL succeeded, NSError *error) {
+    }];
+    
+    albumVC.album = album;
+    albumVC.picturesForAlbum = [[NSMutableArray alloc]init];
+    [self.navigationController pushViewController:albumVC animated:YES];
 }
 
+
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return [imagesArray count];
+    return [self.templates count];
 }
 @end

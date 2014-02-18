@@ -17,7 +17,7 @@
     return instance;
 }
 
-- (Album *)createAlbumWithTitle:(NSString *)title user:(PFUser *)user numPages:(NSUInteger)numPages completion:(void (^)(BOOL succeeded, NSError *error))completion
+- (Album *)createAlbumWithTitle:(NSString *)title user:(PFUser *)user numPages:(NSUInteger)numPages template:(Template*)template completion:(void (^)(BOOL succeeded, NSError *error))completion
 {
     Album *album = [Album object];
     album.title = title;
@@ -55,6 +55,12 @@
     PFQuery *query = [Picture query];
     [query whereKey:@"album" equalTo:album];
     [query orderByAscending:@"createdAt"];
+    [query findObjectsInBackgroundWithBlock:completion];
+}
+
+-(void)templates:(void (^)(NSArray *templates, NSError *error))completion
+{
+    PFQuery *query = [Template query];
     [query findObjectsInBackgroundWithBlock:completion];
 }
 
