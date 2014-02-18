@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TemplatesViewController : UIViewController<UICollectionViewDelegate, UICollectionViewDataSource>
+@interface TemplatesViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource>
+
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @end

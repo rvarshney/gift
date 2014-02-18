@@ -44,6 +44,7 @@
     // Add print navigation bar button
     UIBarButtonItem *printButton = [[UIBarButtonItem alloc] initWithTitle:@"Print" style:UIBarButtonItemStyleBordered target:self action:@selector(printButtonHandler:)];
 
+    // Add the email and print buttons to the right
     self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:emailButton, printButton, nil];
 
     // Group pictures by page number
@@ -60,11 +61,13 @@
     
     NSUInteger maxPageNum = [[[self.picturesForPages allKeys] valueForKeyPath:@"@max.unsignedIntegerValue"]unsignedIntegerValue];
     
-    if(!maxPageNum){
+    // Add a dummy page for albums with no pages
+    if(!maxPageNum) {
         self.picturesForPages[[NSNumber numberWithUnsignedInteger:0]] = [[NSMutableArray alloc] init];
         maxPageNum = 0;
     }
     
+    // Even out the number of pages we see in the album
     if (maxPageNum % 2 == 0) {
         self.picturesForPages[[NSNumber numberWithUnsignedInteger:maxPageNum + 1]] = [[NSMutableArray alloc] init];
     }
@@ -89,12 +92,17 @@
     
     NSArray *viewControllers = [NSArray arrayWithObject:contentViewController];
     [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
-    
     [self addChildViewController:self.pageViewController];
+    [self.pageViewController.view setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.view addSubview:self.pageViewController.view];
     [self.pageViewController didMoveToParentViewController:self];
     
-    self.pageViewController.view.frame = CGRectMake(20, 20, 500, 500);
+    NSLayoutConstraint *bottomConstraint =[NSLayoutConstraint constraintWithItem:self.pageViewController.view attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1.0 constant:-15];
+    NSLayoutConstraint *topConstraint =[NSLayoutConstraint constraintWithItem:self.pageViewController.view attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1.0 constant:15];
+    NSLayoutConstraint *leftConstraint =[NSLayoutConstraint constraintWithItem:self.pageViewController.view attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1.0 constant:15];
+    NSLayoutConstraint *rightConstraint =[NSLayoutConstraint constraintWithItem:self.pageViewController.view attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1.0 constant:-15];
+
+    [self.view addConstraints:@[bottomConstraint, topConstraint, leftConstraint, rightConstraint]];
 
     self.view.gestureRecognizers = self.pageViewController.gestureRecognizers;
 }
@@ -189,7 +197,6 @@
     else
     {
         NSArray *viewControllers = nil;
-        
         AlbumContentViewController *currentViewController = [self.pageViewController.viewControllers objectAtIndex:0];
         
         NSUInteger currentIndex = currentViewController.pageNum;
@@ -205,10 +212,8 @@
         [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:NULL];
         
         self.pageViewController.doubleSided = YES;
-
         return UIPageViewControllerSpineLocationMid;
     }
-
 }
 
 @end
