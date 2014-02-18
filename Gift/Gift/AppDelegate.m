@@ -17,18 +17,17 @@
     
     [Album registerSubclass];
     [Picture registerSubclass];
+    [Template registerSubclass];
     
     [Parse setApplicationId:@"LoNqaUqU69t4r5F70vdWnigEWYce8Qe9dWyYYyKP" clientKey:@"biCM1eT3PUXjCw0UWMsWtsdBeRdKoL0GAYOqjVF9"];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
     [PFFacebookUtils initializeFacebook];
-    
+
     // Override point for customization after application launch.
     self.window.rootViewController = [[LoginViewController alloc] init];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-    
-    //[self testClient];
     
     return YES;
 }
@@ -54,29 +53,6 @@
      See also applicationDidEnterBackground:.
      */
     [[PFFacebookUtils session] close];
-}
-
--(void)testClient
-{
-    Album *album = [[Client instance] createAlbumWithTitle:@"My New Cool Album" user:[PFUser currentUser] numPages: 1 completion:nil];
-    
-    NSString *fullFileName = @"Icon.png";
-    NSString *fileName = [[fullFileName lastPathComponent] stringByDeletingPathExtension];
-    NSString *extension = [fullFileName pathExtension];
-    NSString *fullPath = [[NSBundle mainBundle] pathForResource:fileName ofType:extension];
-    
-    [[Client instance] createPictureForAlbum:album imagePath:fullPath pageNumber:1 rotationAngle:30 x:10 y:10 height:20 width:20 completion:nil];
-
-    [[Client instance] albumsForUser:[PFUser currentUser] completion:^(NSArray *albums, NSError *error) {
-        NSLog(@"Albums: %@", albums);
-    }];
-
-    [NSThread sleepForTimeInterval:5];
-    NSLog(@"ID %@", album.objectId);
-
-    [[Client instance] picturesForAlbum:album completion:^(NSArray *pictures, NSError *error) {
-        NSLog(@"Pictures: %@", pictures);
-    }];
 }
 
 @end

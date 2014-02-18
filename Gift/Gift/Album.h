@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <Parse/Parse.h>
+#import "Template.h"
 
 @interface Album : PFObject<PFSubclassing>
 
@@ -16,5 +17,7 @@
 @property(nonatomic, strong) NSString *title;
 @property(nonatomic, strong) PFUser *user;
 @property NSUInteger numPages;
+@property (nonatomic, strong) Template *template;
+
 
 @end

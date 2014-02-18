@@ -17,7 +17,7 @@
 + (Client *)instance;
 
 // Albums API
-- (Album *)createAlbumWithTitle:(NSString *)title user:(PFUser *)user numPages:(NSUInteger)numPages completion:(void (^)(BOOL succeeded, NSError *error))completion;
+- (Album *)createAlbumWithTitle:(NSString *)title user:(PFUser *)user numPages:(NSUInteger)numPages template:(Template*)template completion:(void (^)(BOOL succeeded, NSError *error))completion;
 
 - (void)albumsForUser:(PFUser *)user completion:(void (^)(NSArray *albums, NSError *error))completion;
 
@@ -25,5 +25,8 @@
 - (Picture *)createPictureForAlbum:(Album *)album imagePath:(NSString *)imagePath pageNumber:(NSUInteger)pageNumber rotationAngle:(CGFloat)rotationAngle x:(NSUInteger)x y:(NSUInteger)y height:(NSUInteger)height width:(NSUInteger)width completion:(void (^)(BOOL succeeded, NSError *error))completion;
 
 - (void)picturesForAlbum:(Album *)album completion:(void (^)(NSArray *pictures, NSError *error))completion;
+
+-(void)templates:(void (^)(NSArray *templates, NSError *error))completion;
+
 
 @end

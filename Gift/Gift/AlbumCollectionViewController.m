@@ -79,7 +79,7 @@
     
     Album *album = self.albums[indexPath.section];
     NSArray *pictures = self.picturesForAlbums[album.objectId];
-    if (pictures) {
+    if (pictures && pictures.count != 0) {
         albumCell.coverPictureImageView.file = ((Picture *)pictures[0]).image;
         [albumCell.coverPictureImageView loadInBackground];
     }
@@ -106,7 +106,7 @@
     albumViewController.picturesForAlbum = self.picturesForAlbums[album.objectId];
     [self.navigationController pushViewController:albumViewController animated:YES];
 }
-   
+
 #pragma mark - View Rotation
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration

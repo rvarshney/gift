@@ -60,6 +60,11 @@
     
     NSUInteger maxPageNum = [[[self.picturesForPages allKeys] valueForKeyPath:@"@max.unsignedIntegerValue"]unsignedIntegerValue];
     
+    if(!maxPageNum){
+        self.picturesForPages[[NSNumber numberWithUnsignedInteger:0]] = [[NSMutableArray alloc] init];
+        maxPageNum = 0;
+    }
+    
     if (maxPageNum % 2 == 0) {
         self.picturesForPages[[NSNumber numberWithUnsignedInteger:maxPageNum + 1]] = [[NSMutableArray alloc] init];
     }
@@ -97,7 +102,7 @@
 - (void)emailButtonHandler:(id)sender
 {
     NSError *error = nil;
-    BOOL isEmailSent = [EmailHelper sendEmailWithNavigationController:self.navigationController subject:@"My Cool Album" to:[NSArray arrayWithObject:@""] cc:nil bcc:nil body:@"My Cool Album!" isHTML:YES delegate:self files:[NSArray arrayWithObjects:@"ronnie-header-2.pdf",nil] error:&error];
+    BOOL isEmailSent = [EmailHelper sendEmailWithNavigationController:self.navigationController subject:@"My Cool Album" to:[NSArray arrayWithObject:@""] cc:nil bcc:nil body:@"My Cool Album!" isHTML:YES delegate:self files:[NSArray arrayWithObjects:@"album.png",nil] error:&error];
     
     if (!isEmailSent) {
         NSLog(@"Failed with error: %@",error);
@@ -108,7 +113,7 @@
 {
     ShippingViewController *shippingViewController = [[ShippingViewController alloc] init];
     shippingViewController.album = self.album;
-    shippingViewController.albumPath = @"ronnie-header-2.pdf";
+    shippingViewController.albumPath = @"album.png";
     [self.navigationController pushViewController:shippingViewController animated:YES];
 }
 
