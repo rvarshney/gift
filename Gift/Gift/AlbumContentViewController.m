@@ -27,8 +27,11 @@
 {
     [super viewDidLoad];
     
-    self.view.layer.borderColor = [UIColor blackColor].CGColor;
-    self.view.layer.borderWidth = 10.0f;
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.view.layer.shadowRadius = 3.0f;
+    self.view.layer.shadowOffset = CGSizeMake(0.0f, 2.0f);
+    self.view.layer.shadowOpacity = 0.5f;
 }
 
 - (void)didReceiveMemoryWarning

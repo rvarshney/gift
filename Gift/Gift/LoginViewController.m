@@ -21,16 +21,21 @@
     [super viewDidLoad];
 
     [self setNeedsStatusBarAppearanceUpdate];
+}
 
-    // Check if user is cached and linked to Facebook, if so, bypass login    
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
+
+- (void)viewWillLayoutSubviews
+{
+    [super viewWillLayoutSubviews];
+
+    // Check if user is cached and linked to Facebook, if so, bypass login
     if ([PFUser currentUser] && [PFFacebookUtils isLinkedWithUser:[PFUser currentUser]]) {
         [self presentAlbumCollection];
     }
-}
-
--(UIStatusBarStyle)preferredStatusBarStyle
-{
-    return UIStatusBarStyleLightContent;
 }
 
 #pragma mark - Login methods

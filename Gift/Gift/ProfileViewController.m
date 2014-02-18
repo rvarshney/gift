@@ -19,9 +19,6 @@
 @property (nonatomic, strong) IBOutlet UIImageView *profilePicture;
 @property (nonatomic, strong) IBOutlet UIImageView *coverPicture;
 @property (nonatomic, strong) IBOutlet UILabel *locationLabel;
-@property (weak, nonatomic) IBOutlet UILabel *memberSinceLabel;
-
-- (void)logoutButtonTouchHandler:(id)sender;
 
 @end
 
@@ -39,14 +36,7 @@
     
     // Set title
     self.title = @"Profile";
-    
-    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(cancelButtonTouchHandler:)];
-    self.navigationItem.leftBarButtonItem = cancelButton;
 
-    // Add logout navigation bar button
-    UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc] initWithTitle:@"Log Out" style:UIBarButtonItemStyleBordered target:self action:@selector(logoutButtonTouchHandler:)];
-    self.navigationItem.rightBarButtonItem = logoutButton;
-    
     // If the user is already logged in, display any previously cached values before we get the latest from Facebook.
     if ([PFUser currentUser]) {
         [self updateProfile];
@@ -101,7 +91,7 @@
             }];
         } else if ([[[[error userInfo] objectForKey:@"error"] objectForKey:@"type"] isEqualToString: @"OAuthException"]) { // Since the request failed, we can check if it was due to an invalid session
             NSLog(@"The facebook session was invalidated");
-            [self logoutButtonTouchHandler:nil];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"logout" object:self];
         } else {
             NSLog(@"Some other error: %@", error);
         }
@@ -115,27 +105,11 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)logoutButtonTouchHandler:(id)sender
-{
-    // Logout user, this automatically clears the cache
-    [PFUser logOut];
-    
-    // Return to login view controller
-    [self dismissViewControllerAnimated:YES completion:^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"logout" object:self];
-    }];
-}
-
 - (void)updateProfile
 {
     NSDictionary *userProfile = [[PFUser currentUser] objectForKey:@"profile"];
     self.nameLabel.text = userProfile[@"name"];
     self.locationLabel.text = userProfile[@"location"];
-
-    NSDate *memberSinceDate = [PFUser currentUser].createdAt;
-    NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    [df setDateStyle:NSDateFormatterMediumStyle];
-    self.memberSinceLabel.text = [NSString stringWithFormat:@"Member since %@", [df stringFromDate:memberSinceDate]];
 
     [self.profilePicture setImageWithURL:[NSURL URLWithString:userProfile[@"pictureURL"]] placeholderImage:nil];
     self.profilePicture.layer.cornerRadius = 50.0f;

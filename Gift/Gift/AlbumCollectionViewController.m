@@ -19,6 +19,7 @@
 
 @property (nonatomic, strong) NSMutableArray *albums;
 @property (nonatomic, strong) NSMutableDictionary *picturesForAlbums;
+@property (nonatomic, strong) ProfileViewController *profileViewController;
 
 @end
 
@@ -39,18 +40,27 @@
 
     self.title = @"My Albums";
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loggedOutHandler:) name:@"logout" object:nil];
-
-    UIBarButtonItem *profileButton = [[UIBarButtonItem alloc] initWithTitle:@"Profile" style:UIBarButtonItemStyleBordered target:self action:@selector(profileButtonHandler:)];
-    self.navigationItem.leftBarButtonItem = profileButton;
+    // Start the display area from under the status bar
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
     
+    // Register for logout events
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logoutButtonHandler:) name:@"logout" object:nil];
+
+    // New album button
     UIBarButtonItem *newButton = [[UIBarButtonItem alloc] initWithTitle:@"New" style:UIBarButtonItemStyleBordered target:self action:@selector(newButtonHandler:)];
     self.navigationItem.rightBarButtonItem = newButton;
 
-    [self.collectionView registerClass:[AlbumCell class] forCellWithReuseIdentifier:@"AlbumCell"];
-    [self.collectionView registerClass:[AlbumTitleReusableView class] forSupplementaryViewOfKind:@"AlbumTitle"withReuseIdentifier:@"AlbumTitle"];
+    // Logout button
+    UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc] initWithTitle:@"Log Out" style:UIBarButtonItemStyleBordered target:self action:@selector(logoutButtonHandler:)];
+    self.navigationItem.leftBarButtonItem = logoutButton;
 
-    // Load the data
+    [self setupProfileView];
+
+    [self setupCollectionView];
+
+    // Load the data for albums
     self.picturesForAlbums = [[NSMutableDictionary alloc] init];
 
     [self loadAlbums];
@@ -120,6 +130,30 @@
 
 #pragma mark - Private methods
 
+- (void)setupProfileView
+{
+    self.profileViewController = [[ProfileViewController alloc] init];
+    [self addChildViewController:self.profileViewController];
+    [self.profileViewController.view setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.view addSubview:self.profileViewController.view];
+    [self.profileViewController didMoveToParentViewController:self];
+
+    NSLayoutConstraint *topConstraint = [NSLayoutConstraint constraintWithItem:self.profileViewController.view attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1.0 constant:0];
+    NSLayoutConstraint *leftConstraint = [NSLayoutConstraint constraintWithItem:self.profileViewController.view attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0];
+    NSLayoutConstraint *rightConstraint = [NSLayoutConstraint constraintWithItem:self.profileViewController.view attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1.0 constant:0];
+    NSLayoutConstraint *heightConstraint = [NSLayoutConstraint constraintWithItem:self.profileViewController.view attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeHeight multiplier:1.0 constant:300];
+
+    [self.view addConstraints:@[topConstraint, leftConstraint, rightConstraint, heightConstraint]];
+}
+
+- (void)setupCollectionView
+{
+    self.collectionView.contentInset = UIEdgeInsetsMake(280.0f, 0.0f, 0.0f, 0.0f);
+    [self.collectionView registerClass:[AlbumCell class] forCellWithReuseIdentifier:@"AlbumCell"];
+    [self.collectionView registerClass:[AlbumTitleReusableView class] forSupplementaryViewOfKind:@"AlbumTitle"withReuseIdentifier:@"AlbumTitle"];
+    self.collectionView.backgroundColor = [UIColor whiteColor];
+}
+
 - (void)loadAlbums
 {
     [[Client instance] albumsForUser:[PFUser currentUser] completion:^(NSArray *albums, NSError *error) {
@@ -156,9 +190,12 @@
     [self.navigationController pushViewController:[[TemplatesViewController alloc] init] animated:YES];
 }
 
-- (void)loggedOutHandler:(id)sender
+- (void)logoutButtonHandler:(id)sender
 {
-    // Dismiss to login view
+    // Logout user, this automatically clears the cache
+    [PFUser logOut];
+
+    // Return to login view controller
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
