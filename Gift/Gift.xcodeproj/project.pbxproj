@@ -21,6 +21,7 @@
 		6F90498C18A6A858005326ED /* TemplatesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F90498A18A6A858005326ED /* TemplatesViewController.xib */; };
 		6F90498E18A71819005326ED /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F90498D18A71819005326ED /* CoreImage.framework */; };
 		6FA1812E18A840E0007F4EAC /* Client.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FA1812D18A840E0007F4EAC /* Client.m */; };
+		6FAAC7DC18B4820C00F8F4F6 /* DraggableImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FAAC7DB18B4820C00F8F4F6 /* DraggableImageView.m */; };
 		6FD04F9C18B2A45400EBF752 /* AlbumContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FD04F9A18B2A45400EBF752 /* AlbumContentViewController.m */; };
 		6FD04F9D18B2A45400EBF752 /* AlbumContentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FD04F9B18B2A45400EBF752 /* AlbumContentViewController.xib */; };
 		6FEAF6A318B1CDB200D26D34 /* albums.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FEAF6A218B1CDB200D26D34 /* albums.png */; };
@@ -86,6 +87,8 @@
 		6F90498D18A71819005326ED /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		6FA1812C18A840E0007F4EAC /* Client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Client.h; sourceTree = "<group>"; };
 		6FA1812D18A840E0007F4EAC /* Client.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Client.m; sourceTree = "<group>"; };
+		6FAAC7DA18B4820C00F8F4F6 /* DraggableImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DraggableImageView.h; path = Gift/DraggableImageView.h; sourceTree = "<group>"; };
+		6FAAC7DB18B4820C00F8F4F6 /* DraggableImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DraggableImageView.m; path = Gift/DraggableImageView.m; sourceTree = "<group>"; };
 		6FD04F9918B2A45400EBF752 /* AlbumContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumContentViewController.h; sourceTree = "<group>"; };
 		6FD04F9A18B2A45400EBF752 /* AlbumContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumContentViewController.m; sourceTree = "<group>"; };
 		6FD04F9B18B2A45400EBF752 /* AlbumContentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlbumContentViewController.xib; sourceTree = "<group>"; };
@@ -255,6 +258,8 @@
 				6FEF471118AF0D8000CB6C3B /* AlbumCell.m */,
 				6FF8495E18B1493000B44161 /* AlbumTitleReusableView.h */,
 				6FF8495F18B1493000B44161 /* AlbumTitleReusableView.m */,
+				6FAAC7DA18B4820C00F8F4F6 /* DraggableImageView.h */,
+				6FAAC7DB18B4820C00F8F4F6 /* DraggableImageView.m */,
 			);
 			name = Views;
 			path = ..;
@@ -482,6 +487,7 @@
 				A8A2246E18B2DB3900EEABEC /* Template.m in Sources */,
 				6FEF471218AF0D8000CB6C3B /* AlbumCell.m in Sources */,
 				D4DA79FB14D3345A0055F672 /* main.m in Sources */,
+				6FAAC7DC18B4820C00F8F4F6 /* DraggableImageView.m in Sources */,
 				D4DA79FF14D3345A0055F672 /* AppDelegate.m in Sources */,
 				6FD04F9C18B2A45400EBF752 /* AlbumContentViewController.m in Sources */,
 				6FF8496018B1493000B44161 /* AlbumTitleReusableView.m in Sources */,

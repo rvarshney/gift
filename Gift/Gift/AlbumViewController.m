@@ -89,9 +89,8 @@
     self.pageViewController.delegate = self;
     self.pageViewController.dataSource = self;
     
-    AlbumContentViewController *contentViewController = [[AlbumContentViewController alloc] initWithNibName:@"AlbumContentViewController" bundle:nil];
-    contentViewController.pageNum = 0;
-    
+    AlbumContentViewController *contentViewController = [self createContentViewControllerWithPageNum:0];
+
     NSArray *viewControllers = [NSArray arrayWithObject:contentViewController];
     [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
     [self addChildViewController:self.pageViewController];
@@ -107,6 +106,14 @@
     [self.view addConstraints:@[bottomConstraint, topConstraint, leftConstraint, rightConstraint]];
 
     self.view.gestureRecognizers = self.pageViewController.gestureRecognizers;
+}
+
+- (AlbumContentViewController *)createContentViewControllerWithPageNum:(NSUInteger)pageNum
+{
+    AlbumContentViewController *albumContentViewController = [[AlbumContentViewController alloc] init];
+    albumContentViewController.pageNum = pageNum;
+    albumContentViewController.pictures = self.picturesForPages[[NSNumber numberWithUnsignedInteger:pageNum]];
+    return albumContentViewController;
 }
 
 - (void)emailButtonHandler:(id)sender
@@ -137,11 +144,10 @@
     UIGraphicsBeginPDFContextToData(pdfData, CGRectZero, nil);
     CGContextRef pdfContext = UIGraphicsGetCurrentContext();
     
-    NSArray *pages = [self.picturesForPages allKeys];
+    NSArray *pages = [[self.picturesForPages allKeys] sortedArrayUsingSelector:@selector(compare:)];
     for (NSNumber *page in pages) {
         NSUInteger pageNum = [page unsignedIntegerValue];
-        AlbumContentViewController *contentViewController = [[AlbumContentViewController alloc] init];
-        contentViewController.pageNum = pageNum;
+        AlbumContentViewController *contentViewController = [self createContentViewControllerWithPageNum:pageNum];
         UIGraphicsBeginPDFPageWithInfo(contentViewController.view.bounds, nil);
         [contentViewController.view.layer renderInContext:pdfContext];
     }
@@ -222,10 +228,7 @@
     {
         return nil;
     }
-    
-    AlbumContentViewController *albumContentViewController = [[AlbumContentViewController alloc] init];
-    albumContentViewController.pageNum = currentIndex + 1;
-    return albumContentViewController;
+    return [self createContentViewControllerWithPageNum:currentIndex + 1];
 }
 
 
@@ -236,10 +239,7 @@
     {
         return nil;
     }
-    
-    AlbumContentViewController *albumContentViewController = [[AlbumContentViewController alloc] init];
-    albumContentViewController.pageNum = currentIndex - 1;
-    return albumContentViewController;
+    return [self createContentViewControllerWithPageNum:currentIndex - 1];
 }
 
 #pragma mark - UIPageViewControllerDelegate methods

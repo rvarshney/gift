@@ -13,9 +13,9 @@
 
 + (NSString *)parseClassName;
 
-@property(nonatomic, strong)NSString *title;
-@property(nonatomic, strong)PFFile *themeCover;
-@property(nonatomic, strong)PFFile *themeLeft;
-@property(nonatomic, strong)PFFile *themeRight;
+@property (nonatomic, strong) NSString *title;
+@property (nonatomic, strong) PFFile *themeCover;
+@property (nonatomic, strong) PFFile *themeLeft;
+@property (nonatomic, strong) PFFile *themeRight;
 
 @end

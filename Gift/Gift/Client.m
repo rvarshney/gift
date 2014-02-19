@@ -35,17 +35,17 @@
     [query findObjectsInBackgroundWithBlock:completion];
 }
 
-- (Picture *)createPictureForAlbum:(Album *)album imagePath:(NSString *)imagePath pageNumber:(NSUInteger)pageNumber rotationAngle:(CGFloat)rotationAngle x:(NSUInteger)x y:(NSUInteger)y height:(NSUInteger)height width:(NSUInteger)width completion:(void (^)(BOOL, NSError *))completion
+- (Picture *)createPictureForAlbum:(Album *)album imagePath:(NSString *)imagePath pageNumber:(NSUInteger)pageNumber rotationAngle:(NSNumber *)rotationAngle x:(NSNumber *)x y:(NSNumber *)y height:(NSNumber *)height width:(NSNumber *)width completion:(void (^)(BOOL, NSError *))completion
 {
     Picture *picture = [Picture object];
     picture.album = album;
     picture.image = [PFFile fileWithName:[imagePath lastPathComponent] contentsAtPath:imagePath];
-    picture.x = [NSNumber numberWithInteger:x];
-    picture.y = [NSNumber numberWithInteger:y];
-    picture.rotationAngle = [NSNumber numberWithFloat:rotationAngle];
-    picture.height = [NSNumber numberWithInt:height];
-    picture.width = [NSNumber numberWithInt:width];
-    picture.pageNumber = [NSNumber numberWithInt:pageNumber];
+    picture.x = x;
+    picture.y = y;
+    picture.rotationAngle = rotationAngle;
+    picture.height = height;
+    picture.width = width;
+    picture.pageNumber = [NSNumber numberWithUnsignedInteger:pageNumber];
     [picture saveInBackgroundWithBlock:completion];
     return picture;
 }

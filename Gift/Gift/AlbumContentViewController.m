@@ -7,6 +7,8 @@
 //
 
 #import "AlbumContentViewController.h"
+#import "DraggableImageView.h"
+#import "Picture.h"
 
 @interface AlbumContentViewController ()
 
@@ -32,12 +34,18 @@
     self.view.layer.shadowRadius = 3.0f;
     self.view.layer.shadowOffset = CGSizeMake(0.0f, 2.0f);
     self.view.layer.shadowOpacity = 0.5f;
+
+    self.labelText.text = [NSString stringWithFormat:@"%d", self.pageNum];
+    for (Picture *picture in self.pictures)
+    {
+        DraggableImageView *imageView = [[DraggableImageView alloc] initWithPicture:picture];
+        [self.view addSubview:imageView];
+    }
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end

@@ -39,11 +39,7 @@
     self.cellInsets = UIEdgeInsetsMake(25.0f, 25.0f, 25.0f, 25.0f);
     self.cellSize = CGSizeMake(220.0f, 220.f);
     self.interCellSpacing = 27.0f;
-    if (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation)) {
-        self.numColumns = 4;
-    } else {
-        self.numColumns = 3;
-    }
+    self.numColumns = 3;
     self.titleHeight = 30.0f;
 }
 
@@ -169,8 +165,7 @@
     return self.layoutInfo[@"AlbumCell"][indexPath];
 }
 
-- (UICollectionViewLayoutAttributes *)layoutAttributesForSupplementaryViewOfKind:(NSString *)kind
-                                                                     atIndexPath:(NSIndexPath *)indexPath
+- (UICollectionViewLayoutAttributes *)layoutAttributesForSupplementaryViewOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
     return self.layoutInfo[@"AlbumTitle"][indexPath];
 }
