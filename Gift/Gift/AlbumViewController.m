@@ -10,11 +10,28 @@
 #import "AlbumContentViewController.h"
 #import "ShippingViewController.h"
 #import "Client.h"
+#import "Picture.h"
+#import "ELCImagePickerController.h"
+#import "ELCAlbumPickerController.h"
+#import "ELCAssetTablePicker.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface AlbumViewController ()
 
 @property (nonatomic, strong) NSMutableDictionary *picturesForPages;
 @property (nonatomic, strong) UIPageViewController *pageViewController;
+
+
+@property (nonatomic, strong) UIScrollView *subView;
+@property (nonatomic, strong) UIButton *addButton;
+@property (nonatomic, strong) UIButton *pullUpButton;
+
+
+@property (nonatomic, strong) NSLayoutConstraint *heightPullConstraint;
+@property (nonatomic, strong) NSLayoutConstraint *heightBtnConstraint;
+@property (nonatomic, strong) NSLayoutConstraint *heightConstraint;
+@property (nonatomic, copy) NSArray *chosenImages;
+@property (nonatomic, assign) BOOL isSubViewVisible;
 
 @end
 
@@ -73,6 +90,8 @@
     }
 
     [self setupAlbumPageViewController];
+    
+    [self addScrollView];
 }
 
 - (void)didReceiveMemoryWarning
@@ -276,5 +295,295 @@
         return UIPageViewControllerSpineLocationMid;
     }
 }
+
+#pragma - upkar added for image scrollview and imagePicker
+
+- (void)addScrollView{
+    //add scrollview
+    
+    self.subView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width-200, self.view.frame.size.height)];
+    [self.subView setContentSize:CGSizeMake(20*200, 200)];
+    self.subView.scrollEnabled = YES;
+    self.subView.layer.borderColor = [UIColor grayColor].CGColor;
+    self.subView.backgroundColor = [UIColor grayColor];
+    self.subView.layer.borderWidth = 3.0f;
+    [self.subView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.view addSubview:self.subView];
+    
+    
+    self.heightConstraint =[NSLayoutConstraint
+                            constraintWithItem:self.subView
+                            attribute:NSLayoutAttributeHeight
+                            relatedBy:NSLayoutRelationEqual
+                            toItem:nil
+                            attribute:NSLayoutAttributeHeight
+                            multiplier:1.0
+                            constant:200];
+    
+    
+    
+    NSLayoutConstraint *leftConstraint =[NSLayoutConstraint
+                                         constraintWithItem:self.subView
+                                         attribute:NSLayoutAttributeLeft
+                                         relatedBy:NSLayoutRelationEqual
+                                         toItem:self.view
+                                         attribute:NSLayoutAttributeLeft
+                                         multiplier:1.0
+                                         constant:0];
+    
+    NSLayoutConstraint *rightConstraint =[NSLayoutConstraint
+                                          constraintWithItem:self.subView
+                                          attribute:NSLayoutAttributeRight
+                                          relatedBy:NSLayoutRelationEqual
+                                          toItem:self.view
+                                          attribute:NSLayoutAttributeRight
+                                          multiplier:1.0
+                                          constant:-200];
+    
+    NSLayoutConstraint *bottomConstraint =[NSLayoutConstraint
+                                           constraintWithItem:self.subView
+                                           attribute:NSLayoutAttributeBottom
+                                           relatedBy:NSLayoutRelationEqual
+                                           toItem:self.view
+                                           attribute:NSLayoutAttributeBottom
+                                           multiplier:1.0
+                                           constant:0];
+    
+    [self.view addConstraints:@[self.heightConstraint, leftConstraint, rightConstraint, bottomConstraint]];
+    
+    //add button
+    self.addButton = [UIButton buttonWithType:UIButtonTypeContactAdd];
+    self.addButton.frame = CGRectMake(self.subView.frame.size.width+10,  self.view.frame.size.height, self.view.frame.size.width - self.subView.frame.size.width, self.view.frame.size.height);
+    [self.addButton setBackgroundColor:[UIColor lightGrayColor]];
+    [self.addButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.addButton addTarget:self action:@selector(addButtonHandler:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.addButton];
+    
+    //set constraints
+    self.heightBtnConstraint =[NSLayoutConstraint
+                               constraintWithItem:self.addButton
+                               attribute:NSLayoutAttributeHeight
+                               relatedBy:NSLayoutRelationEqual
+                               toItem:nil
+                               attribute:NSLayoutAttributeHeight
+                               multiplier:1.0
+                               constant:200];
+    
+    
+    
+    NSLayoutConstraint *leftBtnConstraint =[NSLayoutConstraint
+                                            constraintWithItem:self.addButton
+                                            attribute:NSLayoutAttributeLeft
+                                            relatedBy:NSLayoutRelationEqual
+                                            toItem:self.subView
+                                            attribute:NSLayoutAttributeRight
+                                            multiplier:1.0
+                                            constant:0];
+    
+    NSLayoutConstraint *rightBtnConstraint =[NSLayoutConstraint
+                                             constraintWithItem:self.addButton
+                                             attribute:NSLayoutAttributeRight
+                                             relatedBy:NSLayoutRelationEqual
+                                             toItem:self.view
+                                             attribute:NSLayoutAttributeRight
+                                             multiplier:1.0
+                                             constant:0];
+    
+    NSLayoutConstraint *bottomBtnConstraint =[NSLayoutConstraint
+                                              constraintWithItem:self.addButton
+                                              attribute:NSLayoutAttributeBottom
+                                              relatedBy:NSLayoutRelationEqual
+                                              toItem:self.view
+                                              attribute:NSLayoutAttributeBottom
+                                              multiplier:1.0
+                                              constant:0];
+    
+    
+    [self.view addConstraints:@[self.heightBtnConstraint, leftBtnConstraint, rightBtnConstraint, bottomBtnConstraint]];
+    
+    
+    //add pull up subview
+    self.pullUpButton = [[UIButton alloc] initWithFrame:CGRectMake(self.subView.frame.size.width+10,  self.view.frame.size.height, self.view.frame.size.width - self.subView.frame.size.width, 45)];
+    self.pullUpButton.layer.backgroundColor = [UIColor yellowColor].CGColor;
+    self.pullUpButton.layer.borderWidth = 3.0f;
+    [self.pullUpButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.pullUpButton addTarget:self action:@selector(pushButtonHandler:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:self.pullUpButton];
+    
+    
+    self.heightPullConstraint =[NSLayoutConstraint
+                                constraintWithItem:self.pullUpButton
+                                attribute:NSLayoutAttributeHeight
+                                relatedBy:NSLayoutRelationEqual
+                                toItem:nil
+                                attribute:NSLayoutAttributeHeight
+                                multiplier:1.0
+                                constant:45];
+    
+    
+    
+    NSLayoutConstraint *leftPullConstraint =[NSLayoutConstraint
+                                             constraintWithItem:self.pullUpButton
+                                             attribute:NSLayoutAttributeLeft
+                                             relatedBy:NSLayoutRelationEqual
+                                             toItem:self.addButton
+                                             attribute:NSLayoutAttributeLeft
+                                             multiplier:1.0
+                                             constant:0];
+    
+    NSLayoutConstraint *rightPullConstraint =[NSLayoutConstraint
+                                              constraintWithItem:self.pullUpButton
+                                              attribute:NSLayoutAttributeRight
+                                              relatedBy:NSLayoutRelationEqual
+                                              toItem:self.view
+                                              attribute:NSLayoutAttributeRight
+                                              multiplier:1.0
+                                              constant:0];
+    
+    NSLayoutConstraint *bottomPullConstraint =[NSLayoutConstraint
+                                               constraintWithItem:self.pullUpButton
+                                               attribute:NSLayoutAttributeBottom
+                                               relatedBy:NSLayoutRelationEqual
+                                               toItem:self.addButton
+                                               attribute:NSLayoutAttributeTop
+                                               multiplier:1.0
+                                               constant:0];
+    
+    [self.view addConstraints:@[self.heightPullConstraint, leftPullConstraint, rightPullConstraint, bottomPullConstraint]];
+    
+    
+    
+}
+
+-(void)pullUp{
+    [UIView animateWithDuration:1.0 animations:^{
+        self.heightConstraint.constant = 200;
+        self.heightBtnConstraint.constant = 200;
+        self.heightPullConstraint.constant = 45;
+        
+        [self.subView layoutIfNeeded];
+        [self.addButton layoutIfNeeded];
+        [self.pullUpButton layoutIfNeeded];
+        
+        self.isSubViewVisible = YES;
+    } completion:^(BOOL finished) {
+        
+    }];
+}
+
+-(void)pushDown{
+    [UIView animateWithDuration:1.0 animations:^{
+        self.heightConstraint.constant = 0;
+        self.heightBtnConstraint.constant = 0;
+        self.heightPullConstraint.constant = 45;
+        
+        [self.subView layoutIfNeeded];
+        [self.addButton layoutIfNeeded];
+        [self.pullUpButton layoutIfNeeded];
+        
+        self.isSubViewVisible = NO;
+    } completion:^(BOOL finished) {
+        
+    }];
+}
+
+- (IBAction)launchController:(id)sender{
+	ELCImagePickerController *elcPicker = [[ELCImagePickerController alloc] initImagePicker];
+    elcPicker.maximumImagesCount = 14;
+    elcPicker.returnsOriginalImage = NO; //Only return the fullScreenImage, not the fullResolutionImage
+	elcPicker.imagePickerDelegate = self;
+    
+    [self presentViewController:elcPicker animated:YES completion:nil];
+}
+
+- (void)displayPickerForGroup:(ALAssetsGroup *)group
+{
+	ELCAssetTablePicker *tablePicker = [[ELCAssetTablePicker alloc] initWithStyle:UITableViewStylePlain];
+    tablePicker.singleSelection = YES;
+    tablePicker.immediateReturn = YES;
+    
+	ELCImagePickerController *elcPicker = [[ELCImagePickerController alloc] initWithRootViewController:tablePicker];
+    elcPicker.maximumImagesCount = 1;
+    elcPicker.imagePickerDelegate = self;
+    elcPicker.returnsOriginalImage = NO; //Only return the fullScreenImage, not the fullResolutionImage
+	tablePicker.parent = elcPicker;
+    
+    // Move me
+    tablePicker.assetGroup = group;
+    [tablePicker.assetGroup setAssetsFilter:[ALAssetsFilter allAssets]];
+    
+    [self presentViewController:elcPicker animated:YES completion:nil];
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        return YES;
+    } else {
+        return toInterfaceOrientation != UIInterfaceOrientationPortraitUpsideDown;
+    }
+}
+
+#pragma mark ELCImagePickerControllerDelegate Methods
+
+- (void)elcImagePickerController:(ELCImagePickerController *)picker didFinishPickingMediaWithInfo:(NSArray *)info
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+	
+    for (UIView *v in [self.subView subviews]) {
+        [v removeFromSuperview];
+    }
+    
+	CGRect workingFrame = CGRectMake(0, 0, 200, 200);
+	workingFrame.origin.x = 0;
+    
+    NSMutableArray *images = [NSMutableArray arrayWithCapacity:[info count]];
+	
+	for (NSDictionary *dict in info) {
+        
+        UIImage *image = [dict objectForKey:UIImagePickerControllerOriginalImage];
+        [images addObject:image];
+        
+		UIImageView *imageview = [[UIImageView alloc] initWithImage:image];
+		[imageview setContentMode:UIViewContentModeScaleAspectFit];
+		imageview.frame = workingFrame;
+        imageview.layer.borderColor = [UIColor blackColor].CGColor;
+        imageview.layer.borderWidth = 3.0f;
+        imageview.contentMode = UIViewContentModeScaleToFill;
+        //        imageview.autoresizingMask = (UIViewAutoresizingFlexibleBottomMargin|UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleWidth);
+		
+		[self.subView addSubview:imageview];
+		
+		workingFrame.origin.x = workingFrame.origin.x + workingFrame.size.width;
+	}
+    
+    self.chosenImages = images;
+	
+	[self.subView setPagingEnabled:YES];
+	[self.subView setContentSize:CGSizeMake(workingFrame.origin.x, workingFrame.size.height)];
+}
+
+- (void)elcImagePickerControllerDidCancel:(ELCImagePickerController *)picker
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)addButtonHandler:(id)sender{
+    ELCImagePickerController *elcPicker = [[ELCImagePickerController alloc] initImagePicker];
+    elcPicker.maximumImagesCount = 14;
+    elcPicker.returnsOriginalImage = NO; //Only return the fullScreenImage, not the fullResolutionImage
+	elcPicker.imagePickerDelegate = self;
+    
+    [self presentViewController:elcPicker animated:YES completion:nil];
+}
+
+- (IBAction)pushButtonHandler:(id)sender{
+    if(self.isSubViewVisible)
+        [self pushDown];
+    else
+        [self pullUp];
+}
+
 
 @end
