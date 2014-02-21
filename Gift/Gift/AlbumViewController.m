@@ -296,11 +296,10 @@
     }
 }
 
-#pragma - upkar added for image scrollview and imagePicker
+#pragma mark - Upkar added for Image ScrollView and ImagePicker
 
-- (void)addScrollView{
-    //add scrollview
-    
+- (void)addScrollView
+{
     self.subView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width-200, self.view.frame.size.height)];
     [self.subView setContentSize:CGSizeMake(20*200, 200)];
     self.subView.scrollEnabled = YES;
@@ -310,8 +309,7 @@
     [self.subView setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.view addSubview:self.subView];
     
-    
-    self.heightConstraint =[NSLayoutConstraint
+    self.heightConstraint = [NSLayoutConstraint
                             constraintWithItem:self.subView
                             attribute:NSLayoutAttributeHeight
                             relatedBy:NSLayoutRelationEqual
@@ -320,9 +318,7 @@
                             multiplier:1.0
                             constant:200];
     
-    
-    
-    NSLayoutConstraint *leftConstraint =[NSLayoutConstraint
+    NSLayoutConstraint *leftConstraint = [NSLayoutConstraint
                                          constraintWithItem:self.subView
                                          attribute:NSLayoutAttributeLeft
                                          relatedBy:NSLayoutRelationEqual
@@ -331,7 +327,7 @@
                                          multiplier:1.0
                                          constant:0];
     
-    NSLayoutConstraint *rightConstraint =[NSLayoutConstraint
+    NSLayoutConstraint *rightConstraint = [NSLayoutConstraint
                                           constraintWithItem:self.subView
                                           attribute:NSLayoutAttributeRight
                                           relatedBy:NSLayoutRelationEqual
@@ -340,7 +336,7 @@
                                           multiplier:1.0
                                           constant:-200];
     
-    NSLayoutConstraint *bottomConstraint =[NSLayoutConstraint
+    NSLayoutConstraint *bottomConstraint = [NSLayoutConstraint
                                            constraintWithItem:self.subView
                                            attribute:NSLayoutAttributeBottom
                                            relatedBy:NSLayoutRelationEqual
@@ -351,7 +347,6 @@
     
     [self.view addConstraints:@[self.heightConstraint, leftConstraint, rightConstraint, bottomConstraint]];
     
-    //add button
     self.addButton = [UIButton buttonWithType:UIButtonTypeContactAdd];
     self.addButton.frame = CGRectMake(self.subView.frame.size.width+10,  self.view.frame.size.height, self.view.frame.size.width - self.subView.frame.size.width, self.view.frame.size.height);
     [self.addButton setBackgroundColor:[UIColor lightGrayColor]];
@@ -359,8 +354,7 @@
     [self.addButton addTarget:self action:@selector(addButtonHandler:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.addButton];
     
-    //set constraints
-    self.heightBtnConstraint =[NSLayoutConstraint
+    self.heightBtnConstraint = [NSLayoutConstraint
                                constraintWithItem:self.addButton
                                attribute:NSLayoutAttributeHeight
                                relatedBy:NSLayoutRelationEqual
@@ -369,9 +363,7 @@
                                multiplier:1.0
                                constant:200];
     
-    
-    
-    NSLayoutConstraint *leftBtnConstraint =[NSLayoutConstraint
+    NSLayoutConstraint *leftBtnConstraint = [NSLayoutConstraint
                                             constraintWithItem:self.addButton
                                             attribute:NSLayoutAttributeLeft
                                             relatedBy:NSLayoutRelationEqual
@@ -380,7 +372,7 @@
                                             multiplier:1.0
                                             constant:0];
     
-    NSLayoutConstraint *rightBtnConstraint =[NSLayoutConstraint
+    NSLayoutConstraint *rightBtnConstraint = [NSLayoutConstraint
                                              constraintWithItem:self.addButton
                                              attribute:NSLayoutAttributeRight
                                              relatedBy:NSLayoutRelationEqual
@@ -389,7 +381,7 @@
                                              multiplier:1.0
                                              constant:0];
     
-    NSLayoutConstraint *bottomBtnConstraint =[NSLayoutConstraint
+    NSLayoutConstraint *bottomBtnConstraint = [NSLayoutConstraint
                                               constraintWithItem:self.addButton
                                               attribute:NSLayoutAttributeBottom
                                               relatedBy:NSLayoutRelationEqual
@@ -402,7 +394,6 @@
     [self.view addConstraints:@[self.heightBtnConstraint, leftBtnConstraint, rightBtnConstraint, bottomBtnConstraint]];
     
     
-    //add pull up subview
     self.pullUpButton = [[UIButton alloc] initWithFrame:CGRectMake(self.subView.frame.size.width+10,  self.view.frame.size.height, self.view.frame.size.width - self.subView.frame.size.width, 45)];
     self.pullUpButton.layer.backgroundColor = [UIColor yellowColor].CGColor;
     self.pullUpButton.layer.borderWidth = 3.0f;
@@ -411,8 +402,7 @@
     
     [self.view addSubview:self.pullUpButton];
     
-    
-    self.heightPullConstraint =[NSLayoutConstraint
+    self.heightPullConstraint = [NSLayoutConstraint
                                 constraintWithItem:self.pullUpButton
                                 attribute:NSLayoutAttributeHeight
                                 relatedBy:NSLayoutRelationEqual
@@ -421,9 +411,7 @@
                                 multiplier:1.0
                                 constant:45];
     
-    
-    
-    NSLayoutConstraint *leftPullConstraint =[NSLayoutConstraint
+    NSLayoutConstraint *leftPullConstraint = [NSLayoutConstraint
                                              constraintWithItem:self.pullUpButton
                                              attribute:NSLayoutAttributeLeft
                                              relatedBy:NSLayoutRelationEqual
@@ -432,7 +420,7 @@
                                              multiplier:1.0
                                              constant:0];
     
-    NSLayoutConstraint *rightPullConstraint =[NSLayoutConstraint
+    NSLayoutConstraint *rightPullConstraint = [NSLayoutConstraint
                                               constraintWithItem:self.pullUpButton
                                               attribute:NSLayoutAttributeRight
                                               relatedBy:NSLayoutRelationEqual
@@ -441,7 +429,7 @@
                                               multiplier:1.0
                                               constant:0];
     
-    NSLayoutConstraint *bottomPullConstraint =[NSLayoutConstraint
+    NSLayoutConstraint *bottomPullConstraint = [NSLayoutConstraint
                                                constraintWithItem:self.pullUpButton
                                                attribute:NSLayoutAttributeBottom
                                                relatedBy:NSLayoutRelationEqual
@@ -451,12 +439,10 @@
                                                constant:0];
     
     [self.view addConstraints:@[self.heightPullConstraint, leftPullConstraint, rightPullConstraint, bottomPullConstraint]];
-    
-    
-    
 }
 
--(void)pullUp{
+-(void)pullUp
+{
     [UIView animateWithDuration:1.0 animations:^{
         self.heightConstraint.constant = 200;
         self.heightBtnConstraint.constant = 200;
@@ -472,7 +458,8 @@
     }];
 }
 
--(void)pushDown{
+-(void)pushDown
+{
     [UIView animateWithDuration:1.0 animations:^{
         self.heightConstraint.constant = 0;
         self.heightBtnConstraint.constant = 0;
@@ -488,10 +475,11 @@
     }];
 }
 
-- (IBAction)launchController:(id)sender{
+- (IBAction)launchController:(id)sender
+{
 	ELCImagePickerController *elcPicker = [[ELCImagePickerController alloc] initImagePicker];
     elcPicker.maximumImagesCount = 14;
-    elcPicker.returnsOriginalImage = NO; //Only return the fullScreenImage, not the fullResolutionImage
+    elcPicker.returnsOriginalImage = NO; // Only return the fullScreenImage, not the fullResolutionImage
 	elcPicker.imagePickerDelegate = self;
     
     [self presentViewController:elcPicker animated:YES completion:nil];
@@ -506,7 +494,7 @@
 	ELCImagePickerController *elcPicker = [[ELCImagePickerController alloc] initWithRootViewController:tablePicker];
     elcPicker.maximumImagesCount = 1;
     elcPicker.imagePickerDelegate = self;
-    elcPicker.returnsOriginalImage = NO; //Only return the fullScreenImage, not the fullResolutionImage
+    elcPicker.returnsOriginalImage = NO; // Only return the fullScreenImage, not the fullResolutionImage
 	tablePicker.parent = elcPicker;
     
     // Move me
@@ -525,7 +513,7 @@
     }
 }
 
-#pragma mark ELCImagePickerControllerDelegate Methods
+#pragma mark - ELCImagePickerControllerDelegate Methods
 
 - (void)elcImagePickerController:(ELCImagePickerController *)picker didFinishPickingMediaWithInfo:(NSArray *)info
 {
@@ -551,7 +539,7 @@
         imageview.layer.borderColor = [UIColor blackColor].CGColor;
         imageview.layer.borderWidth = 3.0f;
         imageview.contentMode = UIViewContentModeScaleToFill;
-        //        imageview.autoresizingMask = (UIViewAutoresizingFlexibleBottomMargin|UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleWidth);
+        // imageview.autoresizingMask = (UIViewAutoresizingFlexibleBottomMargin|UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleWidth);
 		
 		[self.subView addSubview:imageview];
 		
@@ -569,21 +557,22 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (IBAction)addButtonHandler:(id)sender{
+- (IBAction)addButtonHandler:(id)sender
+{
     ELCImagePickerController *elcPicker = [[ELCImagePickerController alloc] initImagePicker];
     elcPicker.maximumImagesCount = 14;
-    elcPicker.returnsOriginalImage = NO; //Only return the fullScreenImage, not the fullResolutionImage
+    elcPicker.returnsOriginalImage = NO; // Only return the fullScreenImage, not the fullResolutionImage
 	elcPicker.imagePickerDelegate = self;
     
     [self presentViewController:elcPicker animated:YES completion:nil];
 }
 
-- (IBAction)pushButtonHandler:(id)sender{
+- (IBAction)pushButtonHandler:(id)sender
+{
     if(self.isSubViewVisible)
         [self pushDown];
     else
         [self pullUp];
 }
-
 
 @end
