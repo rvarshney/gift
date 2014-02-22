@@ -442,6 +442,7 @@
 
     //start in pull up state
     self.isSubViewVisible = YES;
+    //end
 }
 
 -(void)pullUp
