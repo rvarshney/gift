@@ -439,6 +439,10 @@
                                                constant:0];
     
     [self.view addConstraints:@[self.heightPullConstraint, leftPullConstraint, rightPullConstraint, bottomPullConstraint]];
+
+    //start in pull up state
+    self.isSubViewVisible = YES;
+    //end
 }
 
 -(void)pullUp
