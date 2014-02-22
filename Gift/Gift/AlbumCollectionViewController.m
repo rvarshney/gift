@@ -56,12 +56,17 @@
     UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc] initWithTitle:@"Log Out" style:UIBarButtonItemStyleBordered target:self action:@selector(logoutButtonHandler:)];
     self.navigationItem.leftBarButtonItem = logoutButton;
 
+    // Initialize data
+    self.picturesForAlbums = [[NSMutableDictionary alloc] init];
+
     [self setupProfileView];
 
     [self setupCollectionView];
+}
 
-    // Load the data for albums
-    self.picturesForAlbums = [[NSMutableDictionary alloc] init];
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
 
     [self loadAlbums];
 }
@@ -152,6 +157,11 @@
     [self.collectionView registerClass:[AlbumCell class] forCellWithReuseIdentifier:@"AlbumCell"];
     [self.collectionView registerClass:[AlbumTitleReusableView class] forSupplementaryViewOfKind:@"AlbumTitle"withReuseIdentifier:@"AlbumTitle"];
     self.collectionView.backgroundColor = [UIColor whiteColor];
+    if (UIInterfaceOrientationIsLandscape(self.interfaceOrientation)) {
+        ((AlbumCollectionViewLayout *)self.collectionViewLayout).numColumns = 4;
+    } else {
+        ((AlbumCollectionViewLayout *)self.collectionViewLayout).numColumns = 3;
+    }
 }
 
 - (void)loadAlbums
