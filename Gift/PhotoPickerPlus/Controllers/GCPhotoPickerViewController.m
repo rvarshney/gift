@@ -95,7 +95,7 @@
 {
     if (section == 0 && self.hasLocal)
         return GCLocalizedString(@"picker.local_services");
-    return GCLocalizedString(@"picker.local_services");
+    return GCLocalizedString(@"picker.online_services");
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -161,6 +161,7 @@
     
     return cell;
 }
+
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 45;
@@ -170,8 +171,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(indexPath.section == 0 && self.hasLocal){
-        
+    if(indexPath.section == 0 && self.hasLocal) {
         
         NSString *serviceName = [self.localFeatures objectAtIndex:indexPath.row];
         NSString *cellTitle = [[serviceName capitalizedString] stringByReplacingOccurrencesOfString:@"_" withString:@" "];

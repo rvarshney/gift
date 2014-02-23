@@ -56,7 +56,7 @@
 {
     TemplateCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TemplateCell" forIndexPath:indexPath];
     
-    cell.templateImage.file = ((Template*)self.templates[indexPath.row]).themeCover;
+    cell.templateImage.file = ((Template *)self.templates[indexPath.row]).themeCover;
     [cell.templateImage loadInBackground];
 
     return cell;

@@ -17,7 +17,8 @@
 @dynamic template;
 
 
-+ (NSString *)parseClassName {
++ (NSString *)parseClassName
+{
     return @"Album";
 }
 

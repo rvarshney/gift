@@ -20,7 +20,8 @@
 @dynamic x;
 @dynamic y;
 
-+ (NSString *)parseClassName {
++ (NSString *)parseClassName
+{
     return @"Picture";
 }
 

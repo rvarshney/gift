@@ -10,7 +10,7 @@
 #import <Parse/Parse.h>
 
 @interface TemplateCell : UICollectionViewCell
-@property (weak, nonatomic) IBOutlet UILabel *templateLabel;
+
 @property (weak, nonatomic) IBOutlet PFImageView *templateImage;
 
 @end

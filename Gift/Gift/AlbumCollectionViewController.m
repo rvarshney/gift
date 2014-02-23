@@ -68,6 +68,12 @@
 {
     [super viewWillAppear:animated];
 
+    if (UIInterfaceOrientationIsLandscape(self.interfaceOrientation)) {
+        ((AlbumCollectionViewLayout *)self.collectionViewLayout).numColumns = 4;
+    } else {
+        ((AlbumCollectionViewLayout *)self.collectionViewLayout).numColumns = 3;
+    }
+
     [self loadAlbums];
 }
 
@@ -157,11 +163,6 @@
     [self.collectionView registerClass:[AlbumCell class] forCellWithReuseIdentifier:@"AlbumCell"];
     [self.collectionView registerClass:[AlbumTitleReusableView class] forSupplementaryViewOfKind:@"AlbumTitle"withReuseIdentifier:@"AlbumTitle"];
     self.collectionView.backgroundColor = [UIColor whiteColor];
-    if (UIInterfaceOrientationIsLandscape(self.interfaceOrientation)) {
-        ((AlbumCollectionViewLayout *)self.collectionViewLayout).numColumns = 4;
-    } else {
-        ((AlbumCollectionViewLayout *)self.collectionViewLayout).numColumns = 3;
-    }
 }
 
 - (void)loadAlbums

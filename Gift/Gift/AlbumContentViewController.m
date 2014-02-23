@@ -30,6 +30,15 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor whiteColor];
+    [self.album.template.themeLeft getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+        if (!error) {
+            UIGraphicsBeginImageContext(self.view.frame.size);
+            [[UIImage imageWithData:data] drawInRect:self.view.bounds];
+            UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+            UIGraphicsEndImageContext();
+            self.view.backgroundColor = [UIColor colorWithPatternImage:image];
+        }
+    }];
     self.view.layer.shadowColor = [UIColor blackColor].CGColor;
     self.view.layer.shadowRadius = 3.0f;
     self.view.layer.shadowOffset = CGSizeMake(0.0f, 2.0f);

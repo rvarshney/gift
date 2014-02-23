@@ -30,10 +30,8 @@
         self.file = picture.image;
         [self loadInBackground];
 
-        NSLog(@"Picture is %@ %@ %@ %@.", picture.x, picture.y, picture.width, picture.height);
         self.bounds = CGRectMake(0, 0, [picture.width floatValue], [picture.height floatValue]);
         self.frame = CGRectMake([picture.x floatValue], [picture.y floatValue], [picture.width floatValue], [picture.height floatValue]);
-        NSLog(@"Frame is %f %f %f %f.", self.frame.origin.x, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
     }
     return self;
 }

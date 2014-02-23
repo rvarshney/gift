@@ -8,10 +8,14 @@
 
 #import "AlbumViewController.h"
 #import "AlbumContentViewController.h"
+#import "DraggableImageView.h"
 #import "ShippingViewController.h"
 #import "Client.h"
 #import "Picture.h"
 #import <QuartzCore/QuartzCore.h>
+#import <objc/runtime.h>
+#import <AssetsLibrary/AssetsLibrary.h>
+
 
 @interface AlbumViewController ()
 
@@ -28,8 +32,12 @@
 @property (nonatomic, strong) NSLayoutConstraint *heightPullConstraint;
 @property (nonatomic, strong) NSLayoutConstraint *heightBtnConstraint;
 @property (nonatomic, strong) NSLayoutConstraint *heightConstraint;
-@property (nonatomic, copy) NSArray *chosenImages;
-@property (nonatomic, assign) BOOL isSubViewVisible;
+
+@property (nonatomic, assign) BOOL isScrollViewVisible;
+
+@property (nonatomic, assign) CGRect moveStartLocation;
+@property (nonatomic, assign) CGPoint movePreviousLocation;
+@property (nonatomic, strong) UIImageView *moveImageView;
 
 @end
 
@@ -76,12 +84,6 @@
     
     NSUInteger maxPageNum = [[[self.picturesForPages allKeys] valueForKeyPath:@"@max.unsignedIntegerValue"]unsignedIntegerValue];
     
-    // Add a dummy page for albums with no pages
-    if(!maxPageNum) {
-        self.picturesForPages[[NSNumber numberWithUnsignedInteger:0]] = [[NSMutableArray alloc] init];
-        maxPageNum = 0;
-    }
-    
     // Even out the number of pages we see in the album
     if (maxPageNum % 2 == 0) {
         self.picturesForPages[[NSNumber numberWithUnsignedInteger:maxPageNum + 1]] = [[NSMutableArray alloc] init];
@@ -89,7 +91,13 @@
     
     [self setupAlbumPageViewController];
     
-    [self addScrollView];
+    [self setupPictureScrollView];
+
+    // Setup long press gesture recognizer
+    UILongPressGestureRecognizer *gestureRecognizer = [[UILongPressGestureRecognizer alloc] init];
+    [gestureRecognizer addTarget:self action:@selector(longPressHandler:)];
+    self.view.userInteractionEnabled = YES;
+    [self.view addGestureRecognizer: gestureRecognizer];
 }
 
 - (void)didReceiveMemoryWarning
@@ -129,6 +137,7 @@
 {
     AlbumContentViewController *albumContentViewController = [[AlbumContentViewController alloc] init];
     albumContentViewController.pageNum = pageNum;
+    albumContentViewController.album = self.album;
     albumContentViewController.pictures = self.picturesForPages[[NSNumber numberWithUnsignedInteger:pageNum]];
     return albumContentViewController;
 }
@@ -294,34 +303,120 @@
     }
 }
 
-#pragma mark - Upkar added for Image ScrollView and ImagePicker
+# pragma mark - Long press gesture
 
-- (void)addScrollView
+- (DraggableImageView *)draggableImageViewForPage:(NSUInteger)pageNum atLocation:(CGPoint)atLocation
 {
-    self.pictureScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width-200, self.view.frame.size.height)];
-    [self.pictureScrollView setContentSize:CGSizeMake(20 * 200, 200)];
+    NSString *imageName = objc_getAssociatedObject(self.moveImageView, "imageName");
+    NSData *imageData = UIImageJPEGRepresentation(self.moveImageView.image, 0);
+    Picture *picture = [[Client instance] createPictureForAlbum:self.album imageName:imageName imageData:imageData pageNumber:pageNum rotationAngle:[NSNumber numberWithFloat:0] x:[NSNumber numberWithFloat:atLocation.x] y:[NSNumber numberWithFloat:atLocation.y] height:[NSNumber numberWithFloat:200] width:[NSNumber numberWithFloat:200] completion:nil];
+    
+    [((NSMutableArray *)self.picturesForPages[[NSNumber numberWithUnsignedInteger:pageNum]]) addObject:picture];
+    
+    DraggableImageView *draggableImageView = [[DraggableImageView alloc] initWithPicture:picture];
+    draggableImageView.image = [UIImage imageWithData:imageData];
+    
+    return draggableImageView;
+}
+
+- (void)longPressHandler:(UILongPressGestureRecognizer *)gesture
+{
+    if (gesture.state == UIGestureRecognizerStateBegan) {
+        CGPoint locationInView = [gesture locationInView:self.view];
+        CGPoint locationInScrollView = [gesture locationInView:self.pictureScrollView];
+        if (CGRectContainsPoint(self.pictureScrollView.bounds, locationInScrollView)) {
+            for (UIView *view in self.pictureScrollView.subviews) {
+                NSLog(@"Frame is %f, %f, %f, %f", view.frame.origin.x, view.frame.origin.y, view.frame.size.width, view.frame.size.height);
+                if (CGRectContainsPoint(view.frame, locationInScrollView) && [view class] == [UIImageView class]) {
+                    NSLog(@"got %@", view);
+                    self.moveStartLocation = CGRectMake(view.frame.origin.x, view.frame.origin.y, view.frame.size.width, view.frame.size.height);
+                    view.frame = CGRectMake(locationInView.x - 150/2, locationInView.y - 150/2, 150, 150);
+                    [view removeFromSuperview];
+                    [self.view addSubview:view];
+                    self.movePreviousLocation = locationInView;
+                    self.moveImageView = (UIImageView *)view;
+                    break;
+                }
+            }
+        }
+        
+    } else if (gesture.state == UIGestureRecognizerStateChanged) {
+        if (self.moveImageView) {
+            CGPoint location = [gesture locationInView:self.view];
+            CGRect frame = self.moveImageView.frame;
+            frame.origin.x += location.x - self.movePreviousLocation.x;
+            frame.origin.y += location.y - self.movePreviousLocation.y;
+            [self.moveImageView setFrame:frame];
+            self.movePreviousLocation = location;
+        }
+    } else if (gesture.state == UIGestureRecognizerStateEnded) {
+        if (self.moveImageView) {
+            AlbumContentViewController *firstPage = self.pageViewController.viewControllers[0];
+            AlbumContentViewController *secondPage = self.pageViewController.viewControllers[1];
+
+            CGPoint locationInFirstPage = [gesture locationInView:firstPage.view];
+            CGPoint locationInSecondPage = [gesture locationInView:secondPage.view];
+
+            if (CGRectContainsPoint(firstPage.view.bounds, locationInFirstPage)) {
+                NSLog(@"Page %d: %f, %f", firstPage.pageNum, locationInFirstPage.x, locationInFirstPage.y);
+                DraggableImageView *draggableImageView = [self draggableImageViewForPage:firstPage.pageNum atLocation:locationInFirstPage];
+                [firstPage.view addSubview:draggableImageView];
+                [self.moveImageView removeFromSuperview];
+            
+            } else if (CGRectContainsPoint(secondPage.view.bounds, locationInSecondPage)){
+                NSLog(@"Page %d: %f, %f", secondPage.pageNum, locationInSecondPage.x, locationInSecondPage.y);
+                DraggableImageView *draggableImageView = [self draggableImageViewForPage:secondPage.pageNum atLocation:locationInSecondPage];
+                [secondPage.view addSubview:draggableImageView];
+                [self.moveImageView removeFromSuperview];
+                
+            } else {
+                [self.moveImageView removeFromSuperview];
+                self.moveImageView.frame = self.moveStartLocation;
+                [self.pictureScrollView addSubview:self.moveImageView];
+            }
+        }
+        self.moveImageView = nil;
+        
+    } else if (gesture.state == UIGestureRecognizerStateCancelled) {
+        if (self.moveImageView) {
+            [self.moveImageView removeFromSuperview];
+            self.moveImageView.frame = self.moveStartLocation;
+            [self.pictureScrollView addSubview:self.moveImageView];
+        }
+        self.moveImageView = nil;
+    }
+}
+
+- (void)setupPictureScrollView
+{
+    UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"background.png"]];
+    
+    self.pictureScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width - 150, self.view.frame.size.height)];
+    [self.pictureScrollView setContentSize:CGSizeMake(20 * 200, 150)];
     self.pictureScrollView.scrollEnabled = YES;
-    self.pictureScrollView.layer.borderColor = [UIColor grayColor].CGColor;
-    self.pictureScrollView.backgroundColor = [UIColor grayColor];
-    self.pictureScrollView.layer.borderWidth = 3.0f;
+    //self.pictureScrollView.layer.borderColor = [UIColor grayColor].CGColor;
+    self.pictureScrollView.backgroundColor = background;
+    //self.pictureScrollView.layer.borderWidth = 3.0f;
     [self.pictureScrollView setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.view addSubview:self.pictureScrollView];
-    
-    self.heightConstraint = [NSLayoutConstraint constraintWithItem:self.pictureScrollView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeHeight multiplier:1.0 constant:200];
+
+    self.heightConstraint = [NSLayoutConstraint constraintWithItem:self.pictureScrollView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeHeight multiplier:1.0 constant:150];
     NSLayoutConstraint *leftConstraint = [NSLayoutConstraint constraintWithItem:self.pictureScrollView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0];
-    NSLayoutConstraint *rightConstraint = [NSLayoutConstraint constraintWithItem:self.pictureScrollView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1.0 constant:-200];
+    NSLayoutConstraint *rightConstraint = [NSLayoutConstraint constraintWithItem:self.pictureScrollView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1.0 constant:-150];
     NSLayoutConstraint *bottomConstraint = [NSLayoutConstraint constraintWithItem:self.pictureScrollView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0];
     
     [self.view addConstraints:@[self.heightConstraint, leftConstraint, rightConstraint, bottomConstraint]];
     
-    self.addButton = [UIButton buttonWithType:UIButtonTypeContactAdd];
+    UIImage *btnImage = [UIImage imageNamed:@"plus_white.png"];
+    self.addButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.addButton setImage:btnImage forState:UIControlStateNormal];
     self.addButton.frame = CGRectMake(self.pictureScrollView.frame.size.width + 10, self.view.frame.size.height, self.view.frame.size.width - self.pictureScrollView.frame.size.width, self.view.frame.size.height);
-    [self.addButton setBackgroundColor:[UIColor lightGrayColor]];
+    [self.addButton setBackgroundColor:background];
     [self.addButton setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.addButton addTarget:self action:@selector(addButtonHandler:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.addButton];
     
-    self.heightBtnConstraint = [NSLayoutConstraint constraintWithItem:self.addButton attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeHeight multiplier:1.0 constant:200];
+    self.heightBtnConstraint = [NSLayoutConstraint constraintWithItem:self.addButton attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeHeight multiplier:1.0 constant:150];
     NSLayoutConstraint *leftBtnConstraint = [NSLayoutConstraint constraintWithItem:self.addButton attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.pictureScrollView attribute:NSLayoutAttributeRight multiplier:1.0 constant:0];
     NSLayoutConstraint *rightBtnConstraint = [NSLayoutConstraint constraintWithItem:self.addButton attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1.0 constant:0];
     NSLayoutConstraint *bottomBtnConstraint = [NSLayoutConstraint constraintWithItem:self.addButton attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0];
@@ -346,21 +441,25 @@
     [self.view addConstraints:@[self.heightPullConstraint, leftPullConstraint, rightPullConstraint, bottomPullConstraint]];
     
     // Start in pull up state
-    self.isSubViewVisible = YES;
+    self.isScrollViewVisible = YES;
 }
 
 -(void)pullUp
 {
-    [UIView animateWithDuration:0.5 animations:^{
-        self.heightConstraint.constant = 200;
-        self.heightBtnConstraint.constant = 200;
-        self.heightPullConstraint.constant = 45;
+    [UIView animateWithDuration:0.3 animations:^{
+        CGRect pictureFrame = self.pictureScrollView.frame;
+        pictureFrame.origin.y -= pictureFrame.size.height;
+        self.pictureScrollView.frame = pictureFrame;
         
-        [self.pictureScrollView layoutIfNeeded];
-        [self.addButton layoutIfNeeded];
-        [self.pullUpButton layoutIfNeeded];
+        CGRect frame = self.addButton.frame;
+        frame.origin.y -= pictureFrame.size.height;
+        self.addButton.frame = frame;
         
-        self.isSubViewVisible = YES;
+        frame = self.pullUpButton.frame;
+        frame.origin.y -= pictureFrame.size.height;
+        self.pullUpButton.frame = frame;
+
+        self.isScrollViewVisible = YES;
     } completion:^(BOOL finished) {
         
     }];
@@ -368,16 +467,20 @@
 
 -(void)pushDown
 {
-    [UIView animateWithDuration:0.5 animations:^{
-        self.heightConstraint.constant = 0;
-        self.heightBtnConstraint.constant = 0;
-        self.heightPullConstraint.constant = 45;
+    [UIView animateWithDuration:0.3 animations:^{
+        CGRect pictureFrame = self.pictureScrollView.frame;
+        pictureFrame.origin.y += pictureFrame.size.height;
+        self.pictureScrollView.frame = pictureFrame;
+
+        CGRect frame = self.addButton.frame;
+        frame.origin.y += pictureFrame.size.height;
+        self.addButton.frame = frame;
         
-        [self.pictureScrollView layoutIfNeeded];
-        [self.addButton layoutIfNeeded];
-        [self.pullUpButton layoutIfNeeded];
-        
-        self.isSubViewVisible = NO;
+        frame = self.pullUpButton.frame;
+        frame.origin.y += pictureFrame.size.height;
+        self.pullUpButton.frame = frame;
+
+        self.isScrollViewVisible = NO;
     } completion:^(BOOL finished) {
         
     }];
@@ -390,34 +493,32 @@
         [v removeFromSuperview];
     }
     
-	CGRect workingFrame = CGRectMake(0, 0, 200, 200);
-	workingFrame.origin.x = 0;
+    CGRect workingFrame = CGRectMake(0, 0, 150, 150);
+    workingFrame.origin.x = 0;
     
-    NSMutableArray *images = [NSMutableArray arrayWithCapacity:[info count]];
-	
-	for (NSDictionary *dict in info) {
-        
+    for (NSDictionary *dict in info) {
         UIImage *image = [dict objectForKey:UIImagePickerControllerOriginalImage];
-        [images addObject:image];
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+        imageView.contentMode = UIViewContentModeScaleAspectFill;
+        imageView.clipsToBounds = YES;
+        imageView.frame = workingFrame;
+        imageView.bounds = CGRectInset(imageView.frame, 12.0f, 12.0f);
+        imageView.layer.borderColor = [UIColor whiteColor].CGColor;
+        imageView.layer.borderWidth = 3.0f;
+        [self.pictureScrollView addSubview:imageView];
         
-		UIImageView *imageview = [[UIImageView alloc] initWithImage:image];
-		[imageview setContentMode:UIViewContentModeScaleAspectFit];
-		imageview.frame = workingFrame;
-        imageview.layer.borderColor = [UIColor blackColor].CGColor;
-        imageview.layer.borderWidth = 3.0f;
-        imageview.contentMode = UIViewContentModeScaleToFill;
-		[self.pictureScrollView addSubview:imageview];
-		
-		workingFrame.origin.x = workingFrame.origin.x + workingFrame.size.width;
+        workingFrame.origin.x = workingFrame.origin.x + workingFrame.size.width;
+        
+        NSString *assetURL = [dict objectForKey:UIImagePickerControllerReferenceURL];
+        objc_setAssociatedObject(imageView, "imageName", [assetURL lastPathComponent], OBJC_ASSOCIATION_RETAIN);
 	}
     
-    self.chosenImages = images;
-	
-	[self.pictureScrollView setPagingEnabled:YES];
-	[self.pictureScrollView setContentSize:CGSizeMake(workingFrame.origin.x, workingFrame.size.height)];
+    [self.pictureScrollView setPagingEnabled:YES];
+    [self.pictureScrollView setContentSize:CGSizeMake(workingFrame.origin.x, workingFrame.size.height)];
 }
 
-- (void)imagePickerControllerDidCancel:(PhotoPickerViewController *)picker{
+- (void)imagePickerControllerDidCancel:(PhotoPickerViewController *)picker
+{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -425,13 +526,13 @@
 {
     PhotoPickerViewController *picker = [[PhotoPickerViewController alloc ] initWithTitle:@"Select Photo"];
     [picker setDelegate:self];
-    [picker setIsMultipleSelectionEnabled:YES]; // [picker setIsMultipleSelectionEnabled:YES] - for multiple choice.
+    [picker setIsMultipleSelectionEnabled:YES];
     [self presentViewController:picker animated:YES completion:nil];
 }
 
 - (IBAction)pushButtonHandler:(id)sender
 {
-    if (self.isSubViewVisible) {
+    if (self.isScrollViewVisible) {
         [self pushDown];
     } else {
         [self pullUp];

@@ -11,14 +11,15 @@
 
 @implementation Template
 
-
-+ (NSString *)parseClassName{
- return @"Template";
-}
-
 @dynamic title;
 @dynamic themeCover;
 @dynamic themeLeft;
 @dynamic themeRight;
+
+
++ (NSString *)parseClassName
+{
+    return @"Template";
+}
 
 @end

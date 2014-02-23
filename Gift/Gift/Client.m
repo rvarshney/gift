@@ -21,6 +21,7 @@
 {
     Album *album = [Album object];
     album.title = title;
+    album.template = template;
     album.user = user;
     album.numPages = numPages;
     [album saveInBackgroundWithBlock:completion];
@@ -30,16 +31,17 @@
 - (void)albumsForUser:(PFUser *)user completion:(void (^)(NSArray *, NSError *))completion
 {
     PFQuery *query = [Album query];
+    [query includeKey:@"template"];
     [query whereKey:@"user" equalTo:user];
     [query orderByDescending:@"createdAt"];
     [query findObjectsInBackgroundWithBlock:completion];
 }
 
-- (Picture *)createPictureForAlbum:(Album *)album imagePath:(NSString *)imagePath pageNumber:(NSUInteger)pageNumber rotationAngle:(NSNumber *)rotationAngle x:(NSNumber *)x y:(NSNumber *)y height:(NSNumber *)height width:(NSNumber *)width completion:(void (^)(BOOL, NSError *))completion
+- (Picture *)createPictureForAlbum:(Album *)album imageName:(NSString *)imageName imageData:(NSData *)imageData pageNumber:(NSUInteger)pageNumber rotationAngle:(NSNumber *)rotationAngle x:(NSNumber *)x y:(NSNumber *)y height:(NSNumber *)height width:(NSNumber *)width completion:(void (^)(BOOL, NSError *error))completion
 {
     Picture *picture = [Picture object];
     picture.album = album;
-    picture.image = [PFFile fileWithName:[imagePath lastPathComponent] contentsAtPath:imagePath];
+    picture.image = [PFFile fileWithName:imageName data:imageData];
     picture.x = x;
     picture.y = y;
     picture.rotationAngle = rotationAngle;
