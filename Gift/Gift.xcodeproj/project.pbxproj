@@ -34,19 +34,54 @@
 		6FF8497018B1A38D00B44161 /* login-button-small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FF8496E18B1A38D00B44161 /* login-button-small@2x.png */; };
 		A857FEE218B0306C00226E92 /* TemplateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A857FEE018B0306C00226E92 /* TemplateCell.m */; };
 		A857FEE318B0306C00226E92 /* TemplateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A857FEE118B0306C00226E92 /* TemplateCell.xib */; };
+		A886C4D918BA903800A96958 /* PhotoPickerClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A886C49018BA903800A96958 /* PhotoPickerClient.m */; };
+		A886C4DA18BA903800A96958 /* GCServicePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = A886C49318BA903800A96958 /* GCServicePicker.m */; };
+		A886C4DB18BA903800A96958 /* NSDictionary+ALAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = A886C49618BA903800A96958 /* NSDictionary+ALAsset.m */; };
+		A886C4DC18BA903800A96958 /* NSDictionary+GCAccountAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = A886C49818BA903800A96958 /* NSDictionary+GCAccountAsset.m */; };
+		A886C4DD18BA903800A96958 /* NSObject+GCDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = A886C49A18BA903800A96958 /* NSObject+GCDictionary.m */; };
+		A886C4DF18BA903800A96958 /* GCConfiguration.plist in Resources */ = {isa = PBXBuildFile; fileRef = A886C49D18BA903800A96958 /* GCConfiguration.plist */; };
+		A886C4E018BA903800A96958 /* GCPhotoPickerConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = A886C4A018BA903800A96958 /* GCPhotoPickerConfiguration.m */; };
+		A886C4E118BA903800A96958 /* GCAccountMediaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A886C4A318BA903800A96958 /* GCAccountMediaViewController.m */; };
+		A886C4E218BA903800A96958 /* GCAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A886C4A518BA903800A96958 /* GCAlbumViewController.m */; };
+		A886C4E318BA903800A96958 /* GCAssetsCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A886C4A718BA903800A96958 /* GCAssetsCollectionViewController.m */; };
+		A886C4E418BA903800A96958 /* GCPhotoPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A886C4A918BA903800A96958 /* GCPhotoPickerViewController.m */; };
+		A886C4E518BA903800A96958 /* PhotoPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A886C4AB18BA903800A96958 /* PhotoPickerViewController.m */; };
+		A886C4E618BA903800A96958 /* GCAccountAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = A886C4AE18BA903800A96958 /* GCAccountAlbum.m */; };
+		A886C4E718BA903800A96958 /* GCAccountAssets.m in Sources */ = {isa = PBXBuildFile; fileRef = A886C4B018BA903800A96958 /* GCAccountAssets.m */; };
+		A886C4E818BA903800A96958 /* album_default.png in Resources */ = {isa = PBXBuildFile; fileRef = A886C4B218BA903800A96958 /* album_default.png */; };
+		A886C4E918BA903800A96958 /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = A886C4B318BA903800A96958 /* camera.png */; };
+		A886C4EA18BA903800A96958 /* chute.png in Resources */ = {isa = PBXBuildFile; fileRef = A886C4B418BA903800A96958 /* chute.png */; };
+		A886C4EB18BA903800A96958 /* defaultThumb.png in Resources */ = {isa = PBXBuildFile; fileRef = A886C4B518BA903800A96958 /* defaultThumb.png */; };
+		A886C4EC18BA903800A96958 /* dropbox.png in Resources */ = {isa = PBXBuildFile; fileRef = A886C4B618BA903800A96958 /* dropbox.png */; };
+		A886C4ED18BA903800A96958 /* dropbox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A886C4B718BA903800A96958 /* dropbox@2x.png */; };
+		A886C4EE18BA903800A96958 /* facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = A886C4B818BA903800A96958 /* facebook.png */; };
+		A886C4EF18BA903800A96958 /* facebook@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A886C4B918BA903800A96958 /* facebook@2x.png */; };
+		A886C4F018BA903800A96958 /* flickr.png in Resources */ = {isa = PBXBuildFile; fileRef = A886C4BA18BA903800A96958 /* flickr.png */; };
+		A886C4F118BA903800A96958 /* flickr@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A886C4BB18BA903800A96958 /* flickr@2x.png */; };
+		A886C4F218BA903800A96958 /* google.png in Resources */ = {isa = PBXBuildFile; fileRef = A886C4BC18BA903800A96958 /* google.png */; };
+		A886C4F318BA903800A96958 /* google@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A886C4BD18BA903800A96958 /* google@2x.png */; };
+		A886C4F418BA903800A96958 /* googledrive.png in Resources */ = {isa = PBXBuildFile; fileRef = A886C4BE18BA903800A96958 /* googledrive.png */; };
+		A886C4F518BA903800A96958 /* googledrive@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A886C4BF18BA903800A96958 /* googledrive@2x.png */; };
+		A886C4F618BA903800A96958 /* gradient_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = A886C4C018BA903800A96958 /* gradient_blue.png */; };
+		A886C4F718BA903800A96958 /* instagram.png in Resources */ = {isa = PBXBuildFile; fileRef = A886C4C118BA903800A96958 /* instagram.png */; };
+		A886C4F818BA903800A96958 /* instagram@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A886C4C218BA903800A96958 /* instagram@2x.png */; };
+		A886C4F918BA903800A96958 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A886C4C418BA903800A96958 /* InfoPlist.strings */; };
+		A886C4FA18BA903800A96958 /* PhotoPickerPlus.strings in Resources */ = {isa = PBXBuildFile; fileRef = A886C4C618BA903800A96958 /* PhotoPickerPlus.strings */; };
+		A886C4FB18BA903800A96958 /* overlay.png in Resources */ = {isa = PBXBuildFile; fileRef = A886C4C818BA903800A96958 /* overlay.png */; };
+		A886C4FC18BA903800A96958 /* overlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A886C4C918BA903800A96958 /* overlay@2x.png */; };
+		A886C4FD18BA903800A96958 /* picasa.png in Resources */ = {isa = PBXBuildFile; fileRef = A886C4CA18BA903800A96958 /* picasa.png */; };
+		A886C4FE18BA903800A96958 /* picasa@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A886C4CB18BA903800A96958 /* picasa@2x.png */; };
+		A886C4FF18BA903800A96958 /* popover_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = A886C4CC18BA903800A96958 /* popover_arrow.png */; };
+		A886C50018BA903800A96958 /* popover_border.png in Resources */ = {isa = PBXBuildFile; fileRef = A886C4CD18BA903800A96958 /* popover_border.png */; };
+		A886C50118BA903800A96958 /* skydrive.png in Resources */ = {isa = PBXBuildFile; fileRef = A886C4CE18BA903800A96958 /* skydrive.png */; };
+		A886C50218BA903800A96958 /* skydrive@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A886C4CF18BA903800A96958 /* skydrive@2x.png */; };
+		A886C50318BA903800A96958 /* GCPhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A886C4D218BA903800A96958 /* GCPhotoCell.m */; };
+		A886C50418BA903800A96958 /* GCPhotoPickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A886C4D418BA903800A96958 /* GCPhotoPickerCell.m */; };
+		A886C50518BA903800A96958 /* GCPopoverBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = A886C4D618BA903800A96958 /* GCPopoverBackgroundView.m */; };
+		A88F915118BA8E8C00E7D316 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4DA7AA614D39BCE0055F672 /* ProfileViewController.m */; };
 		A8A2246E18B2DB3900EEABEC /* Template.m in Sources */ = {isa = PBXBuildFile; fileRef = A8A2246D18B2DB3900EEABEC /* Template.m */; };
 		A8C2156518A8148500A210AC /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C2156418A8148500A210AC /* MessageUI.framework */; };
 		A8C2157118A83CDC00A210AC /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C2157018A83CDC00A210AC /* Parse.framework */; };
-		A8D0ECB418B6CCA6002018D7 /* ELCAlbumPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D0ECA318B6CCA6002018D7 /* ELCAlbumPickerController.m */; };
-		A8D0ECB518B6CCA6002018D7 /* ELCAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D0ECA518B6CCA6002018D7 /* ELCAsset.m */; };
-		A8D0ECB618B6CCA6002018D7 /* ELCAssetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D0ECA718B6CCA6002018D7 /* ELCAssetCell.m */; };
-		A8D0ECB718B6CCA6002018D7 /* ELCAssetTablePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D0ECAB18B6CCA6002018D7 /* ELCAssetTablePicker.m */; };
-		A8D0ECB818B6CCA6002018D7 /* ELCImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D0ECAD18B6CCA6002018D7 /* ELCImagePickerController.m */; };
-		A8D0ECB918B6CCA6002018D7 /* ELCAlbumPickerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8D0ECAF18B6CCA6002018D7 /* ELCAlbumPickerController.xib */; };
-		A8D0ECBA18B6CCA6002018D7 /* ELCAssetPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8D0ECB018B6CCA6002018D7 /* ELCAssetPicker.xib */; };
-		A8D0ECBB18B6CCA6002018D7 /* ELCAssetTablePicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8D0ECB118B6CCA6002018D7 /* ELCAssetTablePicker.xib */; };
-		A8D0ECBC18B6CCA6002018D7 /* Overlay.png in Resources */ = {isa = PBXBuildFile; fileRef = A8D0ECB218B6CCA6002018D7 /* Overlay.png */; };
-		A8D0ECBD18B6CCA6002018D7 /* Overlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A8D0ECB318B6CCA6002018D7 /* Overlay@2x.png */; };
 		A8D0ECBF18B6CCBC002018D7 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8D0ECBE18B6CCBC002018D7 /* AssetsLibrary.framework */; };
 		C425016D161BBAE400474BCD /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4250169161BBAE400474BCD /* StoreKit.framework */; };
 		C4250170161BBAEE00474BCD /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C425016F161BBAEE00474BCD /* libz.dylib */; };
@@ -69,7 +104,6 @@
 		D4DA7A1414D334F30055F672 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4DA7A0D14D334F30055F672 /* SystemConfiguration.framework */; };
 		D4DA7A7414D393DA0055F672 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4DA7A7214D393DA0055F672 /* LoginViewController.m */; };
 		D4DA7A7514D393DA0055F672 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4DA7A7314D393DA0055F672 /* LoginViewController.xib */; };
-		D4DA7AA814D39BCE0055F672 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4DA7AA614D39BCE0055F672 /* ProfileViewController.m */; };
 		D4DA7AA914D39BCE0055F672 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4DA7AA714D39BCE0055F672 /* ProfileViewController.xib */; };
 		F1E6B08FE0C44B7EAC3653CD /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 400A3945A7A04690BB32CBDF /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -117,27 +151,71 @@
 		A857FEDF18B0306C00226E92 /* TemplateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TemplateCell.h; path = Gift/TemplateCell.h; sourceTree = "<group>"; };
 		A857FEE018B0306C00226E92 /* TemplateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TemplateCell.m; path = Gift/TemplateCell.m; sourceTree = "<group>"; };
 		A857FEE118B0306C00226E92 /* TemplateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TemplateCell.xib; path = Gift/TemplateCell.xib; sourceTree = "<group>"; };
+		A886C48F18BA903800A96958 /* PhotoPickerClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoPickerClient.h; sourceTree = "<group>"; };
+		A886C49018BA903800A96958 /* PhotoPickerClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoPickerClient.m; sourceTree = "<group>"; };
+		A886C49218BA903800A96958 /* GCServicePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCServicePicker.h; sourceTree = "<group>"; };
+		A886C49318BA903800A96958 /* GCServicePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCServicePicker.m; sourceTree = "<group>"; };
+		A886C49518BA903800A96958 /* NSDictionary+ALAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+ALAsset.h"; sourceTree = "<group>"; };
+		A886C49618BA903800A96958 /* NSDictionary+ALAsset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+ALAsset.m"; sourceTree = "<group>"; };
+		A886C49718BA903800A96958 /* NSDictionary+GCAccountAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+GCAccountAsset.h"; sourceTree = "<group>"; };
+		A886C49818BA903800A96958 /* NSDictionary+GCAccountAsset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+GCAccountAsset.m"; sourceTree = "<group>"; };
+		A886C49918BA903800A96958 /* NSObject+GCDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+GCDictionary.h"; sourceTree = "<group>"; };
+		A886C49A18BA903800A96958 /* NSObject+GCDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+GCDictionary.m"; sourceTree = "<group>"; };
+		A886C49D18BA903800A96958 /* GCConfiguration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = GCConfiguration.plist; sourceTree = "<group>"; };
+		A886C49E18BA903800A96958 /* GCMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCMacros.h; sourceTree = "<group>"; };
+		A886C49F18BA903800A96958 /* GCPhotoPickerConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCPhotoPickerConfiguration.h; sourceTree = "<group>"; };
+		A886C4A018BA903800A96958 /* GCPhotoPickerConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCPhotoPickerConfiguration.m; sourceTree = "<group>"; };
+		A886C4A218BA903800A96958 /* GCAccountMediaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCAccountMediaViewController.h; sourceTree = "<group>"; };
+		A886C4A318BA903800A96958 /* GCAccountMediaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCAccountMediaViewController.m; sourceTree = "<group>"; };
+		A886C4A418BA903800A96958 /* GCAlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCAlbumViewController.h; sourceTree = "<group>"; };
+		A886C4A518BA903800A96958 /* GCAlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCAlbumViewController.m; sourceTree = "<group>"; };
+		A886C4A618BA903800A96958 /* GCAssetsCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCAssetsCollectionViewController.h; sourceTree = "<group>"; };
+		A886C4A718BA903800A96958 /* GCAssetsCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCAssetsCollectionViewController.m; sourceTree = "<group>"; };
+		A886C4A818BA903800A96958 /* GCPhotoPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCPhotoPickerViewController.h; sourceTree = "<group>"; };
+		A886C4A918BA903800A96958 /* GCPhotoPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCPhotoPickerViewController.m; sourceTree = "<group>"; };
+		A886C4AA18BA903800A96958 /* PhotoPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoPickerViewController.h; sourceTree = "<group>"; };
+		A886C4AB18BA903800A96958 /* PhotoPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoPickerViewController.m; sourceTree = "<group>"; };
+		A886C4AD18BA903800A96958 /* GCAccountAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCAccountAlbum.h; sourceTree = "<group>"; };
+		A886C4AE18BA903800A96958 /* GCAccountAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCAccountAlbum.m; sourceTree = "<group>"; };
+		A886C4AF18BA903800A96958 /* GCAccountAssets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCAccountAssets.h; sourceTree = "<group>"; };
+		A886C4B018BA903800A96958 /* GCAccountAssets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCAccountAssets.m; sourceTree = "<group>"; };
+		A886C4B218BA903800A96958 /* album_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = album_default.png; sourceTree = "<group>"; };
+		A886C4B318BA903800A96958 /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
+		A886C4B418BA903800A96958 /* chute.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chute.png; sourceTree = "<group>"; };
+		A886C4B518BA903800A96958 /* defaultThumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultThumb.png; sourceTree = "<group>"; };
+		A886C4B618BA903800A96958 /* dropbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dropbox.png; sourceTree = "<group>"; };
+		A886C4B718BA903800A96958 /* dropbox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dropbox@2x.png"; sourceTree = "<group>"; };
+		A886C4B818BA903800A96958 /* facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook.png; sourceTree = "<group>"; };
+		A886C4B918BA903800A96958 /* facebook@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facebook@2x.png"; sourceTree = "<group>"; };
+		A886C4BA18BA903800A96958 /* flickr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flickr.png; sourceTree = "<group>"; };
+		A886C4BB18BA903800A96958 /* flickr@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flickr@2x.png"; sourceTree = "<group>"; };
+		A886C4BC18BA903800A96958 /* google.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = google.png; sourceTree = "<group>"; };
+		A886C4BD18BA903800A96958 /* google@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "google@2x.png"; sourceTree = "<group>"; };
+		A886C4BE18BA903800A96958 /* googledrive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = googledrive.png; sourceTree = "<group>"; };
+		A886C4BF18BA903800A96958 /* googledrive@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "googledrive@2x.png"; sourceTree = "<group>"; };
+		A886C4C018BA903800A96958 /* gradient_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gradient_blue.png; sourceTree = "<group>"; };
+		A886C4C118BA903800A96958 /* instagram.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = instagram.png; sourceTree = "<group>"; };
+		A886C4C218BA903800A96958 /* instagram@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "instagram@2x.png"; sourceTree = "<group>"; };
+		A886C4C518BA903800A96958 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A886C4C718BA903800A96958 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/PhotoPickerPlus.strings; sourceTree = "<group>"; };
+		A886C4C818BA903800A96958 /* overlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = overlay.png; sourceTree = "<group>"; };
+		A886C4C918BA903800A96958 /* overlay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "overlay@2x.png"; sourceTree = "<group>"; };
+		A886C4CA18BA903800A96958 /* picasa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = picasa.png; sourceTree = "<group>"; };
+		A886C4CB18BA903800A96958 /* picasa@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "picasa@2x.png"; sourceTree = "<group>"; };
+		A886C4CC18BA903800A96958 /* popover_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popover_arrow.png; sourceTree = "<group>"; };
+		A886C4CD18BA903800A96958 /* popover_border.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popover_border.png; sourceTree = "<group>"; };
+		A886C4CE18BA903800A96958 /* skydrive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = skydrive.png; sourceTree = "<group>"; };
+		A886C4CF18BA903800A96958 /* skydrive@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "skydrive@2x.png"; sourceTree = "<group>"; };
+		A886C4D118BA903800A96958 /* GCPhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCPhotoCell.h; sourceTree = "<group>"; };
+		A886C4D218BA903800A96958 /* GCPhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCPhotoCell.m; sourceTree = "<group>"; };
+		A886C4D318BA903800A96958 /* GCPhotoPickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCPhotoPickerCell.h; sourceTree = "<group>"; };
+		A886C4D418BA903800A96958 /* GCPhotoPickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCPhotoPickerCell.m; sourceTree = "<group>"; };
+		A886C4D518BA903800A96958 /* GCPopoverBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCPopoverBackgroundView.h; sourceTree = "<group>"; };
+		A886C4D618BA903800A96958 /* GCPopoverBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCPopoverBackgroundView.m; sourceTree = "<group>"; };
 		A8A2246C18B2DB3900EEABEC /* Template.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Template.h; sourceTree = "<group>"; };
 		A8A2246D18B2DB3900EEABEC /* Template.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Template.m; sourceTree = "<group>"; };
 		A8C2156418A8148500A210AC /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		A8C2157018A83CDC00A210AC /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
-		A8D0ECA218B6CCA6002018D7 /* ELCAlbumPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCAlbumPickerController.h; sourceTree = "<group>"; };
-		A8D0ECA318B6CCA6002018D7 /* ELCAlbumPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELCAlbumPickerController.m; sourceTree = "<group>"; };
-		A8D0ECA418B6CCA6002018D7 /* ELCAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCAsset.h; sourceTree = "<group>"; };
-		A8D0ECA518B6CCA6002018D7 /* ELCAsset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELCAsset.m; sourceTree = "<group>"; };
-		A8D0ECA618B6CCA6002018D7 /* ELCAssetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCAssetCell.h; sourceTree = "<group>"; };
-		A8D0ECA718B6CCA6002018D7 /* ELCAssetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELCAssetCell.m; sourceTree = "<group>"; };
-		A8D0ECA818B6CCA6002018D7 /* ELCAssetPickerFilterDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCAssetPickerFilterDelegate.h; sourceTree = "<group>"; };
-		A8D0ECA918B6CCA6002018D7 /* ELCAssetSelectionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCAssetSelectionDelegate.h; sourceTree = "<group>"; };
-		A8D0ECAA18B6CCA6002018D7 /* ELCAssetTablePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCAssetTablePicker.h; sourceTree = "<group>"; };
-		A8D0ECAB18B6CCA6002018D7 /* ELCAssetTablePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELCAssetTablePicker.m; sourceTree = "<group>"; };
-		A8D0ECAC18B6CCA6002018D7 /* ELCImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCImagePickerController.h; sourceTree = "<group>"; };
-		A8D0ECAD18B6CCA6002018D7 /* ELCImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELCImagePickerController.m; sourceTree = "<group>"; };
-		A8D0ECAF18B6CCA6002018D7 /* ELCAlbumPickerController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ELCAlbumPickerController.xib; sourceTree = "<group>"; };
-		A8D0ECB018B6CCA6002018D7 /* ELCAssetPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ELCAssetPicker.xib; sourceTree = "<group>"; };
-		A8D0ECB118B6CCA6002018D7 /* ELCAssetTablePicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ELCAssetTablePicker.xib; sourceTree = "<group>"; };
-		A8D0ECB218B6CCA6002018D7 /* Overlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Overlay.png; sourceTree = "<group>"; };
-		A8D0ECB318B6CCA6002018D7 /* Overlay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Overlay@2x.png"; sourceTree = "<group>"; };
 		A8D0ECBE18B6CCBC002018D7 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		C4250169161BBAE400474BCD /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		C425016F161BBAEE00474BCD /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -263,7 +341,6 @@
 		6FD04FA218B2A4A900EBF752 /* Album */ = {
 			isa = PBXGroup;
 			children = (
-				A8D0ECA118B6CCA6002018D7 /* ELCImagePicker */,
 				6F90497918A6A451005326ED /* AlbumCollectionViewController.h */,
 				6F90497A18A6A451005326ED /* AlbumCollectionViewController.m */,
 				6F90497B18A6A451005326ED /* AlbumCollectionViewController.xib */,
@@ -304,6 +381,146 @@
 			name = Images;
 			sourceTree = "<group>";
 		};
+		A886C48918BA903800A96958 /* PhotoPickerPlus */ = {
+			isa = PBXGroup;
+			children = (
+				A886C48A18BA903800A96958 /* API */,
+				A886C49418BA903800A96958 /* Categories */,
+				A886C49B18BA903800A96958 /* Configuration */,
+				A886C4A118BA903800A96958 /* Controllers */,
+				A886C4AC18BA903800A96958 /* Models */,
+				A886C4B118BA903800A96958 /* Resources */,
+				A886C4D018BA903800A96958 /* Views */,
+			);
+			path = PhotoPickerPlus;
+			sourceTree = "<group>";
+		};
+		A886C48A18BA903800A96958 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				A886C48F18BA903800A96958 /* PhotoPickerClient.h */,
+				A886C49018BA903800A96958 /* PhotoPickerClient.m */,
+				A886C49118BA903800A96958 /* Services */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		A886C49118BA903800A96958 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A886C49218BA903800A96958 /* GCServicePicker.h */,
+				A886C49318BA903800A96958 /* GCServicePicker.m */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		A886C49418BA903800A96958 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				A886C49518BA903800A96958 /* NSDictionary+ALAsset.h */,
+				A886C49618BA903800A96958 /* NSDictionary+ALAsset.m */,
+				A886C49718BA903800A96958 /* NSDictionary+GCAccountAsset.h */,
+				A886C49818BA903800A96958 /* NSDictionary+GCAccountAsset.m */,
+				A886C49918BA903800A96958 /* NSObject+GCDictionary.h */,
+				A886C49A18BA903800A96958 /* NSObject+GCDictionary.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		A886C49B18BA903800A96958 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				A886C49D18BA903800A96958 /* GCConfiguration.plist */,
+				A886C49E18BA903800A96958 /* GCMacros.h */,
+				A886C49F18BA903800A96958 /* GCPhotoPickerConfiguration.h */,
+				A886C4A018BA903800A96958 /* GCPhotoPickerConfiguration.m */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		A886C4A118BA903800A96958 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A886C4A218BA903800A96958 /* GCAccountMediaViewController.h */,
+				A886C4A318BA903800A96958 /* GCAccountMediaViewController.m */,
+				A886C4A418BA903800A96958 /* GCAlbumViewController.h */,
+				A886C4A518BA903800A96958 /* GCAlbumViewController.m */,
+				A886C4A618BA903800A96958 /* GCAssetsCollectionViewController.h */,
+				A886C4A718BA903800A96958 /* GCAssetsCollectionViewController.m */,
+				A886C4A818BA903800A96958 /* GCPhotoPickerViewController.h */,
+				A886C4A918BA903800A96958 /* GCPhotoPickerViewController.m */,
+				A886C4AA18BA903800A96958 /* PhotoPickerViewController.h */,
+				A886C4AB18BA903800A96958 /* PhotoPickerViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		A886C4AC18BA903800A96958 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A886C4AD18BA903800A96958 /* GCAccountAlbum.h */,
+				A886C4AE18BA903800A96958 /* GCAccountAlbum.m */,
+				A886C4AF18BA903800A96958 /* GCAccountAssets.h */,
+				A886C4B018BA903800A96958 /* GCAccountAssets.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A886C4B118BA903800A96958 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A886C4B218BA903800A96958 /* album_default.png */,
+				A886C4B318BA903800A96958 /* camera.png */,
+				A886C4B418BA903800A96958 /* chute.png */,
+				A886C4B518BA903800A96958 /* defaultThumb.png */,
+				A886C4B618BA903800A96958 /* dropbox.png */,
+				A886C4B718BA903800A96958 /* dropbox@2x.png */,
+				A886C4B818BA903800A96958 /* facebook.png */,
+				A886C4B918BA903800A96958 /* facebook@2x.png */,
+				A886C4BA18BA903800A96958 /* flickr.png */,
+				A886C4BB18BA903800A96958 /* flickr@2x.png */,
+				A886C4BC18BA903800A96958 /* google.png */,
+				A886C4BD18BA903800A96958 /* google@2x.png */,
+				A886C4BE18BA903800A96958 /* googledrive.png */,
+				A886C4BF18BA903800A96958 /* googledrive@2x.png */,
+				A886C4C018BA903800A96958 /* gradient_blue.png */,
+				A886C4C118BA903800A96958 /* instagram.png */,
+				A886C4C218BA903800A96958 /* instagram@2x.png */,
+				A886C4C318BA903800A96958 /* Localizations */,
+				A886C4C818BA903800A96958 /* overlay.png */,
+				A886C4C918BA903800A96958 /* overlay@2x.png */,
+				A886C4CA18BA903800A96958 /* picasa.png */,
+				A886C4CB18BA903800A96958 /* picasa@2x.png */,
+				A886C4CC18BA903800A96958 /* popover_arrow.png */,
+				A886C4CD18BA903800A96958 /* popover_border.png */,
+				A886C4CE18BA903800A96958 /* skydrive.png */,
+				A886C4CF18BA903800A96958 /* skydrive@2x.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		A886C4C318BA903800A96958 /* Localizations */ = {
+			isa = PBXGroup;
+			children = (
+				A886C4C418BA903800A96958 /* InfoPlist.strings */,
+				A886C4C618BA903800A96958 /* PhotoPickerPlus.strings */,
+			);
+			path = Localizations;
+			sourceTree = "<group>";
+		};
+		A886C4D018BA903800A96958 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A886C4D118BA903800A96958 /* GCPhotoCell.h */,
+				A886C4D218BA903800A96958 /* GCPhotoCell.m */,
+				A886C4D318BA903800A96958 /* GCPhotoPickerCell.h */,
+				A886C4D418BA903800A96958 /* GCPhotoPickerCell.m */,
+				A886C4D518BA903800A96958 /* GCPopoverBackgroundView.h */,
+				A886C4D618BA903800A96958 /* GCPopoverBackgroundView.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		A8C2156918A82FA700A210AC /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -318,41 +535,10 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
-		A8D0ECA118B6CCA6002018D7 /* ELCImagePicker */ = {
-			isa = PBXGroup;
-			children = (
-				A8D0ECA218B6CCA6002018D7 /* ELCAlbumPickerController.h */,
-				A8D0ECA318B6CCA6002018D7 /* ELCAlbumPickerController.m */,
-				A8D0ECA418B6CCA6002018D7 /* ELCAsset.h */,
-				A8D0ECA518B6CCA6002018D7 /* ELCAsset.m */,
-				A8D0ECA618B6CCA6002018D7 /* ELCAssetCell.h */,
-				A8D0ECA718B6CCA6002018D7 /* ELCAssetCell.m */,
-				A8D0ECA818B6CCA6002018D7 /* ELCAssetPickerFilterDelegate.h */,
-				A8D0ECA918B6CCA6002018D7 /* ELCAssetSelectionDelegate.h */,
-				A8D0ECAA18B6CCA6002018D7 /* ELCAssetTablePicker.h */,
-				A8D0ECAB18B6CCA6002018D7 /* ELCAssetTablePicker.m */,
-				A8D0ECAC18B6CCA6002018D7 /* ELCImagePickerController.h */,
-				A8D0ECAD18B6CCA6002018D7 /* ELCImagePickerController.m */,
-				A8D0ECAE18B6CCA6002018D7 /* Resources */,
-			);
-			path = ELCImagePicker;
-			sourceTree = "<group>";
-		};
-		A8D0ECAE18B6CCA6002018D7 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				A8D0ECAF18B6CCA6002018D7 /* ELCAlbumPickerController.xib */,
-				A8D0ECB018B6CCA6002018D7 /* ELCAssetPicker.xib */,
-				A8D0ECB118B6CCA6002018D7 /* ELCAssetTablePicker.xib */,
-				A8D0ECB218B6CCA6002018D7 /* Overlay.png */,
-				A8D0ECB318B6CCA6002018D7 /* Overlay@2x.png */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
 		D4DA79DF14D3345A0055F672 = {
 			isa = PBXGroup;
 			children = (
+				A886C48918BA903800A96958 /* PhotoPickerPlus */,
 				D4DA79F414D3345A0055F672 /* Gift */,
 				D4DA79ED14D3345A0055F672 /* Frameworks */,
 				D4DA79EB14D3345A0055F672 /* Products */,
@@ -485,29 +671,52 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A8D0ECB918B6CCA6002018D7 /* ELCAlbumPickerController.xib in Resources */,
 				D4DA79F914D3345A0055F672 /* InfoPlist.strings in Resources */,
 				6FF8496C18B1A38200B44161 /* login-button-small-pressed@2x.png in Resources */,
 				6FF8496F18B1A38D00B44161 /* login-button-small.png in Resources */,
+				A886C4EF18BA903800A96958 /* facebook@2x.png in Resources */,
 				D4DA7A7514D393DA0055F672 /* LoginViewController.xib in Resources */,
-				A8D0ECBD18B6CCA6002018D7 /* Overlay@2x.png in Resources */,
+				A886C4F718BA903800A96958 /* instagram.png in Resources */,
+				A886C4F518BA903800A96958 /* googledrive@2x.png in Resources */,
+				A886C4F918BA903800A96958 /* InfoPlist.strings in Resources */,
+				A886C4EA18BA903800A96958 /* chute.png in Resources */,
+				A886C4FF18BA903800A96958 /* popover_arrow.png in Resources */,
+				A886C50118BA903800A96958 /* skydrive.png in Resources */,
 				D4DA7AA914D39BCE0055F672 /* ProfileViewController.xib in Resources */,
 				6F90498218A6A520005326ED /* ShippingViewController.xib in Resources */,
+				A886C4ED18BA903800A96958 /* dropbox@2x.png in Resources */,
+				A886C4F218BA903800A96958 /* google.png in Resources */,
+				A886C4FE18BA903800A96958 /* picasa@2x.png in Resources */,
 				C4BB20D7161BC4FB00A7884A /* Default-568h@2x.png in Resources */,
+				A886C4DF18BA903800A96958 /* GCConfiguration.plist in Resources */,
+				A886C4F618BA903800A96958 /* gradient_blue.png in Resources */,
+				A886C4F118BA903800A96958 /* flickr@2x.png in Resources */,
 				C4BB20D8161BC4FB00A7884A /* Default.png in Resources */,
 				6FEAF6A318B1CDB200D26D34 /* albums.png in Resources */,
 				C4BB20D9161BC4FB00A7884A /* Default@2x.png in Resources */,
+				A886C4E818BA903800A96958 /* album_default.png in Resources */,
 				6F90497D18A6A451005326ED /* AlbumCollectionViewController.xib in Resources */,
-				A8D0ECBB18B6CCA6002018D7 /* ELCAssetTablePicker.xib in Resources */,
+				A886C4F018BA903800A96958 /* flickr.png in Resources */,
 				6F90498C18A6A858005326ED /* TemplatesViewController.xib in Resources */,
+				A886C50018BA903800A96958 /* popover_border.png in Resources */,
 				6FD04F9D18B2A45400EBF752 /* AlbumContentViewController.xib in Resources */,
 				A857FEE318B0306C00226E92 /* TemplateCell.xib in Resources */,
-				A8D0ECBA18B6CCA6002018D7 /* ELCAssetPicker.xib in Resources */,
+				A886C4EB18BA903800A96958 /* defaultThumb.png in Resources */,
+				A886C4EC18BA903800A96958 /* dropbox.png in Resources */,
+				A886C4FA18BA903800A96958 /* PhotoPickerPlus.strings in Resources */,
+				A886C50218BA903800A96958 /* skydrive@2x.png in Resources */,
 				6F90497318A6A3BC005326ED /* AlbumViewController.xib in Resources */,
+				A886C4F318BA903800A96958 /* google@2x.png in Resources */,
+				A886C4EE18BA903800A96958 /* facebook.png in Resources */,
 				C4DDA8AD16EE8A1900B5C174 /* Icon@2x.png in Resources */,
-				A8D0ECBC18B6CCA6002018D7 /* Overlay.png in Resources */,
+				A886C4F818BA903800A96958 /* instagram@2x.png in Resources */,
+				A886C4E918BA903800A96958 /* camera.png in Resources */,
+				A886C4FB18BA903800A96958 /* overlay.png in Resources */,
+				A886C4F418BA903800A96958 /* googledrive.png in Resources */,
 				6FF8496B18B1A38200B44161 /* login-button-small-pressed.png in Resources */,
+				A886C4FC18BA903800A96958 /* overlay@2x.png in Resources */,
 				C4DDA8AE16EE8A1900B5C174 /* Icon.png in Resources */,
+				A886C4FD18BA903800A96958 /* picasa.png in Resources */,
 				6FF8497018B1A38D00B44161 /* login-button-small@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -552,35 +761,62 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A88F915118BA8E8C00E7D316 /* ProfileViewController.m in Sources */,
+				A886C4E618BA903800A96958 /* GCAccountAlbum.m in Sources */,
+				A886C4E418BA903800A96958 /* GCPhotoPickerViewController.m in Sources */,
 				6FEF470E18AE811800CB6C3B /* AlbumCollectionViewLayout.m in Sources */,
+				A886C4DC18BA903800A96958 /* NSDictionary+GCAccountAsset.m in Sources */,
+				A886C50518BA903800A96958 /* GCPopoverBackgroundView.m in Sources */,
 				A8A2246E18B2DB3900EEABEC /* Template.m in Sources */,
 				6FEF471218AF0D8000CB6C3B /* AlbumCell.m in Sources */,
+				A886C4DD18BA903800A96958 /* NSObject+GCDictionary.m in Sources */,
 				D4DA79FB14D3345A0055F672 /* main.m in Sources */,
+				A886C4E018BA903800A96958 /* GCPhotoPickerConfiguration.m in Sources */,
 				6FAAC7DC18B4820C00F8F4F6 /* DraggableImageView.m in Sources */,
 				D4DA79FF14D3345A0055F672 /* AppDelegate.m in Sources */,
 				6FD04F9C18B2A45400EBF752 /* AlbumContentViewController.m in Sources */,
 				6FF8496018B1493000B44161 /* AlbumTitleReusableView.m in Sources */,
+				A886C4D918BA903800A96958 /* PhotoPickerClient.m in Sources */,
 				6FA1812E18A840E0007F4EAC /* Client.m in Sources */,
 				A857FEE218B0306C00226E92 /* TemplateCell.m in Sources */,
-				A8D0ECB718B6CCA6002018D7 /* ELCAssetTablePicker.m in Sources */,
+				A886C4E118BA903800A96958 /* GCAccountMediaViewController.m in Sources */,
+				A886C50318BA903800A96958 /* GCPhotoCell.m in Sources */,
 				6F90498118A6A520005326ED /* ShippingViewController.m in Sources */,
 				6F90497C18A6A451005326ED /* AlbumCollectionViewController.m in Sources */,
+				A886C4E318BA903800A96958 /* GCAssetsCollectionViewController.m in Sources */,
+				A886C4DB18BA903800A96958 /* NSDictionary+ALAsset.m in Sources */,
 				6F90498B18A6A858005326ED /* TemplatesViewController.m in Sources */,
-				A8D0ECB518B6CCA6002018D7 /* ELCAsset.m in Sources */,
-				A8D0ECB818B6CCA6002018D7 /* ELCImagePickerController.m in Sources */,
-				A8D0ECB618B6CCA6002018D7 /* ELCAssetCell.m in Sources */,
+				A886C4E518BA903800A96958 /* PhotoPickerViewController.m in Sources */,
+				A886C4DA18BA903800A96958 /* GCServicePicker.m in Sources */,
 				6F51ED6A18AB82E500D6AF01 /* Picture.m in Sources */,
+				A886C50418BA903800A96958 /* GCPhotoPickerCell.m in Sources */,
+				A886C4E218BA903800A96958 /* GCAlbumViewController.m in Sources */,
 				6F90497218A6A3BC005326ED /* AlbumViewController.m in Sources */,
-				A8D0ECB418B6CCA6002018D7 /* ELCAlbumPickerController.m in Sources */,
+				A886C4E718BA903800A96958 /* GCAccountAssets.m in Sources */,
 				6F51ED6718AB82CE00D6AF01 /* Album.m in Sources */,
 				D4DA7A7414D393DA0055F672 /* LoginViewController.m in Sources */,
-				D4DA7AA814D39BCE0055F672 /* ProfileViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		A886C4C418BA903800A96958 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A886C4C518BA903800A96958 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A886C4C618BA903800A96958 /* PhotoPickerPlus.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A886C4C718BA903800A96958 /* en */,
+			);
+			name = PhotoPickerPlus.strings;
+			sourceTree = "<group>";
+		};
 		D4DA79F714D3345A0055F672 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (

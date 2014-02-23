@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <MessageUI/MessageUI.h>
 #import "Album.h"
-#import "ELCImagePickerController.h"
+#import "PhotoPickerViewController.h"
 
-@interface AlbumViewController : UIViewController <MFMailComposeViewControllerDelegate, UIPageViewControllerDelegate, UIPageViewControllerDataSource,ELCImagePickerControllerDelegate, UIScrollViewDelegate>
+@interface AlbumViewController : UIViewController <MFMailComposeViewControllerDelegate, UIPageViewControllerDelegate, UIPageViewControllerDataSource, UIScrollViewDelegate, PhotoPickerViewControllerDelegate, UINavigationControllerDelegate>
 
 @property (nonatomic, strong) Album *album;
 @property (nonatomic, strong) NSMutableArray *picturesForAlbum;

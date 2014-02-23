@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>OAuth</key>
+	<string></string>
+	<key>New item</key>
+	<string></string>
+	<key>redirect_uri</key>
+	<string>http://getchute.com/oauth/callback</string>
+	<key>chute-sdk</key>
+	<dict>
+		<key>app_id</key>
+		<string>530a4bc46e2931285e00002f</string>
+		<key>app_secret</key>
+		<string>737f81190894b7d0842499bb37def450df41d652b7f64fbfa991ca595369ce58</string>
+	</dict>
+	<key>photopicker</key>
+	<dict>
+		<key>configuration_url</key>
+		<string>https://dl.dropboxusercontent.com/u/23635319/ChuteAPI/config.json</string>
+		<key>services</key>
+		<array>
+			<string>facebook</string>
+			<string>google</string>
+			<string>googledrive</string>
+			<string>instagram</string>
+			<string>flickr</string>
+			<string>picasa</string>
+			<string>dropbox</string>
+			<string>skydrive</string>
+		</array>
+		<key>local_features</key>
+		<array>
+			<string>take_photo</string>
+			<string>last_taken_photo</string>
+			<string>camera_photos</string>
+		</array>
+		<key>load_assets_from_web</key>
+		<true/>
+	</dict>
+</dict>
+</plist>

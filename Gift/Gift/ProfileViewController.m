@@ -114,11 +114,12 @@
     [self.profilePicture setImageWithURL:[NSURL URLWithString:userProfile[@"pictureURL"]] placeholderImage:nil];
     self.profilePicture.layer.cornerRadius = 50.0f;
     self.profilePicture.layer.masksToBounds = YES;
+    
 
     AFHTTPRequestOperation *postOperation = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:userProfile[@"coverURL"]]]];
-    postOperation.responseSerializer = [AFImageResponseSerializer serializer];
     [postOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        UIImage *blurredImage = [responseObject applyBlurWithRadius:10 tintColor:[UIColor colorWithRed:0.133 green:0.133 blue:0.133 alpha:0.4f] saturationDeltaFactor:1.0f maskImage:nil];
+        UIImage *blurredImage = [UIImage imageWithData:responseObject];
+        blurredImage = [blurredImage applyBlurWithRadius:10 tintColor:[UIColor colorWithRed:0.133 green:0.133 blue:0.133 alpha:0.4f] saturationDeltaFactor:1.0f maskImage:nil];
         self.coverPicture.image = blurredImage;
         self.coverPicture.layer.cornerRadius = 5.0f;
         self.coverPicture.layer.masksToBounds = YES;
