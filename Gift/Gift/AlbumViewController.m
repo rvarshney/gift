@@ -11,13 +11,11 @@
 #import "ShippingViewController.h"
 #import "Client.h"
 #import "Picture.h"
-#import "ELCImagePickerController.h"
-#import "ELCAlbumPickerController.h"
-#import "ELCAssetTablePicker.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface AlbumViewController ()
 
+@property (nonatomic, strong) UIPopoverController *popOverController;
 @property (nonatomic, strong) NSMutableDictionary *picturesForPages;
 @property (nonatomic, strong) UIPageViewController *pageViewController;
 
@@ -54,16 +52,16 @@
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
         self.edgesForExtendedLayout = UIRectEdgeNone;
     }
-
+    
     // Add email navigation bar button
     UIBarButtonItem *emailButton = [[UIBarButtonItem alloc] initWithTitle:@"Email" style:UIBarButtonItemStyleBordered target:self action:@selector(emailButtonHandler:)];
-
+    
     // Add print navigation bar button
     UIBarButtonItem *printButton = [[UIBarButtonItem alloc] initWithTitle:@"Print" style:UIBarButtonItemStyleBordered target:self action:@selector(printButtonHandler:)];
-
+    
     // Add the email and print buttons to the right
     self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:emailButton, printButton, nil];
-
+    
     // Group pictures by page number
     self.picturesForPages = [[NSMutableDictionary alloc] init];
     
@@ -88,7 +86,7 @@
     if (maxPageNum % 2 == 0) {
         self.picturesForPages[[NSNumber numberWithUnsignedInteger:maxPageNum + 1]] = [[NSMutableArray alloc] init];
     }
-
+    
     [self setupAlbumPageViewController];
     
     [self addScrollView];
@@ -109,7 +107,7 @@
     self.pageViewController.dataSource = self;
     
     AlbumContentViewController *contentViewController = [self createContentViewControllerWithPageNum:0];
-
+    
     NSArray *viewControllers = [NSArray arrayWithObject:contentViewController];
     [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
     [self addChildViewController:self.pageViewController];
@@ -121,9 +119,9 @@
     NSLayoutConstraint *topConstraint = [NSLayoutConstraint constraintWithItem:self.pageViewController.view attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1.0 constant:20];
     NSLayoutConstraint *leftConstraint = [NSLayoutConstraint constraintWithItem:self.pageViewController.view attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1.0 constant:20];
     NSLayoutConstraint *rightConstraint = [NSLayoutConstraint constraintWithItem:self.pageViewController.view attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1.0 constant:-20];
-
+    
     [self.view addConstraints:@[bottomConstraint, topConstraint, leftConstraint, rightConstraint]];
-
+    
     self.view.gestureRecognizers = self.pageViewController.gestureRecognizers;
 }
 
@@ -217,19 +215,19 @@
         case MFMailComposeResultCancelled:
             NSLog(@"MFMailComposeResultCancelled");
             break;
-
+            
         case MFMailComposeResultSaved:
             NSLog(@"MFMailComposeResultSaved");
             break;
-
+            
         case MFMailComposeResultFailed:
             NSLog(@"MFMailComposeResultFailed");
             break;
-
+            
         case MFMailComposeResultSent:
             NSLog(@"MFMailComposeResultSent");
             break;
-
+            
         default:
             break;
     }
@@ -308,7 +306,7 @@
     self.pictureScrollView.layer.borderWidth = 3.0f;
     [self.pictureScrollView setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.view addSubview:self.pictureScrollView];
-
+    
     self.heightConstraint = [NSLayoutConstraint constraintWithItem:self.pictureScrollView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeHeight multiplier:1.0 constant:200];
     NSLayoutConstraint *leftConstraint = [NSLayoutConstraint constraintWithItem:self.pictureScrollView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0];
     NSLayoutConstraint *rightConstraint = [NSLayoutConstraint constraintWithItem:self.pictureScrollView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1.0 constant:-200];
@@ -327,7 +325,7 @@
     NSLayoutConstraint *leftBtnConstraint = [NSLayoutConstraint constraintWithItem:self.addButton attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.pictureScrollView attribute:NSLayoutAttributeRight multiplier:1.0 constant:0];
     NSLayoutConstraint *rightBtnConstraint = [NSLayoutConstraint constraintWithItem:self.addButton attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1.0 constant:0];
     NSLayoutConstraint *bottomBtnConstraint = [NSLayoutConstraint constraintWithItem:self.addButton attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0];
-
+    
     [self.view addConstraints:@[self.heightBtnConstraint, leftBtnConstraint, rightBtnConstraint, bottomBtnConstraint]];
     
     // Pull up button
@@ -344,9 +342,9 @@
     NSLayoutConstraint *leftPullConstraint = [NSLayoutConstraint constraintWithItem:self.pullUpButton attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.addButton attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0];
     NSLayoutConstraint *rightPullConstraint = [NSLayoutConstraint constraintWithItem:self.pullUpButton attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1.0 constant:0];
     NSLayoutConstraint *bottomPullConstraint = [NSLayoutConstraint constraintWithItem:self.pullUpButton attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.addButton attribute:NSLayoutAttributeTop multiplier:1.0 constant:0];
-
+    
     [self.view addConstraints:@[self.heightPullConstraint, leftPullConstraint, rightPullConstraint, bottomPullConstraint]];
-
+    
     // Start in pull up state
     self.isSubViewVisible = YES;
 }
@@ -385,39 +383,7 @@
     }];
 }
 
-- (IBAction)launchController:(id)sender
-{
-	ELCImagePickerController *elcPicker = [[ELCImagePickerController alloc] initImagePicker];
-    elcPicker.maximumImagesCount = 14;
-    elcPicker.returnsOriginalImage = NO; // Only return the fullScreenImage, not the fullResolutionImage
-	elcPicker.imagePickerDelegate = self;
-
-    [self presentViewController:elcPicker animated:YES completion:nil];
-}
-
-- (void)displayPickerForGroup:(ALAssetsGroup *)group
-{
-	ELCAssetTablePicker *tablePicker = [[ELCAssetTablePicker alloc] initWithStyle:UITableViewStylePlain];
-    tablePicker.singleSelection = YES;
-    tablePicker.immediateReturn = YES;
-    
-	ELCImagePickerController *elcPicker = [[ELCImagePickerController alloc] initWithRootViewController:tablePicker];
-    elcPicker.maximumImagesCount = 1;
-    elcPicker.imagePickerDelegate = self;
-    elcPicker.returnsOriginalImage = NO; // Only return the fullScreenImage, not the fullResolutionImage
-	tablePicker.parent = elcPicker;
-    
-    // Move me
-    tablePicker.assetGroup = group;
-    [tablePicker.assetGroup setAssetsFilter:[ALAssetsFilter allAssets]];
-    
-    [self presentViewController:elcPicker animated:YES completion:nil];
-}
-
-#pragma mark - ELCImagePickerControllerDelegate Methods
-
-- (void)elcImagePickerController:(ELCImagePickerController *)picker didFinishPickingMediaWithInfo:(NSArray *)info
-{
+- (void)imagePickerController:(PhotoPickerViewController *)picker didFinishPickingArrayOfMediaWithInfo:(NSArray *)info{
     [self dismissViewControllerAnimated:YES completion:nil];
 	
     for (UIView *v in [self.pictureScrollView subviews]) {
@@ -440,8 +406,6 @@
         imageview.layer.borderColor = [UIColor blackColor].CGColor;
         imageview.layer.borderWidth = 3.0f;
         imageview.contentMode = UIViewContentModeScaleToFill;
-        // imageview.autoresizingMask = (UIViewAutoresizingFlexibleBottomMargin|UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleWidth);
-		
 		[self.pictureScrollView addSubview:imageview];
 		
 		workingFrame.origin.x = workingFrame.origin.x + workingFrame.size.width;
@@ -453,19 +417,16 @@
 	[self.pictureScrollView setContentSize:CGSizeMake(workingFrame.origin.x, workingFrame.size.height)];
 }
 
-- (void)elcImagePickerControllerDidCancel:(ELCImagePickerController *)picker
-{
+- (void)imagePickerControllerDidCancel:(PhotoPickerViewController *)picker{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)addButtonHandler:(id)sender
 {
-    ELCImagePickerController *elcPicker = [[ELCImagePickerController alloc] initImagePicker];
-    elcPicker.maximumImagesCount = 14;
-    elcPicker.returnsOriginalImage = NO; // Only return the fullScreenImage, not the fullResolutionImage
-	elcPicker.imagePickerDelegate = self;
-    
-    [self presentViewController:elcPicker animated:YES completion:nil];
+    PhotoPickerViewController *picker = [[PhotoPickerViewController alloc ] initWithTitle:@"Select Photo"];
+    [picker setDelegate:self];
+    [picker setIsMultipleSelectionEnabled:YES]; // [picker setIsMultipleSelectionEnabled:YES] - for multiple choice.
+    [self presentViewController:picker animated:YES completion:nil];
 }
 
 - (IBAction)pushButtonHandler:(id)sender
