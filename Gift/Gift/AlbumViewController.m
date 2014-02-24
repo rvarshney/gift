@@ -62,6 +62,16 @@
         self.edgesForExtendedLayout = UIRectEdgeNone;
     }
     
+    // Set up editable title
+    UITextField *titleTextField = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 200, 22)];
+    titleTextField.text = self.album.title;
+    titleTextField.font = [UIFont boldSystemFontOfSize:19];
+    titleTextField.textColor = [UIColor blackColor];
+    titleTextField.textAlignment = NSTextAlignmentCenter;
+    titleTextField.returnKeyType = UIReturnKeyDone;
+    titleTextField.delegate = self;
+    self.navigationItem.titleView = titleTextField;
+
     // Add email navigation bar button
     UIBarButtonItem *emailButton = [[UIBarButtonItem alloc] initWithTitle:@"Email" style:UIBarButtonItemStyleBordered target:self action:@selector(emailButtonHandler:)];
     
@@ -194,6 +204,21 @@
     NSLog(@"documentDirectoryFileName: %@", documentDirectoryFilename);
     
     return documentDirectoryFilename;
+}
+
+#pragma mark - UITextField delegate methods
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    // Update the album title
+    self.album.title = textField.text;
+    [self.album saveInBackground];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
 }
 
 #pragma mark - MFMailComposeViewControllerDelegate methods

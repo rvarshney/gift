@@ -11,7 +11,7 @@
 #import "Album.h"
 #import "PhotoPickerViewController.h"
 
-@interface AlbumViewController : UIViewController <MFMailComposeViewControllerDelegate, UIPageViewControllerDelegate, UIPageViewControllerDataSource, UIScrollViewDelegate, PhotoPickerViewControllerDelegate, UINavigationControllerDelegate>
+@interface AlbumViewController : UIViewController <MFMailComposeViewControllerDelegate, UIPageViewControllerDelegate, UIPageViewControllerDataSource, UIScrollViewDelegate, PhotoPickerViewControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate>
 
 @property (nonatomic, strong) Album *album;
 @property (nonatomic, strong) NSMutableArray *picturesForAlbum;
