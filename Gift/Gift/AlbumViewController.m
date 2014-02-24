@@ -82,9 +82,13 @@
         }
     }
     
-    NSUInteger maxPageNum = [[[self.picturesForPages allKeys] valueForKeyPath:@"@max.unsignedIntegerValue"]unsignedIntegerValue];
+    // Check if this is a brand new album
+    if (self.picturesForPages.count == 0) {
+        self.picturesForPages[[NSNumber numberWithUnsignedInteger:0]] = [[NSMutableArray alloc] init];
+    }
     
     // Even out the number of pages we see in the album
+    NSUInteger maxPageNum = [[[self.picturesForPages allKeys] valueForKeyPath:@"@max.unsignedIntegerValue"]unsignedIntegerValue];
     if (maxPageNum % 2 == 0) {
         self.picturesForPages[[NSNumber numberWithUnsignedInteger:maxPageNum + 1]] = [[NSMutableArray alloc] init];
     }
