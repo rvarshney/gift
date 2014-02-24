@@ -7,7 +7,7 @@
 //
 
 #import "AlbumContentViewController.h"
-#import "DraggableImageView.h"
+#import "AlbumImageView.h"
 #import "Picture.h"
 
 @interface AlbumContentViewController ()
@@ -47,7 +47,7 @@
     self.labelText.text = [NSString stringWithFormat:@"%d", self.pageNum];
     for (Picture *picture in self.pictures)
     {
-        DraggableImageView *imageView = [[DraggableImageView alloc] initWithPicture:picture];
+        AlbumImageView *imageView = [[AlbumImageView alloc] initWithPicture:picture];
         [self.view addSubview:imageView];
     }
 }

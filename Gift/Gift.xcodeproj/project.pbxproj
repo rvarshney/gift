@@ -21,7 +21,7 @@
 		6F9468C718B9FB8300DB2078 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F9468C618B9FB8200DB2078 /* background.png */; };
 		6F9468C918BA013400DB2078 /* plus_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F9468C818BA013400DB2078 /* plus_white.png */; };
 		6FA1812E18A840E0007F4EAC /* Client.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FA1812D18A840E0007F4EAC /* Client.m */; };
-		6FAAC7DC18B4820C00F8F4F6 /* DraggableImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FAAC7DB18B4820C00F8F4F6 /* DraggableImageView.m */; };
+		6FAAC7DC18B4820C00F8F4F6 /* AlbumImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FAAC7DB18B4820C00F8F4F6 /* AlbumImageView.m */; };
 		6FD04F9C18B2A45400EBF752 /* AlbumContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FD04F9A18B2A45400EBF752 /* AlbumContentViewController.m */; };
 		6FD04F9D18B2A45400EBF752 /* AlbumContentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FD04F9B18B2A45400EBF752 /* AlbumContentViewController.xib */; };
 		6FEAF6A318B1CDB200D26D34 /* albums.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FEAF6A218B1CDB200D26D34 /* albums.png */; };
@@ -132,8 +132,8 @@
 		6F9468C818BA013400DB2078 /* plus_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus_white.png; sourceTree = "<group>"; };
 		6FA1812C18A840E0007F4EAC /* Client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Client.h; sourceTree = "<group>"; };
 		6FA1812D18A840E0007F4EAC /* Client.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Client.m; sourceTree = "<group>"; };
-		6FAAC7DA18B4820C00F8F4F6 /* DraggableImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DraggableImageView.h; path = Gift/DraggableImageView.h; sourceTree = "<group>"; };
-		6FAAC7DB18B4820C00F8F4F6 /* DraggableImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DraggableImageView.m; path = Gift/DraggableImageView.m; sourceTree = "<group>"; };
+		6FAAC7DA18B4820C00F8F4F6 /* AlbumImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlbumImageView.h; path = Gift/AlbumImageView.h; sourceTree = "<group>"; };
+		6FAAC7DB18B4820C00F8F4F6 /* AlbumImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlbumImageView.m; path = Gift/AlbumImageView.m; sourceTree = "<group>"; };
 		6FD04F9918B2A45400EBF752 /* AlbumContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumContentViewController.h; sourceTree = "<group>"; };
 		6FD04F9A18B2A45400EBF752 /* AlbumContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumContentViewController.m; sourceTree = "<group>"; };
 		6FD04F9B18B2A45400EBF752 /* AlbumContentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlbumContentViewController.xib; sourceTree = "<group>"; };
@@ -370,8 +370,8 @@
 				6FEF471118AF0D8000CB6C3B /* AlbumCell.m */,
 				6FF8495E18B1493000B44161 /* AlbumTitleReusableView.h */,
 				6FF8495F18B1493000B44161 /* AlbumTitleReusableView.m */,
-				6FAAC7DA18B4820C00F8F4F6 /* DraggableImageView.h */,
-				6FAAC7DB18B4820C00F8F4F6 /* DraggableImageView.m */,
+				6FAAC7DA18B4820C00F8F4F6 /* AlbumImageView.h */,
+				6FAAC7DB18B4820C00F8F4F6 /* AlbumImageView.m */,
 			);
 			name = Views;
 			path = ..;
@@ -779,7 +779,7 @@
 				A886C4DD18BA903800A96958 /* NSObject+GCDictionary.m in Sources */,
 				D4DA79FB14D3345A0055F672 /* main.m in Sources */,
 				A886C4E018BA903800A96958 /* GCPhotoPickerConfiguration.m in Sources */,
-				6FAAC7DC18B4820C00F8F4F6 /* DraggableImageView.m in Sources */,
+				6FAAC7DC18B4820C00F8F4F6 /* AlbumImageView.m in Sources */,
 				D4DA79FF14D3345A0055F672 /* AppDelegate.m in Sources */,
 				6FF98B4118BAA04400B784A5 /* Template.m in Sources */,
 				6FD04F9C18B2A45400EBF752 /* AlbumContentViewController.m in Sources */,

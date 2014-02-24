@@ -8,7 +8,7 @@
 
 #import "AlbumViewController.h"
 #import "AlbumContentViewController.h"
-#import "DraggableImageView.h"
+#import "AlbumImageView.h"
 #import "ShippingViewController.h"
 #import "Client.h"
 #import "Picture.h"
@@ -35,9 +35,10 @@
 
 @property (nonatomic, assign) BOOL isScrollViewVisible;
 
-@property (nonatomic, assign) CGRect moveStartLocation;
+@property (nonatomic, assign) CGRect moveStartFrame;
 @property (nonatomic, assign) CGPoint movePreviousLocation;
 @property (nonatomic, strong) UIImageView *moveImageView;
+@property (nonatomic, strong) AlbumContentViewController *moveStartPage;
 
 @end
 
@@ -309,18 +310,36 @@
 
 # pragma mark - Long press gesture
 
-- (DraggableImageView *)draggableImageViewForPage:(NSUInteger)pageNum atLocation:(CGPoint)atLocation
+- (AlbumImageView *)albumImageViewForPage:(NSUInteger)pageNum atLocation:(CGPoint)atLocation
 {
-    NSString *imageName = objc_getAssociatedObject(self.moveImageView, "imageName");
-    NSData *imageData = UIImageJPEGRepresentation(self.moveImageView.image, 0);
-    Picture *picture = [[Client instance] createPictureForAlbum:self.album imageName:imageName imageData:imageData pageNumber:pageNum rotationAngle:[NSNumber numberWithFloat:0] x:[NSNumber numberWithFloat:atLocation.x] y:[NSNumber numberWithFloat:atLocation.y] height:[NSNumber numberWithFloat:200] width:[NSNumber numberWithFloat:200] completion:nil];
+    AlbumImageView *albumImageView;
     
-    [((NSMutableArray *)self.picturesForPages[[NSNumber numberWithUnsignedInteger:pageNum]]) addObject:picture];
+    NSNumber *xLocation = [NSNumber numberWithFloat:(atLocation.x - self.moveImageView.bounds.size.width / 2)];
+    NSNumber *yLocation = [NSNumber numberWithFloat:(atLocation.y - self.moveImageView.bounds.size.height / 2)];
     
-    DraggableImageView *draggableImageView = [[DraggableImageView alloc] initWithPicture:picture];
-    draggableImageView.image = [UIImage imageWithData:imageData];
-    
-    return draggableImageView;
+    if ([self.moveImageView class] == [AlbumImageView class]) {
+        // Update the location of the album image
+        albumImageView = (AlbumImageView *)self.moveImageView;
+        [((NSMutableArray *)self.picturesForPages[albumImageView.picture.pageNumber]) removeObject:albumImageView.picture];
+        albumImageView.picture.x = xLocation;
+        albumImageView.picture.y = yLocation;
+        albumImageView.picture.pageNumber = [NSNumber numberWithUnsignedInteger:pageNum];
+        [albumImageView.picture saveInBackground];
+        [albumImageView updateFrame];
+        
+        [((NSMutableArray *)self.picturesForPages[albumImageView.picture.pageNumber]) addObject:albumImageView.picture];
+
+    } else {
+        NSString *imageName = objc_getAssociatedObject(self.moveImageView, "imageName");
+        NSData *imageData = UIImageJPEGRepresentation(self.moveImageView.image, 0);
+        Picture *picture = [[Client instance] createPictureForAlbum:self.album imageName:imageName imageData:imageData pageNumber:pageNum rotationAngle:[NSNumber numberWithFloat:0] x:xLocation y:yLocation height:[NSNumber numberWithFloat:200] width:[NSNumber numberWithFloat:200] completion:nil];
+        
+        [((NSMutableArray *)self.picturesForPages[[NSNumber numberWithUnsignedInteger:pageNum]]) addObject:picture];
+        
+        albumImageView = [[AlbumImageView alloc] initWithPicture:picture];
+        albumImageView.image = [UIImage imageWithData:imageData];
+    }
+    return albumImageView;
 }
 
 - (void)longPressHandler:(UILongPressGestureRecognizer *)gesture
@@ -328,17 +347,51 @@
     if (gesture.state == UIGestureRecognizerStateBegan) {
         CGPoint locationInView = [gesture locationInView:self.view];
         CGPoint locationInScrollView = [gesture locationInView:self.pictureScrollView];
+        
+        AlbumContentViewController *firstPage = self.pageViewController.viewControllers[0];
+        AlbumContentViewController *secondPage = self.pageViewController.viewControllers[1];
+        
+        CGPoint locationInFirstPage = [gesture locationInView:firstPage.view];
+        CGPoint locationInSecondPage = [gesture locationInView:secondPage.view];
+        
         if (CGRectContainsPoint(self.pictureScrollView.bounds, locationInScrollView)) {
             for (UIView *view in self.pictureScrollView.subviews) {
-                NSLog(@"Frame is %f, %f, %f, %f", view.frame.origin.x, view.frame.origin.y, view.frame.size.width, view.frame.size.height);
                 if (CGRectContainsPoint(view.frame, locationInScrollView) && [view class] == [UIImageView class]) {
-                    NSLog(@"got %@", view);
-                    self.moveStartLocation = CGRectMake(view.frame.origin.x, view.frame.origin.y, view.frame.size.width, view.frame.size.height);
+                    self.moveStartFrame = CGRectMake(view.frame.origin.x, view.frame.origin.y, view.frame.size.width, view.frame.size.height);
                     view.frame = CGRectMake(locationInView.x - 150/2, locationInView.y - 150/2, 150, 150);
                     [view removeFromSuperview];
                     [self.view addSubview:view];
                     self.movePreviousLocation = locationInView;
                     self.moveImageView = (UIImageView *)view;
+                    NSLog(@"Long press detected in scroll view");
+                    break;
+                }
+            }
+        } else if (CGRectContainsPoint(firstPage.view.bounds, locationInFirstPage)) {
+            for (UIView *view in firstPage.view.subviews) {
+                if (CGRectContainsPoint(view.frame, locationInFirstPage) && [view class] == [AlbumImageView class]) {
+                    self.moveStartFrame = CGRectMake(view.frame.origin.x, view.frame.origin.y, view.frame.size.width, view.frame.size.height);
+                    self.moveStartPage = firstPage;
+                    view.frame = CGRectMake(locationInView.x - 200/2, locationInView.y - 200/2, 200, 200);
+                    [view removeFromSuperview];
+                    [self.view addSubview:view];
+                    self.movePreviousLocation = locationInView;
+                    self.moveImageView = (UIImageView *)view;
+                    NSLog(@"Long press detected in first page");
+                    break;
+                }
+            }
+        } else if (CGRectContainsPoint(secondPage.view.bounds, locationInSecondPage)) {
+            for (UIView *view in secondPage.view.subviews) {
+                if (CGRectContainsPoint(view.frame, locationInSecondPage) && [view class] == [AlbumImageView class]) {
+                    self.moveStartFrame = CGRectMake(view.frame.origin.x, view.frame.origin.y, view.frame.size.width, view.frame.size.height);
+                    self.moveStartPage = secondPage;
+                    view.frame = CGRectMake(locationInView.x - 200/2, locationInView.y - 200/2, 200, 200);
+                    [view removeFromSuperview];
+                    [self.view addSubview:view];
+                    self.movePreviousLocation = locationInView;
+                    self.moveImageView = (UIImageView *)view;
+                    NSLog(@"Long press detected in second page");
                     break;
                 }
             }
@@ -355,37 +408,81 @@
         }
     } else if (gesture.state == UIGestureRecognizerStateEnded) {
         if (self.moveImageView) {
+            CGPoint locationInScrollView = [gesture locationInView:self.pictureScrollView];
+
             AlbumContentViewController *firstPage = self.pageViewController.viewControllers[0];
             AlbumContentViewController *secondPage = self.pageViewController.viewControllers[1];
 
             CGPoint locationInFirstPage = [gesture locationInView:firstPage.view];
             CGPoint locationInSecondPage = [gesture locationInView:secondPage.view];
-
-            if (CGRectContainsPoint(firstPage.view.bounds, locationInFirstPage)) {
-                NSLog(@"Page %d: %f, %f", firstPage.pageNum, locationInFirstPage.x, locationInFirstPage.y);
-                DraggableImageView *draggableImageView = [self draggableImageViewForPage:firstPage.pageNum atLocation:locationInFirstPage];
-                [firstPage.view addSubview:draggableImageView];
-                [self.moveImageView removeFromSuperview];
             
-            } else if (CGRectContainsPoint(secondPage.view.bounds, locationInSecondPage)){
-                NSLog(@"Page %d: %f, %f", secondPage.pageNum, locationInSecondPage.x, locationInSecondPage.y);
-                DraggableImageView *draggableImageView = [self draggableImageViewForPage:secondPage.pageNum atLocation:locationInSecondPage];
-                [secondPage.view addSubview:draggableImageView];
+            if (CGRectContainsPoint(self.pictureScrollView.bounds, locationInScrollView)) {
+                if ([self.moveImageView class] == [AlbumImageView class]) {
+                    // Snap back to original location
+                    NSLog(@"Snapping to original location");
+                    CGFloat centerX = self.moveStartFrame.origin.x + self.moveStartFrame.size.width / 2;
+                    CGFloat centerY = self.moveStartFrame.origin.y + self.moveStartFrame.size.height / 2;
+                    AlbumImageView *albumImageView = [self albumImageViewForPage:self.moveStartPage.pageNum atLocation:CGPointMake(centerX, centerY)];
+                    [self.moveImageView removeFromSuperview];
+                    [self.moveStartPage.view addSubview:albumImageView];
+                } else {
+                    // Snap back to the scroll view
+                    NSLog(@"Snapping to scroll view");
+                    [self.moveImageView removeFromSuperview];
+                    self.moveImageView.frame = self.moveStartFrame;
+                    [self.pictureScrollView addSubview:self.moveImageView];
+                }
+            } else if (CGRectContainsPoint(firstPage.view.bounds, locationInFirstPage)) {
+                // Add to first page
+                NSLog(@"Moving to first page");
+                AlbumImageView *albumImageView = [self albumImageViewForPage:firstPage.pageNum atLocation:locationInFirstPage];
                 [self.moveImageView removeFromSuperview];
+                [firstPage.view addSubview:albumImageView];
+                
+            } else if (CGRectContainsPoint(secondPage.view.bounds, locationInSecondPage)) {
+                // Add to second page
+                NSLog(@"Moving to second page");
+                AlbumImageView *albumImageView = [self albumImageViewForPage:secondPage.pageNum atLocation:locationInSecondPage];
+                [self.moveImageView removeFromSuperview];
+                [secondPage.view addSubview:albumImageView];
                 
             } else {
-                [self.moveImageView removeFromSuperview];
-                self.moveImageView.frame = self.moveStartLocation;
-                [self.pictureScrollView addSubview:self.moveImageView];
+                // It was dropped outside the bounds of both pages
+                if ([self.moveImageView class] == [AlbumImageView class]) {
+                    // Delete the picture
+                    NSLog(@"Deleting");
+                    AlbumImageView *albumImageView = (AlbumImageView *)self.moveImageView;
+                    [(NSMutableArray *)self.picturesForPages[[NSNumber numberWithUnsignedInteger:self.moveStartPage.pageNum]] removeObject:albumImageView.picture];
+                    [self.moveImageView removeFromSuperview];
+                    [albumImageView.picture deleteInBackground];
+                } else {
+                    // Snap back to the scroll view
+                    NSLog(@"Snapping to scroll view");
+                    [self.moveImageView removeFromSuperview];
+                    self.moveImageView.frame = self.moveStartFrame;
+                    [self.pictureScrollView addSubview:self.moveImageView];
+                }
             }
         }
         self.moveImageView = nil;
         
     } else if (gesture.state == UIGestureRecognizerStateCancelled) {
         if (self.moveImageView) {
-            [self.moveImageView removeFromSuperview];
-            self.moveImageView.frame = self.moveStartLocation;
-            [self.pictureScrollView addSubview:self.moveImageView];
+            if ([self.moveImageView class] == [AlbumImageView class]) {
+                // Snap back to original location
+                NSLog(@"Snapping to original location");
+                CGFloat centerX = self.moveStartFrame.origin.x + self.moveStartFrame.size.width / 2;
+                CGFloat centerY = self.moveStartFrame.origin.y + self.moveStartFrame.size.height / 2;
+                AlbumImageView *albumImageView = [self albumImageViewForPage:self.moveStartPage.pageNum atLocation:CGPointMake(centerX, centerY)];
+                [self.moveImageView removeFromSuperview];
+                [self.moveStartPage.view addSubview:albumImageView];
+            } else {
+                // Snap back to the scroll view
+                NSLog(@"Snapping to scroll view");
+                [self.moveImageView removeFromSuperview];
+                self.moveImageView.frame = self.moveStartFrame;
+                [self.pictureScrollView addSubview:self.moveImageView];
+            }
         }
         self.moveImageView = nil;
     }
