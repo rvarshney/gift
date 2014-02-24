@@ -62,11 +62,18 @@
     [self setupProfileView];
 
     [self setupCollectionView];
+    
+    // Add long press handler
+    UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressHandler:)];
+    longPressGesture.delegate = self;
+    [self.collectionView addGestureRecognizer:longPressGesture];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+
+    self.navigationController.interactivePopGestureRecognizer.enabled = NO;
 
     if (UIInterfaceOrientationIsLandscape(self.interfaceOrientation)) {
         ((AlbumCollectionViewLayout *)self.collectionViewLayout).numColumns = 4;
@@ -126,6 +133,28 @@
     albumViewController.album = album;
     albumViewController.picturesForAlbum = self.picturesForAlbums[album.objectId];
     [self.navigationController pushViewController:albumViewController animated:YES];
+}
+
+- (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender
+{
+    return YES;
+}
+
+#pragma mark - Long press gesture methods
+
+- (void)longPressHandler:(UIGestureRecognizer *)gesture
+{
+    CGPoint location = [gesture locationInView:self.collectionView];
+    NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:location];
+    NSLog(@"path %@", indexPath);
+
+    //[self.collectionView.visibleCells makeObjectsPerformSelector:@selector(startDancing)];
+
+    // Delete the items from the data source.
+    //[self deleteItemsFromDataSourceAtIndexPaths:itemPaths];
+    // Now delete the items from the collection view.
+    //[self.collectionView deleteItemsAtIndexPaths:tempArray];
+
 }
 
 #pragma mark - View Rotation
