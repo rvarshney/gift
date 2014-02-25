@@ -64,7 +64,7 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    Album *album = [[Client instance] createAlbumWithTitle:@"Untitled Album" user:[PFUser currentUser] template:self.templates[indexPath.row] completion:nil];
+    Album *album = [[Client instance] createAlbumForUser:[PFUser currentUser] title:@"Untitled Album" template:self.templates[indexPath.row] completion:nil];
 
     AlbumViewController *albumViewController = [[AlbumViewController alloc]init];
     albumViewController.album = album;

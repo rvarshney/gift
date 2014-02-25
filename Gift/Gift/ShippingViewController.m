@@ -9,11 +9,10 @@
 #import <Parse/Parse.h>
 #import "ShippingViewController.h"
 #import "STPView.h"
-
+#import "Client.h"
 
 #define STRIPE_PUBLISHABLE_KEY @"pk_test_WYMOjn1zNM8emFRAEFDkgxVS"
-#define PRICE_PER_ALBUM 19.99
-
+#define PRICE_PER_ALBUM 20.00
 
 @interface ShippingViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
@@ -106,21 +105,26 @@
 - (void)hasToken:(STPToken *)token
 {
     NSLog(@"Received token %@", token.tokenId);
-    NSDictionary *orderInfo = @{@"album": self.album.objectId,
-                                @"quantity": [NSNumber numberWithInteger:[self.quantityTextField.text integerValue]],
-                                @"price": [NSNumber numberWithFloat:[self.priceLabel.text floatValue]],
-                                @"total": [NSNumber numberWithFloat:[self.totalLabel.text floatValue]],
-                                @"cardToken": token.tokenId,
-                                @"name": self.nameTextField.text,
-                                @"email": self.emailTextField.text,
-                                @"address": self.addressTextField.text,
-                                @"zip": self.zipTextField.text,
-                                @"city": self.cityTextField.text,
-                                @"state": self.stateTextField.text};
+
+    NSNumber *quantity = [NSNumber numberWithInteger:[self.quantityTextField.text integerValue]];
+    NSNumber *price = [NSNumber numberWithFloat:[self.priceLabel.text floatValue]];
+    NSNumber *total = [NSNumber numberWithFloat:[self.totalLabel.text floatValue]];
+    NSString *cardToken = token.tokenId;
+    NSData *fileData = [NSData dataWithContentsOfFile:self.albumFile];
+
+    NSDictionary *shippingInfo = @{@"name": self.nameTextField.text,
+                                   @"email": self.emailTextField.text,
+                                   @"address": self.addressTextField.text,
+                                   @"zip": self.zipTextField.text,
+                                   @"city": self.cityTextField.text,
+                                   @"state": self.stateTextField.text};
+
+    // Create an order
+    Order *order = [[Client instance] createOrderForUser:[PFUser currentUser] album:self.album fileData:fileData price:price quantity:quantity total:total shippingInfo:shippingInfo cardToken:cardToken];
     
-    [PFCloud callFunctionInBackground:@"purchaseItem" withParameters:orderInfo block:^(id object, NSError *error) {
+    [PFCloud callFunctionInBackground:@"purchaseItem" withParameters:@{@"order": order.objectId} block:^(id object, NSError *error) {
         if (error) {
-            NSLog(@"Error ordering file");
+            NSLog(@"Error ordering album");
         } else {
             [self.navigationController popViewControllerAnimated:YES];
         }

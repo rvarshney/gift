@@ -17,7 +17,7 @@
     return instance;
 }
 
-- (Album *)createAlbumWithTitle:(NSString *)title user:(PFUser *)user template:(Template *)template completion:(void (^)(BOOL succeeded, NSError *error))completion
+- (Album *)createAlbumForUser:(PFUser *)user title:(NSString *)title template:(Template*)template completion:(void (^)(BOOL succeeded, NSError *error))completion
 {
     Album *album = [Album object];
     album.title = title;

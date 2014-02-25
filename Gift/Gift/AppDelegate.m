@@ -18,6 +18,7 @@
     [Album registerSubclass];
     [Picture registerSubclass];
     [Template registerSubclass];
+    [Order registerSubclass];
     
     [Parse setApplicationId:@"LoNqaUqU69t4r5F70vdWnigEWYce8Qe9dWyYYyKP" clientKey:@"biCM1eT3PUXjCw0UWMsWtsdBeRdKoL0GAYOqjVF9"];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];

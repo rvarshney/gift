@@ -19,7 +19,7 @@
 + (Client *)instance;
 
 // Albums API
-- (Album *)createAlbumWithTitle:(NSString *)title user:(PFUser *)user template:(Template*)template completion:(void (^)(BOOL succeeded, NSError *error))completion;
+- (Album *)createAlbumForUser:(PFUser *)user title:(NSString *)title template:(Template*)template completion:(void (^)(BOOL succeeded, NSError *error))completion;
 
 - (void)albumsForUser:(PFUser *)user completion:(void (^)(NSArray *albums, NSError *error))completion;
 
