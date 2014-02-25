@@ -13,6 +13,6 @@
 @interface ShippingViewController : UIViewController <STPViewDelegate, UITextFieldDelegate>
 
 @property (nonatomic, strong) Album *album;
-@property (nonatomic, strong) NSString *albumPath;
+@property (nonatomic, strong) NSString *albumFile;
 
 @end

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		30C949AC1829561000B17666 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30C949AB1829561000B17666 /* FacebookSDK.framework */; };
 		6D10F48316DD68E000690A0F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D10F48216DD68E000690A0F /* CoreLocation.framework */; };
+		6F69813D18BCF62A00BC7D12 /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F69813C18BCF62A00BC7D12 /* Order.m */; };
 		6F90497218A6A3BC005326ED /* AlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F90497018A6A3BC005326ED /* AlbumViewController.m */; };
 		6F90497318A6A3BC005326ED /* AlbumViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F90497118A6A3BC005326ED /* AlbumViewController.xib */; };
 		6F90497C18A6A451005326ED /* AlbumCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F90497A18A6A451005326ED /* AlbumCollectionViewController.m */; };
@@ -115,6 +116,8 @@
 		400A3945A7A04690BB32CBDF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		689293C421184EF494D23F05 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		6D10F48216DD68E000690A0F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		6F69813B18BCF62A00BC7D12 /* Order.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Order.h; path = Gift/Order.h; sourceTree = "<group>"; };
+		6F69813C18BCF62A00BC7D12 /* Order.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Order.m; path = Gift/Order.m; sourceTree = "<group>"; };
 		6F90496F18A6A3BC005326ED /* AlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumViewController.h; sourceTree = "<group>"; };
 		6F90497018A6A3BC005326ED /* AlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumViewController.m; sourceTree = "<group>"; };
 		6F90497118A6A3BC005326ED /* AlbumViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlbumViewController.xib; sourceTree = "<group>"; };
@@ -536,6 +539,8 @@
 				6FF98B4818BAA17800B784A5 /* Picture.m */,
 				6FF98B3F18BAA04400B784A5 /* Template.h */,
 				6FF98B4018BAA04400B784A5 /* Template.m */,
+				6F69813B18BCF62A00BC7D12 /* Order.h */,
+				6F69813C18BCF62A00BC7D12 /* Order.m */,
 			);
 			name = Models;
 			path = ..;
@@ -780,6 +785,7 @@
 				D4DA79FB14D3345A0055F672 /* main.m in Sources */,
 				A886C4E018BA903800A96958 /* GCPhotoPickerConfiguration.m in Sources */,
 				6FAAC7DC18B4820C00F8F4F6 /* AlbumImageView.m in Sources */,
+				6F69813D18BCF62A00BC7D12 /* Order.m in Sources */,
 				D4DA79FF14D3345A0055F672 /* AppDelegate.m in Sources */,
 				6FF98B4118BAA04400B784A5 /* Template.m in Sources */,
 				6FD04F9C18B2A45400EBF752 /* AlbumContentViewController.m in Sources */,

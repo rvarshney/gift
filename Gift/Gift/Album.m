@@ -13,7 +13,6 @@
 
 @dynamic title;
 @dynamic user;
-@dynamic numPages;
 @dynamic template;
 
 

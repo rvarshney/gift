@@ -12,7 +12,8 @@
 
 
 #define STRIPE_PUBLISHABLE_KEY @"pk_test_WYMOjn1zNM8emFRAEFDkgxVS"
-#define PRICE_PER_PAGE 2.0
+#define PRICE_PER_ALBUM 19.99
+
 
 @interface ShippingViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
@@ -70,7 +71,7 @@
     
     // Start with one album
     self.quantityTextField.text = @"1";
-    self.priceLabel.text = [NSString stringWithFormat:@"%.02f", (self.album.numPages * PRICE_PER_PAGE)];
+    self.priceLabel.text = [NSString stringWithFormat:@"%.02f", PRICE_PER_ALBUM];
     self.totalLabel.text = self.priceLabel.text;
 }
 
@@ -129,7 +130,7 @@
 - (IBAction)quantityChanged:(id)sender
 {
     NSInteger quantity = [self.quantityTextField.text integerValue];
-    self.totalLabel.text = [NSString stringWithFormat:@"%.02f", (self.album.numPages * PRICE_PER_PAGE * quantity)];
+    self.totalLabel.text = [NSString stringWithFormat:@"%.02f", (PRICE_PER_ALBUM * quantity)];
 }
 
 @end

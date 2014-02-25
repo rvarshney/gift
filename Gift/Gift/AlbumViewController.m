@@ -159,11 +159,11 @@
 
 - (void)emailButtonHandler:(id)sender
 {
-    NSString *albumPDFPath = [self printAlbumToPDF];
-    
+    NSString *albumFile = [self printAlbumToFile];
+
     NSError *error = nil;
-    BOOL emailSent = [self sendEmailWithSubject:self.album.title to:[NSArray arrayWithObject:@""] cc:nil bcc:nil body:@"Check out my new album built on the Memories app!" isHTML:YES delegate:self files:[NSArray arrayWithObjects:albumPDFPath, nil] error:&error];
-    
+    BOOL emailSent = [self sendEmailWithSubject:self.album.title to:[NSArray arrayWithObject:@""] cc:nil bcc:nil body:@"Check out my new album built on the Memories app!" isHTML:YES delegate:self files:[NSArray arrayWithObjects:albumFile, nil] error:&error];
+
     if (!emailSent) {
         NSLog(@"Failed with error: %@",error);
     }
@@ -171,15 +171,13 @@
 
 - (void)printButtonHandler:(id)sender
 {
-    NSString *albumPDFPath = [self printAlbumToPDF];
-    
     ShippingViewController *shippingViewController = [[ShippingViewController alloc] init];
     shippingViewController.album = self.album;
-    shippingViewController.albumPath = albumPDFPath;
+    shippingViewController.albumFile = [self printAlbumToFile];
     [self.navigationController pushViewController:shippingViewController animated:YES];
 }
 
-- (NSString *)printAlbumToPDF
+- (NSString *)printAlbumToFile
 {
     NSMutableData *pdfData = [NSMutableData data];
     UIGraphicsBeginPDFContextToData(pdfData, CGRectZero, nil);
@@ -355,9 +353,8 @@
         [((NSMutableArray *)self.picturesForPages[albumImageView.picture.pageNumber]) addObject:albumImageView.picture];
 
     } else {
-        NSString *imageName = objc_getAssociatedObject(self.moveImageView, "imageName");
         NSData *imageData = UIImageJPEGRepresentation(self.moveImageView.image, 0);
-        Picture *picture = [[Client instance] createPictureForAlbum:self.album imageName:imageName imageData:imageData pageNumber:pageNum rotationAngle:[NSNumber numberWithFloat:0] x:xLocation y:yLocation height:[NSNumber numberWithFloat:200] width:[NSNumber numberWithFloat:200] completion:nil];
+        Picture *picture = [[Client instance] createPictureForAlbum:self.album imageData:imageData pageNumber:pageNum rotationAngle:[NSNumber numberWithFloat:0] x:xLocation y:yLocation height:[NSNumber numberWithFloat:200] width:[NSNumber numberWithFloat:200] completion:nil];
         
         [((NSMutableArray *)self.picturesForPages[[NSNumber numberWithUnsignedInteger:pageNum]]) addObject:picture];
         
@@ -632,11 +629,7 @@
         imageView.layer.borderColor = [UIColor whiteColor].CGColor;
         imageView.layer.borderWidth = 3.0f;
         [self.pictureScrollView addSubview:imageView];
-        
         workingFrame.origin.x = workingFrame.origin.x + workingFrame.size.width;
-        
-        NSString *assetURL = [dict objectForKey:UIImagePickerControllerReferenceURL];
-        objc_setAssociatedObject(imageView, "imageName", [assetURL lastPathComponent], OBJC_ASSOCIATION_RETAIN);
 	}
     
     [self.pictureScrollView setPagingEnabled:YES];
@@ -650,7 +643,7 @@
 
 - (IBAction)addButtonHandler:(id)sender
 {
-    PhotoPickerViewController *picker = [[PhotoPickerViewController alloc ] initWithTitle:@"Select Photo"];
+    PhotoPickerViewController *picker = [[PhotoPickerViewController alloc ] initWithTitle:@"Select Pictures"];
     [picker setDelegate:self];
     [picker setIsMultipleSelectionEnabled:YES];
     [self presentViewController:picker animated:YES completion:nil];
