@@ -29,9 +29,9 @@
 @property (nonatomic, strong) UIButton *pullUpButton;
 
 
-@property (nonatomic, strong) NSLayoutConstraint *heightPullConstraint;
-@property (nonatomic, strong) NSLayoutConstraint *heightBtnConstraint;
-@property (nonatomic, strong) NSLayoutConstraint *heightConstraint;
+@property (nonatomic, strong) NSLayoutConstraint *bottomBtnConstraint;
+@property (nonatomic, strong) NSLayoutConstraint *bottomConstraint;
+
 
 @property (nonatomic, assign) BOOL isScrollViewVisible;
 
@@ -523,12 +523,12 @@
     [self.pictureScrollView setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.view addSubview:self.pictureScrollView];
 
-    self.heightConstraint = [NSLayoutConstraint constraintWithItem:self.pictureScrollView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeHeight multiplier:1.0 constant:150];
+    NSLayoutConstraint *heightConstraint = [NSLayoutConstraint constraintWithItem:self.pictureScrollView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeHeight multiplier:1.0 constant:150];
     NSLayoutConstraint *leftConstraint = [NSLayoutConstraint constraintWithItem:self.pictureScrollView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0];
     NSLayoutConstraint *rightConstraint = [NSLayoutConstraint constraintWithItem:self.pictureScrollView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1.0 constant:-150];
-    NSLayoutConstraint *bottomConstraint = [NSLayoutConstraint constraintWithItem:self.pictureScrollView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0];
+    self.bottomConstraint = [NSLayoutConstraint constraintWithItem:self.pictureScrollView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0];
     
-    [self.view addConstraints:@[self.heightConstraint, leftConstraint, rightConstraint, bottomConstraint]];
+    [self.view addConstraints:@[heightConstraint, leftConstraint, rightConstraint, self.bottomConstraint]];
     
     UIImage *btnImage = [UIImage imageNamed:@"plus_white.png"];
     self.addButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -539,12 +539,12 @@
     [self.addButton addTarget:self action:@selector(addButtonHandler:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.addButton];
     
-    self.heightBtnConstraint = [NSLayoutConstraint constraintWithItem:self.addButton attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeHeight multiplier:1.0 constant:150];
+    NSLayoutConstraint *heightBtnConstraint = [NSLayoutConstraint constraintWithItem:self.addButton attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeHeight multiplier:1.0 constant:150];
     NSLayoutConstraint *leftBtnConstraint = [NSLayoutConstraint constraintWithItem:self.addButton attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.pictureScrollView attribute:NSLayoutAttributeRight multiplier:1.0 constant:0];
     NSLayoutConstraint *rightBtnConstraint = [NSLayoutConstraint constraintWithItem:self.addButton attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1.0 constant:0];
-    NSLayoutConstraint *bottomBtnConstraint = [NSLayoutConstraint constraintWithItem:self.addButton attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0];
+    self.bottomBtnConstraint = [NSLayoutConstraint constraintWithItem:self.addButton attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0];
     
-    [self.view addConstraints:@[self.heightBtnConstraint, leftBtnConstraint, rightBtnConstraint, bottomBtnConstraint]];
+    [self.view addConstraints:@[heightBtnConstraint, leftBtnConstraint, rightBtnConstraint, self.bottomBtnConstraint]];
     
     // Pull up button
     self.pullUpButton = [[UIButton alloc] initWithFrame:CGRectMake(self.pictureScrollView.frame.size.width + 10,  self.view.frame.size.height, self.view.frame.size.width - self.pictureScrollView.frame.size.width, 45)];
@@ -555,13 +555,13 @@
     
     [self.view addSubview:self.pullUpButton];
     
-    self.heightPullConstraint = [NSLayoutConstraint constraintWithItem:self.pullUpButton attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeHeight multiplier:1.0 constant:45];
+    NSLayoutConstraint *heightPullConstraint = [NSLayoutConstraint constraintWithItem:self.pullUpButton attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeHeight multiplier:1.0 constant:45];
     
     NSLayoutConstraint *leftPullConstraint = [NSLayoutConstraint constraintWithItem:self.pullUpButton attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.addButton attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0];
     NSLayoutConstraint *rightPullConstraint = [NSLayoutConstraint constraintWithItem:self.pullUpButton attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1.0 constant:0];
     NSLayoutConstraint *bottomPullConstraint = [NSLayoutConstraint constraintWithItem:self.pullUpButton attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.addButton attribute:NSLayoutAttributeTop multiplier:1.0 constant:0];
     
-    [self.view addConstraints:@[self.heightPullConstraint, leftPullConstraint, rightPullConstraint, bottomPullConstraint]];
+    [self.view addConstraints:@[heightPullConstraint, leftPullConstraint, rightPullConstraint, bottomPullConstraint]];
     
     // Start in pull up state
     self.isScrollViewVisible = YES;
@@ -570,17 +570,12 @@
 -(void)pullUp
 {
     [UIView animateWithDuration:0.3 animations:^{
-        CGRect pictureFrame = self.pictureScrollView.frame;
-        pictureFrame.origin.y -= pictureFrame.size.height;
-        self.pictureScrollView.frame = pictureFrame;
+        self.bottomConstraint.constant = 0;
+        self.bottomBtnConstraint.constant = 0;
         
-        CGRect frame = self.addButton.frame;
-        frame.origin.y -= pictureFrame.size.height;
-        self.addButton.frame = frame;
-        
-        frame = self.pullUpButton.frame;
-        frame.origin.y -= pictureFrame.size.height;
-        self.pullUpButton.frame = frame;
+        [self.pictureScrollView layoutIfNeeded];
+        [self.addButton layoutIfNeeded];
+        [self.pullUpButton layoutIfNeeded];
 
         self.isScrollViewVisible = YES;
     } completion:^(BOOL finished) {
@@ -591,17 +586,12 @@
 -(void)pushDown
 {
     [UIView animateWithDuration:0.3 animations:^{
-        CGRect pictureFrame = self.pictureScrollView.frame;
-        pictureFrame.origin.y += pictureFrame.size.height;
-        self.pictureScrollView.frame = pictureFrame;
-
-        CGRect frame = self.addButton.frame;
-        frame.origin.y += pictureFrame.size.height;
-        self.addButton.frame = frame;
+        self.bottomConstraint.constant = 150;
+        self.bottomBtnConstraint.constant = 150;
         
-        frame = self.pullUpButton.frame;
-        frame.origin.y += pictureFrame.size.height;
-        self.pullUpButton.frame = frame;
+        [self.pictureScrollView layoutIfNeeded];
+        [self.addButton layoutIfNeeded];
+        [self.pullUpButton layoutIfNeeded];
 
         self.isScrollViewVisible = NO;
     } completion:^(BOOL finished) {
