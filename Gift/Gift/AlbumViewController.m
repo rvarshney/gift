@@ -110,6 +110,7 @@
 
     // Setup long press gesture recognizer
     UILongPressGestureRecognizer *gestureRecognizer = [[UILongPressGestureRecognizer alloc] init];
+    gestureRecognizer.minimumPressDuration = 0.3;
     [gestureRecognizer addTarget:self action:@selector(longPressHandler:)];
     self.view.userInteractionEnabled = YES;
     [self.view addGestureRecognizer: gestureRecognizer];

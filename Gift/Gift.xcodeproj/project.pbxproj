@@ -22,6 +22,7 @@
 		6F9468C718B9FB8300DB2078 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F9468C618B9FB8200DB2078 /* background.png */; };
 		6F9468C918BA013400DB2078 /* plus_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F9468C818BA013400DB2078 /* plus_white.png */; };
 		6FA1812E18A840E0007F4EAC /* Client.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FA1812D18A840E0007F4EAC /* Client.m */; };
+		6FA30B5518BFAB67001870F9 /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FA30B5418BFAB67001870F9 /* plus.png */; };
 		6FAAC7DC18B4820C00F8F4F6 /* AlbumImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FAAC7DB18B4820C00F8F4F6 /* AlbumImageView.m */; };
 		6FD04F9C18B2A45400EBF752 /* AlbumContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FD04F9A18B2A45400EBF752 /* AlbumContentViewController.m */; };
 		6FD04F9D18B2A45400EBF752 /* AlbumContentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FD04F9B18B2A45400EBF752 /* AlbumContentViewController.xib */; };
@@ -135,6 +136,7 @@
 		6F9468C818BA013400DB2078 /* plus_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus_white.png; sourceTree = "<group>"; };
 		6FA1812C18A840E0007F4EAC /* Client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Client.h; sourceTree = "<group>"; };
 		6FA1812D18A840E0007F4EAC /* Client.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Client.m; sourceTree = "<group>"; };
+		6FA30B5418BFAB67001870F9 /* plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus.png; sourceTree = "<group>"; };
 		6FAAC7DA18B4820C00F8F4F6 /* AlbumImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlbumImageView.h; path = Gift/AlbumImageView.h; sourceTree = "<group>"; };
 		6FAAC7DB18B4820C00F8F4F6 /* AlbumImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlbumImageView.m; path = Gift/AlbumImageView.m; sourceTree = "<group>"; };
 		6FD04F9918B2A45400EBF752 /* AlbumContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumContentViewController.h; sourceTree = "<group>"; };
@@ -383,6 +385,7 @@
 		A857FED218B0302400226E92 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				6FA30B5418BFAB67001870F9 /* plus.png */,
 				6F9468C818BA013400DB2078 /* plus_white.png */,
 				6F9468C618B9FB8200DB2078 /* background.png */,
 				6FEAF6A218B1CDB200D26D34 /* albums.png */,
@@ -693,6 +696,7 @@
 				A886C4EA18BA903800A96958 /* chute.png in Resources */,
 				A886C4FF18BA903800A96958 /* popover_arrow.png in Resources */,
 				A886C50118BA903800A96958 /* skydrive.png in Resources */,
+				6FA30B5518BFAB67001870F9 /* plus.png in Resources */,
 				6F9468C718B9FB8300DB2078 /* background.png in Resources */,
 				D4DA7AA914D39BCE0055F672 /* ProfileViewController.xib in Resources */,
 				6F90498218A6A520005326ED /* ShippingViewController.xib in Resources */,

@@ -62,11 +62,6 @@
     [self setupProfileView];
 
     [self setupCollectionView];
-    
-    // Add long press handler
-    UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressHandler:)];
-    longPressGesture.delegate = self;
-    [self.collectionView addGestureRecognizer:longPressGesture];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -104,13 +99,26 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     AlbumCell *albumCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"AlbumCell" forIndexPath:indexPath];
-    
+
     Album *album = self.albums[indexPath.section];
+
+    // Special case the create new album
+    if (indexPath.section == 0) {
+        albumCell.coverPictureImageView.image = [UIImage imageNamed:@"plus.png"];
+        albumCell.coverPictureImageView.alpha = 0.5f;
+        return albumCell;
+    }
+
     NSArray *pictures = self.picturesForAlbums[album.objectId];
     if (pictures && pictures.count != 0) {
+        // Load the first image of the album as the cover page
         albumCell.coverPictureImageView.file = ((Picture *)pictures[0]).image;
+        albumCell.coverPictureImageView.alpha = 1.0f;
         [albumCell.coverPictureImageView loadInBackground];
+    } else {
+        albumCell.coverPictureImageView.image = nil;
     }
+
     return albumCell;
 }
 
@@ -127,34 +135,16 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     Album *album = self.albums[indexPath.section];
-    NSLog(@"Selected album: %@", album);
 
-    AlbumViewController *albumViewController = [[AlbumViewController alloc] init];
-    albumViewController.album = album;
-    albumViewController.picturesForAlbum = self.picturesForAlbums[album.objectId];
-    [self.navigationController pushViewController:albumViewController animated:YES];
-}
-
-- (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender
-{
-    return YES;
-}
-
-#pragma mark - Long press gesture methods
-
-- (void)longPressHandler:(UIGestureRecognizer *)gesture
-{
-    CGPoint location = [gesture locationInView:self.collectionView];
-    NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:location];
-    NSLog(@"path %@", indexPath);
-
-    //[self.collectionView.visibleCells makeObjectsPerformSelector:@selector(startDancing)];
-
-    // Delete the items from the data source.
-    //[self deleteItemsFromDataSourceAtIndexPaths:itemPaths];
-    // Now delete the items from the collection view.
-    //[self.collectionView deleteItemsAtIndexPaths:tempArray];
-
+    // First album is create new album
+    if (indexPath.section == 0) {
+        [self newButtonHandler:nil];
+    } else {
+        AlbumViewController *albumViewController = [[AlbumViewController alloc] init];
+        albumViewController.album = album;
+        albumViewController.picturesForAlbum = self.picturesForAlbums[album.objectId];
+        [self.navigationController pushViewController:albumViewController animated:YES];
+    }
 }
 
 #pragma mark - View Rotation
@@ -198,8 +188,8 @@
 {
     [[Client instance] albumsForUser:[PFUser currentUser] completion:^(NSArray *albums, NSError *error) {
         if (!error) {
-            NSLog(@"Albums: %@", albums);
             self.albums = [albums mutableCopy];
+
             // Get the pictures for each album
             for (Album *album in albums) {
                 [[Client instance] picturesForAlbum:album completion:^(NSArray *pictures, NSError *error) {
@@ -211,6 +201,11 @@
                     }
                 }];
             }
+            
+            Album *createNew = [Album object];
+            createNew.title = @"Create New";
+            [self.albums insertObject:createNew atIndex:0];
+
         } else {
             NSLog(@"Error %@", [error localizedDescription]);
         }
