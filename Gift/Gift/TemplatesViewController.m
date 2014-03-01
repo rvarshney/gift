@@ -18,6 +18,7 @@
 @interface TemplatesViewController ()
 
 @property (nonatomic, strong)NSArray *templates;
+@property (nonatomic, strong)Template *currentTemplate;
 @property (nonatomic, strong)UITapGestureRecognizer *tapGesture;
 
 @end
@@ -133,7 +134,8 @@
     nvc.modalPresentationStyle = UIModalPresentationFormSheet;
     nvc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     
-    previewVC.template = self.templates[indexPath.row];
+    self.currentTemplate = self.templates[indexPath.row];
+    previewVC.template = self.currentTemplate;
     
     //add cancel button to the nvc
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleDone target:self action:@selector(cancelPreview:)];
@@ -152,7 +154,7 @@
     
     
     //TODO: how to get the correct template index here?
-    Album *album = [[Client instance] createAlbumForUser:[PFUser currentUser] title:@"Untitled Album" template:self.templates[0] completion:nil];
+    Album *album = [[Client instance] createAlbumForUser:[PFUser currentUser] title:@"Untitled Album" template:self.currentTemplate completion:nil];
     
     AlbumViewController *albumViewController = [[AlbumViewController alloc]init];
     albumViewController.album = album;
