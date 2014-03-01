@@ -591,7 +591,7 @@
     NSLayoutConstraint *leftPullConstraint = [NSLayoutConstraint constraintWithItem:self.pullUpButton attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.addButton attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0];
     NSLayoutConstraint *rightPullConstraint = [NSLayoutConstraint constraintWithItem:self.pullUpButton attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1.0 constant:0];
     NSLayoutConstraint *bottomPullConstraint = [NSLayoutConstraint constraintWithItem:self.pullUpButton attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.addButton attribute:NSLayoutAttributeTop multiplier:1.0 constant:0];
-    
+
     [self.view addConstraints:@[heightPullConstraint, leftPullConstraint, rightPullConstraint, bottomPullConstraint]];
     
     // Start in pull up state
@@ -639,7 +639,7 @@
     
     CGRect workingFrame = CGRectMake(0, 0, 150, 150);
     workingFrame.origin.x = 0;
-    
+
     for (NSDictionary *dict in info) {
         UIImage *image = [dict objectForKey:UIImagePickerControllerOriginalImage];
         UIImageView *imageView = [[UIImageView alloc] initWithImage:image];

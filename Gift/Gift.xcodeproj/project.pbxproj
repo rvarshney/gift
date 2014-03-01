@@ -87,6 +87,9 @@
 		A8C2156518A8148500A210AC /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C2156418A8148500A210AC /* MessageUI.framework */; };
 		A8C2157118A83CDC00A210AC /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C2157018A83CDC00A210AC /* Parse.framework */; };
 		A8D0ECBF18B6CCBC002018D7 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8D0ECBE18B6CCBC002018D7 /* AssetsLibrary.framework */; };
+		A8DADBEA18BC699C00CCD323 /* TemplatesPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8DADBE818BC699C00CCD323 /* TemplatesPreviewViewController.m */; };
+		A8DADBEB18BC699C00CCD323 /* TemplatesPreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8DADBE918BC699C00CCD323 /* TemplatesPreviewViewController.xib */; };
+		A8DD290818BD8C6C006754DB /* white-book-cover.png in Resources */ = {isa = PBXBuildFile; fileRef = A8DD290718BD8C6C006754DB /* white-book-cover.png */; };
 		C425016D161BBAE400474BCD /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4250169161BBAE400474BCD /* StoreKit.framework */; };
 		C4250170161BBAEE00474BCD /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C425016F161BBAEE00474BCD /* libz.dylib */; };
 		C4BB20D7161BC4FB00A7884A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4BB20D4161BC4FB00A7884A /* Default-568h@2x.png */; };
@@ -226,6 +229,10 @@
 		A8C2156418A8148500A210AC /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		A8C2157018A83CDC00A210AC /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		A8D0ECBE18B6CCBC002018D7 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		A8DADBE718BC699C00CCD323 /* TemplatesPreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplatesPreviewViewController.h; sourceTree = "<group>"; };
+		A8DADBE818BC699C00CCD323 /* TemplatesPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplatesPreviewViewController.m; sourceTree = "<group>"; };
+		A8DADBE918BC699C00CCD323 /* TemplatesPreviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TemplatesPreviewViewController.xib; sourceTree = "<group>"; };
+		A8DD290718BD8C6C006754DB /* white-book-cover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white-book-cover.png"; sourceTree = "<group>"; };
 		C4250169161BBAE400474BCD /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		C425016F161BBAEE00474BCD /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		C4BB20D4161BC4FB00A7884A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -333,6 +340,9 @@
 				6F90498818A6A858005326ED /* TemplatesViewController.h */,
 				6F90498918A6A858005326ED /* TemplatesViewController.m */,
 				6F90498A18A6A858005326ED /* TemplatesViewController.xib */,
+				A8DADBE718BC699C00CCD323 /* TemplatesPreviewViewController.h */,
+				A8DADBE818BC699C00CCD323 /* TemplatesPreviewViewController.m */,
+				A8DADBE918BC699C00CCD323 /* TemplatesPreviewViewController.xib */,
 			);
 			name = Templates;
 			sourceTree = "<group>";
@@ -386,6 +396,7 @@
 			isa = PBXGroup;
 			children = (
 				6FA30B5418BFAB67001870F9 /* plus.png */,
+				A8DD290718BD8C6C006754DB /* white-book-cover.png */,
 				6F9468C818BA013400DB2078 /* plus_white.png */,
 				6F9468C618B9FB8200DB2078 /* background.png */,
 				6FEAF6A218B1CDB200D26D34 /* albums.png */,
@@ -685,6 +696,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8DADBEB18BC699C00CCD323 /* TemplatesPreviewViewController.xib in Resources */,
 				D4DA79F914D3345A0055F672 /* InfoPlist.strings in Resources */,
 				6FF8496C18B1A38200B44161 /* login-button-small-pressed@2x.png in Resources */,
 				6FF8496F18B1A38D00B44161 /* login-button-small.png in Resources */,
@@ -728,6 +740,7 @@
 				C4DDA8AD16EE8A1900B5C174 /* Icon@2x.png in Resources */,
 				A886C4F818BA903800A96958 /* instagram@2x.png in Resources */,
 				A886C4E918BA903800A96958 /* camera.png in Resources */,
+				A8DD290818BD8C6C006754DB /* white-book-cover.png in Resources */,
 				A886C4FB18BA903800A96958 /* overlay.png in Resources */,
 				A886C4F418BA903800A96958 /* googledrive.png in Resources */,
 				6FF8496B18B1A38200B44161 /* login-button-small-pressed.png in Resources */,
@@ -810,6 +823,7 @@
 				A886C4DA18BA903800A96958 /* GCServicePicker.m in Sources */,
 				A886C50418BA903800A96958 /* GCPhotoPickerCell.m in Sources */,
 				A886C4E218BA903800A96958 /* GCAlbumViewController.m in Sources */,
+				A8DADBEA18BC699C00CCD323 /* TemplatesPreviewViewController.m in Sources */,
 				6F90497218A6A3BC005326ED /* AlbumViewController.m in Sources */,
 				A886C4E718BA903800A96958 /* GCAccountAssets.m in Sources */,
 				D4DA7A7414D393DA0055F672 /* LoginViewController.m in Sources */,
