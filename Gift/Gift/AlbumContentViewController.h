@@ -16,4 +16,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelText;
 @property (nonatomic, strong) Album *album;
 
+- (void)showPlacementViews;
+- (void)hidePlacementViews;
+- (CGRect)placementRectForLocation:(CGPoint)location;
+
 @end
