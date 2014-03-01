@@ -44,33 +44,21 @@
     
     self.leftView = [[PFImageView alloc]initWithFrame:CGRectMake(20, 100, self.view.frame.size.width/2 - 20, self.view.frame.size.height - 200)];
 
-    self.leftView.layer.borderWidth = 1.0f;
-    self.leftView.layer.borderColor = [UIColor blackColor].CGColor;
-    self.leftView.layer.cornerRadius = 8;
-    self.leftView.layer.masksToBounds = YES;
+    self.leftView.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.leftView.layer.shadowRadius = 3.0f;
+    self.leftView.layer.shadowOffset = CGSizeMake(0.0f, 2.0f);
+    self.leftView.layer.shadowOpacity = 0.5f;
     
     [self.view addSubview:self.leftView];
-    //
-    [self.leftView.layer setShadowColor:[UIColor blackColor].CGColor];
-    [self.leftView.layer setShadowOpacity:0.8];
-    [self.leftView.layer setShadowRadius:5.0];
-    [self.leftView.layer setShadowOffset:CGSizeMake(2.0, 2.0)];
-    
-    
+
     self.rightView = [[PFImageView alloc]initWithFrame:CGRectMake(self.leftView.frame.size.width+20, 100, self.view.frame.size.width/2 - 20, self.view.frame.size.height - 200)];
-    
-    self.rightView.layer.borderWidth = 1.0f;
-    self.rightView.layer.borderColor = [UIColor blackColor].CGColor;
-    self.rightView.layer.cornerRadius = 8;
-    self.rightView.layer.masksToBounds = YES;
+
+    self.rightView.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.rightView.layer.shadowRadius = 3.0f;
+    self.rightView.layer.shadowOffset = CGSizeMake(0.0f, 2.0f);
+    self.rightView.layer.shadowOpacity = 0.5f;
     
     [self.view addSubview:self.rightView];
-    //
-    [self.rightView.layer setShadowColor:[UIColor blackColor].CGColor];
-    [self.rightView.layer setShadowOpacity:0.8];
-    [self.rightView.layer setShadowRadius:5.0];
-    [self.rightView.layer setShadowOffset:CGSizeMake(2.0, 2.0)];
-    NSLog(@"");
     
     [self.leftView setFile:self.template.themeLeft];
     [self.leftView loadInBackground];

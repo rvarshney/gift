@@ -67,7 +67,7 @@
     // Set up editable title
     UITextField *titleTextField = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 200, 22)];
     titleTextField.text = self.album.title;
-    titleTextField.font = [UIFont boldSystemFontOfSize:19];
+    titleTextField.font = [UIFont boldSystemFontOfSize:17];
     titleTextField.textColor = [UIColor blackColor];
     titleTextField.textAlignment = NSTextAlignmentCenter;
     titleTextField.returnKeyType = UIReturnKeyDone;
