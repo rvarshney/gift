@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="188" height="151"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hearts-cover.png" id="Bvi-Fm-a2x" customClass="PFImageView">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Bvi-Fm-a2x" customClass="PFImageView">
                         <rect key="frame" x="44" y="20" width="78" height="85"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
@@ -32,7 +32,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="hearts-cover.png" width="1313" height="1813"/>
         <image name="white-book-cover.png" width="833" height="560"/>
     </resources>
 </document>
