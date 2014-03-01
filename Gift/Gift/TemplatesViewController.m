@@ -17,9 +17,9 @@
 
 @interface TemplatesViewController ()
 
-@property (nonatomic, strong)NSArray *templates;
-@property (nonatomic, strong)Template *currentTemplate;
-@property (nonatomic, strong)UITapGestureRecognizer *tapGesture;
+@property (nonatomic, strong) NSArray *templates;
+@property (nonatomic, strong) Template *currentTemplate;
+@property (nonatomic, strong) UITapGestureRecognizer *tapGesture;
 
 @end
 
@@ -50,26 +50,11 @@
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     
-    [self.view setUserInteractionEnabled:YES];
-    
-}
-
--(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-    
-    //add tap gesture on main template view to detect the tap outside the modal. This should cancel the modal
-    if(!self.tapGesture)
-        self.tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self
-                                            action:@selector(templateTapHandler:)];
+    self.tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(templateTapHandler:)];
     self.tapGesture.numberOfTapsRequired = 1;
     self.tapGesture.cancelsTouchesInView = NO;
-    [self.view.window addGestureRecognizer:self.tapGesture];
-}
-
--(void)viewDidDisappear:(BOOL)animated{
-    if(self.tapGesture)
-        [self.view.window removeGestureRecognizer:self.tapGesture];
-    [super viewDidDisappear:animated];
+    
+    [self.view setUserInteractionEnabled:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -90,34 +75,24 @@
     return cell;
 }
 
--(void)displayAlbumCoverForCell:(TemplateCell*)cell{
+- (void)displayAlbumCoverForCell:(TemplateCell *)cell
+{
     //    cell.frame = CGRectMake(cell.frame.origin.x, cell.frame.origin.y, 600, 600);
-    
     //    cell.templateImage.layer.anchorPoint = CGPointMake(0.5, 0.5);
-    
     //    cell.templateImage.transform = CGAffineTransformMakeScale(2, 2);
-    
     //    cell.templateImage.layer.borderColor = [UIColor blackColor].CGColor;
     //    cell.templateImage.layer.borderWidth = 2.0f;
-    
     
     //    CALayer *layer = cell.templateImage.layer;
     //    CATransform3D rotationAndPerspectiveTransform = CATransform3DIdentity;
     //    rotationAndPerspectiveTransform.m34 = 1.0 / -500;
     //    rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, 45.0f * M_PI / 180.0f, 0.0f, 1.0f, 0.0f);
     //    layer.transform = rotationAndPerspectiveTransform;
-    
-    
-    
-    //0.6
+
     //    cell.templateImage.transform = CGAffineTransformMake(0.6, 0.6, 1, 0, 0, 0);
-    //        cell.templateImage.transform = CGAffineTransformMakeScale(1, 1); //rotation in radians
+    //    cell.templateImage.transform = CGAffineTransformMakeScale(1, 1); //rotation in radians
     //    cell.templateImage.transform = CGAffineTransformScale(cell.templateImage.transform, 2, 2);
-    
     //    cell.templateImage.transform = CGAffineTransformMakeRotation(-24*M_PI/180);
-    
-    
-    //does not work
     //    cell.templateImage.transform = CGAffineTransformMake(1, 0, -0.2, 1, 0, 0);
     //    CGRectApplyAffineTransform(cell.templateImage.bounds, CGAffineTransformMakeRotation(-24*M_PI/180));
     //    [cell.templateImage setTransform:CGAffineTransformMakeScale (3, 1)];
@@ -126,34 +101,34 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    //show preview
-    TemplatesPreviewViewController *previewVC = [[TemplatesPreviewViewController alloc]init];
-    
-    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:previewVC];
-    nvc.modalPresentationStyle = UIModalPresentationFormSheet;
-    nvc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    
     self.currentTemplate = self.templates[indexPath.row];
-    previewVC.template = self.currentTemplate;
     
-    //add cancel button to the nvc
+    // Show preview
+    TemplatesPreviewViewController *previewViewController = [[TemplatesPreviewViewController alloc]init];
+    previewViewController.template = self.currentTemplate;
+    
+    // Add cancel button
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleDone target:self action:@selector(cancelPreview:)];
-    previewVC.navigationItem.leftBarButtonItem = cancelButton;
+    previewViewController.navigationItem.leftBarButtonItem = cancelButton;
     
-//    //add select button to the nvc
+    // Add select button
     UIBarButtonItem *createAlbumButton = [[UIBarButtonItem alloc] initWithTitle:@"Select" style:UIBarButtonItemStyleDone target:self action:@selector(createAlbum:)];
-    previewVC.navigationItem.rightBarButtonItem = createAlbumButton;
+    previewViewController.navigationItem.rightBarButtonItem = createAlbumButton;
     
-    [self.navigationController presentViewController:nvc animated:YES completion:nil];
+    // Embed in navigation controller
+    UINavigationController *navigationViewController = [[UINavigationController alloc] initWithRootViewController:previewViewController];
+    navigationViewController.modalPresentationStyle = UIModalPresentationFormSheet;
+    
+    // Add a tap gesture to detect touches outside the modal
+    [self.view.window addGestureRecognizer:self.tapGesture];
+
+    [self.navigationController presentViewController:navigationViewController animated:YES completion:nil];
 }
 
--(void)createAlbum:(UIBarButtonItem *)sender{
-    NSLog(@"createAlbum");
+-(void)createAlbum:(UIBarButtonItem *)sender
+{
     [self dismissViewControllerAnimated:YES completion:nil];
-    
-    
-    //TODO: how to get the correct template index here?
+
     Album *album = [[Client instance] createAlbumForUser:[PFUser currentUser] title:@"Untitled Album" template:self.currentTemplate completion:nil];
     
     AlbumViewController *albumViewController = [[AlbumViewController alloc]init];
@@ -168,23 +143,18 @@
     return [self.templates count];
 }
 
--(void)cancelPreview:(UIBarButtonItem *)sender{
-    NSLog(@"cancelPreview");
+-(void)cancelPreview:(UIBarButtonItem *)sender
+{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)templateTapHandler:(UITapGestureRecognizer *)recognizer {
-    if (recognizer.state == UIGestureRecognizerStateEnded)
-    {
-        //Passing nil gives us coordinates in the window
-        CGPoint location = [recognizer locationInView:nil];
-        
-        //Convert tap location into the local view's coordinate system. If outside, dismiss the view.
-        if (self.presentedViewController && ![self.presentedViewController.view pointInside:[self.presentedViewController.view convertPoint:location fromView:self.view.window] withEvent:nil])
-        {
-            if(self.presentedViewController) {
-                [self dismissViewControllerAnimated:YES completion:nil];
-            }
+- (void)templateTapHandler:(UITapGestureRecognizer *)recognizer
+{
+    if (recognizer.state == UIGestureRecognizerStateEnded) {
+        CGPoint location = [recognizer locationInView:self.view.window];
+        if (CGRectContainsPoint(self.presentedViewController.view.frame, location)) {
+            [self.view.window removeGestureRecognizer:recognizer];
+            [self dismissViewControllerAnimated:YES completion:nil];
         }
     }
 }

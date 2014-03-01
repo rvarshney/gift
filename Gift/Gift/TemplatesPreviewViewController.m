@@ -13,8 +13,10 @@
 #import <QuartzCore/QuartzCore.h>
 
 @interface TemplatesPreviewViewController ()
-    @property(strong, nonatomic) PFImageView *leftView;
-    @property(strong, nonatomic) PFImageView *rightView;
+
+@property(strong, nonatomic) PFImageView *leftView;
+@property(strong, nonatomic) PFImageView *rightView;
+
 @end
 
 @implementation TemplatesPreviewViewController

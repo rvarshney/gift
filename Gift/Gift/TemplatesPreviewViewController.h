@@ -10,5 +10,7 @@
 #import "Template.h"
 
 @interface TemplatesPreviewViewController : UIViewController
-    @property(strong, nonatomic) Template *template;
+
+@property(strong, nonatomic) Template *template;
+
 @end
