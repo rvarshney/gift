@@ -67,9 +67,9 @@
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
-    [super viewDidDisappear:animated];
     if(self.tapGesture)
-       [self.view.window removeGestureRecognizer:self.tapGesture];
+        [self.view.window removeGestureRecognizer:self.tapGesture];
+    [super viewDidDisappear:animated];
 }
 
 - (void)didReceiveMemoryWarning
@@ -180,7 +180,7 @@
         CGPoint location = [recognizer locationInView:nil];
         
         //Convert tap location into the local view's coordinate system. If outside, dismiss the view.
-        if (![self.presentedViewController.view pointInside:[self.presentedViewController.view convertPoint:location fromView:self.view.window] withEvent:nil])
+        if (self.presentedViewController && ![self.presentedViewController.view pointInside:[self.presentedViewController.view convertPoint:location fromView:self.view.window] withEvent:nil])
         {
             if(self.presentedViewController) {
                 [self dismissViewControllerAnimated:YES completion:nil];
