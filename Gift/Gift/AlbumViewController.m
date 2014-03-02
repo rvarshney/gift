@@ -579,7 +579,15 @@
     self.pullUpButton.layer.backgroundColor = [UIColor yellowColor].CGColor;
     self.pullUpButton.layer.borderWidth = 3.0f;
     [self.pullUpButton setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [self.pullUpButton addTarget:self action:@selector(pushButtonHandler:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UISwipeGestureRecognizer *swipeGestureDown = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(scrollViewButtonSwipedDown:)];
+    [swipeGestureDown setDirection:UISwipeGestureRecognizerDirectionDown];
+    [self.pullUpButton addGestureRecognizer:swipeGestureDown];
+    
+    UISwipeGestureRecognizer *swipeGestureUp = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(scrollViewButtonSwipedUp:)];
+    [swipeGestureUp setDirection: UISwipeGestureRecognizerDirectionUp];
+    [self.pullUpButton addGestureRecognizer:swipeGestureUp];
+    
     
     [self.view addSubview:self.pullUpButton];
     
@@ -667,13 +675,23 @@
     [self presentViewController:picker animated:YES completion:nil];
 }
 
-- (IBAction)pushButtonHandler:(id)sender
-{
-    if (self.isScrollViewVisible) {
-        [self pushDown];
-    } else {
+//- (IBAction)pushButtonHandler:(id)sender
+//{
+//    if (self.isScrollViewVisible) {
+//        [self pushDown];
+//    } else {
+//        [self pullUp];
+//    }
+//}
+
+-(void)scrollViewButtonSwipedDown:(UISwipeGestureRecognizer *)recognizer{
+    if (self.isScrollViewVisible)
+                [self pushDown];
+}
+
+-(void)scrollViewButtonSwipedUp:(UISwipeGestureRecognizer *)recognizer{
+    if (!self.isScrollViewVisible)
         [self pullUp];
-    }
 }
 
 - (void)showPlacementViews
