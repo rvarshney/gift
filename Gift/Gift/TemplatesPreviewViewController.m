@@ -14,8 +14,9 @@
 
 @interface TemplatesPreviewViewController ()
 
-@property(strong, nonatomic) PFImageView *leftView;
-@property(strong, nonatomic) PFImageView *rightView;
+@property(weak, nonatomic) IBOutlet PFImageView *leftView;
+@property(weak, nonatomic) IBOutlet PFImageView *rightView;
+@property (weak, nonatomic) IBOutlet UILabel *description;
 
 @end
 
@@ -30,21 +31,21 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-}
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
--(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
     
-    self.leftView = [[PFImageView alloc]initWithFrame:CGRectMake(20, 100, self.view.frame.size.width/2 - 20, self.view.frame.size.height - 200)];
+    // Start the display area from under the status bar
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
+    
+    self.description.text = self.template.details;
 
     self.leftView.layer.borderWidth = 2.0f;
     self.leftView.layer.borderColor = [UIColor grayColor].CGColor;
@@ -52,10 +53,10 @@
     self.leftView.layer.shadowRadius = 3.0f;
     self.leftView.layer.shadowOffset = CGSizeMake(0.0f, 2.0f);
     self.leftView.layer.shadowOpacity = 0.5f;
+    self.leftView.file = self.template.themeLeft;
+    [self.leftView loadInBackground];
     
     [self.view addSubview:self.leftView];
-
-    self.rightView = [[PFImageView alloc]initWithFrame:CGRectMake(self.leftView.frame.size.width+20, 100, self.view.frame.size.width/2 - 20, self.view.frame.size.height - 200)];
 
     self.rightView.layer.borderWidth = 2.0f;
     self.rightView.layer.borderColor = [UIColor grayColor].CGColor;
@@ -63,12 +64,9 @@
     self.rightView.layer.shadowRadius = 3.0f;
     self.rightView.layer.shadowOffset = CGSizeMake(0.0f, 2.0f);
     self.rightView.layer.shadowOpacity = 0.5f;
+    self.rightView.file = self.template.themeRight;
+    [self.rightView loadInBackground];
     
     [self.view addSubview:self.rightView];
-    
-    [self.leftView setFile:self.template.themeLeft];
-    [self.leftView loadInBackground];
-    [self.rightView setFile:self.template.themeRight];
-    [self.rightView loadInBackground];
 }
 @end

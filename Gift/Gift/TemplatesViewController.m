@@ -101,6 +101,11 @@
     // Show preview
     TemplatesPreviewViewController *previewViewController = [[TemplatesPreviewViewController alloc]init];
     previewViewController.template = self.currentTemplate;
+    previewViewController.title = self.currentTemplate.title;
+
+    // Embed in navigation controller
+    UINavigationController *navigationViewController = [[UINavigationController alloc] initWithRootViewController:previewViewController];
+    navigationViewController.modalPresentationStyle = UIModalPresentationFormSheet;
     
     // Add cancel button
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleDone target:self action:@selector(cancelPreview:)];
@@ -110,10 +115,6 @@
     UIBarButtonItem *createAlbumButton = [[UIBarButtonItem alloc] initWithTitle:@"Select" style:UIBarButtonItemStyleDone target:self action:@selector(createAlbum:)];
     previewViewController.navigationItem.rightBarButtonItem = createAlbumButton;
     
-    // Embed in navigation controller
-    UINavigationController *navigationViewController = [[UINavigationController alloc] initWithRootViewController:previewViewController];
-    navigationViewController.modalPresentationStyle = UIModalPresentationFormSheet;
-
     [self.navigationController presentViewController:navigationViewController animated:YES completion:nil];
 }
 

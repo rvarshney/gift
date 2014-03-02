@@ -12,6 +12,7 @@
 @implementation Template
 
 @dynamic title;
+@dynamic details;
 @dynamic themeCover;
 @dynamic themeLeft;
 @dynamic themeRight;
