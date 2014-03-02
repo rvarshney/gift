@@ -107,6 +107,8 @@
         albumCell.coverPictureImageView.image = [UIImage imageNamed:@"plus.png"];
         albumCell.coverPictureImageView.alpha = 0.5f;
         return albumCell;
+    } else {
+        albumCell.coverPictureImageView.image = nil;
     }
 
     NSArray *pictures = self.picturesForAlbums[album.objectId];

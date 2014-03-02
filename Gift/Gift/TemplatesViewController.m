@@ -135,10 +135,9 @@
     return [self.templates count];
 }
 
--(void)cancelPreview:(UIBarButtonItem *)sender
+- (void)cancelPreview:(UIBarButtonItem *)sender
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-
 
 @end
