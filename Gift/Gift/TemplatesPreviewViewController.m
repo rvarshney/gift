@@ -46,6 +46,8 @@
     
     self.leftView = [[PFImageView alloc]initWithFrame:CGRectMake(20, 100, self.view.frame.size.width/2 - 20, self.view.frame.size.height - 200)];
 
+    self.leftView.layer.borderWidth = 2.0f;
+    self.leftView.layer.borderColor = [UIColor grayColor].CGColor;
     self.leftView.layer.shadowColor = [UIColor blackColor].CGColor;
     self.leftView.layer.shadowRadius = 3.0f;
     self.leftView.layer.shadowOffset = CGSizeMake(0.0f, 2.0f);
@@ -55,6 +57,8 @@
 
     self.rightView = [[PFImageView alloc]initWithFrame:CGRectMake(self.leftView.frame.size.width+20, 100, self.view.frame.size.width/2 - 20, self.view.frame.size.height - 200)];
 
+    self.rightView.layer.borderWidth = 2.0f;
+    self.rightView.layer.borderColor = [UIColor grayColor].CGColor;
     self.rightView.layer.shadowColor = [UIColor blackColor].CGColor;
     self.rightView.layer.shadowRadius = 3.0f;
     self.rightView.layer.shadowOffset = CGSizeMake(0.0f, 2.0f);

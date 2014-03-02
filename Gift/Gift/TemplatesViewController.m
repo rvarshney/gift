@@ -19,7 +19,6 @@
 
 @property (nonatomic, strong) NSArray *templates;
 @property (nonatomic, strong) Template *currentTemplate;
-@property (nonatomic, strong) UITapGestureRecognizer *tapGesture;
 
 @end
 
@@ -49,10 +48,6 @@
 
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
-    
-    self.tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(templateTapHandler:)];
-    self.tapGesture.numberOfTapsRequired = 1;
-    self.tapGesture.cancelsTouchesInView = NO;
     
     [self.view setUserInteractionEnabled:YES];
 }
@@ -118,9 +113,6 @@
     // Embed in navigation controller
     UINavigationController *navigationViewController = [[UINavigationController alloc] initWithRootViewController:previewViewController];
     navigationViewController.modalPresentationStyle = UIModalPresentationFormSheet;
-    
-    // Add a tap gesture to detect touches outside the modal
-    [self.view.window addGestureRecognizer:self.tapGesture];
 
     [self.navigationController presentViewController:navigationViewController animated:YES completion:nil];
 }
@@ -148,15 +140,5 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)templateTapHandler:(UITapGestureRecognizer *)recognizer
-{
-    if (recognizer.state == UIGestureRecognizerStateEnded) {
-        CGPoint location = [recognizer locationInView:self.view.window];
-        if (CGRectContainsPoint(self.presentedViewController.view.frame, location)) {
-            [self.view.window removeGestureRecognizer:recognizer];
-            [self dismissViewControllerAnimated:YES completion:nil];
-        }
-    }
-}
 
 @end
