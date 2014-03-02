@@ -588,6 +588,7 @@
     [swipeGestureUp setDirection: UISwipeGestureRecognizerDirectionUp];
     [self.pullUpButton addGestureRecognizer:swipeGestureUp];
     
+    [self.pullUpButton addTarget:self action:@selector(pushButtonHandler:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:self.pullUpButton];
     
@@ -675,14 +676,14 @@
     [self presentViewController:picker animated:YES completion:nil];
 }
 
-//- (IBAction)pushButtonHandler:(id)sender
-//{
-//    if (self.isScrollViewVisible) {
-//        [self pushDown];
-//    } else {
-//        [self pullUp];
-//    }
-//}
+- (IBAction)pushButtonHandler:(id)sender
+{
+    if (self.isScrollViewVisible) {
+        [self pushDown];
+    } else {
+        [self pullUp];
+    }
+}
 
 -(void)scrollViewButtonSwipedDown:(UISwipeGestureRecognizer *)recognizer{
     if (self.isScrollViewVisible)
