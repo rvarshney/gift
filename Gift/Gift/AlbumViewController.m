@@ -22,24 +22,17 @@
 @property (nonatomic, strong) UIPopoverController *popOverController;
 @property (nonatomic, strong) NSMutableDictionary *picturesForPages;
 @property (nonatomic, strong) UIPageViewController *pageViewController;
-
 @property (nonatomic, strong) UITextField *titleTextField;
 @property (nonatomic, strong) UIScrollView *pictureScrollView;
 @property (nonatomic, strong) UIButton *addButton;
 @property (nonatomic, strong) UIImageView *scrollViewToggleView;
-
-
 @property (nonatomic, strong) NSLayoutConstraint *bottomBtnConstraint;
 @property (nonatomic, strong) NSLayoutConstraint *bottomConstraint;
-
-
 @property (nonatomic, assign) BOOL isScrollViewVisible;
-
 @property (nonatomic, assign) CGRect moveStartFrame;
 @property (nonatomic, assign) CGPoint movePreviousLocation;
 @property (nonatomic, strong) UIImageView *moveImageView;
 @property (nonatomic, strong) AlbumContentViewController *moveStartPage;
-
 @property (nonatomic, strong) UIView *overlayView;
 
 @end
@@ -124,6 +117,20 @@
 }
 
 # pragma mark - Private methods
+
+- (UIImage *)blackAndWhiteForImage:(UIImage *)image
+{
+    CIImage *beginImage = [CIImage imageWithCGImage:image.CGImage];
+    
+    CIImage *output = [CIFilter filterWithName:@"CIColorMonochrome" keysAndValues:kCIInputImageKey, beginImage, @"inputIntensity", [NSNumber numberWithFloat:1.0], @"inputColor", [[CIColor alloc] initWithColor:[UIColor whiteColor]], nil].outputImage;
+    
+    CIContext *context = [CIContext contextWithOptions:nil];
+    CGImageRef cgiImage = [context createCGImage:output fromRect:output.extent];
+    UIImage *newImage = [UIImage imageWithCGImage:cgiImage];
+    CGImageRelease(cgiImage);
+    
+    return newImage;
+}
 
 - (void)setupAlbumPageViewController
 {
@@ -365,7 +372,14 @@
         [((NSMutableArray *)self.picturesForPages[albumImageView.picture.pageNumber]) addObject:albumImageView.picture];
 
     } else {
-        NSData *imageData = UIImageJPEGRepresentation(self.moveImageView.image, 0);
+        NSString *filter = [[self.album.template objectForKey:@"themeData"] objectForKey:@"filter"];
+        
+        UIImage *saveImage = self.moveImageView.image;
+        if ([filter isEqualToString:@"BW"]) {
+            saveImage = [self blackAndWhiteForImage:self.moveImageView.image];
+        }
+
+        NSData *imageData = UIImageJPEGRepresentation(saveImage, 0);
         Picture *picture = [[Client instance] createPictureForAlbum:self.album imageData:imageData pageNumber:pageNum rotationAngle:[NSNumber numberWithFloat:0] x:x y:y height:height width:width completion:nil];
         
         [((NSMutableArray *)self.picturesForPages[[NSNumber numberWithUnsignedInteger:pageNum]]) addObject:picture];

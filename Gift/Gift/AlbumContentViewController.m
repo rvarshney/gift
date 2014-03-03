@@ -61,11 +61,12 @@
 
 - (void)showPlacementViews
 {
-    NSDictionary *positionData = [self.album.template objectForKey:@"positionData"];
+    NSDictionary *positionData = [self.album.template objectForKey:@"themeData"];
     NSNumber *templateWidth = [positionData objectForKey:@"w"];
     NSNumber *templateHeight = [positionData objectForKey:@"h"];
     NSArray *leftData = [positionData objectForKey:@"leftData"];
-    
+    NSArray *rightData = [positionData objectForKey:@"rightData"];
+
     CGFloat viewWidth = self.view.frame.size.width;
     CGFloat viewHeight = self.view.frame.size.height;
     
@@ -73,7 +74,15 @@
     CGFloat heightRatio = viewHeight / [templateHeight floatValue];
     
     self.placementView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-    for (NSDictionary *placement in leftData) {
+    
+    NSArray *positionInfo;
+    if (self.pageNum % 2 == 0) {
+        positionInfo = leftData;
+    } else {
+        positionInfo = rightData;
+    }
+    
+    for (NSDictionary *placement in positionInfo) {
         CGFloat x = [[placement objectForKey:@"x"] floatValue];
         CGFloat y = [[placement objectForKey:@"y"] floatValue];
         CGFloat w = [[placement objectForKey:@"w"] floatValue];
