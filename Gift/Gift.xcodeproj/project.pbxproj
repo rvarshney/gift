@@ -37,6 +37,10 @@
 		6FF98B4118BAA04400B784A5 /* Template.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FF98B4018BAA04400B784A5 /* Template.m */; };
 		6FF98B4918BAA17800B784A5 /* Album.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FF98B4318BAA17800B784A5 /* Album.m */; };
 		6FF98B4B18BAA17800B784A5 /* Picture.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FF98B4818BAA17800B784A5 /* Picture.m */; };
+		6FFD4FEE18C45A29005D81EA /* order.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FFD4FEC18C45A29005D81EA /* order.png */; };
+		6FFD4FEF18C45A29005D81EA /* print.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FFD4FED18C45A29005D81EA /* print.png */; };
+		6FFD4FF218C45A33005D81EA /* edit.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FFD4FF018C45A33005D81EA /* edit.png */; };
+		6FFD4FF318C45A33005D81EA /* email.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FFD4FF118C45A33005D81EA /* email.png */; };
 		A857FEE218B0306C00226E92 /* TemplateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A857FEE018B0306C00226E92 /* TemplateCell.m */; };
 		A857FEE318B0306C00226E92 /* TemplateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A857FEE118B0306C00226E92 /* TemplateCell.xib */; };
 		A874CF7218C3FE04004494B8 /* drag-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A874CF7118C3FE04004494B8 /* drag-icon.png */; };
@@ -164,6 +168,10 @@
 		6FF98B4318BAA17800B784A5 /* Album.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Album.m; path = Gift/Album.m; sourceTree = "<group>"; };
 		6FF98B4718BAA17800B784A5 /* Picture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Picture.h; path = Gift/Picture.h; sourceTree = "<group>"; };
 		6FF98B4818BAA17800B784A5 /* Picture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Picture.m; path = Gift/Picture.m; sourceTree = "<group>"; };
+		6FFD4FEC18C45A29005D81EA /* order.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = order.png; sourceTree = "<group>"; };
+		6FFD4FED18C45A29005D81EA /* print.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = print.png; sourceTree = "<group>"; };
+		6FFD4FF018C45A33005D81EA /* edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit.png; sourceTree = "<group>"; };
+		6FFD4FF118C45A33005D81EA /* email.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = email.png; sourceTree = "<group>"; };
 		A857FEDF18B0306C00226E92 /* TemplateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TemplateCell.h; path = Gift/TemplateCell.h; sourceTree = "<group>"; };
 		A857FEE018B0306C00226E92 /* TemplateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TemplateCell.m; path = Gift/TemplateCell.m; sourceTree = "<group>"; };
 		A857FEE118B0306C00226E92 /* TemplateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TemplateCell.xib; path = Gift/TemplateCell.xib; sourceTree = "<group>"; };
@@ -399,6 +407,10 @@
 		A857FED218B0302400226E92 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				6FFD4FF018C45A33005D81EA /* edit.png */,
+				6FFD4FF118C45A33005D81EA /* email.png */,
+				6FFD4FEC18C45A29005D81EA /* order.png */,
+				6FFD4FED18C45A29005D81EA /* print.png */,
 				A874CF7318C4026B004494B8 /* tab.png */,
 				A874CF7118C3FE04004494B8 /* drag-icon.png */,
 				6FA30B5418BFAB67001870F9 /* plus.png */,
@@ -719,6 +731,7 @@
 				6F9468C718B9FB8300DB2078 /* background.png in Resources */,
 				D4DA7AA914D39BCE0055F672 /* ProfileViewController.xib in Resources */,
 				6F90498218A6A520005326ED /* ShippingViewController.xib in Resources */,
+				6FFD4FEF18C45A29005D81EA /* print.png in Resources */,
 				A886C4ED18BA903800A96958 /* dropbox@2x.png in Resources */,
 				A886C4F218BA903800A96958 /* google.png in Resources */,
 				A886C4FE18BA903800A96958 /* picasa@2x.png in Resources */,
@@ -736,10 +749,12 @@
 				6F90498C18A6A858005326ED /* TemplatesViewController.xib in Resources */,
 				A886C50018BA903800A96958 /* popover_border.png in Resources */,
 				6FD04F9D18B2A45400EBF752 /* AlbumContentViewController.xib in Resources */,
+				6FFD4FEE18C45A29005D81EA /* order.png in Resources */,
 				6F9468C918BA013400DB2078 /* plus_white.png in Resources */,
 				A857FEE318B0306C00226E92 /* TemplateCell.xib in Resources */,
 				A886C4EB18BA903800A96958 /* defaultThumb.png in Resources */,
 				A886C4EC18BA903800A96958 /* dropbox.png in Resources */,
+				6FFD4FF318C45A33005D81EA /* email.png in Resources */,
 				A886C4FA18BA903800A96958 /* PhotoPickerPlus.strings in Resources */,
 				A886C50218BA903800A96958 /* skydrive@2x.png in Resources */,
 				6F90497318A6A3BC005326ED /* AlbumViewController.xib in Resources */,
@@ -750,6 +765,7 @@
 				A886C4E918BA903800A96958 /* camera.png in Resources */,
 				A8DD290818BD8C6C006754DB /* white-book-cover.png in Resources */,
 				A886C4FB18BA903800A96958 /* overlay.png in Resources */,
+				6FFD4FF218C45A33005D81EA /* edit.png in Resources */,
 				A886C4F418BA903800A96958 /* googledrive.png in Resources */,
 				6FF8496B18B1A38200B44161 /* login-button-small-pressed.png in Resources */,
 				A886C4FC18BA903800A96958 /* overlay@2x.png in Resources */,

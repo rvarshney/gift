@@ -57,7 +57,7 @@
     self.title = @"Order";
 
     // Setup order button
-    UIBarButtonItem *orderButton = [[UIBarButtonItem alloc] initWithTitle:@"Order" style:UIBarButtonItemStyleBordered target:self action:@selector(orderHandler:)];
+    UIBarButtonItem *orderButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"order.png"] style:UIBarButtonItemStyleBordered target:self action:@selector(orderHandler:)];
     orderButton.enabled = NO;
     self.navigationItem.rightBarButtonItem = orderButton;
 

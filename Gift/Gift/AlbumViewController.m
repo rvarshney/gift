@@ -23,7 +23,7 @@
 @property (nonatomic, strong) NSMutableDictionary *picturesForPages;
 @property (nonatomic, strong) UIPageViewController *pageViewController;
 
-
+@property (nonatomic, strong) UITextField *titleTextField;
 @property (nonatomic, strong) UIScrollView *pictureScrollView;
 @property (nonatomic, strong) UIButton *addButton;
 @property (nonatomic, strong) UIImageView *scrollViewToggleView;
@@ -65,23 +65,26 @@
     }
     
     // Set up editable title
-    UITextField *titleTextField = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 200, 22)];
-    titleTextField.text = self.album.title;
-    titleTextField.font = [UIFont boldSystemFontOfSize:17];
-    titleTextField.textColor = [UIColor blackColor];
-    titleTextField.textAlignment = NSTextAlignmentCenter;
-    titleTextField.returnKeyType = UIReturnKeyDone;
-    titleTextField.delegate = self;
-    self.navigationItem.titleView = titleTextField;
+    self.titleTextField = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 200, 24)];
+    self.titleTextField.text = self.album.title;
+    self.titleTextField.font = [UIFont boldSystemFontOfSize:17];
+    self.titleTextField.textColor = [UIColor blackColor];
+    self.titleTextField.textAlignment = NSTextAlignmentCenter;
+    self.titleTextField.returnKeyType = UIReturnKeyDone;
+    self.titleTextField.delegate = self;
+    self.navigationItem.titleView = self.titleTextField;
+
+    // Add edit navigation bar button
+    UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"edit.png"] style:UIBarButtonItemStyleBordered target:self action:@selector(editButtonHandler:)];
 
     // Add email navigation bar button
-    UIBarButtonItem *emailButton = [[UIBarButtonItem alloc] initWithTitle:@"Email" style:UIBarButtonItemStyleBordered target:self action:@selector(emailButtonHandler:)];
+    UIBarButtonItem *emailButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"email.png"] style:UIBarButtonItemStyleBordered target:self action:@selector(emailButtonHandler:)];
     
     // Add print navigation bar button
-    UIBarButtonItem *printButton = [[UIBarButtonItem alloc] initWithTitle:@"Print" style:UIBarButtonItemStyleBordered target:self action:@selector(printButtonHandler:)];
+    UIBarButtonItem *printButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"print.png"] style:UIBarButtonItemStyleBordered target:self action:@selector(printButtonHandler:)];
     
     // Add the email and print buttons to the right
-    self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:emailButton, printButton, nil];
+    self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:printButton, emailButton, editButton, nil];
     
     // Group pictures by page number
     self.picturesForPages = [[NSMutableDictionary alloc] init];
@@ -155,6 +158,11 @@
     albumContentViewController.album = self.album;
     albumContentViewController.pictures = self.picturesForPages[[NSNumber numberWithUnsignedInteger:pageNum]];
     return albumContentViewController;
+}
+
+- (void)editButtonHandler:(id)sender
+{
+    [self.titleTextField becomeFirstResponder];
 }
 
 - (void)emailButtonHandler:(id)sender
@@ -540,15 +548,17 @@
 
 - (void)setupPictureScrollView
 {
-    UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"background.png"]];
-    
     self.pictureScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width - 150, self.view.frame.size.height)];
-    [self.pictureScrollView setContentSize:CGSizeMake(20 * 200, 150)];
+    self.pictureScrollView.contentSize = CGSizeMake(20 * 200, 150);
     self.pictureScrollView.scrollEnabled = YES;
-    //self.pictureScrollView.layer.borderColor = [UIColor grayColor].CGColor;
-    self.pictureScrollView.backgroundColor = background;
-    //self.pictureScrollView.layer.borderWidth = 3.0f;
-    [self.pictureScrollView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    self.pictureScrollView.backgroundColor = [UIColor colorWithWhite:0.85f alpha:1.0f];
+    self.pictureScrollView.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.pictureScrollView.layer.borderWidth = 5.0f;
+    self.pictureScrollView.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.pictureScrollView.layer.shadowRadius = 3.0f;
+    self.pictureScrollView.layer.shadowOffset = CGSizeMake(0.0f, 2.0f);
+    self.pictureScrollView.layer.shadowOpacity = 0.5f;
+    self.pictureScrollView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:self.pictureScrollView];
 
     NSLayoutConstraint *heightConstraint = [NSLayoutConstraint constraintWithItem:self.pictureScrollView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeHeight multiplier:1.0 constant:150];
@@ -562,7 +572,7 @@
     self.addButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.addButton setImage:btnImage forState:UIControlStateNormal];
     self.addButton.frame = CGRectMake(self.pictureScrollView.frame.size.width + 10, self.view.frame.size.height, self.view.frame.size.width - self.pictureScrollView.frame.size.width, self.view.frame.size.height);
-    [self.addButton setBackgroundColor:background];
+    [self.addButton setBackgroundColor:[UIColor whiteColor]];
     [self.addButton setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.addButton addTarget:self action:@selector(addButtonHandler:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.addButton];
