@@ -34,6 +34,7 @@
 - (void)prepareForReuse
 {
     [super prepareForReuse];
+    self.coverPictureImageView.file = nil;
     self.coverPictureImageView.image = nil;
 }
 

@@ -15,15 +15,19 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.frame = CGRectMake(0, 0, 400, 400);
-    }
-    return self;
-}
-
-- (id)initWithCoder:(NSCoder *)aDecoder{
-    self = [super initWithCoder:aDecoder];
-    if(self){
-                self.frame = CGRectMake(0, 0, 400, 400);
+        self.backgroundColor = [UIColor whiteColor];
+        self.layer.borderColor = [UIColor whiteColor].CGColor;
+        self.layer.borderWidth = 5.0f;
+        self.layer.shadowColor = [UIColor blackColor].CGColor;
+        self.layer.shadowRadius = 3.0f;
+        self.layer.shadowOffset = CGSizeMake(0.0f, 2.0f);
+        self.layer.shadowOpacity = 0.5f;
+        
+        self.templateImage = [[PFImageView alloc] initWithFrame:self.bounds];
+        self.templateImage.contentMode = UIViewContentModeScaleAspectFill;
+        self.templateImage.clipsToBounds = YES;
+        
+        [self.contentView addSubview:self.templateImage];
     }
     return self;
 }

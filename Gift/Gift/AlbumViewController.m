@@ -267,19 +267,15 @@
         case MFMailComposeResultCancelled:
             NSLog(@"MFMailComposeResultCancelled");
             break;
-            
         case MFMailComposeResultSaved:
             NSLog(@"MFMailComposeResultSaved");
             break;
-            
         case MFMailComposeResultFailed:
             NSLog(@"MFMailComposeResultFailed");
             break;
-            
         case MFMailComposeResultSent:
             NSLog(@"MFMailComposeResultSent");
             break;
-            
         default:
             break;
     }
@@ -566,8 +562,6 @@
     self.pictureScrollView.contentSize = CGSizeMake(20 * 200, 150);
     self.pictureScrollView.scrollEnabled = YES;
     self.pictureScrollView.backgroundColor = [UIColor colorWithWhite:0.85f alpha:1.0f];
-    self.pictureScrollView.layer.borderColor = [UIColor whiteColor].CGColor;
-    self.pictureScrollView.layer.borderWidth = 5.0f;
     self.pictureScrollView.layer.shadowColor = [UIColor blackColor].CGColor;
     self.pictureScrollView.layer.shadowRadius = 3.0f;
     self.pictureScrollView.layer.shadowOffset = CGSizeMake(0.0f, 2.0f);
@@ -579,14 +573,13 @@
     NSLayoutConstraint *leftConstraint = [NSLayoutConstraint constraintWithItem:self.pictureScrollView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0];
     NSLayoutConstraint *rightConstraint = [NSLayoutConstraint constraintWithItem:self.pictureScrollView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1.0 constant:-150];
     self.bottomConstraint = [NSLayoutConstraint constraintWithItem:self.pictureScrollView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0];
-    
     [self.view addConstraints:@[heightConstraint, leftConstraint, rightConstraint, self.bottomConstraint]];
     
-    UIImage *btnImage = [UIImage imageNamed:@"plus_white.png"];
+    UIImage *btnImage = [UIImage imageNamed:@"plus_small.png"];
     self.addButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.addButton setImage:btnImage forState:UIControlStateNormal];
+    self.addButton.backgroundColor = [UIColor colorWithWhite:0.85f alpha:1.0f];
     self.addButton.frame = CGRectMake(self.pictureScrollView.frame.size.width + 10, self.view.frame.size.height, self.view.frame.size.width - self.pictureScrollView.frame.size.width, self.view.frame.size.height);
-    [self.addButton setBackgroundColor:[UIColor whiteColor]];
     [self.addButton setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.addButton addTarget:self action:@selector(addButtonHandler:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.addButton];
@@ -595,18 +588,11 @@
     NSLayoutConstraint *leftBtnConstraint = [NSLayoutConstraint constraintWithItem:self.addButton attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.pictureScrollView attribute:NSLayoutAttributeRight multiplier:1.0 constant:0];
     NSLayoutConstraint *rightBtnConstraint = [NSLayoutConstraint constraintWithItem:self.addButton attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1.0 constant:0];
     self.bottomBtnConstraint = [NSLayoutConstraint constraintWithItem:self.addButton attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0];
-    
     [self.view addConstraints:@[heightBtnConstraint, leftBtnConstraint, rightBtnConstraint, self.bottomBtnConstraint]];
     
-    // Pull up button
     self.scrollViewToggleView = [[UIImageView alloc]init];
     [self.scrollViewToggleView setUserInteractionEnabled:YES];
     self.scrollViewToggleView.image = [UIImage imageNamed:@"tab.png"];
-    UIImage *dragImage = [UIImage imageNamed:@"drag-icon"];
-    UIImageView *pullImageView = [[UIImageView alloc]initWithImage:dragImage];
-    pullImageView.frame = CGRectMake(70, 30, 32, 32);
-    [self.scrollViewToggleView addSubview:pullImageView];
-
     [self.scrollViewToggleView setTranslatesAutoresizingMaskIntoConstraints:NO];
     
     UISwipeGestureRecognizer *swipeGestureDown = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(scrollViewButtonSwipedDown:)];
@@ -626,7 +612,6 @@
     NSLayoutConstraint *leftPullConstraint = [NSLayoutConstraint constraintWithItem:self.scrollViewToggleView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.addButton attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0];
     NSLayoutConstraint *rightPullConstraint = [NSLayoutConstraint constraintWithItem:self.scrollViewToggleView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1.0 constant:0];
     NSLayoutConstraint *bottomPullConstraint = [NSLayoutConstraint constraintWithItem:self.scrollViewToggleView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.addButton attribute:NSLayoutAttributeTop multiplier:1.0 constant:0];
-
     [self.view addConstraints:@[heightPullConstraint, leftPullConstraint, rightPullConstraint, bottomPullConstraint]];
     
     // Start in pull up state
@@ -638,15 +623,11 @@
     [UIView animateWithDuration:0.3 animations:^{
         self.bottomConstraint.constant = 0;
         self.bottomBtnConstraint.constant = 0;
-        
         [self.pictureScrollView layoutIfNeeded];
         [self.addButton layoutIfNeeded];
         [self.scrollViewToggleView layoutIfNeeded];
-
         self.isScrollViewVisible = YES;
-    } completion:^(BOOL finished) {
-        
-    }];
+    } completion:nil];
 }
 
 -(void)pushDown
@@ -654,15 +635,11 @@
     [UIView animateWithDuration:0.3 animations:^{
         self.bottomConstraint.constant = 150;
         self.bottomBtnConstraint.constant = 150;
-        
         [self.pictureScrollView layoutIfNeeded];
         [self.addButton layoutIfNeeded];
         [self.scrollViewToggleView layoutIfNeeded];
-
         self.isScrollViewVisible = NO;
-    } completion:^(BOOL finished) {
-        
-    }];
+    } completion:nil];
 }
 
 - (void)imagePickerController:(PhotoPickerViewController *)picker didFinishPickingArrayOfMediaWithInfo:(NSArray *)info{
