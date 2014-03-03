@@ -39,6 +39,8 @@
 		6FF98B4B18BAA17800B784A5 /* Picture.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FF98B4818BAA17800B784A5 /* Picture.m */; };
 		A857FEE218B0306C00226E92 /* TemplateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A857FEE018B0306C00226E92 /* TemplateCell.m */; };
 		A857FEE318B0306C00226E92 /* TemplateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A857FEE118B0306C00226E92 /* TemplateCell.xib */; };
+		A874CF7218C3FE04004494B8 /* drag-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A874CF7118C3FE04004494B8 /* drag-icon.png */; };
+		A874CF7418C4026B004494B8 /* tab.png in Resources */ = {isa = PBXBuildFile; fileRef = A874CF7318C4026B004494B8 /* tab.png */; };
 		A886C4D918BA903800A96958 /* PhotoPickerClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A886C49018BA903800A96958 /* PhotoPickerClient.m */; };
 		A886C4DA18BA903800A96958 /* GCServicePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = A886C49318BA903800A96958 /* GCServicePicker.m */; };
 		A886C4DB18BA903800A96958 /* NSDictionary+ALAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = A886C49618BA903800A96958 /* NSDictionary+ALAsset.m */; };
@@ -165,6 +167,8 @@
 		A857FEDF18B0306C00226E92 /* TemplateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TemplateCell.h; path = Gift/TemplateCell.h; sourceTree = "<group>"; };
 		A857FEE018B0306C00226E92 /* TemplateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TemplateCell.m; path = Gift/TemplateCell.m; sourceTree = "<group>"; };
 		A857FEE118B0306C00226E92 /* TemplateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TemplateCell.xib; path = Gift/TemplateCell.xib; sourceTree = "<group>"; };
+		A874CF7118C3FE04004494B8 /* drag-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "drag-icon.png"; sourceTree = "<group>"; };
+		A874CF7318C4026B004494B8 /* tab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tab.png; sourceTree = "<group>"; };
 		A886C48F18BA903800A96958 /* PhotoPickerClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoPickerClient.h; sourceTree = "<group>"; };
 		A886C49018BA903800A96958 /* PhotoPickerClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoPickerClient.m; sourceTree = "<group>"; };
 		A886C49218BA903800A96958 /* GCServicePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCServicePicker.h; sourceTree = "<group>"; };
@@ -395,6 +399,8 @@
 		A857FED218B0302400226E92 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				A874CF7318C4026B004494B8 /* tab.png */,
+				A874CF7118C3FE04004494B8 /* drag-icon.png */,
 				6FA30B5418BFAB67001870F9 /* plus.png */,
 				A8DD290718BD8C6C006754DB /* white-book-cover.png */,
 				6F9468C818BA013400DB2078 /* plus_white.png */,
@@ -699,6 +705,7 @@
 				A8DADBEB18BC699C00CCD323 /* TemplatesPreviewViewController.xib in Resources */,
 				D4DA79F914D3345A0055F672 /* InfoPlist.strings in Resources */,
 				6FF8496C18B1A38200B44161 /* login-button-small-pressed@2x.png in Resources */,
+				A874CF7218C3FE04004494B8 /* drag-icon.png in Resources */,
 				6FF8496F18B1A38D00B44161 /* login-button-small.png in Resources */,
 				A886C4EF18BA903800A96958 /* facebook@2x.png in Resources */,
 				D4DA7A7514D393DA0055F672 /* LoginViewController.xib in Resources */,
@@ -719,6 +726,7 @@
 				A886C4DF18BA903800A96958 /* GCConfiguration.plist in Resources */,
 				A886C4F618BA903800A96958 /* gradient_blue.png in Resources */,
 				A886C4F118BA903800A96958 /* flickr@2x.png in Resources */,
+				A874CF7418C4026B004494B8 /* tab.png in Resources */,
 				C4BB20D8161BC4FB00A7884A /* Default.png in Resources */,
 				6FEAF6A318B1CDB200D26D34 /* albums.png in Resources */,
 				C4BB20D9161BC4FB00A7884A /* Default@2x.png in Resources */,

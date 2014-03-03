@@ -26,7 +26,7 @@
 
 @property (nonatomic, strong) UIScrollView *pictureScrollView;
 @property (nonatomic, strong) UIButton *addButton;
-@property (nonatomic, strong) UIButton *pullUpButton;
+@property (nonatomic, strong) UIImageView *scrollViewToggleView;
 
 
 @property (nonatomic, strong) NSLayoutConstraint *bottomBtnConstraint;
@@ -575,28 +575,33 @@
     [self.view addConstraints:@[heightBtnConstraint, leftBtnConstraint, rightBtnConstraint, self.bottomBtnConstraint]];
     
     // Pull up button
-    self.pullUpButton = [[UIButton alloc] initWithFrame:CGRectMake(self.pictureScrollView.frame.size.width + 10,  self.view.frame.size.height, self.view.frame.size.width - self.pictureScrollView.frame.size.width, 45)];
-    self.pullUpButton.layer.backgroundColor = [UIColor yellowColor].CGColor;
-    self.pullUpButton.layer.borderWidth = 3.0f;
-    [self.pullUpButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+    self.scrollViewToggleView = [[UIImageView alloc]init];
+    [self.scrollViewToggleView setUserInteractionEnabled:YES];
+    self.scrollViewToggleView.image = [UIImage imageNamed:@"tab.png"];
+    UIImage *dragImage = [UIImage imageNamed:@"drag-icon"];
+    UIImageView *pullImageView = [[UIImageView alloc]initWithImage:dragImage];
+    pullImageView.frame = CGRectMake(70, 30, 32, 32);
+    [self.scrollViewToggleView addSubview:pullImageView];
+
+    [self.scrollViewToggleView setTranslatesAutoresizingMaskIntoConstraints:NO];
     
     UISwipeGestureRecognizer *swipeGestureDown = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(scrollViewButtonSwipedDown:)];
     [swipeGestureDown setDirection:UISwipeGestureRecognizerDirectionDown];
-    [self.pullUpButton addGestureRecognizer:swipeGestureDown];
+    [self.scrollViewToggleView addGestureRecognizer:swipeGestureDown];
     
     UISwipeGestureRecognizer *swipeGestureUp = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(scrollViewButtonSwipedUp:)];
     [swipeGestureUp setDirection: UISwipeGestureRecognizerDirectionUp];
-    [self.pullUpButton addGestureRecognizer:swipeGestureUp];
+    [self.scrollViewToggleView addGestureRecognizer:swipeGestureUp];
     
-    [self.pullUpButton addTarget:self action:@selector(pushButtonHandler:) forControlEvents:UIControlEventTouchUpInside];
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(pushButtonHandler:)];
+    [self.scrollViewToggleView addGestureRecognizer:tapGesture];
+    [self.view addSubview:self.scrollViewToggleView];
     
-    [self.view addSubview:self.pullUpButton];
+    NSLayoutConstraint *heightPullConstraint = [NSLayoutConstraint constraintWithItem:self.scrollViewToggleView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeHeight multiplier:1.0 constant:65];
     
-    NSLayoutConstraint *heightPullConstraint = [NSLayoutConstraint constraintWithItem:self.pullUpButton attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeHeight multiplier:1.0 constant:45];
-    
-    NSLayoutConstraint *leftPullConstraint = [NSLayoutConstraint constraintWithItem:self.pullUpButton attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.addButton attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0];
-    NSLayoutConstraint *rightPullConstraint = [NSLayoutConstraint constraintWithItem:self.pullUpButton attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1.0 constant:0];
-    NSLayoutConstraint *bottomPullConstraint = [NSLayoutConstraint constraintWithItem:self.pullUpButton attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.addButton attribute:NSLayoutAttributeTop multiplier:1.0 constant:0];
+    NSLayoutConstraint *leftPullConstraint = [NSLayoutConstraint constraintWithItem:self.scrollViewToggleView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.addButton attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0];
+    NSLayoutConstraint *rightPullConstraint = [NSLayoutConstraint constraintWithItem:self.scrollViewToggleView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1.0 constant:0];
+    NSLayoutConstraint *bottomPullConstraint = [NSLayoutConstraint constraintWithItem:self.scrollViewToggleView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.addButton attribute:NSLayoutAttributeTop multiplier:1.0 constant:0];
 
     [self.view addConstraints:@[heightPullConstraint, leftPullConstraint, rightPullConstraint, bottomPullConstraint]];
     
@@ -612,7 +617,7 @@
         
         [self.pictureScrollView layoutIfNeeded];
         [self.addButton layoutIfNeeded];
-        [self.pullUpButton layoutIfNeeded];
+        [self.scrollViewToggleView layoutIfNeeded];
 
         self.isScrollViewVisible = YES;
     } completion:^(BOOL finished) {
@@ -628,7 +633,7 @@
         
         [self.pictureScrollView layoutIfNeeded];
         [self.addButton layoutIfNeeded];
-        [self.pullUpButton layoutIfNeeded];
+        [self.scrollViewToggleView layoutIfNeeded];
 
         self.isScrollViewVisible = NO;
     } completion:^(BOOL finished) {
