@@ -7,6 +7,8 @@
 //
 
 #import "TemplatesViewController.h"
+#import "TemplateTitleReusableView.h"
+#import "TemplatesLayout.h"
 #import "TemplatesPreviewViewController.h"
 #import "AlbumViewController.h"
 #import "MBProgressHUD.h"
@@ -46,29 +48,32 @@
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
         self.edgesForExtendedLayout = UIRectEdgeNone;
     }
+    [self setupCollectionView];
+}
 
+-(void)setupCollectionView{
+    self.collectionView.contentInset = UIEdgeInsetsMake(0.0f, 0.0f, 0.0f, 0.0f);
+    [self.collectionView registerClass:[TemplateCell class] forCellWithReuseIdentifier:@"TemplateCell"];
+    [self.collectionView registerClass:[TemplateTitleReusableView class] forSupplementaryViewOfKind:@"TemplateTitle"withReuseIdentifier:@"TemplateTitle"];
+    self.collectionView.backgroundColor = [UIColor whiteColor];
+    [self.view setUserInteractionEnabled:YES];
+}
+
+-(void)loadTemplates{
     if (self.isFirstLoad) {
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     }
-
     [[Client instance] templates:^(NSArray *templates, NSError *error) {
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         self.templates = templates;
         [self.collectionView reloadData];
     }];
-    
-    [self.collectionView registerClass:[TemplateCell class] forCellWithReuseIdentifier:@"TemplateCell"];
-
-    self.collectionView.delegate = self;
-    self.collectionView.dataSource = self;
-    
-    [self.view setUserInteractionEnabled:YES];
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    ((TemplatesLayout *)self.collectionViewLayout).numColumns = 4;
+    [self loadTemplates];
     self.isFirstLoad = NO;
 }
 
@@ -80,8 +85,7 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     TemplateCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TemplateCell" forIndexPath:indexPath];
-    [cell.templateImage setTranslatesAutoresizingMaskIntoConstraints:NO];
-    cell.templateImage.file = ((Template *)self.templates[indexPath.row]).themeCover;
+    cell.templateImage.file = ((Template *)self.templates[indexPath.section]).themeCover;
     [cell.templateImage loadInBackground];
     
     return cell;
@@ -89,7 +93,7 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    self.currentTemplate = self.templates[indexPath.row];
+    self.currentTemplate = self.templates[indexPath.section];
     
     // Show preview
     TemplatesPreviewViewController *previewViewController = [[TemplatesPreviewViewController alloc]init];
@@ -111,6 +115,16 @@
     [self.navigationController presentViewController:navigationViewController animated:YES completion:nil];
 }
 
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath;
+{
+    TemplateTitleReusableView *titleView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"TemplateTitle" forIndexPath:indexPath];
+    
+    Template *template = self.templates[indexPath.section];
+    titleView.titleLabel.text = template.title;
+    
+    return titleView;
+}
+
 -(void)createAlbum:(UIBarButtonItem *)sender
 {
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -124,9 +138,14 @@
     [self.navigationController pushViewController:albumViewController animated:YES];
 }
 
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    return self.templates.count;
+}
+
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return [self.templates count];
+    return 1;
 }
 
 - (void)cancelPreview:(UIBarButtonItem *)sender

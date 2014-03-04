@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TemplatesViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource>
-
-@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@interface TemplatesViewController : UICollectionViewController <UICollectionViewDelegate, UICollectionViewDataSource>
 
 @end

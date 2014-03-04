@@ -12,6 +12,7 @@
 #import "AlbumTitleReusableView.h"
 #import "ProfileViewController.h"
 #import "TemplatesViewController.h"
+#import "TemplatesLayout.h"
 #import "AlbumViewController.h"
 #import "MBProgressHUD.h"
 #import "Client.h"
@@ -234,7 +235,9 @@
 - (void)newButtonHandler:(id)sender
 {
     // Push templates view controller
-    [self.navigationController pushViewController:[[TemplatesViewController alloc] init] animated:YES];
+    TemplatesLayout *templatesLayout = [[TemplatesLayout alloc]init];
+    TemplatesViewController *templatesVC = [[TemplatesViewController alloc]initWithCollectionViewLayout:templatesLayout];
+    [self.navigationController pushViewController:templatesVC animated:YES];
 }
 
 - (void)logoutButtonHandler:(id)sender
