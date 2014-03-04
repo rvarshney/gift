@@ -31,6 +31,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *creditCardLabel;
 @property (weak, nonatomic) IBOutlet UIView *shippingView;
 @property (weak, nonatomic) IBOutlet UIView *orderView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *shippingTopConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *orderTopConstraint;
 
 - (IBAction)quantityChanged:(id)sender;
 
@@ -70,6 +72,7 @@
     self.nameTextField.delegate = self;
     self.addressTextField.delegate = self;
     self.cityTextField.delegate = self;
+    self.stateTextField.delegate = self;
     self.zipTextField.delegate = self;
     self.emailTextField.delegate = self;
     self.quantityTextField.delegate = self;
@@ -115,16 +118,13 @@
 {
     [super viewWillAppear:animated];
     [self registerForKeyboardNotifications];
+    [self.nameTextField becomeFirstResponder];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [self deregisterFromKeyboardNotifications];
     [super viewWillDisappear:animated];
-}
-
-- (void)viewDidLayoutSubviews {
-//    [self.scrollView setContentSize:CGSizeMake(1000, 1000)];
 }
 
 - (void)didReceiveMemoryWarning
@@ -195,14 +195,18 @@
 
 - (void)keyboardDidShow:(NSNotification *)notification
 {
-    //NSDictionary* info = [notification userInfo];
-    //CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    [UIView animateWithDuration:0.3 animations:^{
+        self.orderTopConstraint.constant = -38;
+        self.shippingTopConstraint.constant = -38;
+    }];
 }
 
 - (void)keyboardWillHide:(NSNotification *)notification
 {
-    //NSDictionary* info = [notification userInfo];
-    //CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    [UIView animateWithDuration:0.3 animations:^{
+        self.orderTopConstraint.constant = 20;
+        self.shippingTopConstraint.constant = 20;
+    }];
 }
 
 #pragma mark - Private methods
@@ -211,6 +215,26 @@
 {
     NSInteger quantity = [self.quantityTextField.text integerValue];
     self.totalLabel.text = [NSString stringWithFormat:@"%.02f", (ALBUM_PRICE_USD * quantity)];
+}
+
+#pragma mark - Text field delegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if (textField == self.nameTextField) {
+        [self.addressTextField becomeFirstResponder];
+    } else if (textField == self.addressTextField) {
+        [self.cityTextField becomeFirstResponder];
+    } else if (textField == self.cityTextField) {
+        [self.stateTextField becomeFirstResponder];
+    } else if (textField == self.stateTextField) {
+        [self.zipTextField becomeFirstResponder];
+    } else if (textField == self.zipTextField) {
+        [self.emailTextField becomeFirstResponder];
+    } else if (textField == self.emailTextField) {
+        [self.stripeView becomeFirstResponder];
+    }
+    return YES;
 }
 
 @end

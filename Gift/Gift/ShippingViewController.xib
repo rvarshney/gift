@@ -11,9 +11,11 @@
                 <outlet property="creditCardLabel" destination="raU-Lg-wjr" id="JyO-Ut-wY5"/>
                 <outlet property="emailTextField" destination="w94-mA-dds" id="k6Z-VA-fcl"/>
                 <outlet property="nameTextField" destination="93P-cn-0TJ" id="T98-09-ssf"/>
+                <outlet property="orderTopConstraint" destination="FNz-O3-pMZ" id="MME-ba-ulN"/>
                 <outlet property="orderView" destination="ACT-gO-EOl" id="wh6-b5-c2b"/>
                 <outlet property="priceLabel" destination="RJt-xw-hzr" id="eQU-yZ-thf"/>
                 <outlet property="quantityTextField" destination="InX-Vu-bQv" id="Kdd-fh-yjR"/>
+                <outlet property="shippingTopConstraint" destination="XgD-iM-hmA" id="EWg-Od-JZH"/>
                 <outlet property="shippingView" destination="Twf-LL-bMZ" id="uhk-on-Ecj"/>
                 <outlet property="stateTextField" destination="yeC-Ne-R2x" id="1jl-Yx-0sA"/>
                 <outlet property="stripeView" destination="Mlj-Se-6Bm" id="gnh-gi-ffd"/>
