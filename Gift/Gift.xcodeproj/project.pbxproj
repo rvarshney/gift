@@ -42,6 +42,8 @@
 		6FFD500118C53F2F005D81EA /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FFD500018C53F2F005D81EA /* plus.png */; };
 		6FFD501318C5B695005D81EA /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FFD501218C5B695005D81EA /* bg.png */; };
 		A857FEE218B0306C00226E92 /* TemplateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A857FEE018B0306C00226E92 /* TemplateCell.m */; };
+		A874CFB718C5AE5C004494B8 /* TemplateTitleReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = A874CFB618C5AE5C004494B8 /* TemplateTitleReusableView.m */; };
+		A874CFBD18C5BA9F004494B8 /* TemplatesLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = A874CFBC18C5BA9F004494B8 /* TemplatesLayout.m */; };
 		A886C4D918BA903800A96958 /* PhotoPickerClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A886C49018BA903800A96958 /* PhotoPickerClient.m */; };
 		A886C4DA18BA903800A96958 /* GCServicePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = A886C49318BA903800A96958 /* GCServicePicker.m */; };
 		A886C4DB18BA903800A96958 /* NSDictionary+ALAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = A886C49618BA903800A96958 /* NSDictionary+ALAsset.m */; };
@@ -170,6 +172,10 @@
 		6FFD501218C5B695005D81EA /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
 		A857FEDF18B0306C00226E92 /* TemplateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TemplateCell.h; path = Gift/TemplateCell.h; sourceTree = "<group>"; };
 		A857FEE018B0306C00226E92 /* TemplateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TemplateCell.m; path = Gift/TemplateCell.m; sourceTree = "<group>"; };
+		A874CFB518C5AE5C004494B8 /* TemplateTitleReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplateTitleReusableView.h; sourceTree = "<group>"; };
+		A874CFB618C5AE5C004494B8 /* TemplateTitleReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplateTitleReusableView.m; sourceTree = "<group>"; };
+		A874CFBB18C5BA9F004494B8 /* TemplatesLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplatesLayout.h; sourceTree = "<group>"; };
+		A874CFBC18C5BA9F004494B8 /* TemplatesLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplatesLayout.m; sourceTree = "<group>"; };
 		A886C48F18BA903800A96958 /* PhotoPickerClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoPickerClient.h; sourceTree = "<group>"; };
 		A886C49018BA903800A96958 /* PhotoPickerClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoPickerClient.m; sourceTree = "<group>"; };
 		A886C49218BA903800A96958 /* GCServicePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCServicePicker.h; sourceTree = "<group>"; };
@@ -344,6 +350,10 @@
 				6F90498818A6A858005326ED /* TemplatesViewController.h */,
 				6F90498918A6A858005326ED /* TemplatesViewController.m */,
 				6F90498A18A6A858005326ED /* TemplatesViewController.xib */,
+				A874CFB518C5AE5C004494B8 /* TemplateTitleReusableView.h */,
+				A874CFB618C5AE5C004494B8 /* TemplateTitleReusableView.m */,
+				A874CFBB18C5BA9F004494B8 /* TemplatesLayout.h */,
+				A874CFBC18C5BA9F004494B8 /* TemplatesLayout.m */,
 				A8DADBE718BC699C00CCD323 /* TemplatesPreviewViewController.h */,
 				A8DADBE818BC699C00CCD323 /* TemplatesPreviewViewController.m */,
 				A8DADBE918BC699C00CCD323 /* TemplatesPreviewViewController.xib */,
@@ -829,10 +839,12 @@
 				6F90498B18A6A858005326ED /* TemplatesViewController.m in Sources */,
 				A886C4E518BA903800A96958 /* PhotoPickerViewController.m in Sources */,
 				A886C4DA18BA903800A96958 /* GCServicePicker.m in Sources */,
+				A874CFB718C5AE5C004494B8 /* TemplateTitleReusableView.m in Sources */,
 				A886C50418BA903800A96958 /* GCPhotoPickerCell.m in Sources */,
 				A886C4E218BA903800A96958 /* GCAlbumViewController.m in Sources */,
 				A8DADBEA18BC699C00CCD323 /* TemplatesPreviewViewController.m in Sources */,
 				6F90497218A6A3BC005326ED /* AlbumViewController.m in Sources */,
+				A874CFBD18C5BA9F004494B8 /* TemplatesLayout.m in Sources */,
 				A886C4E718BA903800A96958 /* GCAccountAssets.m in Sources */,
 				D4DA7A7414D393DA0055F672 /* LoginViewController.m in Sources */,
 			);
