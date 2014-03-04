@@ -13,6 +13,7 @@
 #import "ProfileViewController.h"
 #import "TemplatesViewController.h"
 #import "AlbumViewController.h"
+#import "MBProgressHUD.h"
 #import "Client.h"
 
 @interface AlbumCollectionViewController ()
@@ -20,6 +21,7 @@
 @property (nonatomic, strong) NSMutableArray *albums;
 @property (nonatomic, strong) NSMutableDictionary *picturesForAlbums;
 @property (nonatomic, strong) ProfileViewController *profileViewController;
+@property BOOL isFirstLoad;
 
 @end
 
@@ -39,6 +41,7 @@
     [super viewDidLoad];
 
     self.title = @"My Albums";
+    self.isFirstLoad = YES;
 
     // Start the display area from under the status bar
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
@@ -77,6 +80,8 @@
     }
 
     [self loadAlbums];
+
+    self.isFirstLoad = NO;
 }
 
 - (void)didReceiveMemoryWarning
@@ -188,7 +193,12 @@
 
 - (void)loadAlbums
 {
+    if (self.isFirstLoad) {
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    }
+
     [[Client instance] albumsForUser:[PFUser currentUser] completion:^(NSArray *albums, NSError *error) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
         if (!error) {
             self.albums = [albums mutableCopy];
 

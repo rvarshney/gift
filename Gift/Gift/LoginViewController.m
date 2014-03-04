@@ -4,6 +4,7 @@
 #import "LoginViewController.h"
 #import "AlbumCollectionViewLayout.h"
 #import "AlbumCollectionViewController.h"
+#import "MBProgressHUD.h"
 #import <Parse/Parse.h>
 
 @interface LoginViewController ()
@@ -47,7 +48,9 @@
     NSArray *permissionsArray = @[ @"user_about_me", @"user_relationships", @"user_birthday", @"user_location"];
     
     // Login PFUser using facebook
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [PFFacebookUtils logInWithPermissions:permissionsArray block:^(PFUser *user, NSError *error) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
         if (!user) {
             if (!error) {
                 NSLog(@"Uh oh. The user cancelled the Facebook login.");

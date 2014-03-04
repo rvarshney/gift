@@ -11,6 +11,7 @@
 #import "AlbumImageView.h"
 #import "ShippingViewController.h"
 #import "Client.h"
+#import "MBProgressHUD.h"
 #import "Picture.h"
 #import <QuartzCore/QuartzCore.h>
 #import <objc/runtime.h>
@@ -34,6 +35,7 @@
 @property (nonatomic, strong) UIImageView *moveImageView;
 @property (nonatomic, strong) AlbumContentViewController *moveStartPage;
 @property (nonatomic, strong) UIView *overlayView;
+@property (nonatomic, strong) NSString *albumFile;
 
 @end
 
@@ -174,25 +176,38 @@
 
 - (void)emailButtonHandler:(id)sender
 {
-    NSString *albumFile = [self printAlbumToFile];
-
-    NSError *error = nil;
-    BOOL emailSent = [self sendEmailWithSubject:self.album.title to:[NSArray arrayWithObject:@""] cc:nil bcc:nil body:@"Check out my new album built on the Memories app!" isHTML:YES delegate:self files:[NSArray arrayWithObjects:albumFile, nil] error:&error];
-
-    if (!emailSent) {
-        NSLog(@"Failed with error: %@",error);
-    }
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Building your album...";
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self printAlbumToFile];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            NSError *error = nil;
+            BOOL emailSent = [self sendEmailWithSubject:self.album.title to:[NSArray arrayWithObject:@""] cc:nil bcc:nil body:@"Check out my new album built on the Memories app!" isHTML:YES delegate:self files:[NSArray arrayWithObjects:self.albumFile, nil] error:&error];
+            if (!emailSent) {
+                NSLog(@"Failed with error: %@",error);
+            }
+        });
+    });
 }
 
 - (void)printButtonHandler:(id)sender
 {
     ShippingViewController *shippingViewController = [[ShippingViewController alloc] init];
     shippingViewController.album = self.album;
-    shippingViewController.albumFile = [self printAlbumToFile];
-    [self.navigationController pushViewController:shippingViewController animated:YES];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Building your album...";
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self printAlbumToFile];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            shippingViewController.albumFile = self.albumFile;
+            [self.navigationController pushViewController:shippingViewController animated:YES];
+        });
+    });
 }
 
-- (NSString *)printAlbumToFile
+- (void)printAlbumToFile
 {
     NSMutableData *pdfData = [NSMutableData data];
     UIGraphicsBeginPDFContextToData(pdfData, CGRectZero, nil);
@@ -214,9 +229,8 @@
     NSString *documentDirectoryFilename = [documentDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.pdf", self.album.title]];
     
     [pdfData writeToFile:documentDirectoryFilename atomically:YES];
-    NSLog(@"documentDirectoryFileName: %@", documentDirectoryFilename);
-    
-    return documentDirectoryFilename;
+
+    self.albumFile = documentDirectoryFilename;
 }
 
 #pragma mark - UITextField delegate methods

@@ -9,6 +9,7 @@
 #import "TemplatesViewController.h"
 #import "TemplatesPreviewViewController.h"
 #import "AlbumViewController.h"
+#import "MBProgressHUD.h"
 #import "Album.h"
 #import "TemplateCell.h"
 #import "Client.h"
@@ -19,6 +20,7 @@
 
 @property (nonatomic, strong) NSArray *templates;
 @property (nonatomic, strong) Template *currentTemplate;
+@property BOOL isFirstLoad;
 
 @end
 
@@ -38,13 +40,19 @@
     [super viewDidLoad];
     
     self.title = @"Templates";
+    self.isFirstLoad = YES;
 
     // Start the display area from under the status bar
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
         self.edgesForExtendedLayout = UIRectEdgeNone;
     }
 
+    if (self.isFirstLoad) {
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    }
+
     [[Client instance] templates:^(NSArray *templates, NSError *error) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
         self.templates = templates;
         [self.collectionView reloadData];
     }];
@@ -55,6 +63,13 @@
     self.collectionView.dataSource = self;
     
     [self.view setUserInteractionEnabled:YES];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+
+    self.isFirstLoad = NO;
 }
 
 - (void)didReceiveMemoryWarning
