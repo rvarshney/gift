@@ -41,6 +41,7 @@
 		6FFD4FF518C51B1B005D81EA /* tab.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FFD4FF418C51B1B005D81EA /* tab.png */; };
 		6FFD4FF918C53D1B005D81EA /* plus_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FFD4FF818C53D1B005D81EA /* plus_small.png */; };
 		6FFD500118C53F2F005D81EA /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FFD500018C53F2F005D81EA /* plus.png */; };
+		6FFD500518C57FE9005D81EA /* drag.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FFD500418C57FE9005D81EA /* drag.png */; };
 		A857FEE218B0306C00226E92 /* TemplateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A857FEE018B0306C00226E92 /* TemplateCell.m */; };
 		A886C4D918BA903800A96958 /* PhotoPickerClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A886C49018BA903800A96958 /* PhotoPickerClient.m */; };
 		A886C4DA18BA903800A96958 /* GCServicePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = A886C49318BA903800A96958 /* GCServicePicker.m */; };
@@ -168,6 +169,7 @@
 		6FFD4FF418C51B1B005D81EA /* tab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tab.png; sourceTree = "<group>"; };
 		6FFD4FF818C53D1B005D81EA /* plus_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus_small.png; sourceTree = "<group>"; };
 		6FFD500018C53F2F005D81EA /* plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus.png; sourceTree = "<group>"; };
+		6FFD500418C57FE9005D81EA /* drag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = drag.png; sourceTree = "<group>"; };
 		A857FEDF18B0306C00226E92 /* TemplateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TemplateCell.h; path = Gift/TemplateCell.h; sourceTree = "<group>"; };
 		A857FEE018B0306C00226E92 /* TemplateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TemplateCell.m; path = Gift/TemplateCell.m; sourceTree = "<group>"; };
 		A886C48F18BA903800A96958 /* PhotoPickerClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoPickerClient.h; sourceTree = "<group>"; };
@@ -398,6 +400,7 @@
 		A857FED218B0302400226E92 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				6FFD500418C57FE9005D81EA /* drag.png */,
 				6FFD500018C53F2F005D81EA /* plus.png */,
 				6FFD4FF818C53D1B005D81EA /* plus_small.png */,
 				6FFD4FF418C51B1B005D81EA /* tab.png */,
@@ -710,6 +713,7 @@
 				D4DA7A7514D393DA0055F672 /* LoginViewController.xib in Resources */,
 				A886C4F718BA903800A96958 /* instagram.png in Resources */,
 				A886C4F518BA903800A96958 /* googledrive@2x.png in Resources */,
+				6FFD500518C57FE9005D81EA /* drag.png in Resources */,
 				A886C4F918BA903800A96958 /* InfoPlist.strings in Resources */,
 				A886C4EA18BA903800A96958 /* chute.png in Resources */,
 				A886C4FF18BA903800A96958 /* popover_arrow.png in Resources */,

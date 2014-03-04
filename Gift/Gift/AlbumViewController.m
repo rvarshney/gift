@@ -609,6 +609,11 @@
     self.scrollViewToggleView.image = [UIImage imageNamed:@"tab.png"];
     [self.scrollViewToggleView setTranslatesAutoresizingMaskIntoConstraints:NO];
     
+    UIImage *dragImage = [UIImage imageNamed:@"drag.png"];
+    UIImageView *pullImageView = [[UIImageView alloc]initWithImage:dragImage];
+    pullImageView.frame = CGRectMake(60, 30, 32, 32);
+    [self.scrollViewToggleView addSubview:pullImageView];
+    
     UISwipeGestureRecognizer *swipeGestureDown = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(scrollViewButtonSwipedDown:)];
     [swipeGestureDown setDirection:UISwipeGestureRecognizerDirectionDown];
     [self.scrollViewToggleView addGestureRecognizer:swipeGestureDown];
