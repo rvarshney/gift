@@ -37,7 +37,7 @@
 - (void)setup
 {
     self.cellInsets = UIEdgeInsetsMake(25.0f, 25.0f, 25.0f, 25.0f);
-    self.cellSize = CGSizeMake(220.0f, 220.f);
+    self.cellSize = CGSizeMake(210.0f, 300.0f);
     self.interCellSpacing = 27.0f;
     self.numColumns = 3;
     self.titleHeight = 30.0f;

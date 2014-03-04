@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface TemplateTitleReusableView : UICollectionReusableView
+
 @property (nonatomic, strong, readonly) UILabel *titleLabel;
+
 @end
