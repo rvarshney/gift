@@ -95,6 +95,7 @@
 		A8DADBEA18BC699C00CCD323 /* TemplatesPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8DADBE818BC699C00CCD323 /* TemplatesPreviewViewController.m */; };
 		A8DADBEB18BC699C00CCD323 /* TemplatesPreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8DADBE918BC699C00CCD323 /* TemplatesPreviewViewController.xib */; };
 		A8E53C8718C6668100C75819 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8E53C8618C6668100C75819 /* Images.xcassets */; };
+		A8E53C8918C68B2800C75819 /* Images-2.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8E53C8818C68B2800C75819 /* Images-2.xcassets */; };
 		C425016D161BBAE400474BCD /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4250169161BBAE400474BCD /* StoreKit.framework */; };
 		C4250170161BBAEE00474BCD /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C425016F161BBAEE00474BCD /* libz.dylib */; };
 		C4BB20D7161BC4FB00A7884A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4BB20D4161BC4FB00A7884A /* Default-568h@2x.png */; };
@@ -245,6 +246,7 @@
 		A8DADBE818BC699C00CCD323 /* TemplatesPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplatesPreviewViewController.m; sourceTree = "<group>"; };
 		A8DADBE918BC699C00CCD323 /* TemplatesPreviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TemplatesPreviewViewController.xib; sourceTree = "<group>"; };
 		A8E53C8618C6668100C75819 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		A8E53C8818C68B2800C75819 /* Images-2.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Images-2.xcassets"; sourceTree = "<group>"; };
 		C4250169161BBAE400474BCD /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		C425016F161BBAEE00474BCD /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		C4BB20D4161BC4FB00A7884A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -633,6 +635,7 @@
 				D4DA79FE14D3345A0055F672 /* AppDelegate.m */,
 				A857FED218B0302400226E92 /* Images */,
 				A8E53C8618C6668100C75819 /* Images.xcassets */,
+				A8E53C8818C68B2800C75819 /* Images-2.xcassets */,
 				D4DA79F514D3345A0055F672 /* Supporting Files */,
 			);
 			path = Gift;
@@ -717,6 +720,7 @@
 			files = (
 				A8DADBEB18BC699C00CCD323 /* TemplatesPreviewViewController.xib in Resources */,
 				D4DA79F914D3345A0055F672 /* InfoPlist.strings in Resources */,
+				A8E53C8918C68B2800C75819 /* Images-2.xcassets in Resources */,
 				6FF8496C18B1A38200B44161 /* login-button-small-pressed@2x.png in Resources */,
 				6FF8496F18B1A38D00B44161 /* login-button-small.png in Resources */,
 				A886C4EF18BA903800A96958 /* facebook@2x.png in Resources */,
