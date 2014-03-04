@@ -36,6 +36,7 @@
 @property (nonatomic, strong) AlbumContentViewController *moveStartPage;
 @property (nonatomic, strong) UIView *overlayView;
 @property (nonatomic, strong) NSString *albumFile;
+@property CGFloat lastPictureLocation;
 
 @end
 
@@ -640,15 +641,12 @@
     } completion:nil];
 }
 
-- (void)imagePickerController:(PhotoPickerViewController *)picker didFinishPickingArrayOfMediaWithInfo:(NSArray *)info{
+- (void)imagePickerController:(PhotoPickerViewController *)picker didFinishPickingArrayOfMediaWithInfo:(NSArray *)info
+{
     [self dismissViewControllerAnimated:YES completion:nil];
-	
-    for (UIView *v in [self.pictureScrollView subviews]) {
-        [v removeFromSuperview];
-    }
     
     CGRect workingFrame = CGRectMake(0, 0, 150, 150);
-    workingFrame.origin.x = 0;
+    workingFrame.origin.x = self.lastPictureLocation;
 
     for (NSDictionary *dict in info) {
         UIImage *image = [dict objectForKey:UIImagePickerControllerOriginalImage];
@@ -661,6 +659,7 @@
         imageView.layer.borderWidth = 3.0f;
         [self.pictureScrollView addSubview:imageView];
         workingFrame.origin.x = workingFrame.origin.x + workingFrame.size.width;
+        self.lastPictureLocation = workingFrame.origin.x;
 	}
     
     [self.pictureScrollView setPagingEnabled:YES];
