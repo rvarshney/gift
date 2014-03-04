@@ -94,6 +94,7 @@
 		A8D0ECBF18B6CCBC002018D7 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8D0ECBE18B6CCBC002018D7 /* AssetsLibrary.framework */; };
 		A8DADBEA18BC699C00CCD323 /* TemplatesPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8DADBE818BC699C00CCD323 /* TemplatesPreviewViewController.m */; };
 		A8DADBEB18BC699C00CCD323 /* TemplatesPreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8DADBE918BC699C00CCD323 /* TemplatesPreviewViewController.xib */; };
+		A8E53C8718C6668100C75819 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8E53C8618C6668100C75819 /* Images.xcassets */; };
 		C425016D161BBAE400474BCD /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4250169161BBAE400474BCD /* StoreKit.framework */; };
 		C4250170161BBAEE00474BCD /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C425016F161BBAEE00474BCD /* libz.dylib */; };
 		C4BB20D7161BC4FB00A7884A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4BB20D4161BC4FB00A7884A /* Default-568h@2x.png */; };
@@ -243,6 +244,7 @@
 		A8DADBE718BC699C00CCD323 /* TemplatesPreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplatesPreviewViewController.h; sourceTree = "<group>"; };
 		A8DADBE818BC699C00CCD323 /* TemplatesPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplatesPreviewViewController.m; sourceTree = "<group>"; };
 		A8DADBE918BC699C00CCD323 /* TemplatesPreviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TemplatesPreviewViewController.xib; sourceTree = "<group>"; };
+		A8E53C8618C6668100C75819 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C4250169161BBAE400474BCD /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		C425016F161BBAEE00474BCD /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		C4BB20D4161BC4FB00A7884A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -630,6 +632,7 @@
 				D4DA79FD14D3345A0055F672 /* AppDelegate.h */,
 				D4DA79FE14D3345A0055F672 /* AppDelegate.m */,
 				A857FED218B0302400226E92 /* Images */,
+				A8E53C8618C6668100C75819 /* Images.xcassets */,
 				D4DA79F514D3345A0055F672 /* Supporting Files */,
 			);
 			path = Gift;
@@ -738,6 +741,7 @@
 				C4BB20D8161BC4FB00A7884A /* Default.png in Resources */,
 				6FEAF6A318B1CDB200D26D34 /* albums.png in Resources */,
 				C4BB20D9161BC4FB00A7884A /* Default@2x.png in Resources */,
+				A8E53C8718C6668100C75819 /* Images.xcassets in Resources */,
 				A886C4E818BA903800A96958 /* album_default.png in Resources */,
 				6F90497D18A6A451005326ED /* AlbumCollectionViewController.xib in Resources */,
 				A886C4F018BA903800A96958 /* flickr.png in Resources */,
@@ -948,6 +952,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 689293C421184EF494D23F05 /* Pods.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -973,6 +979,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 689293C421184EF494D23F05 /* Pods.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
