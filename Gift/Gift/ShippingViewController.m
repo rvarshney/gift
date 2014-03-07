@@ -79,7 +79,7 @@
 
     self.shippingView.backgroundColor = [UIColor colorWithWhite:0.85f alpha:1.0f];
     self.shippingView.layer.borderColor = [UIColor whiteColor].CGColor;
-    self.shippingView.layer.borderWidth = 5.0f;
+    self.shippingView.layer.borderWidth = 8.0f;
     self.shippingView.layer.shadowColor = [UIColor blackColor].CGColor;
     self.shippingView.layer.shadowRadius = 3.0f;
     self.shippingView.layer.shadowOffset = CGSizeMake(0.0f, 2.0f);
@@ -87,7 +87,7 @@
 
     self.orderView.backgroundColor = [UIColor colorWithWhite:0.85f alpha:1.0f];
     self.orderView.layer.borderColor = [UIColor whiteColor].CGColor;
-    self.orderView.layer.borderWidth = 5.0f;
+    self.orderView.layer.borderWidth = 8.0f;
     self.orderView.layer.shadowColor = [UIColor blackColor].CGColor;
     self.orderView.layer.shadowRadius = 3.0f;
     self.orderView.layer.shadowOffset = CGSizeMake(0.0f, 2.0f);

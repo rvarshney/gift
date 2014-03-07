@@ -573,12 +573,13 @@
 
 - (void)setupPictureScrollView
 {
-    UIColor *background = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]];
-    self.pictureScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width - 150, self.view.frame.size.height)];
+    UIColor *background = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tweed.png"]];
+    self.pictureScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height)];
     self.pictureScrollView.contentSize = CGSizeMake(20 * 200, 150);
     self.pictureScrollView.scrollEnabled = YES;
     self.pictureScrollView.backgroundColor = background;
     self.pictureScrollView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.pictureScrollView showsHorizontalScrollIndicator];
     [self.view addSubview:self.pictureScrollView];
 
     NSLayoutConstraint *heightConstraint = [NSLayoutConstraint constraintWithItem:self.pictureScrollView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeHeight multiplier:1.0 constant:150];
@@ -590,8 +591,8 @@
     UIImage *btnImage = [UIImage imageNamed:@"plus_small.png"];
     self.addButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.addButton setImage:btnImage forState:UIControlStateNormal];
+    self.addButton.contentMode = UIViewContentModeCenter;
     self.addButton.backgroundColor = background;
-    self.addButton.frame = CGRectMake(self.pictureScrollView.frame.size.width + 10, self.view.frame.size.height, self.view.frame.size.width - self.pictureScrollView.frame.size.width, self.view.frame.size.height);
     self.addButton.translatesAutoresizingMaskIntoConstraints = NO;
     [self.addButton addTarget:self action:@selector(addButtonHandler:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.addButton];
@@ -602,17 +603,33 @@
     self.bottomBtnConstraint = [NSLayoutConstraint constraintWithItem:self.addButton attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0];
     [self.view addConstraints:@[heightBtnConstraint, leftBtnConstraint, rightBtnConstraint, self.bottomBtnConstraint]];
     
+    self.scrollViewToggleView = [[UIImageView alloc]init];
+    [self.scrollViewToggleView setUserInteractionEnabled:YES];
+    self.scrollViewToggleView.image = [UIImage imageNamed:@"tweed.png"];
+    [self.scrollViewToggleView setTranslatesAutoresizingMaskIntoConstraints:NO];
+
     UISwipeGestureRecognizer *swipeGestureDown = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(scrollViewButtonSwipedDown:)];
     [swipeGestureDown setDirection:UISwipeGestureRecognizerDirectionDown];
-    [self.pictureScrollView addGestureRecognizer:swipeGestureDown];
+    //[self.pictureScrollView addGestureRecognizer:swipeGestureDown];
+    [self.scrollViewToggleView addGestureRecognizer:swipeGestureDown];
     
     UISwipeGestureRecognizer *swipeGestureUp = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(scrollViewButtonSwipedUp:)];
     [swipeGestureUp setDirection: UISwipeGestureRecognizerDirectionUp];
-    [self.pictureScrollView addGestureRecognizer:swipeGestureUp];
-    
-    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(pushButtonHandler:)];
-    [self.pictureScrollView addGestureRecognizer:tapGesture];
+    //[self.pictureScrollView addGestureRecognizer:swipeGestureUp];
+    [self.scrollViewToggleView addGestureRecognizer:swipeGestureUp];
 
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(pushButtonHandler:)];
+    //[self.pictureScrollView addGestureRecognizer:tapGesture];
+
+    [self.scrollViewToggleView addGestureRecognizer:tapGesture];
+    [self.view addSubview:self.scrollViewToggleView];
+    
+    NSLayoutConstraint *heightPullConstraint = [NSLayoutConstraint constraintWithItem:self.scrollViewToggleView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeHeight multiplier:1.0 constant:65];
+    NSLayoutConstraint *widthPullConstraint = [NSLayoutConstraint constraintWithItem:self.scrollViewToggleView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeWidth multiplier:1.0 constant:65];
+    NSLayoutConstraint *rightPullConstraint = [NSLayoutConstraint constraintWithItem:self.scrollViewToggleView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1.0 constant:0];
+    NSLayoutConstraint *bottomPullConstraint = [NSLayoutConstraint constraintWithItem:self.scrollViewToggleView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.addButton attribute:NSLayoutAttributeTop multiplier:1.0 constant:0];
+    [self.view addConstraints:@[heightPullConstraint, widthPullConstraint, rightPullConstraint, bottomPullConstraint]];
+    
     // Start in pull up state
     self.isScrollViewVisible = YES;
 }
@@ -632,8 +649,8 @@
 -(void)pushDown
 {
     [UIView animateWithDuration:0.3 animations:^{
-        self.bottomConstraint.constant = 110;
-        self.bottomBtnConstraint.constant = 110;
+        self.bottomConstraint.constant = 150;
+        self.bottomBtnConstraint.constant = 150;
         [self.pictureScrollView layoutIfNeeded];
         [self.addButton layoutIfNeeded];
         [self.scrollViewToggleView layoutIfNeeded];
@@ -673,7 +690,7 @@
 
 - (IBAction)addButtonHandler:(id)sender
 {
-    PhotoPickerViewController *picker = [[PhotoPickerViewController alloc ] initWithTitle:@"Select Pictures"];
+    PhotoPickerViewController *picker = [[PhotoPickerViewController alloc ] initWithTitle:@"Import Photos"];
     [picker setDelegate:self];
     [picker setIsMultipleSelectionEnabled:YES];
     [self presentViewController:picker animated:YES completion:nil];

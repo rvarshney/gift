@@ -22,10 +22,10 @@
         self.titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         self.titleLabel.backgroundColor = [UIColor clearColor];
         self.titleLabel.textAlignment = NSTextAlignmentCenter;
-        self.titleLabel.font = [UIFont systemFontOfSize:16.0f];
+        self.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:18.0f];
         self.titleLabel.textColor = [UIColor darkGrayColor];
-        self.titleLabel.shadowColor = [UIColor colorWithWhite:0.0f alpha:0.3f];
-        self.titleLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
+        //self.titleLabel.shadowColor = [UIColor colorWithWhite:0.0f alpha:0.3f];
+        //self.titleLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
         
         [self addSubview:self.titleLabel];
     }

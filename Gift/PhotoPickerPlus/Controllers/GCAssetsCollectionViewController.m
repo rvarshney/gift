@@ -186,7 +186,7 @@
     self.doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done)];
     [self.doneButton setEnabled:NO];
     
-    NSArray *navBarItemsToBeAdd = @[[self doneButton], [self cancelButton]];
+    NSArray *navBarItemsToBeAdd = @[[self doneButton]];
 
     return navBarItemsToBeAdd;
 }

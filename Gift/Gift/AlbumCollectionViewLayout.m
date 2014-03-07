@@ -40,7 +40,7 @@
     self.cellSize = CGSizeMake(220.0f, 220.f);
     self.interCellSpacing = 27.0f;
     self.numColumns = 3;
-    self.titleHeight = 30.0f;
+    //self.titleHeight = 30.0f;
 }
 
 #pragma mark - Properties
@@ -94,7 +94,7 @@
 {
     NSMutableDictionary *newLayoutInfo = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *cellLayoutInfo = [[NSMutableDictionary alloc] init];
-    NSMutableDictionary *titleLayoutInfo = [[NSMutableDictionary alloc] init];
+    //NSMutableDictionary *titleLayoutInfo = [[NSMutableDictionary alloc] init];
 
     NSInteger sectionCount = [self.collectionView numberOfSections];
     NSIndexPath *indexPath = [NSIndexPath indexPathForItem:0 inSection:0];
@@ -109,15 +109,15 @@
             cellLayoutInfo[indexPath] = itemAttributes;
 
             if (indexPath.item == 0) {
-                UICollectionViewLayoutAttributes *titleAttributes = [UICollectionViewLayoutAttributes layoutAttributesForSupplementaryViewOfKind:@"AlbumTitle" withIndexPath:indexPath];
-                titleAttributes.frame = [self frameForAlbumTitleAtIndexPath:indexPath];
-                titleLayoutInfo[indexPath] = titleAttributes;
+                //UICollectionViewLayoutAttributes *titleAttributes = [UICollectionViewLayoutAttributes layoutAttributesForSupplementaryViewOfKind:@"AlbumTitle" withIndexPath:indexPath];
+                //titleAttributes.frame = [self frameForAlbumTitleAtIndexPath:indexPath];
+                //titleLayoutInfo[indexPath] = titleAttributes;
             }
         }
     }
 
     newLayoutInfo[@"AlbumCell"] = cellLayoutInfo;
-    newLayoutInfo[@"AlbumTitle"] = titleLayoutInfo;
+    //newLayoutInfo[@"AlbumTitle"] = titleLayoutInfo;
 
     self.layoutInfo = newLayoutInfo;
 }
@@ -165,10 +165,12 @@
     return self.layoutInfo[@"AlbumCell"][indexPath];
 }
 
+/*
 - (UICollectionViewLayoutAttributes *)layoutAttributesForSupplementaryViewOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
     return self.layoutInfo[@"AlbumTitle"][indexPath];
 }
+ */
 
 - (CGSize)collectionViewContentSize
 {

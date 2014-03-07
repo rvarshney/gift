@@ -43,11 +43,6 @@
 
     self.title = @"My Albums";
     self.isFirstLoad = YES;
-
-    // Start the display area from under the status bar
-    if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
-        self.edgesForExtendedLayout = UIRectEdgeNone;
-    }
     
     // Register for logout events
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logoutButtonHandler:) name:@"logout" object:nil];
@@ -104,40 +99,23 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    AlbumCell *albumCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"AlbumCell" forIndexPath:indexPath];
-
     Album *album = self.albums[indexPath.section];
+    AlbumCell *albumCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"AlbumCell" forIndexPath:indexPath];
+    albumCell.titleLabel.text = album.title;
 
     // Special case the create new album
-    if (indexPath.section == 0) {
-        albumCell.coverPictureImageView.image = [UIImage imageNamed:@"plus.png"];
-        albumCell.coverPictureImageView.alpha = 0.5f;
-        return albumCell;
-    } else {
-        albumCell.coverPictureImageView.image = nil;
+    if (indexPath.section != 0) {
+        NSArray *pictures = self.picturesForAlbums[album.objectId];
+        if (pictures && pictures.count != 0) {
+            // Load the first image of the album as the cover page
+            albumCell.coverPictureImageView.file = ((Picture *)pictures[0]).image;
+            albumCell.coverPictureImageView.alpha = 1.0f;
+            [albumCell.coverPictureImageView loadInBackground];
+        } else {
+            albumCell.coverPictureImageView.image = nil;
+        }
     }
-
-    NSArray *pictures = self.picturesForAlbums[album.objectId];
-    if (pictures && pictures.count != 0) {
-        // Load the first image of the album as the cover page
-        albumCell.coverPictureImageView.file = ((Picture *)pictures[0]).image;
-        albumCell.coverPictureImageView.alpha = 1.0f;
-        [albumCell.coverPictureImageView loadInBackground];
-    } else {
-        albumCell.coverPictureImageView.image = nil;
-    }
-
     return albumCell;
-}
-
-- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath;
-{
-    AlbumTitleReusableView *titleView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"AlbumTitle" forIndexPath:indexPath];
-
-    Album *album = self.albums[indexPath.section];
-    titleView.titleLabel.text = album.title;
-
-    return titleView;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
@@ -186,9 +164,9 @@
 
 - (void)setupCollectionView
 {
-    self.collectionView.contentInset = UIEdgeInsetsMake(280.0f, 0.0f, 0.0f, 0.0f);
+    self.collectionView.contentInset = UIEdgeInsetsMake(220.0f, 0.0f, 0.0f, 0.0f);
     [self.collectionView registerClass:[AlbumCell class] forCellWithReuseIdentifier:@"AlbumCell"];
-    [self.collectionView registerClass:[AlbumTitleReusableView class] forSupplementaryViewOfKind:@"AlbumTitle"withReuseIdentifier:@"AlbumTitle"];
+    //[self.collectionView registerClass:[AlbumTitleReusableView class] forSupplementaryViewOfKind:@"AlbumTitle"withReuseIdentifier:@"AlbumTitle"];
     self.collectionView.backgroundColor = [UIColor whiteColor];
 }
 

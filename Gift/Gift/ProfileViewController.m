@@ -109,19 +109,23 @@
 {
     NSDictionary *userProfile = [[PFUser currentUser] objectForKey:@"profile"];
     self.nameLabel.text = userProfile[@"name"];
+    //self.nameLabel.shadowColor = [UIColor colorWithWhite:0.0f alpha:0.3f];
+    //self.nameLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
+
     self.locationLabel.text = userProfile[@"location"];
+    //self.locationLabel.shadowColor = [UIColor colorWithWhite:0.0f alpha:0.3f];
+    //self.locationLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
 
     [self.profilePicture setImageWithURL:[NSURL URLWithString:userProfile[@"pictureURL"]] placeholderImage:nil];
     self.profilePicture.layer.cornerRadius = 50.0f;
     self.profilePicture.layer.masksToBounds = YES;
     
-
     AFHTTPRequestOperation *postOperation = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:userProfile[@"coverURL"]]]];
     [postOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         UIImage *blurredImage = [UIImage imageWithData:responseObject];
         blurredImage = [blurredImage applyBlurWithRadius:10 tintColor:[UIColor colorWithRed:0.133 green:0.133 blue:0.133 alpha:0.4f] saturationDeltaFactor:1.0f maskImage:nil];
         self.coverPicture.image = blurredImage;
-        self.coverPicture.layer.cornerRadius = 5.0f;
+        //self.coverPicture.layer.cornerRadius = 5.0f;
         self.coverPicture.layer.masksToBounds = YES;
     } failure:nil];
     [postOperation start];

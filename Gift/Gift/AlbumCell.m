@@ -8,15 +8,14 @@
 
 #import "AlbumCell.h"
 
+
 @implementation AlbumCell
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor colorWithWhite:0.85f alpha:1.0f];
-        self.layer.borderColor = [UIColor whiteColor].CGColor;
-        self.layer.borderWidth = 5.0f;
+        self.backgroundColor = [UIColor whiteColor];
         self.layer.shadowColor = [UIColor blackColor].CGColor;
         self.layer.shadowRadius = 3.0f;
         self.layer.shadowOffset = CGSizeMake(0.0f, 2.0f);
@@ -26,7 +25,22 @@
         self.coverPictureImageView.contentMode = UIViewContentModeScaleAspectFill;
         self.coverPictureImageView.clipsToBounds = YES;
 
+        self.overlay = [[UIView alloc] initWithFrame:CGRectMake(0, 160, 220, 60)];
+        self.overlay.backgroundColor = [UIColor blackColor];
+        self.overlay.alpha = 0.35f;
+
+        self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 180, 220, 20)];
+        self.titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        self.titleLabel.backgroundColor = [UIColor clearColor];
+        self.titleLabel.textAlignment = NSTextAlignmentCenter;
+        self.titleLabel.font = [UIFont fontWithName:@"Avenir" size:20.0f];
+        self.titleLabel.textColor = [UIColor whiteColor];
+        //self.titleLabel.shadowColor = [UIColor colorWithWhite:0.0f alpha:0.3f];
+        //self.titleLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
+
         [self.contentView addSubview:self.coverPictureImageView];
+        [self.contentView addSubview:self.overlay];
+        [self.contentView addSubview:self.titleLabel];
     }
     return self;
 }
