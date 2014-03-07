@@ -23,6 +23,8 @@
         self.userInteractionEnabled = YES;
         self.picture = picture;
         self.file = picture.image;
+        self.contentMode = UIViewContentModeScaleAspectFill;
+        self.clipsToBounds = YES;
         [self loadInBackground];
         [self updateFrame];
     }
