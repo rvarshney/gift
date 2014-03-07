@@ -45,7 +45,7 @@
 {
     [super viewDidLoad];
     
-    self.navigationItem.title = @"Albums";
+    self.navigationItem.title = @"Select Album";
     
     if(self.isItDevice)
     {

@@ -58,7 +58,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationItem.title = @"Assets";
+    self.navigationItem.title = @"Select Pictures";
     [self.collectionView setBackgroundColor:[UIColor whiteColor]];
 
     if(self.isMultipleSelectionEnabled)
