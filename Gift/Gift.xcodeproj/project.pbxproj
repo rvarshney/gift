@@ -19,6 +19,10 @@
 		6F90498B18A6A858005326ED /* TemplatesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F90498918A6A858005326ED /* TemplatesViewController.m */; };
 		6F90498C18A6A858005326ED /* TemplatesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F90498A18A6A858005326ED /* TemplatesViewController.xib */; };
 		6F90498E18A71819005326ED /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F90498D18A71819005326ED /* CoreImage.framework */; };
+		6F9FF3A318C97E65008E6E5C /* edit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F9FF3A218C97E65008E6E5C /* edit@2x.png */; };
+		6F9FF3A518C9883D008E6E5C /* email@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F9FF3A418C9883D008E6E5C /* email@2x.png */; };
+		6F9FF3A718C98928008E6E5C /* order@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F9FF3A618C98928008E6E5C /* order@2x.png */; };
+		6F9FF3A918C98979008E6E5C /* print@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F9FF3A818C98979008E6E5C /* print@2x.png */; };
 		6FA1812E18A840E0007F4EAC /* Client.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FA1812D18A840E0007F4EAC /* Client.m */; };
 		6FAAC7DC18B4820C00F8F4F6 /* AlbumImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FAAC7DB18B4820C00F8F4F6 /* AlbumImageView.m */; };
 		6FD04F9C18B2A45400EBF752 /* AlbumContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FD04F9A18B2A45400EBF752 /* AlbumContentViewController.m */; };
@@ -138,6 +142,10 @@
 		6F90498918A6A858005326ED /* TemplatesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplatesViewController.m; sourceTree = "<group>"; };
 		6F90498A18A6A858005326ED /* TemplatesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TemplatesViewController.xib; sourceTree = "<group>"; };
 		6F90498D18A71819005326ED /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		6F9FF3A218C97E65008E6E5C /* edit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "edit@2x.png"; sourceTree = "<group>"; };
+		6F9FF3A418C9883D008E6E5C /* email@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "email@2x.png"; sourceTree = "<group>"; };
+		6F9FF3A618C98928008E6E5C /* order@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "order@2x.png"; sourceTree = "<group>"; };
+		6F9FF3A818C98979008E6E5C /* print@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "print@2x.png"; sourceTree = "<group>"; };
 		6FA1812C18A840E0007F4EAC /* Client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Client.h; sourceTree = "<group>"; };
 		6FA1812D18A840E0007F4EAC /* Client.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Client.m; sourceTree = "<group>"; };
 		6FAAC7DA18B4820C00F8F4F6 /* AlbumImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlbumImageView.h; path = Gift/AlbumImageView.h; sourceTree = "<group>"; };
@@ -403,21 +411,6 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
-		A857FED218B0302400226E92 /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				6FFD501218C5B695005D81EA /* bg.png */,
-				6FFD500018C53F2F005D81EA /* plus.png */,
-				6FFD4FF818C53D1B005D81EA /* plus_small.png */,
-				6FFD4FF018C45A33005D81EA /* edit.png */,
-				6FFD4FF118C45A33005D81EA /* email.png */,
-				6FFD4FEC18C45A29005D81EA /* order.png */,
-				6FFD4FED18C45A29005D81EA /* print.png */,
-				6FEAF6A218B1CDB200D26D34 /* albums.png */,
-			);
-			name = Images;
-			sourceTree = "<group>";
-		};
 		A886C48918BA903800A96958 /* PhotoPickerPlus */ = {
 			isa = PBXGroup;
 			children = (
@@ -627,7 +620,6 @@
 				6FA1812A18A84052007F4EAC /* View Controllers */,
 				D4DA79FD14D3345A0055F672 /* AppDelegate.h */,
 				D4DA79FE14D3345A0055F672 /* AppDelegate.m */,
-				A857FED218B0302400226E92 /* Images */,
 				A8E53C8618C6668100C75819 /* Images.xcassets */,
 				D4DA79F514D3345A0055F672 /* Supporting Files */,
 			);
@@ -637,6 +629,18 @@
 		D4DA79F514D3345A0055F672 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6FFD501218C5B695005D81EA /* bg.png */,
+				6FFD500018C53F2F005D81EA /* plus.png */,
+				6FFD4FF818C53D1B005D81EA /* plus_small.png */,
+				6FFD4FF018C45A33005D81EA /* edit.png */,
+				6F9FF3A218C97E65008E6E5C /* edit@2x.png */,
+				6FFD4FF118C45A33005D81EA /* email.png */,
+				6F9FF3A418C9883D008E6E5C /* email@2x.png */,
+				6FFD4FEC18C45A29005D81EA /* order.png */,
+				6F9FF3A618C98928008E6E5C /* order@2x.png */,
+				6FFD4FED18C45A29005D81EA /* print.png */,
+				6F9FF3A818C98979008E6E5C /* print@2x.png */,
+				6FEAF6A218B1CDB200D26D34 /* albums.png */,
 				6FF8496D18B1A38D00B44161 /* login-button-small.png */,
 				6FF8496E18B1A38D00B44161 /* login-button-small@2x.png */,
 				6FF8496918B1A38200B44161 /* login-button-small-pressed.png */,
@@ -723,6 +727,7 @@
 				A886C50118BA903800A96958 /* skydrive.png in Resources */,
 				D4DA7AA914D39BCE0055F672 /* ProfileViewController.xib in Resources */,
 				6F90498218A6A520005326ED /* ShippingViewController.xib in Resources */,
+				6F9FF3A518C9883D008E6E5C /* email@2x.png in Resources */,
 				6FFD4FEF18C45A29005D81EA /* print.png in Resources */,
 				A886C4ED18BA903800A96958 /* dropbox@2x.png in Resources */,
 				A886C4F218BA903800A96958 /* google.png in Resources */,
@@ -737,8 +742,10 @@
 				C4BB20D9161BC4FB00A7884A /* Default@2x.png in Resources */,
 				A8E53C8718C6668100C75819 /* Images.xcassets in Resources */,
 				A886C4E818BA903800A96958 /* album_default.png in Resources */,
+				6F9FF3A718C98928008E6E5C /* order@2x.png in Resources */,
 				6F90497D18A6A451005326ED /* AlbumCollectionViewController.xib in Resources */,
 				A886C4F018BA903800A96958 /* flickr.png in Resources */,
+				6F9FF3A318C97E65008E6E5C /* edit@2x.png in Resources */,
 				6F90498C18A6A858005326ED /* TemplatesViewController.xib in Resources */,
 				6FFD500118C53F2F005D81EA /* plus.png in Resources */,
 				A886C50018BA903800A96958 /* popover_border.png in Resources */,
@@ -749,6 +756,7 @@
 				6FFD4FF318C45A33005D81EA /* email.png in Resources */,
 				A886C4FA18BA903800A96958 /* PhotoPickerPlus.strings in Resources */,
 				A886C50218BA903800A96958 /* skydrive@2x.png in Resources */,
+				6F9FF3A918C98979008E6E5C /* print@2x.png in Resources */,
 				6F90497318A6A3BC005326ED /* AlbumViewController.xib in Resources */,
 				6FFD4FF918C53D1B005D81EA /* plus_small.png in Resources */,
 				A886C4F318BA903800A96958 /* google@2x.png in Resources */,
