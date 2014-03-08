@@ -516,44 +516,78 @@
             } else if (CGRectContainsPoint(firstPage.view.bounds, locationInFirstPage)) {
                 // Add to first page
                 NSLog(@"Moving to first page");
-                CGRect placementFrame = [firstPage.view convertRect:self.moveImageView.frame fromView:self.view];
-                AlbumImageView *albumImageView = [self albumImageViewForPage:firstPage.pageNum withFrame:placementFrame];
-                [self.moveImageView removeFromSuperview];
-                [firstPage.view addSubview:albumImageView];
-                
-                if ([self.moveImageView class] != [AlbumImageView class]) {
-                    // This image came from picture scroll view.
-                    // Adjust the picture scroll view.
-                    NSLog(@"Adjust scroll view");
-                    for (UIView *view in self.pictureScrollView.subviews) {
-                        if (view.frame.origin.x > self.moveStartFrame.origin.x) {
-                            [UIView animateWithDuration:0.3 animations:^{
-                                CGRect frame = view.frame;
-                                frame.origin.x -= 150;
-                                view.frame = frame;
-                            } completion:nil];
+                CGRect foundPlacementFrame = [firstPage placementRectForLocation:locationInFirstPage];
+                if (CGRectEqualToRect(foundPlacementFrame, CGRectZero)) {
+                    if ([self.moveImageView class] == [AlbumImageView class]) {
+                        // Snap back to original location
+                        NSLog(@"Snapping to original location");
+                        AlbumImageView *albumImageView = [self albumImageViewForPage:self.moveStartPage.pageNum withFrame:self.moveStartFrame];
+                        [self.moveImageView removeFromSuperview];
+                        [self.moveStartPage.view addSubview:albumImageView];
+                    } else {
+                        // Snap back to the scroll view
+                        NSLog(@"Snapping to scroll view");
+                        [self.moveImageView removeFromSuperview];
+                        self.moveImageView.frame = self.moveStartFrame;
+                        [self.pictureScrollView addSubview:self.moveImageView];
+                    }
+                } else {
+                    CGRect placementFrame = [firstPage.view convertRect:self.moveImageView.frame fromView:self.view];
+                    AlbumImageView *albumImageView = [self albumImageViewForPage:firstPage.pageNum withFrame:placementFrame];
+                    [self.moveImageView removeFromSuperview];
+                    [firstPage.view addSubview:albumImageView];
+                    
+                    if ([self.moveImageView class] != [AlbumImageView class]) {
+                        // This image came from picture scroll view.
+                        // Adjust the picture scroll view.
+                        NSLog(@"Adjust scroll view");
+                        for (UIView *view in self.pictureScrollView.subviews) {
+                            if (view.frame.origin.x > self.moveStartFrame.origin.x) {
+                                [UIView animateWithDuration:0.3 animations:^{
+                                    CGRect frame = view.frame;
+                                    frame.origin.x -= 150;
+                                    view.frame = frame;
+                                } completion:nil];
+                            }
                         }
                     }
                 }
             } else if (CGRectContainsPoint(secondPage.view.bounds, locationInSecondPage)) {
                 // Add to second page
                 NSLog(@"Moving to second page");
-                CGRect placementFrame = [secondPage.view convertRect:self.moveImageView.frame fromView:self.view];
-                AlbumImageView *albumImageView = [self albumImageViewForPage:secondPage.pageNum withFrame:placementFrame];
-                [self.moveImageView removeFromSuperview];
-                [secondPage.view addSubview:albumImageView];
-                
-                if ([self.moveImageView class] != [AlbumImageView class]) {
-                    // This image came from picture scroll view.
-                    // Adjust the picture scroll view.
-                    NSLog(@"Adjust scroll view");
-                    for (UIView *view in self.pictureScrollView.subviews) {
-                        if (view.frame.origin.x > self.moveStartFrame.origin.x) {
-                            [UIView animateWithDuration:0.3 animations:^{
-                                CGRect frame = view.frame;
-                                frame.origin.x -= 150;
-                                view.frame = frame;
-                            } completion:nil];
+                CGRect foundPlacementFrame = [secondPage placementRectForLocation:locationInSecondPage];
+                if (CGRectEqualToRect(foundPlacementFrame, CGRectZero)) {
+                    if ([self.moveImageView class] == [AlbumImageView class]) {
+                        // Snap back to original location
+                        NSLog(@"Snapping to original location");
+                        AlbumImageView *albumImageView = [self albumImageViewForPage:self.moveStartPage.pageNum withFrame:self.moveStartFrame];
+                        [self.moveImageView removeFromSuperview];
+                        [self.moveStartPage.view addSubview:albumImageView];
+                    } else {
+                        // Snap back to the scroll view
+                        NSLog(@"Snapping to scroll view");
+                        [self.moveImageView removeFromSuperview];
+                        self.moveImageView.frame = self.moveStartFrame;
+                        [self.pictureScrollView addSubview:self.moveImageView];
+                    }
+                } else {
+                    CGRect placementFrame = [secondPage.view convertRect:self.moveImageView.frame fromView:self.view];
+                    AlbumImageView *albumImageView = [self albumImageViewForPage:secondPage.pageNum withFrame:placementFrame];
+                    [self.moveImageView removeFromSuperview];
+                    [secondPage.view addSubview:albumImageView];
+                    
+                    if ([self.moveImageView class] != [AlbumImageView class]) {
+                        // This image came from picture scroll view.
+                        // Adjust the picture scroll view.
+                        NSLog(@"Adjust scroll view");
+                        for (UIView *view in self.pictureScrollView.subviews) {
+                            if (view.frame.origin.x > self.moveStartFrame.origin.x) {
+                                [UIView animateWithDuration:0.3 animations:^{
+                                    CGRect frame = view.frame;
+                                    frame.origin.x -= 150;
+                                    view.frame = frame;
+                                } completion:nil];
+                            }
                         }
                     }
                 }
@@ -701,7 +735,7 @@
         imageView.frame = workingFrame;
         imageView.bounds = CGRectInset(imageView.frame, 12.0f, 12.0f);
         imageView.layer.borderColor = [UIColor whiteColor].CGColor;
-        imageView.layer.borderWidth = 3.0f;
+        imageView.layer.borderWidth = 2.0f;
         [self.pictureScrollView addSubview:imageView];
         workingFrame.origin.x = workingFrame.origin.x + workingFrame.size.width;
         self.lastPictureLocation = workingFrame.origin.x;
