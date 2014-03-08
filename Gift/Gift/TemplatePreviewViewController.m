@@ -6,13 +6,13 @@
 //
 //
 
-#import "TemplatesPreviewViewController.h"
+#import "TemplatePreviewViewController.h"
 #import "AlbumViewController.h"
 #import "Client.h"
 #import <Parse/Parse.h>
 #import <QuartzCore/QuartzCore.h>
 
-@interface TemplatesPreviewViewController ()
+@interface TemplatePreviewViewController ()
 
 @property(weak, nonatomic) IBOutlet PFImageView *leftView;
 @property(weak, nonatomic) IBOutlet PFImageView *rightView;
@@ -20,7 +20,7 @@
 
 @end
 
-@implementation TemplatesPreviewViewController
+@implementation TemplatePreviewViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

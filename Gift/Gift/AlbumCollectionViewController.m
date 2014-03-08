@@ -9,17 +9,16 @@
 #import "AlbumCollectionViewController.h"
 #import "AlbumCollectionViewLayout.h"
 #import "AlbumCell.h"
-#import "AlbumTitleReusableView.h"
 #import "ProfileViewController.h"
-#import "TemplatesViewController.h"
-#import "TemplatesLayout.h"
 #import "AlbumViewController.h"
 #import "MBProgressHUD.h"
 #import "Client.h"
+#import "TemplateQuiltViewController.h"
 
 @interface AlbumCollectionViewController ()
 
 @property (nonatomic, strong) NSMutableArray *albums;
+@property (nonatomic, strong) NSArray *templates;
 @property (nonatomic, strong) NSMutableDictionary *picturesForAlbums;
 @property (nonatomic, strong) ProfileViewController *profileViewController;
 @property BOOL isFirstLoad;
@@ -76,6 +75,7 @@
     }
 
     [self loadAlbums];
+    [self loadTemplates];
 
     self.isFirstLoad = NO;
 }
@@ -166,8 +166,15 @@
 {
     self.collectionView.contentInset = UIEdgeInsetsMake(220.0f, 0.0f, 0.0f, 0.0f);
     [self.collectionView registerClass:[AlbumCell class] forCellWithReuseIdentifier:@"AlbumCell"];
-    //[self.collectionView registerClass:[AlbumTitleReusableView class] forSupplementaryViewOfKind:@"AlbumTitle"withReuseIdentifier:@"AlbumTitle"];
     self.collectionView.backgroundColor = [UIColor whiteColor];
+}
+
+- (void)loadTemplates
+{
+    [[Client instance] templates:^(NSArray *templates, NSError *error) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        self.templates = templates;
+    }];
 }
 
 - (void)loadAlbums
@@ -213,8 +220,8 @@
 - (void)newButtonHandler:(id)sender
 {
     // Push templates view controller
-    TemplatesLayout *templatesLayout = [[TemplatesLayout alloc]init];
-    TemplatesViewController *templatesVC = [[TemplatesViewController alloc]initWithCollectionViewLayout:templatesLayout];
+    TemplateQuiltViewController *templatesVC = [[TemplateQuiltViewController alloc] init];
+    templatesVC.templates = self.templates;
     [self.navigationController pushViewController:templatesVC animated:YES];
 }
 
