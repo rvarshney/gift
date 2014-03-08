@@ -58,7 +58,7 @@
     [super didReceiveMemoryWarning];
 }
 
-- (void)showPlacementViews
+- (UIView *)getPlacementView
 {
     NSDictionary *positionData = [self.album.template objectForKey:@"themeData"];
     NSNumber *templateWidth = [positionData objectForKey:@"w"];
@@ -89,12 +89,23 @@
         
         UIView *view = [[UIView alloc] initWithFrame:CGRectMake(x * widthRatio, y * heightRatio, w * widthRatio, h * heightRatio)];
         view.alpha = 1;
-        view.layer.borderColor = [UIColor whiteColor].CGColor;
-        view.layer.borderWidth = 2.0f;
+        //view.layer.borderColor = [UIColor greenColor].CGColor;
+        //view.layer.borderWidth = 2.0f;
+        
+        CAShapeLayer *border = [CAShapeLayer layer];
+        border.strokeColor = [UIColor whiteColor].CGColor;
+        border.fillColor = nil;
+        border.lineWidth = 2.0f;
+        border.lineDashPattern = @[@8, @4];
+        [view.layer addSublayer:border];
+        border.path = [UIBezierPath bezierPathWithRect:view.bounds].CGPath;
+        border.frame = view.bounds;
+
         [self.placementView addSubview:view];
     }
 
-    [self.view addSubview:self.placementView];
+    return self.placementView;
+    //[self.view addSubview:self.placementView];
 }
 
 - (void)hidePlacementViews

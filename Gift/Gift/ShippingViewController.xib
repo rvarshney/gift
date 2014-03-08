@@ -41,108 +41,108 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5.8 x 8.3 Album" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pzc-KV-Jl7">
-                            <rect key="frame" x="40" y="100" width="120" height="20"/>
+                            <rect key="frame" x="40" y="100" width="121" height="24"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                            <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="17"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RJt-xw-hzr">
-                            <rect key="frame" x="330" y="100" width="39" height="20"/>
+                            <rect key="frame" x="331" y="100" width="38" height="24"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                            <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="17"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quantity" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rsA-86-Jff">
-                            <rect key="frame" x="40" y="145" width="64" height="20"/>
+                            <rect key="frame" x="40" y="149" width="67" height="24"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                            <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="17"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="InX-Vu-bQv">
-                            <rect key="frame" x="319" y="140" width="50" height="30"/>
+                            <rect key="frame" x="319" y="144" width="50" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="50" id="MfF-a8-PkR"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                            <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="14"/>
                             <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                             <connections>
                                 <action selector="quantityChanged:" destination="-1" eventType="editingChanged" id="AJF-s7-SRG"/>
                             </connections>
                         </textField>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Promotion" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ywX-MJ-jaI">
-                            <rect key="frame" x="40" y="190" width="79" height="20"/>
+                            <rect key="frame" x="40" y="198" width="81" height="24"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                            <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="17"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-0.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WC3-MX-IEN">
-                            <rect key="frame" x="329" y="190" width="40" height="20"/>
+                            <rect key="frame" x="330" y="194" width="39" height="24"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                            <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="17"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Order" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zD9-mK-nej">
-                            <rect key="frame" x="153" y="40" width="103" height="24"/>
+                            <rect key="frame" x="152" y="40" width="105" height="28"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                            <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shipping" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S4y-Dp-qu1">
-                            <rect key="frame" x="40" y="235" width="68" height="20"/>
+                            <rect key="frame" x="40" y="247" width="68" height="24"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                            <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="17"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Free" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WBD-LK-Fjs">
-                            <rect key="frame" x="335" y="235" width="34" height="20"/>
+                            <rect key="frame" x="333" y="243" width="36" height="24"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                            <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Taxes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w15-yd-RdZ">
-                            <rect key="frame" x="40" y="280" width="44" height="20"/>
+                            <rect key="frame" x="40" y="296" width="42" height="24"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                            <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="17"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FLJ-Uq-nwy">
-                            <rect key="frame" x="335" y="280" width="34" height="20"/>
+                            <rect key="frame" x="335" y="292" width="34" height="24"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                            <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="17"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PnM-5A-Y8Z">
-                            <rect key="frame" x="40" y="346" width="43" height="24"/>
+                            <rect key="frame" x="40" y="366" width="44" height="28"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                            <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="20"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USD $" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ndh-FQ-cE8">
-                            <rect key="frame" x="262" y="346" width="59" height="24"/>
+                            <rect key="frame" x="263" y="366" width="57" height="28"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                            <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="20"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rg8-6l-Azk">
-                            <rect key="frame" x="326" y="346" width="43" height="24"/>
+                            <rect key="frame" x="325" y="366" width="44" height="28"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                            <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="20"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hXe-QO-nD3">
-                            <rect key="frame" x="35" y="325" width="339" height="1"/>
+                            <rect key="frame" x="35" y="345" width="339" height="1"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
@@ -189,104 +189,104 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shipping Details" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jO0-hM-wQW">
-                            <rect key="frame" x="222" y="40" width="156" height="24"/>
+                            <rect key="frame" x="223" y="40" width="154" height="28"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                            <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gxy-9O-ql1">
-                            <rect key="frame" x="40" y="100" width="48" height="21"/>
+                            <rect key="frame" x="40" y="100" width="48" height="24"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                            <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="93P-cn-0TJ">
-                            <rect key="frame" x="108" y="95" width="452" height="30"/>
+                            <rect key="frame" x="125" y="97" width="435" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                            <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="14"/>
                             <textInputTraits key="textInputTraits" returnKeyType="next"/>
                         </textField>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HOv-6t-k5e">
-                            <rect key="frame" x="40" y="161" width="67" height="21"/>
+                            <rect key="frame" x="40" y="155" width="65" height="24"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                            <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BnC-IL-Sbs">
-                            <rect key="frame" x="127" y="155" width="433" height="30"/>
+                            <rect key="frame" x="125" y="152" width="435" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                            <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="14"/>
                             <textInputTraits key="textInputTraits" returnKeyType="next"/>
                         </textField>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yQg-SK-k42">
-                            <rect key="frame" x="40" y="222" width="32" height="21"/>
+                            <rect key="frame" x="40" y="210" width="32" height="24"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                            <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fwg-U8-UMu">
-                            <rect key="frame" x="92" y="215" width="285" height="30"/>
+                            <rect key="frame" x="125" y="207" width="253" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                            <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="14"/>
                             <textInputTraits key="textInputTraits" returnKeyType="next"/>
                         </textField>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="State" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DlR-Cg-XwM">
-                            <rect key="frame" x="397" y="221" width="43" height="21"/>
+                            <rect key="frame" x="398" y="210" width="42" height="24"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                            <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zip" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jVT-PZ-aT0">
-                            <rect key="frame" x="40" y="283" width="26" height="21"/>
+                            <rect key="frame" x="40" y="265" width="26" height="24"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                            <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yeC-Ne-R2x">
-                            <rect key="frame" x="460" y="215" width="100" height="30"/>
+                            <rect key="frame" x="460" y="207" width="100" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="100" id="Mdl-ug-M3p"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                            <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="14"/>
                             <textInputTraits key="textInputTraits" returnKeyType="next"/>
                         </textField>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pwX-Z7-pgM">
-                            <rect key="frame" x="86" y="275" width="100" height="30"/>
+                            <rect key="frame" x="125" y="262" width="86" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="100" id="QPM-6s-cw5"/>
+                                <constraint firstAttribute="width" constant="86" id="QPM-6s-cw5"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                            <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="14"/>
                             <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next"/>
                         </textField>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w94-mA-dds">
-                            <rect key="frame" x="271" y="275" width="289" height="30"/>
+                            <rect key="frame" x="295" y="262" width="265" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                            <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="14"/>
                             <textInputTraits key="textInputTraits" returnKeyType="next"/>
                         </textField>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Id4-q3-2qr">
-                            <rect key="frame" x="206" y="281" width="45" height="21"/>
+                            <rect key="frame" x="231" y="265" width="44" height="24"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                            <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Credit Card" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="raU-Lg-wjr">
-                            <rect key="frame" x="40" y="349" width="94" height="21"/>
+                            <rect key="frame" x="40" y="330" width="93" height="24"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                            <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mlj-Se-6Bm" customClass="STPView">
-                            <rect key="frame" x="154" y="335" width="406" height="50"/>
+                            <rect key="frame" x="153" y="317" width="407" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="h2Y-1k-1Rt"/>
@@ -295,41 +295,41 @@
                     </subviews>
                     <constraints>
                         <constraint firstItem="HOv-6t-k5e" firstAttribute="leading" secondItem="Twf-LL-bMZ" secondAttribute="leading" constant="40" id="0Am-3I-d1d"/>
-                        <constraint firstItem="yeC-Ne-R2x" firstAttribute="top" secondItem="BnC-IL-Sbs" secondAttribute="bottom" constant="30" id="2yn-f1-vLT"/>
+                        <constraint firstItem="yeC-Ne-R2x" firstAttribute="top" secondItem="BnC-IL-Sbs" secondAttribute="bottom" constant="25" id="2yn-f1-vLT"/>
                         <constraint firstItem="yQg-SK-k42" firstAttribute="leading" secondItem="Twf-LL-bMZ" secondAttribute="leading" constant="40" id="7R2-xQ-NkL"/>
-                        <constraint firstItem="DlR-Cg-XwM" firstAttribute="top" secondItem="BnC-IL-Sbs" secondAttribute="bottom" constant="36" id="7i0-tH-Vy0"/>
+                        <constraint firstItem="DlR-Cg-XwM" firstAttribute="top" secondItem="BnC-IL-Sbs" secondAttribute="bottom" constant="28" id="7i0-tH-Vy0"/>
                         <constraint firstAttribute="width" constant="600" id="8J3-Xt-v0j"/>
                         <constraint firstAttribute="trailing" secondItem="yeC-Ne-R2x" secondAttribute="trailing" constant="40" id="8dc-UA-aUg"/>
                         <constraint firstItem="jVT-PZ-aT0" firstAttribute="leading" secondItem="Twf-LL-bMZ" secondAttribute="leading" constant="40" id="Bx9-vV-D3j"/>
                         <constraint firstItem="jO0-hM-wQW" firstAttribute="top" secondItem="Twf-LL-bMZ" secondAttribute="top" constant="40" id="HH6-RI-3FL"/>
-                        <constraint firstItem="w94-mA-dds" firstAttribute="top" secondItem="yeC-Ne-R2x" secondAttribute="bottom" constant="30" id="Hpw-ib-X98"/>
-                        <constraint firstItem="93P-cn-0TJ" firstAttribute="top" secondItem="Twf-LL-bMZ" secondAttribute="top" constant="95" id="In6-GW-D65"/>
-                        <constraint firstItem="raU-Lg-wjr" firstAttribute="top" secondItem="jVT-PZ-aT0" secondAttribute="bottom" constant="45" id="KVn-wE-GZ2"/>
+                        <constraint firstItem="w94-mA-dds" firstAttribute="top" secondItem="yeC-Ne-R2x" secondAttribute="bottom" constant="25" id="Hpw-ib-X98"/>
+                        <constraint firstItem="93P-cn-0TJ" firstAttribute="top" secondItem="Twf-LL-bMZ" secondAttribute="top" constant="97" id="In6-GW-D65"/>
+                        <constraint firstItem="raU-Lg-wjr" firstAttribute="top" secondItem="jVT-PZ-aT0" secondAttribute="bottom" constant="41" id="KVn-wE-GZ2"/>
                         <constraint firstItem="Mlj-Se-6Bm" firstAttribute="leading" secondItem="raU-Lg-wjr" secondAttribute="trailing" constant="20" id="LBh-vH-5J1"/>
                         <constraint firstAttribute="centerX" secondItem="jO0-hM-wQW" secondAttribute="centerX" id="LyT-Ce-NRo"/>
                         <constraint firstItem="Id4-q3-2qr" firstAttribute="leading" secondItem="pwX-Z7-pgM" secondAttribute="trailing" constant="20" id="PCf-Vf-Ubk"/>
-                        <constraint firstItem="pwX-Z7-pgM" firstAttribute="leading" secondItem="jVT-PZ-aT0" secondAttribute="trailing" constant="20" id="QC3-Kx-KBa"/>
-                        <constraint firstItem="Fwg-U8-UMu" firstAttribute="leading" secondItem="yQg-SK-k42" secondAttribute="trailing" constant="20" id="QPe-oE-Bfb"/>
-                        <constraint firstItem="Mlj-Se-6Bm" firstAttribute="top" secondItem="w94-mA-dds" secondAttribute="bottom" constant="30" id="Qza-X4-nQN"/>
+                        <constraint firstItem="pwX-Z7-pgM" firstAttribute="leading" secondItem="jVT-PZ-aT0" secondAttribute="trailing" constant="59" id="QC3-Kx-KBa"/>
+                        <constraint firstItem="Fwg-U8-UMu" firstAttribute="leading" secondItem="yQg-SK-k42" secondAttribute="trailing" constant="53" id="QPe-oE-Bfb"/>
+                        <constraint firstItem="Mlj-Se-6Bm" firstAttribute="top" secondItem="w94-mA-dds" secondAttribute="bottom" constant="25" id="Qza-X4-nQN"/>
                         <constraint firstItem="gxy-9O-ql1" firstAttribute="top" secondItem="Twf-LL-bMZ" secondAttribute="top" constant="100" id="RAz-lB-we4"/>
                         <constraint firstAttribute="trailing" secondItem="BnC-IL-Sbs" secondAttribute="trailing" constant="40" id="SnR-sr-vQt"/>
                         <constraint firstAttribute="trailing" secondItem="93P-cn-0TJ" secondAttribute="trailing" constant="40" id="UBF-f6-Wck"/>
-                        <constraint firstItem="Fwg-U8-UMu" firstAttribute="top" secondItem="BnC-IL-Sbs" secondAttribute="bottom" constant="30" id="UYE-Vd-ceX"/>
-                        <constraint firstItem="93P-cn-0TJ" firstAttribute="leading" secondItem="gxy-9O-ql1" secondAttribute="trailing" constant="20" id="ZJC-0x-YGc"/>
+                        <constraint firstItem="Fwg-U8-UMu" firstAttribute="top" secondItem="BnC-IL-Sbs" secondAttribute="bottom" constant="25" id="UYE-Vd-ceX"/>
+                        <constraint firstItem="93P-cn-0TJ" firstAttribute="leading" secondItem="gxy-9O-ql1" secondAttribute="trailing" constant="37" id="ZJC-0x-YGc"/>
                         <constraint firstItem="yeC-Ne-R2x" firstAttribute="leading" secondItem="DlR-Cg-XwM" secondAttribute="trailing" constant="20" id="fsP-oM-xdF"/>
                         <constraint firstAttribute="trailing" secondItem="w94-mA-dds" secondAttribute="trailing" constant="40" id="hZX-2h-gHt"/>
                         <constraint firstItem="raU-Lg-wjr" firstAttribute="leading" secondItem="Twf-LL-bMZ" secondAttribute="leading" constant="40" id="jKq-pG-y6m"/>
-                        <constraint firstItem="Id4-q3-2qr" firstAttribute="top" secondItem="Fwg-U8-UMu" secondAttribute="bottom" constant="36" id="m6x-8y-bGD"/>
+                        <constraint firstItem="Id4-q3-2qr" firstAttribute="top" secondItem="Fwg-U8-UMu" secondAttribute="bottom" constant="28" id="m6x-8y-bGD"/>
                         <constraint firstItem="BnC-IL-Sbs" firstAttribute="leading" secondItem="HOv-6t-k5e" secondAttribute="trailing" constant="20" id="nYV-aK-XlG"/>
-                        <constraint firstItem="pwX-Z7-pgM" firstAttribute="top" secondItem="Fwg-U8-UMu" secondAttribute="bottom" constant="30" id="nr4-SL-W5S"/>
+                        <constraint firstItem="pwX-Z7-pgM" firstAttribute="top" secondItem="Fwg-U8-UMu" secondAttribute="bottom" constant="25" id="nr4-SL-W5S"/>
                         <constraint firstItem="gxy-9O-ql1" firstAttribute="leading" secondItem="Twf-LL-bMZ" secondAttribute="leading" constant="40" id="nye-pH-qVZ"/>
                         <constraint firstItem="w94-mA-dds" firstAttribute="leading" secondItem="Id4-q3-2qr" secondAttribute="trailing" constant="20" id="oPN-SN-BIM"/>
-                        <constraint firstItem="jVT-PZ-aT0" firstAttribute="top" secondItem="yQg-SK-k42" secondAttribute="bottom" constant="40" id="qVg-gS-Mih"/>
+                        <constraint firstItem="jVT-PZ-aT0" firstAttribute="top" secondItem="yQg-SK-k42" secondAttribute="bottom" constant="31" id="qVg-gS-Mih"/>
                         <constraint firstAttribute="trailing" secondItem="Mlj-Se-6Bm" secondAttribute="trailing" constant="40" id="qW3-L4-ACA"/>
-                        <constraint firstItem="HOv-6t-k5e" firstAttribute="top" secondItem="gxy-9O-ql1" secondAttribute="bottom" constant="40" id="rRT-7y-oLv"/>
-                        <constraint firstItem="BnC-IL-Sbs" firstAttribute="top" secondItem="93P-cn-0TJ" secondAttribute="bottom" constant="30" id="wc7-uE-EuW"/>
+                        <constraint firstItem="HOv-6t-k5e" firstAttribute="top" secondItem="gxy-9O-ql1" secondAttribute="bottom" constant="31" id="rRT-7y-oLv"/>
+                        <constraint firstItem="BnC-IL-Sbs" firstAttribute="top" secondItem="93P-cn-0TJ" secondAttribute="bottom" constant="25" id="wc7-uE-EuW"/>
                         <constraint firstItem="DlR-Cg-XwM" firstAttribute="leading" secondItem="Fwg-U8-UMu" secondAttribute="trailing" constant="20" id="yV6-r4-1IS"/>
-                        <constraint firstItem="yQg-SK-k42" firstAttribute="top" secondItem="HOv-6t-k5e" secondAttribute="bottom" constant="40" id="zTM-gh-tHa"/>
+                        <constraint firstItem="yQg-SK-k42" firstAttribute="top" secondItem="HOv-6t-k5e" secondAttribute="bottom" constant="31" id="zTM-gh-tHa"/>
                     </constraints>
                 </view>
             </subviews>

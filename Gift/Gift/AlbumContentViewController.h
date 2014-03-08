@@ -15,7 +15,7 @@
 @property (nonatomic, strong) NSMutableArray *pictures;
 @property (nonatomic, strong) Album *album;
 
-- (void)showPlacementViews;
+- (UIView *)getPlacementView;
 - (void)hidePlacementViews;
 - (CGRect)placementRectForLocation:(CGPoint)location;
 

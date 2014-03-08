@@ -37,6 +37,7 @@
 @property (nonatomic, strong) UIView *overlayView;
 @property (nonatomic, strong) NSString *albumFile;
 @property CGFloat lastPictureLocation;
+@property BOOL wasPictureScrollViewOpen;
 
 @end
 
@@ -416,13 +417,13 @@
         if (CGRectContainsPoint(self.pictureScrollView.bounds, locationInScrollView)) {
             for (UIView *view in self.pictureScrollView.subviews) {
                 if (CGRectContainsPoint(view.frame, locationInScrollView) && [view class] == [UIImageView class]) {
+                    [self showPlacementViews];
                     self.moveStartFrame = CGRectMake(view.frame.origin.x, view.frame.origin.y, view.frame.size.width, view.frame.size.height);
                     view.frame = CGRectMake(locationInView.x - 200/2, locationInView.y - 200/2, 200, 200);
                     [view removeFromSuperview];
                     [self.view addSubview:view];
                     self.movePreviousLocation = locationInView;
                     self.moveImageView = (UIImageView *)view;
-                    [self showPlacementViews];
                     NSLog(@"Long press detected in scroll view");
                     break;
                 }
@@ -430,6 +431,7 @@
         } else if (CGRectContainsPoint(firstPage.view.bounds, locationInFirstPage)) {
             for (UIView *view in firstPage.view.subviews) {
                 if (CGRectContainsPoint(view.frame, locationInFirstPage) && [view class] == [AlbumImageView class]) {
+                    [self showPlacementViews];
                     self.moveStartFrame = CGRectMake(view.frame.origin.x, view.frame.origin.y, view.frame.size.width, view.frame.size.height);
                     self.moveStartPage = firstPage;
                     view.frame = CGRectMake(locationInView.x - 200/2, locationInView.y - 200/2, 200, 200);
@@ -437,7 +439,6 @@
                     [self.view addSubview:view];
                     self.movePreviousLocation = locationInView;
                     self.moveImageView = (UIImageView *)view;
-                    [self showPlacementViews];
                     NSLog(@"Long press detected in first page");
                     break;
                 }
@@ -445,6 +446,7 @@
         } else if (CGRectContainsPoint(secondPage.view.bounds, locationInSecondPage)) {
             for (UIView *view in secondPage.view.subviews) {
                 if (CGRectContainsPoint(view.frame, locationInSecondPage) && [view class] == [AlbumImageView class]) {
+                    [self showPlacementViews];
                     self.moveStartFrame = CGRectMake(view.frame.origin.x, view.frame.origin.y, view.frame.size.width, view.frame.size.height);
                     self.moveStartPage = secondPage;
                     view.frame = CGRectMake(locationInView.x - 200/2, locationInView.y - 200/2, 200, 200);
@@ -452,7 +454,6 @@
                     [self.view addSubview:view];
                     self.movePreviousLocation = locationInView;
                     self.moveImageView = (UIImageView *)view;
-                    [self showPlacementViews];
                     NSLog(@"Long press detected in second page");
                     break;
                 }
@@ -483,8 +484,12 @@
             }
             if (CGRectEqualToRect(placementFrame, CGRectZero)) {
                 placementFrame = CGRectMake(location.x - 200/2, location.y - 200/2, 200, 200);
+                [self.moveImageView setFrame:placementFrame];
+            } else {
+                [UIView animateWithDuration:0.2 animations:^{
+                    [self.moveImageView setFrame:placementFrame];
+                } completion:nil];
             }
-            [self.moveImageView setFrame:placementFrame];
             self.movePreviousLocation = location;
         }
     } else if (gesture.state == UIGestureRecognizerStateEnded) {
@@ -543,11 +548,11 @@
                         NSLog(@"Adjust scroll view");
                         for (UIView *view in self.pictureScrollView.subviews) {
                             if (view.frame.origin.x > self.moveStartFrame.origin.x) {
-                                [UIView animateWithDuration:0.3 animations:^{
+                                [UIView animateWithDuration:0.6 animations:^{
                                     CGRect frame = view.frame;
                                     frame.origin.x -= 150;
                                     view.frame = frame;
-                                } completion:nil];
+                                }];
                             }
                         }
                     }
@@ -582,7 +587,7 @@
                         NSLog(@"Adjust scroll view");
                         for (UIView *view in self.pictureScrollView.subviews) {
                             if (view.frame.origin.x > self.moveStartFrame.origin.x) {
-                                [UIView animateWithDuration:0.3 animations:^{
+                                [UIView animateWithDuration:0.6 animations:^{
                                     CGRect frame = view.frame;
                                     frame.origin.x -= 150;
                                     view.frame = frame;
@@ -783,20 +788,39 @@
 
 - (void)showPlacementViews
 {
+    self.wasPictureScrollViewOpen = self.isScrollViewVisible;
+    
     self.overlayView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-    self.overlayView.backgroundColor = [UIColor blackColor];
-    self.overlayView.alpha = 0.3f;
+    
+    UIView *background = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    background.backgroundColor = [UIColor blackColor];
+    background.alpha = 0.3f;
+    [self.overlayView addSubview:background];
+    
+    AlbumContentViewController *firstPage = self.pageViewController.viewControllers[0];
+    AlbumContentViewController *secondPage = self.pageViewController.viewControllers[1];
+    
+    UIView *firstPlacementView = [firstPage getPlacementView];
+    UIView *secondPlacementView = [secondPage getPlacementView];
+
+    firstPlacementView.frame = [self.view convertRect:firstPlacementView.frame fromView:firstPage.view];
+    secondPlacementView.frame = [self.view convertRect:secondPlacementView.frame fromView:secondPage.view];
+    
+    [self.overlayView addSubview:firstPlacementView];
+    [self.overlayView addSubview:secondPlacementView];
+    
     [self.view addSubview:self.overlayView];
     
-    [(AlbumContentViewController *)self.pageViewController.viewControllers[0] showPlacementViews];
-    [(AlbumContentViewController *)self.pageViewController.viewControllers[1] showPlacementViews];
+    [self pushDown];
 }
 
 - (void)hidePlacementViews
 {
     [self.overlayView removeFromSuperview];
-    [(AlbumContentViewController *)self.pageViewController.viewControllers[0] hidePlacementViews];
-    [(AlbumContentViewController *)self.pageViewController.viewControllers[1] hidePlacementViews];
+
+    if (self.wasPictureScrollViewOpen) {
+        [self pullUp];
+    }
 }
 
 @end
