@@ -521,6 +521,20 @@
                 [self.moveImageView removeFromSuperview];
                 [firstPage.view addSubview:albumImageView];
                 
+                if ([self.moveImageView class] != [AlbumImageView class]) {
+                    // This image came from picture scroll view.
+                    // Adjust the picture scroll view.
+                    NSLog(@"Adjust scroll view");
+                    for (UIView *view in self.pictureScrollView.subviews) {
+                        if (view.frame.origin.x > self.moveStartFrame.origin.x) {
+                            [UIView animateWithDuration:0.3 animations:^{
+                                CGRect frame = view.frame;
+                                frame.origin.x -= 150;
+                                view.frame = frame;
+                            } completion:nil];
+                        }
+                    }
+                }
             } else if (CGRectContainsPoint(secondPage.view.bounds, locationInSecondPage)) {
                 // Add to second page
                 NSLog(@"Moving to second page");
@@ -529,6 +543,20 @@
                 [self.moveImageView removeFromSuperview];
                 [secondPage.view addSubview:albumImageView];
                 
+                if ([self.moveImageView class] != [AlbumImageView class]) {
+                    // This image came from picture scroll view.
+                    // Adjust the picture scroll view.
+                    NSLog(@"Adjust scroll view");
+                    for (UIView *view in self.pictureScrollView.subviews) {
+                        if (view.frame.origin.x > self.moveStartFrame.origin.x) {
+                            [UIView animateWithDuration:0.3 animations:^{
+                                CGRect frame = view.frame;
+                                frame.origin.x -= 150;
+                                view.frame = frame;
+                            } completion:nil];
+                        }
+                    }
+                }
             } else {
                 // It was dropped outside the bounds of both pages
                 if ([self.moveImageView class] == [AlbumImageView class]) {
