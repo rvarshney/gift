@@ -588,7 +588,7 @@
     self.bottomConstraint = [NSLayoutConstraint constraintWithItem:self.pictureScrollView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0];
     [self.view addConstraints:@[heightConstraint, leftConstraint, rightConstraint, self.bottomConstraint]];
     
-    UIImage *btnImage = [UIImage imageNamed:@"plus_small.png"];
+    UIImage *btnImage = [UIImage imageNamed:@"plus_image.png"];
     self.addButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.addButton setImage:btnImage forState:UIControlStateNormal];
     self.addButton.contentMode = UIViewContentModeCenter;

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		30C949AC1829561000B17666 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30C949AB1829561000B17666 /* FacebookSDK.framework */; };
 		6D10F48316DD68E000690A0F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D10F48216DD68E000690A0F /* CoreLocation.framework */; };
+		6F27D1F318CADC1100026E4D /* plus_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F27D1F218CADC1100026E4D /* plus_image.png */; };
 		6F69813D18BCF62A00BC7D12 /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F69813C18BCF62A00BC7D12 /* Order.m */; };
 		6F90497218A6A3BC005326ED /* AlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F90497018A6A3BC005326ED /* AlbumViewController.m */; };
 		6F90497318A6A3BC005326ED /* AlbumViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F90497118A6A3BC005326ED /* AlbumViewController.xib */; };
@@ -23,7 +24,7 @@
 		6F9FF3A518C9883D008E6E5C /* email@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F9FF3A418C9883D008E6E5C /* email@2x.png */; };
 		6F9FF3A718C98928008E6E5C /* order@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F9FF3A618C98928008E6E5C /* order@2x.png */; };
 		6F9FF3A918C98979008E6E5C /* print@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F9FF3A818C98979008E6E5C /* print@2x.png */; };
-		6F9FF3B018C9B0E5008E6E5C /* tweed_@2X.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F9FF3AE18C9B0E5008E6E5C /* tweed_@2X.png */; };
+		6F9FF3B018C9B0E5008E6E5C /* tweed_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F9FF3AE18C9B0E5008E6E5C /* tweed_@2x.png */; };
 		6F9FF3B118C9B0E5008E6E5C /* tweed.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F9FF3AF18C9B0E5008E6E5C /* tweed.png */; };
 		6FA1812E18A840E0007F4EAC /* Client.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FA1812D18A840E0007F4EAC /* Client.m */; };
 		6FAAC7DC18B4820C00F8F4F6 /* AlbumImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FAAC7DB18B4820C00F8F4F6 /* AlbumImageView.m */; };
@@ -44,7 +45,6 @@
 		6FFD4FEF18C45A29005D81EA /* print.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FFD4FED18C45A29005D81EA /* print.png */; };
 		6FFD4FF218C45A33005D81EA /* edit.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FFD4FF018C45A33005D81EA /* edit.png */; };
 		6FFD4FF318C45A33005D81EA /* email.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FFD4FF118C45A33005D81EA /* email.png */; };
-		6FFD4FF918C53D1B005D81EA /* plus_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FFD4FF818C53D1B005D81EA /* plus_small.png */; };
 		A857FEE218B0306C00226E92 /* TemplateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A857FEE018B0306C00226E92 /* TemplateCell.m */; };
 		A874CFB718C5AE5C004494B8 /* TemplateTitleReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = A874CFB618C5AE5C004494B8 /* TemplateTitleReusableView.m */; };
 		A874CFBD18C5BA9F004494B8 /* TemplatesLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = A874CFBC18C5BA9F004494B8 /* TemplatesLayout.m */; };
@@ -127,6 +127,7 @@
 		400A3945A7A04690BB32CBDF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		689293C421184EF494D23F05 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		6D10F48216DD68E000690A0F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		6F27D1F218CADC1100026E4D /* plus_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus_image.png; sourceTree = "<group>"; };
 		6F69813B18BCF62A00BC7D12 /* Order.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Order.h; path = Gift/Order.h; sourceTree = "<group>"; };
 		6F69813C18BCF62A00BC7D12 /* Order.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Order.m; path = Gift/Order.m; sourceTree = "<group>"; };
 		6F90496F18A6A3BC005326ED /* AlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumViewController.h; sourceTree = "<group>"; };
@@ -146,7 +147,7 @@
 		6F9FF3A418C9883D008E6E5C /* email@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "email@2x.png"; sourceTree = "<group>"; };
 		6F9FF3A618C98928008E6E5C /* order@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "order@2x.png"; sourceTree = "<group>"; };
 		6F9FF3A818C98979008E6E5C /* print@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "print@2x.png"; sourceTree = "<group>"; };
-		6F9FF3AE18C9B0E5008E6E5C /* tweed_@2X.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tweed_@2X.png"; sourceTree = "<group>"; };
+		6F9FF3AE18C9B0E5008E6E5C /* tweed_@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tweed_@2x.png"; sourceTree = "<group>"; };
 		6F9FF3AF18C9B0E5008E6E5C /* tweed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tweed.png; sourceTree = "<group>"; };
 		6FA1812C18A840E0007F4EAC /* Client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Client.h; sourceTree = "<group>"; };
 		6FA1812D18A840E0007F4EAC /* Client.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Client.m; sourceTree = "<group>"; };
@@ -176,7 +177,6 @@
 		6FFD4FED18C45A29005D81EA /* print.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = print.png; sourceTree = "<group>"; };
 		6FFD4FF018C45A33005D81EA /* edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit.png; sourceTree = "<group>"; };
 		6FFD4FF118C45A33005D81EA /* email.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = email.png; sourceTree = "<group>"; };
-		6FFD4FF818C53D1B005D81EA /* plus_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus_small.png; sourceTree = "<group>"; };
 		A857FEDF18B0306C00226E92 /* TemplateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TemplateCell.h; path = Gift/TemplateCell.h; sourceTree = "<group>"; };
 		A857FEE018B0306C00226E92 /* TemplateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TemplateCell.m; path = Gift/TemplateCell.m; sourceTree = "<group>"; };
 		A874CFB518C5AE5C004494B8 /* TemplateTitleReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TemplateTitleReusableView.h; path = Gift/TemplateTitleReusableView.h; sourceTree = "<group>"; };
@@ -629,8 +629,8 @@
 		D4DA79F514D3345A0055F672 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				6FFD4FF818C53D1B005D81EA /* plus_small.png */,
-				6F9FF3AE18C9B0E5008E6E5C /* tweed_@2X.png */,
+				6F27D1F218CADC1100026E4D /* plus_image.png */,
+				6F9FF3AE18C9B0E5008E6E5C /* tweed_@2x.png */,
 				6F9FF3AF18C9B0E5008E6E5C /* tweed.png */,
 				6FFD4FF018C45A33005D81EA /* edit.png */,
 				6F9FF3A218C97E65008E6E5C /* edit@2x.png */,
@@ -745,8 +745,9 @@
 				6F90497D18A6A451005326ED /* AlbumCollectionViewController.xib in Resources */,
 				A886C4F018BA903800A96958 /* flickr.png in Resources */,
 				6F9FF3A318C97E65008E6E5C /* edit@2x.png in Resources */,
+				6F27D1F318CADC1100026E4D /* plus_image.png in Resources */,
 				6F90498C18A6A858005326ED /* TemplatesViewController.xib in Resources */,
-				6F9FF3B018C9B0E5008E6E5C /* tweed_@2X.png in Resources */,
+				6F9FF3B018C9B0E5008E6E5C /* tweed_@2x.png in Resources */,
 				A886C50018BA903800A96958 /* popover_border.png in Resources */,
 				6FD04F9D18B2A45400EBF752 /* AlbumContentViewController.xib in Resources */,
 				6FFD4FEE18C45A29005D81EA /* order.png in Resources */,
@@ -758,7 +759,6 @@
 				6F9FF3B118C9B0E5008E6E5C /* tweed.png in Resources */,
 				6F9FF3A918C98979008E6E5C /* print@2x.png in Resources */,
 				6F90497318A6A3BC005326ED /* AlbumViewController.xib in Resources */,
-				6FFD4FF918C53D1B005D81EA /* plus_small.png in Resources */,
 				A886C4F318BA903800A96958 /* google@2x.png in Resources */,
 				A886C4EE18BA903800A96958 /* facebook.png in Resources */,
 				A886C4F818BA903800A96958 /* instagram@2x.png in Resources */,

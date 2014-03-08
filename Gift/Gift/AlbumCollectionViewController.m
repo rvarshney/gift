@@ -194,7 +194,7 @@
             }
             
             Album *createNew = [Album object];
-            createNew.title = @"Create New";
+            createNew.title = @"Create New Album";
             [self.albums insertObject:createNew atIndex:0];
 
         } else {
