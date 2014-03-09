@@ -100,8 +100,15 @@
         [view.layer addSublayer:border];
         border.path = [UIBezierPath bezierPathWithRect:view.bounds].CGPath;
         border.frame = view.bounds;
+        
+        UILabel *instruction = [[UILabel alloc] initWithFrame:CGRectMake(x * widthRatio, y * heightRatio, w * widthRatio, h * heightRatio)];
+        instruction.text = @"Drop photo here";
+        instruction.textAlignment = NSTextAlignmentCenter;
+        instruction.textColor = [UIColor whiteColor];
+        instruction.font = [UIFont fontWithName:@"Avenir" size:24.0f];
 
         [self.placementView addSubview:view];
+        [self.placementView addSubview:instruction];
     }
 
     return self.placementView;
