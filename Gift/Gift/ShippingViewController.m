@@ -35,6 +35,8 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *orderTopConstraint;
 
 - (IBAction)quantityChanged:(id)sender;
+- (IBAction)quantityAdd:(id)sender;
+- (IBAction)quantityMinus:(id)sender;
 
 @end
 
@@ -57,10 +59,10 @@
         self.edgesForExtendedLayout = UIRectEdgeNone;
     }
 
-    self.title = @"Order";
+    self.title = @"Checkout";
 
     // Setup order button
-    UIBarButtonItem *orderButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"order.png"] style:UIBarButtonItemStyleBordered target:self action:@selector(orderHandler:)];
+    UIBarButtonItem *orderButton = [[UIBarButtonItem alloc] initWithTitle:@"Order" style:UIBarButtonItemStyleBordered target:self action:@selector(orderHandler:)];
     orderButton.enabled = NO;
     self.navigationItem.rightBarButtonItem = orderButton;
 
@@ -77,29 +79,26 @@
     self.emailTextField.delegate = self;
     self.quantityTextField.delegate = self;
 
-    self.shippingView.backgroundColor = [UIColor colorWithWhite:0.85f alpha:1.0f];
-    self.shippingView.layer.borderColor = [UIColor whiteColor].CGColor;
-    self.shippingView.layer.borderWidth = 8.0f;
+    self.shippingView.backgroundColor = [UIColor whiteColor];
     self.shippingView.layer.shadowColor = [UIColor blackColor].CGColor;
     self.shippingView.layer.shadowRadius = 3.0f;
     self.shippingView.layer.shadowOffset = CGSizeMake(0.0f, 2.0f);
     self.shippingView.layer.shadowOpacity = 0.5f;
 
-    self.orderView.backgroundColor = [UIColor colorWithWhite:0.85f alpha:1.0f];
-    self.orderView.layer.borderColor = [UIColor whiteColor].CGColor;
-    self.orderView.layer.borderWidth = 8.0f;
+    self.orderView.backgroundColor = [UIColor whiteColor];
     self.orderView.layer.shadowColor = [UIColor blackColor].CGColor;
     self.orderView.layer.shadowRadius = 3.0f;
     self.orderView.layer.shadowOffset = CGSizeMake(0.0f, 2.0f);
     self.orderView.layer.shadowOpacity = 0.5f;
 
-    self.stripeView.backgroundColor = [UIColor colorWithWhite:0.85f alpha:1.0f];
+    self.stripeView.backgroundColor = [UIColor whiteColor];
 
     // Start with one album
     self.quantityTextField.text = @"1";
     self.priceLabel.text = [NSString stringWithFormat:@"%.02f", ALBUM_PRICE_USD];
     self.totalLabel.text = self.priceLabel.text;
 
+    self.view.backgroundColor = [UIColor colorWithRed:231/255.0f green:230/255.0f blue:226/255.0f alpha:1.0f];
 }
 
 - (void)registerForKeyboardNotifications
@@ -221,6 +220,24 @@
 {
     NSInteger quantity = [self.quantityTextField.text integerValue];
     self.totalLabel.text = [NSString stringWithFormat:@"%.02f", (ALBUM_PRICE_USD * quantity)];
+}
+
+- (IBAction)quantityAdd:(id)sender
+{
+    NSInteger quantity = [self.quantityTextField.text integerValue];
+    if (quantity != 10) {
+        self.quantityTextField.text = [NSString stringWithFormat:@"%d", quantity + 1];
+    }
+    [self quantityChanged:nil];
+}
+
+- (IBAction)quantityMinus:(id)sender
+{
+    NSInteger quantity = [self.quantityTextField.text integerValue];
+    if (quantity != 1) {
+        self.quantityTextField.text = [NSString stringWithFormat:@"%d", quantity - 1];
+    }
+    [self quantityChanged:nil];
 }
 
 #pragma mark - Text field delegate
