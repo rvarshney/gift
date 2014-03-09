@@ -172,8 +172,13 @@
 - (void)loadTemplates
 {
     [[Client instance] templates:^(NSArray *templates, NSError *error) {
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
         self.templates = templates;
+        for (Template *template in templates) {
+            // Optimistically load theme files
+            [template.themeCover getDataInBackgroundWithBlock:nil];
+            [template.themeLeft getDataInBackgroundWithBlock:nil];
+            [template.themeRight getDataInBackgroundWithBlock:nil];
+        }
     }];
 }
 

@@ -126,7 +126,7 @@
     if (indexPath.row % 2 == 0) {
         return 300;
     }
-    return 400;
+    return 350;
 }
 
 @end

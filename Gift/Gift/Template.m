@@ -16,7 +16,8 @@
 @dynamic themeCover;
 @dynamic themeLeft;
 @dynamic themeRight;
-
+@dynamic themeLeftPreview;
+@dynamic themeRightPreview;
 
 + (NSString *)parseClassName
 {

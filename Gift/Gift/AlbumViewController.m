@@ -78,7 +78,7 @@
     UIBarButtonItem *emailButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"email.png"] style:UIBarButtonItemStyleBordered target:self action:@selector(emailButtonHandler:)];
     
     // Add print navigation bar button
-    UIBarButtonItem *printButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"print.png"] style:UIBarButtonItemStyleBordered target:self action:@selector(printButtonHandler:)];
+    UIBarButtonItem *printButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"order.png"] style:UIBarButtonItemStyleBordered target:self action:@selector(printButtonHandler:)];
     
     // Add the email and print buttons to the right
     self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:printButton, emailButton, editButton, nil];
@@ -106,7 +106,9 @@
     [self setupAlbumPageViewController];
     
     [self setupPictureScrollView];
-    
+
+    self.view.backgroundColor = [UIColor colorWithRed:231/255.0f green:230/255.0f blue:226/255.0f alpha:1.0f];
+
     // Setup long press gesture recognizer
     UILongPressGestureRecognizer *gestureRecognizer = [[UILongPressGestureRecognizer alloc] init];
     gestureRecognizer.minimumPressDuration = 0.3;

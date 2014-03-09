@@ -18,5 +18,7 @@
 @property (nonatomic, strong) PFFile *themeCover;
 @property (nonatomic, strong) PFFile *themeLeft;
 @property (nonatomic, strong) PFFile *themeRight;
+@property (nonatomic, strong) PFFile *themeLeftPreview;
+@property (nonatomic, strong) PFFile *themeRightPreview;
 
 @end
