@@ -15,6 +15,9 @@
 		6F27D20F18CBA94700026E4D /* TMQuiltViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F27D20C18CBA94700026E4D /* TMQuiltViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		6F27D24118CBD1AB00026E4D /* TemplateQuiltViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F27D23E18CBD1AB00026E4D /* TemplateQuiltViewCell.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		6F27D24218CBD1AB00026E4D /* TemplateQuiltViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F27D24018CBD1AB00026E4D /* TemplateQuiltViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		6F27D24518CBE55500026E4D /* albums.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F27D24318CBE55500026E4D /* albums.png */; };
+		6F27D24618CBE55500026E4D /* albums@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F27D24418CBE55500026E4D /* albums@2x.png */; };
+		6F27D24818CBF97E00026E4D /* free-ribbon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F27D24718CBF97E00026E4D /* free-ribbon.png */; };
 		6F69813D18BCF62A00BC7D12 /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F69813C18BCF62A00BC7D12 /* Order.m */; };
 		6F90497218A6A3BC005326ED /* AlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F90497018A6A3BC005326ED /* AlbumViewController.m */; };
 		6F90497318A6A3BC005326ED /* AlbumViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F90497118A6A3BC005326ED /* AlbumViewController.xib */; };
@@ -33,7 +36,6 @@
 		6FAAC7DC18B4820C00F8F4F6 /* AlbumImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FAAC7DB18B4820C00F8F4F6 /* AlbumImageView.m */; };
 		6FD04F9C18B2A45400EBF752 /* AlbumContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FD04F9A18B2A45400EBF752 /* AlbumContentViewController.m */; };
 		6FD04F9D18B2A45400EBF752 /* AlbumContentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FD04F9B18B2A45400EBF752 /* AlbumContentViewController.xib */; };
-		6FEAF6A318B1CDB200D26D34 /* albums.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FEAF6A218B1CDB200D26D34 /* albums.png */; };
 		6FEF470E18AE811800CB6C3B /* AlbumCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FEF470D18AE811800CB6C3B /* AlbumCollectionViewLayout.m */; };
 		6FEF471218AF0D8000CB6C3B /* AlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FEF471118AF0D8000CB6C3B /* AlbumCell.m */; };
 		6FF8496B18B1A38200B44161 /* login-button-small-pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FF8496918B1A38200B44161 /* login-button-small-pressed.png */; };
@@ -47,7 +49,6 @@
 		6FFD4FEF18C45A29005D81EA /* print.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FFD4FED18C45A29005D81EA /* print.png */; };
 		6FFD4FF218C45A33005D81EA /* edit.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FFD4FF018C45A33005D81EA /* edit.png */; };
 		6FFD4FF318C45A33005D81EA /* email.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FFD4FF118C45A33005D81EA /* email.png */; };
-		A857FEE218B0306C00226E92 /* TemplateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A857FEE018B0306C00226E92 /* TemplateCell.m */; };
 		A886C4D918BA903800A96958 /* PhotoPickerClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A886C49018BA903800A96958 /* PhotoPickerClient.m */; };
 		A886C4DA18BA903800A96958 /* GCServicePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = A886C49318BA903800A96958 /* GCServicePicker.m */; };
 		A886C4DB18BA903800A96958 /* NSDictionary+ALAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = A886C49618BA903800A96958 /* NSDictionary+ALAsset.m */; };
@@ -139,6 +140,9 @@
 		6F27D23E18CBD1AB00026E4D /* TemplateQuiltViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TemplateQuiltViewCell.m; path = Gift/TemplateQuiltViewCell.m; sourceTree = "<group>"; };
 		6F27D23F18CBD1AB00026E4D /* TemplateQuiltViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplateQuiltViewController.h; sourceTree = "<group>"; };
 		6F27D24018CBD1AB00026E4D /* TemplateQuiltViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplateQuiltViewController.m; sourceTree = "<group>"; };
+		6F27D24318CBE55500026E4D /* albums.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = albums.png; sourceTree = "<group>"; };
+		6F27D24418CBE55500026E4D /* albums@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "albums@2x.png"; sourceTree = "<group>"; };
+		6F27D24718CBF97E00026E4D /* free-ribbon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "free-ribbon.png"; sourceTree = "<group>"; };
 		6F69813B18BCF62A00BC7D12 /* Order.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Order.h; path = Gift/Order.h; sourceTree = "<group>"; };
 		6F69813C18BCF62A00BC7D12 /* Order.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Order.m; path = Gift/Order.m; sourceTree = "<group>"; };
 		6F90496F18A6A3BC005326ED /* AlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumViewController.h; sourceTree = "<group>"; };
@@ -164,7 +168,6 @@
 		6FD04F9918B2A45400EBF752 /* AlbumContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumContentViewController.h; sourceTree = "<group>"; };
 		6FD04F9A18B2A45400EBF752 /* AlbumContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumContentViewController.m; sourceTree = "<group>"; };
 		6FD04F9B18B2A45400EBF752 /* AlbumContentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlbumContentViewController.xib; sourceTree = "<group>"; };
-		6FEAF6A218B1CDB200D26D34 /* albums.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = albums.png; sourceTree = "<group>"; };
 		6FEF470C18AE811800CB6C3B /* AlbumCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumCollectionViewLayout.h; sourceTree = "<group>"; };
 		6FEF470D18AE811800CB6C3B /* AlbumCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumCollectionViewLayout.m; sourceTree = "<group>"; };
 		6FEF471018AF0D8000CB6C3B /* AlbumCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlbumCell.h; path = Gift/AlbumCell.h; sourceTree = "<group>"; };
@@ -183,8 +186,6 @@
 		6FFD4FED18C45A29005D81EA /* print.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = print.png; sourceTree = "<group>"; };
 		6FFD4FF018C45A33005D81EA /* edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit.png; sourceTree = "<group>"; };
 		6FFD4FF118C45A33005D81EA /* email.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = email.png; sourceTree = "<group>"; };
-		A857FEDF18B0306C00226E92 /* TemplateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TemplateCell.h; path = Gift/TemplateCell.h; sourceTree = "<group>"; };
-		A857FEE018B0306C00226E92 /* TemplateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TemplateCell.m; path = Gift/TemplateCell.m; sourceTree = "<group>"; };
 		A886C48F18BA903800A96958 /* PhotoPickerClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoPickerClient.h; sourceTree = "<group>"; };
 		A886C49018BA903800A96958 /* PhotoPickerClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoPickerClient.m; sourceTree = "<group>"; };
 		A886C49218BA903800A96958 /* GCServicePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCServicePicker.h; sourceTree = "<group>"; };
@@ -411,8 +412,6 @@
 			children = (
 				6F27D23D18CBD1AB00026E4D /* TemplateQuiltViewCell.h */,
 				6F27D23E18CBD1AB00026E4D /* TemplateQuiltViewCell.m */,
-				A857FEDF18B0306C00226E92 /* TemplateCell.h */,
-				A857FEE018B0306C00226E92 /* TemplateCell.m */,
 				6FEF471018AF0D8000CB6C3B /* AlbumCell.h */,
 				6FEF471118AF0D8000CB6C3B /* AlbumCell.m */,
 				6FAAC7DA18B4820C00F8F4F6 /* AlbumImageView.h */,
@@ -641,6 +640,9 @@
 		D4DA79F514D3345A0055F672 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6F27D24718CBF97E00026E4D /* free-ribbon.png */,
+				6F27D24318CBE55500026E4D /* albums.png */,
+				6F27D24418CBE55500026E4D /* albums@2x.png */,
 				6F27D1F218CADC1100026E4D /* plus_image.png */,
 				6F9FF3AE18C9B0E5008E6E5C /* tweed_@2x.png */,
 				6F9FF3AF18C9B0E5008E6E5C /* tweed.png */,
@@ -652,7 +654,6 @@
 				6F9FF3A618C98928008E6E5C /* order@2x.png */,
 				6FFD4FED18C45A29005D81EA /* print.png */,
 				6F9FF3A818C98979008E6E5C /* print@2x.png */,
-				6FEAF6A218B1CDB200D26D34 /* albums.png */,
 				6FF8496D18B1A38D00B44161 /* login-button-small.png */,
 				6FF8496E18B1A38D00B44161 /* login-button-small@2x.png */,
 				6FF8496918B1A38200B44161 /* login-button-small-pressed.png */,
@@ -727,6 +728,8 @@
 			files = (
 				A8DADBEB18BC699C00CCD323 /* TemplatePreviewViewController.xib in Resources */,
 				D4DA79F914D3345A0055F672 /* InfoPlist.strings in Resources */,
+				6F27D24618CBE55500026E4D /* albums@2x.png in Resources */,
+				6F27D24818CBF97E00026E4D /* free-ribbon.png in Resources */,
 				6FF8496C18B1A38200B44161 /* login-button-small-pressed@2x.png in Resources */,
 				6FF8496F18B1A38D00B44161 /* login-button-small.png in Resources */,
 				A886C4EF18BA903800A96958 /* facebook@2x.png in Resources */,
@@ -749,7 +752,6 @@
 				A886C4F618BA903800A96958 /* gradient_blue.png in Resources */,
 				A886C4F118BA903800A96958 /* flickr@2x.png in Resources */,
 				C4BB20D8161BC4FB00A7884A /* Default.png in Resources */,
-				6FEAF6A318B1CDB200D26D34 /* albums.png in Resources */,
 				C4BB20D9161BC4FB00A7884A /* Default@2x.png in Resources */,
 				A8E53C8718C6668100C75819 /* Images.xcassets in Resources */,
 				A886C4E818BA903800A96958 /* album_default.png in Resources */,
@@ -763,6 +765,7 @@
 				6FD04F9D18B2A45400EBF752 /* AlbumContentViewController.xib in Resources */,
 				6FFD4FEE18C45A29005D81EA /* order.png in Resources */,
 				A886C4EB18BA903800A96958 /* defaultThumb.png in Resources */,
+				6F27D24518CBE55500026E4D /* albums.png in Resources */,
 				A886C4EC18BA903800A96958 /* dropbox.png in Resources */,
 				6FFD4FF318C45A33005D81EA /* email.png in Resources */,
 				A886C4FA18BA903800A96958 /* PhotoPickerPlus.strings in Resources */,
@@ -845,7 +848,6 @@
 				A886C4D918BA903800A96958 /* PhotoPickerClient.m in Sources */,
 				6FF98B4B18BAA17800B784A5 /* Picture.m in Sources */,
 				6FA1812E18A840E0007F4EAC /* Client.m in Sources */,
-				A857FEE218B0306C00226E92 /* TemplateCell.m in Sources */,
 				A886C4E118BA903800A96958 /* GCAccountMediaViewController.m in Sources */,
 				A886C50318BA903800A96958 /* GCPhotoCell.m in Sources */,
 				6F90498118A6A520005326ED /* ShippingViewController.m in Sources */,

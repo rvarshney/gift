@@ -19,7 +19,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2io-RS-PI1">
-                    <rect key="frame" x="0.0" y="0.0" width="702" height="370"/>
+                    <rect key="frame" x="0.0" y="0.0" width="702" height="390"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="j8J-1f-jRz">
@@ -54,7 +54,7 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="GTc-Ry-YWf" firstAttribute="leading" secondItem="CPk-tW-sS6" secondAttribute="leading" constant="15" id="5ab-Nj-i0g"/>
-                <constraint firstAttribute="bottom" secondItem="2io-RS-PI1" secondAttribute="bottom" constant="20" id="81i-LV-xHz"/>
+                <constraint firstAttribute="bottom" secondItem="2io-RS-PI1" secondAttribute="bottom" id="81i-LV-xHz"/>
                 <constraint firstItem="2io-RS-PI1" firstAttribute="top" secondItem="CPk-tW-sS6" secondAttribute="top" id="9pn-ba-Zxj"/>
                 <constraint firstAttribute="trailing" secondItem="GTc-Ry-YWf" secondAttribute="trailing" constant="15" id="SOR-Hg-jGZ"/>
                 <constraint firstItem="VAd-8D-bx9" firstAttribute="leading" secondItem="CPk-tW-sS6" secondAttribute="leading" constant="20" id="TN0-dA-oHt"/>

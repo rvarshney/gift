@@ -36,7 +36,9 @@
 {
     [super viewDidLoad];
     
-    self.quiltView.backgroundColor = [UIColor whiteColor];
+    self.title = @"Select Template";
+    
+    self.quiltView.backgroundColor = [UIColor colorWithRed:231/255.0f green:230/255.0f blue:226/255.0f alpha:1.0f];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -64,8 +66,9 @@
     Template *template = self.templates[indexPath.row];
     cell.photoView.file = template.themeCover;
     [cell.photoView loadInBackground];
-    
-    cell.titleLabel.text = [NSString stringWithFormat:@"%d", indexPath.row + 1];
+
+    cell.titleLabel.text = template.title;
+
     return cell;
 }
 

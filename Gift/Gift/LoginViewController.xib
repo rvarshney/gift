@@ -14,7 +14,7 @@
             <rect key="frame" x="0.0" y="0.0" width="646" height="827"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="albums.png" translatesAutoresizingMaskIntoConstraints="NO" id="58u-kU-vWm">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="albums.png" translatesAutoresizingMaskIntoConstraints="NO" id="58u-kU-vWm">
                     <rect key="frame" x="0.0" y="0.0" width="646" height="827"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
@@ -40,13 +40,6 @@
                         <action selector="loginButtonTouchHandler:" destination="-1" eventType="touchUpInside" id="9"/>
                     </connections>
                 </button>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Memories" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VyW-Pb-HkR">
-                    <rect key="frame" x="50" y="250" width="546" height="181"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="Zapfino" family="Zapfino" pointSize="60"/>
-                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
@@ -54,12 +47,8 @@
                 <constraint firstAttribute="bottom" secondItem="58u-kU-vWm" secondAttribute="bottom" id="2mF-Kr-ozS"/>
                 <constraint firstItem="58u-kU-vWm" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="6DV-g5-lnA"/>
                 <constraint firstAttribute="bottom" secondItem="6" secondAttribute="bottom" constant="100" id="O6H-lY-3P9"/>
-                <constraint firstAttribute="trailing" secondItem="VyW-Pb-HkR" secondAttribute="trailing" constant="50" id="VN4-bB-5vG"/>
                 <constraint firstItem="58u-kU-vWm" firstAttribute="top" secondItem="1" secondAttribute="top" id="VuH-no-U9p"/>
-                <constraint firstItem="VyW-Pb-HkR" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="50" id="ZSh-PC-FQn"/>
                 <constraint firstAttribute="centerX" secondItem="6" secondAttribute="centerX" id="ZXL-Ku-GXj"/>
-                <constraint firstItem="VyW-Pb-HkR" firstAttribute="top" secondItem="1" secondAttribute="top" constant="250" id="dci-Ez-92d"/>
-                <constraint firstItem="6" firstAttribute="top" secondItem="VyW-Pb-HkR" secondAttribute="bottom" constant="250" id="tzS-Nl-4o8"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -67,7 +56,7 @@
         </view>
     </objects>
     <resources>
-        <image name="albums.png" width="332" height="500"/>
+        <image name="albums.png" width="1024" height="768"/>
         <image name="login-button-small-pressed.png" width="300" height="46"/>
         <image name="login-button-small.png" width="300" height="46"/>
     </resources>

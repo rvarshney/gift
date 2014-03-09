@@ -1,10 +1,9 @@
 //
-//  TMQuiltView
+//  TemplateQuiltViewCell
 //
-//  Created by Bruno Virlet on 7/20/12.
+//  Created by Ruchi Varshney on 3/08/14.
 //
-//  Copyright (c) 2012 1000memories
-
+//
 
 #import <UIKit/UIKit.h>
 #import "TMQuiltViewCell.h"
@@ -14,5 +13,7 @@
 
 @property (nonatomic, retain) PFImageView *photoView;
 @property (nonatomic, retain) UILabel *titleLabel;
+@property (nonatomic, retain) UIImageView *freeView;
+@property (nonatomic, retain) UIView *contentView;
 
 @end

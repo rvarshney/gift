@@ -35,8 +35,6 @@
         self.titleLabel.textAlignment = NSTextAlignmentCenter;
         self.titleLabel.font = [UIFont fontWithName:@"Avenir" size:20.0f];
         self.titleLabel.textColor = [UIColor whiteColor];
-        //self.titleLabel.shadowColor = [UIColor colorWithWhite:0.0f alpha:0.3f];
-        //self.titleLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
 
         [self.contentView addSubview:self.coverPictureImageView];
         [self.contentView addSubview:self.overlay];
