@@ -86,6 +86,7 @@
     // Add the email and print buttons to the right
     self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:printButton, emailButton, editButton, nil];
 
+    // Add custom back button
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"My Albums" style:UIBarButtonItemStyleBordered target:self action:@selector(rootHandler:)];
     self.navigationItem.leftBarButtonItem = backButton;
 
@@ -127,11 +128,6 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-}
-
-- (void)navigationBar:(UINavigationBar *)navigationBar didPopItem:(UINavigationItem *)item
-{
-    NSLog(@"HELLO!");
 }
 
 # pragma mark - Private methods

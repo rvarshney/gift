@@ -49,8 +49,11 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logoutButtonHandler:) name:@"logout" object:nil];
 
     // Logout button
+    UIBarButtonItem *spacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    spacer.width = -14.0f;
+
     UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"logout.png"] style:UIBarButtonItemStyleBordered target:self action:@selector(logoutButtonHandler:)];
-    self.navigationItem.leftBarButtonItem = logoutButton;
+    self.navigationItem.leftBarButtonItems = @[spacer, logoutButton];
 
     // Initialize data
     self.picturesForAlbums = [[NSMutableDictionary alloc] init];
