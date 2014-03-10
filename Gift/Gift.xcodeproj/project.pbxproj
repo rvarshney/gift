@@ -17,7 +17,13 @@
 		6F27D24218CBD1AB00026E4D /* TemplateQuiltViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F27D24018CBD1AB00026E4D /* TemplateQuiltViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		6F27D24518CBE55500026E4D /* albums.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F27D24318CBE55500026E4D /* albums.png */; };
 		6F27D24618CBE55500026E4D /* albums@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F27D24418CBE55500026E4D /* albums@2x.png */; };
-		6F27D24818CBF97E00026E4D /* free-ribbon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F27D24718CBF97E00026E4D /* free-ribbon.png */; };
+		6F27D25218CC455900026E4D /* FadeImagePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F27D24E18CC455900026E4D /* FadeImagePageViewController.m */; };
+		6F27D25318CC455900026E4D /* FadeImagePageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F27D24F18CC455900026E4D /* FadeImagePageViewController.xib */; };
+		6F27D25F18CD03FC00026E4D /* free-ribbon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F27D25E18CD03FC00026E4D /* free-ribbon.png */; };
+		6F27D26218CD0A0A00026E4D /* down.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F27D26018CD0A0A00026E4D /* down.png */; };
+		6F27D26318CD0A0A00026E4D /* down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F27D26118CD0A0A00026E4D /* down@2x.png */; };
+		6F27D26618CD0A1300026E4D /* up.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F27D26418CD0A1300026E4D /* up.png */; };
+		6F27D26718CD0A1300026E4D /* up@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F27D26518CD0A1300026E4D /* up@2x.png */; };
 		6F69813D18BCF62A00BC7D12 /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F69813C18BCF62A00BC7D12 /* Order.m */; };
 		6F90497218A6A3BC005326ED /* AlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F90497018A6A3BC005326ED /* AlbumViewController.m */; };
 		6F90497318A6A3BC005326ED /* AlbumViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F90497118A6A3BC005326ED /* AlbumViewController.xib */; };
@@ -36,8 +42,15 @@
 		6FAAC7DC18B4820C00F8F4F6 /* AlbumImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FAAC7DB18B4820C00F8F4F6 /* AlbumImageView.m */; };
 		6FD04F9C18B2A45400EBF752 /* AlbumContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FD04F9A18B2A45400EBF752 /* AlbumContentViewController.m */; };
 		6FD04F9D18B2A45400EBF752 /* AlbumContentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FD04F9B18B2A45400EBF752 /* AlbumContentViewController.xib */; };
+		6FDFF20918CD27FE00DD5629 /* logout.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FDFF20718CD27FE00DD5629 /* logout.png */; };
+		6FDFF20A18CD27FE00DD5629 /* logout@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FDFF20818CD27FE00DD5629 /* logout@2x.png */; };
 		6FEF470E18AE811800CB6C3B /* AlbumCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FEF470D18AE811800CB6C3B /* AlbumCollectionViewLayout.m */; };
 		6FEF471218AF0D8000CB6C3B /* AlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FEF471118AF0D8000CB6C3B /* AlbumCell.m */; };
+		6FF610F218CD4A19006C9E6B /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FF610F018CD4A19006C9E6B /* 1.jpg */; };
+		6FF610F318CD4A19006C9E6B /* 5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FF610F118CD4A19006C9E6B /* 5.jpg */; };
+		6FF610F518CD5018006C9E6B /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FF610F418CD5018006C9E6B /* 3.jpg */; };
+		6FF610F918CD52E2006C9E6B /* 4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FF610F818CD52E2006C9E6B /* 4.jpg */; };
+		6FF610FD18CD5AE1006C9E6B /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FF610FC18CD5AE1006C9E6B /* 2.jpg */; };
 		6FF8496B18B1A38200B44161 /* login-button-small-pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FF8496918B1A38200B44161 /* login-button-small-pressed.png */; };
 		6FF8496C18B1A38200B44161 /* login-button-small-pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FF8496A18B1A38200B44161 /* login-button-small-pressed@2x.png */; };
 		6FF8496F18B1A38D00B44161 /* login-button-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FF8496D18B1A38D00B44161 /* login-button-small.png */; };
@@ -142,7 +155,14 @@
 		6F27D24018CBD1AB00026E4D /* TemplateQuiltViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplateQuiltViewController.m; sourceTree = "<group>"; };
 		6F27D24318CBE55500026E4D /* albums.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = albums.png; sourceTree = "<group>"; };
 		6F27D24418CBE55500026E4D /* albums@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "albums@2x.png"; sourceTree = "<group>"; };
-		6F27D24718CBF97E00026E4D /* free-ribbon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "free-ribbon.png"; sourceTree = "<group>"; };
+		6F27D24D18CC455900026E4D /* FadeImagePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FadeImagePageViewController.h; sourceTree = "<group>"; };
+		6F27D24E18CC455900026E4D /* FadeImagePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FadeImagePageViewController.m; sourceTree = "<group>"; };
+		6F27D24F18CC455900026E4D /* FadeImagePageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FadeImagePageViewController.xib; sourceTree = "<group>"; };
+		6F27D25E18CD03FC00026E4D /* free-ribbon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "free-ribbon.png"; sourceTree = "<group>"; };
+		6F27D26018CD0A0A00026E4D /* down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = down.png; sourceTree = "<group>"; };
+		6F27D26118CD0A0A00026E4D /* down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "down@2x.png"; sourceTree = "<group>"; };
+		6F27D26418CD0A1300026E4D /* up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = up.png; sourceTree = "<group>"; };
+		6F27D26518CD0A1300026E4D /* up@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "up@2x.png"; sourceTree = "<group>"; };
 		6F69813B18BCF62A00BC7D12 /* Order.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Order.h; path = Gift/Order.h; sourceTree = "<group>"; };
 		6F69813C18BCF62A00BC7D12 /* Order.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Order.m; path = Gift/Order.m; sourceTree = "<group>"; };
 		6F90496F18A6A3BC005326ED /* AlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumViewController.h; sourceTree = "<group>"; };
@@ -168,10 +188,17 @@
 		6FD04F9918B2A45400EBF752 /* AlbumContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumContentViewController.h; sourceTree = "<group>"; };
 		6FD04F9A18B2A45400EBF752 /* AlbumContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumContentViewController.m; sourceTree = "<group>"; };
 		6FD04F9B18B2A45400EBF752 /* AlbumContentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlbumContentViewController.xib; sourceTree = "<group>"; };
+		6FDFF20718CD27FE00DD5629 /* logout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logout.png; sourceTree = "<group>"; };
+		6FDFF20818CD27FE00DD5629 /* logout@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logout@2x.png"; sourceTree = "<group>"; };
 		6FEF470C18AE811800CB6C3B /* AlbumCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumCollectionViewLayout.h; sourceTree = "<group>"; };
 		6FEF470D18AE811800CB6C3B /* AlbumCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumCollectionViewLayout.m; sourceTree = "<group>"; };
 		6FEF471018AF0D8000CB6C3B /* AlbumCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlbumCell.h; path = Gift/AlbumCell.h; sourceTree = "<group>"; };
 		6FEF471118AF0D8000CB6C3B /* AlbumCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlbumCell.m; path = Gift/AlbumCell.m; sourceTree = "<group>"; };
+		6FF610F018CD4A19006C9E6B /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
+		6FF610F118CD4A19006C9E6B /* 5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 5.jpg; sourceTree = "<group>"; };
+		6FF610F418CD5018006C9E6B /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.jpg; sourceTree = "<group>"; };
+		6FF610F818CD52E2006C9E6B /* 4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 4.jpg; sourceTree = "<group>"; };
+		6FF610FC18CD5AE1006C9E6B /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
 		6FF8496918B1A38200B44161 /* login-button-small-pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login-button-small-pressed.png"; sourceTree = "<group>"; };
 		6FF8496A18B1A38200B44161 /* login-button-small-pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login-button-small-pressed@2x.png"; sourceTree = "<group>"; };
 		6FF8496D18B1A38D00B44161 /* login-button-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login-button-small.png"; sourceTree = "<group>"; };
@@ -353,6 +380,9 @@
 				D4DA7A7114D393DA0055F672 /* LoginViewController.h */,
 				D4DA7A7214D393DA0055F672 /* LoginViewController.m */,
 				D4DA7A7314D393DA0055F672 /* LoginViewController.xib */,
+				6F27D24D18CC455900026E4D /* FadeImagePageViewController.h */,
+				6F27D24E18CC455900026E4D /* FadeImagePageViewController.m */,
+				6F27D24F18CC455900026E4D /* FadeImagePageViewController.xib */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -640,7 +670,18 @@
 		D4DA79F514D3345A0055F672 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				6F27D24718CBF97E00026E4D /* free-ribbon.png */,
+				6FF610F818CD52E2006C9E6B /* 4.jpg */,
+				6FF610FC18CD5AE1006C9E6B /* 2.jpg */,
+				6FF610F018CD4A19006C9E6B /* 1.jpg */,
+				6FF610F118CD4A19006C9E6B /* 5.jpg */,
+				6FF610F418CD5018006C9E6B /* 3.jpg */,
+				6FDFF20718CD27FE00DD5629 /* logout.png */,
+				6FDFF20818CD27FE00DD5629 /* logout@2x.png */,
+				6F27D26418CD0A1300026E4D /* up.png */,
+				6F27D26518CD0A1300026E4D /* up@2x.png */,
+				6F27D26018CD0A0A00026E4D /* down.png */,
+				6F27D26118CD0A0A00026E4D /* down@2x.png */,
+				6F27D25E18CD03FC00026E4D /* free-ribbon.png */,
 				6F27D24318CBE55500026E4D /* albums.png */,
 				6F27D24418CBE55500026E4D /* albums@2x.png */,
 				6F27D1F218CADC1100026E4D /* plus_image.png */,
@@ -727,12 +768,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				A8DADBEB18BC699C00CCD323 /* TemplatePreviewViewController.xib in Resources */,
+				6FF610F518CD5018006C9E6B /* 3.jpg in Resources */,
 				D4DA79F914D3345A0055F672 /* InfoPlist.strings in Resources */,
 				6F27D24618CBE55500026E4D /* albums@2x.png in Resources */,
-				6F27D24818CBF97E00026E4D /* free-ribbon.png in Resources */,
+				6F27D26718CD0A1300026E4D /* up@2x.png in Resources */,
 				6FF8496C18B1A38200B44161 /* login-button-small-pressed@2x.png in Resources */,
 				6FF8496F18B1A38D00B44161 /* login-button-small.png in Resources */,
 				A886C4EF18BA903800A96958 /* facebook@2x.png in Resources */,
+				6FF610F918CD52E2006C9E6B /* 4.jpg in Resources */,
 				D4DA7A7514D393DA0055F672 /* LoginViewController.xib in Resources */,
 				A886C4F718BA903800A96958 /* instagram.png in Resources */,
 				A886C4F518BA903800A96958 /* googledrive@2x.png in Resources */,
@@ -741,7 +784,10 @@
 				A886C4FF18BA903800A96958 /* popover_arrow.png in Resources */,
 				A886C50118BA903800A96958 /* skydrive.png in Resources */,
 				D4DA7AA914D39BCE0055F672 /* ProfileViewController.xib in Resources */,
+				6F27D25318CC455900026E4D /* FadeImagePageViewController.xib in Resources */,
+				6FF610F218CD4A19006C9E6B /* 1.jpg in Resources */,
 				6F90498218A6A520005326ED /* ShippingViewController.xib in Resources */,
+				6F27D26218CD0A0A00026E4D /* down.png in Resources */,
 				6F9FF3A518C9883D008E6E5C /* email@2x.png in Resources */,
 				6FFD4FEF18C45A29005D81EA /* print.png in Resources */,
 				A886C4ED18BA903800A96958 /* dropbox@2x.png in Resources */,
@@ -751,7 +797,10 @@
 				A886C4DF18BA903800A96958 /* GCConfiguration.plist in Resources */,
 				A886C4F618BA903800A96958 /* gradient_blue.png in Resources */,
 				A886C4F118BA903800A96958 /* flickr@2x.png in Resources */,
+				6F27D26318CD0A0A00026E4D /* down@2x.png in Resources */,
 				C4BB20D8161BC4FB00A7884A /* Default.png in Resources */,
+				6FF610FD18CD5AE1006C9E6B /* 2.jpg in Resources */,
+				6F27D26618CD0A1300026E4D /* up.png in Resources */,
 				C4BB20D9161BC4FB00A7884A /* Default@2x.png in Resources */,
 				A8E53C8718C6668100C75819 /* Images.xcassets in Resources */,
 				A886C4E818BA903800A96958 /* album_default.png in Resources */,
@@ -766,16 +815,20 @@
 				6FFD4FEE18C45A29005D81EA /* order.png in Resources */,
 				A886C4EB18BA903800A96958 /* defaultThumb.png in Resources */,
 				6F27D24518CBE55500026E4D /* albums.png in Resources */,
+				6FDFF20918CD27FE00DD5629 /* logout.png in Resources */,
 				A886C4EC18BA903800A96958 /* dropbox.png in Resources */,
 				6FFD4FF318C45A33005D81EA /* email.png in Resources */,
+				6FDFF20A18CD27FE00DD5629 /* logout@2x.png in Resources */,
 				A886C4FA18BA903800A96958 /* PhotoPickerPlus.strings in Resources */,
 				A886C50218BA903800A96958 /* skydrive@2x.png in Resources */,
 				6F9FF3B118C9B0E5008E6E5C /* tweed.png in Resources */,
 				6F9FF3A918C98979008E6E5C /* print@2x.png in Resources */,
+				6FF610F318CD4A19006C9E6B /* 5.jpg in Resources */,
 				6F90497318A6A3BC005326ED /* AlbumViewController.xib in Resources */,
 				A886C4F318BA903800A96958 /* google@2x.png in Resources */,
 				A886C4EE18BA903800A96958 /* facebook.png in Resources */,
 				A886C4F818BA903800A96958 /* instagram@2x.png in Resources */,
+				6F27D25F18CD03FC00026E4D /* free-ribbon.png in Resources */,
 				A886C4E918BA903800A96958 /* camera.png in Resources */,
 				A886C4FB18BA903800A96958 /* overlay.png in Resources */,
 				6FFD4FF218C45A33005D81EA /* edit.png in Resources */,
@@ -842,6 +895,7 @@
 				6F69813D18BCF62A00BC7D12 /* Order.m in Sources */,
 				D4DA79FF14D3345A0055F672 /* AppDelegate.m in Sources */,
 				6FF98B4118BAA04400B784A5 /* Template.m in Sources */,
+				6F27D25218CC455900026E4D /* FadeImagePageViewController.m in Sources */,
 				6FD04F9C18B2A45400EBF752 /* AlbumContentViewController.m in Sources */,
 				6F27D24118CBD1AB00026E4D /* TemplateQuiltViewCell.m in Sources */,
 				6F27D20E18CBA94700026E4D /* TMQuiltViewCell.m in Sources */,

@@ -32,7 +32,15 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor whiteColor];
-    [self.album.template.themeLeft getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+
+    PFFile *theme;
+    if (self.pageNum % 2 == 0) {
+        theme = self.album.template.themeLeft;
+    } else {
+        theme = self.album.template.themeRight;
+    }
+
+    [theme getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
         if (!error) {
             UIGraphicsBeginImageContext(self.view.frame.size);
             [[UIImage imageWithData:data] drawInRect:self.view.bounds];

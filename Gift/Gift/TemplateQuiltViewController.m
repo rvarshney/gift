@@ -105,7 +105,7 @@
     AlbumViewController *albumViewController = [[AlbumViewController alloc]init];
     albumViewController.album = album;
     albumViewController.picturesForAlbum = [[NSMutableArray alloc]init];
-    
+
     [self.navigationController pushViewController:albumViewController animated:YES];
 }
 

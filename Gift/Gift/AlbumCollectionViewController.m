@@ -40,18 +40,16 @@
 {
     [super viewDidLoad];
 
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0 green:203.0f/255 blue:209.0f/255 alpha:1];
+    
     self.title = @"My Albums";
     self.isFirstLoad = YES;
     
     // Register for logout events
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logoutButtonHandler:) name:@"logout" object:nil];
 
-    // New album button
-    UIBarButtonItem *newButton = [[UIBarButtonItem alloc] initWithTitle:@"New" style:UIBarButtonItemStyleBordered target:self action:@selector(newButtonHandler:)];
-    self.navigationItem.rightBarButtonItem = newButton;
-
     // Logout button
-    UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc] initWithTitle:@"Log Out" style:UIBarButtonItemStyleBordered target:self action:@selector(logoutButtonHandler:)];
+    UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"logout.png"] style:UIBarButtonItemStyleBordered target:self action:@selector(logoutButtonHandler:)];
     self.navigationItem.leftBarButtonItem = logoutButton;
 
     // Initialize data
