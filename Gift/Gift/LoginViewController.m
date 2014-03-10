@@ -50,13 +50,13 @@
 {
     self.fadeViewController = [[FadeImagePageViewController alloc] init];
     UIImage *image1 = [[UIImage imageNamed:@"1.jpg"] applyBlurWithRadius:1 tintColor:[UIColor colorWithRed:0.133 green:0.133 blue:0.133 alpha:0.3f] saturationDeltaFactor:1.0f maskImage:nil];
-    UIImage *image2 = [UIImage imageNamed:@"2.jpg"];
+    UIImage *image2 = [UIImage imageNamed:@"6.png"];
     UIImage *image3 = [[UIImage imageNamed:@"3.jpg"] applyBlurWithRadius:5 tintColor:[UIColor colorWithRed:0.133 green:0.133 blue:0.133 alpha:0.3f] saturationDeltaFactor:1.0f maskImage:nil];
     UIImage *image4 = [[UIImage imageNamed:@"4.jpg"] applyBlurWithRadius:1 tintColor:[UIColor colorWithRed:0.133 green:0.133 blue:0.133 alpha:0.3f] saturationDeltaFactor:1.0f maskImage:nil];
     UIImage *image5 = [[UIImage imageNamed:@"5.jpg"] applyBlurWithRadius:1 tintColor:[UIColor colorWithRed:0.133 green:0.133 blue:0.133 alpha:0.3f] saturationDeltaFactor:1.0f maskImage:nil];
     self.fadeViewController.images = @[image1, image2, image3, image4, image5];
     
-    self.fadeViewController.messages = @[@"Capture life moments in stunning photo albums.", @"Collate pictures from all your photo platforms.", @"Pick designs from a variety of templates", @"Work on your photo album from any device at your own pace.", @"Build the perfect gift. Printed on premium quality paper and shipped right to your doorstep."];
+    self.fadeViewController.messages = @[@"Capture life moments in stunning photo albums.", @"Collate pictures from all your photo platforms.", @"Pick designs from a variety of templates.", @"Work on your photo album from any device at your own pace.", @"Build the perfect gift. Printed on premium quality paper and shipped right to your doorstep."];
     [self addChildViewController:self.fadeViewController];
     [self.fadeViewController.view setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.view addSubview:self.fadeViewController.view];

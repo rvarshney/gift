@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="4514" systemVersion="12F45" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
@@ -17,15 +17,18 @@
             <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pDJ-DW-Tau">
-                    <rect key="frame" x="363" y="440" width="42" height="21"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="648" translatesAutoresizingMaskIntoConstraints="NO" id="pDJ-DW-Tau">
+                    <rect key="frame" x="60" y="420" width="648" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="sJU-Su-9bO"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="20"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mH4-08-NBM" customClass="PFImageView">
-                    <rect key="frame" x="60" y="110" width="210" height="300"/>
+                    <rect key="frame" x="60" y="90" width="210" height="300"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="210" id="2wM-Cr-Pct"/>
@@ -33,7 +36,7 @@
                     </constraints>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0Ji-3e-tn5" customClass="PFImageView">
-                    <rect key="frame" x="270" y="110" width="210" height="300"/>
+                    <rect key="frame" x="270" y="90" width="210" height="300"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="300" id="NaW-mk-GRI"/>
@@ -44,10 +47,11 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="0Ji-3e-tn5" firstAttribute="leading" secondItem="mH4-08-NBM" secondAttribute="trailing" id="H9n-hb-AV6"/>
-                <constraint firstItem="0Ji-3e-tn5" firstAttribute="top" secondItem="2" secondAttribute="top" constant="110" id="PAr-xH-4YQ"/>
-                <constraint firstItem="mH4-08-NBM" firstAttribute="top" secondItem="2" secondAttribute="top" constant="110" id="QHu-XD-xbH"/>
+                <constraint firstItem="0Ji-3e-tn5" firstAttribute="top" secondItem="2" secondAttribute="top" constant="90" id="PAr-xH-4YQ"/>
+                <constraint firstItem="mH4-08-NBM" firstAttribute="top" secondItem="2" secondAttribute="top" constant="90" id="QHu-XD-xbH"/>
                 <constraint firstItem="mH4-08-NBM" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="60" id="WwU-jG-2z2"/>
                 <constraint firstItem="pDJ-DW-Tau" firstAttribute="top" secondItem="0Ji-3e-tn5" secondAttribute="bottom" constant="30" id="dwv-p1-UZp"/>
+                <constraint firstItem="pDJ-DW-Tau" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="60" id="tiy-gf-6yQ"/>
                 <constraint firstAttribute="centerX" secondItem="pDJ-DW-Tau" secondAttribute="centerX" id="zpK-oJ-Enu"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>

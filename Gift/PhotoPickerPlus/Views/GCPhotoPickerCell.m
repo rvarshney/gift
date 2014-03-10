@@ -17,7 +17,7 @@
     if (self) {
         // Initialization code
         self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(75, 10, 235, 25)];
-        self.titleLabel.font = [UIFont systemFontOfSize:15];
+        self.titleLabel.font = [UIFont fontWithName:@"Avenir" size:20];
         [self.contentView addSubview:titleLabel];
     }
     return self;

@@ -62,7 +62,7 @@
 -(void)templates:(void (^)(NSArray *templates, NSError *error))completion
 {
     PFQuery *query = [Template query];
-    [query orderByDescending:@"createdAt"];
+    [query orderByDescending:@"updatedAt"];
     [query findObjectsInBackgroundWithBlock:completion];
 }
 

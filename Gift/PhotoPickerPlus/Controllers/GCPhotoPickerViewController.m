@@ -52,6 +52,7 @@
 {
     [super viewDidLoad];
     self.navigationItem.title = self.navigationTitle? self.navigationTitle: @"Photo Picker";
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0.0f green:203.0f/255 blue:209.0f/255 alpha:1.0f];
     
     [self setNavBarItems];
 
@@ -91,11 +92,39 @@
     return (self.hasLocal + self.hasOnline);
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    if (section == 0 && self.hasLocal)
-        return GCLocalizedString(@"picker.local_services");
-    return GCLocalizedString(@"picker.online_services");
+    return 42;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 36)];
+    view.backgroundColor = [UIColor colorWithRed:0 green:203.0f/255 blue:209.0f/255 alpha:1];
+    
+    CALayer *bottomBorder = [CALayer layer];
+    bottomBorder.frame = CGRectMake(0.0f, 36.0f, tableView.frame.size.width, 6.0f);
+    bottomBorder.backgroundColor = [UIColor whiteColor].CGColor;
+    
+    UILabel *label = [[UILabel alloc] init];
+    label.frame = CGRectMake(15, 0, 300, 40);
+    label.textColor = [UIColor whiteColor];
+    label.font = [UIFont fontWithName:@"Avenir" size:20];
+    
+    NSString *sectionTitle;
+    if (section == 0 && self.hasLocal) {
+        sectionTitle = GCLocalizedString(@"picker.local_services");
+    } else {
+        sectionTitle = GCLocalizedString(@"picker.online_services");
+    }
+    
+    [view.layer addSublayer:bottomBorder];
+    
+    label.text = sectionTitle;
+    // Create header view and add label as a subview
+    [view addSubview:label];
+
+    return view;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

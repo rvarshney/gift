@@ -240,7 +240,6 @@
 
 - (void)rootHandler:(id)sender
 {
-    NSLog(@"vcs %@", self.navigationController.viewControllers);
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
@@ -583,14 +582,19 @@
                         // This image came from picture scroll view.
                         // Adjust the picture scroll view.
                         NSLog(@"Adjust scroll view");
+                        BOOL imagesAdjusted = NO;
                         for (UIView *view in self.scrollView.subviews) {
                             if (view.frame.origin.x > self.moveStartFrame.origin.x) {
+                                imagesAdjusted = YES;
                                 [UIView animateWithDuration:0.6 animations:^{
                                     CGRect frame = view.frame;
                                     frame.origin.x -= 150;
                                     view.frame = frame;
                                 }];
                             }
+                        }
+                        if (imagesAdjusted) {
+                            self.lastPictureLocation -= 150;
                         }
                     }
                 }
@@ -622,14 +626,19 @@
                         // This image came from picture scroll view.
                         // Adjust the picture scroll view.
                         NSLog(@"Adjust scroll view");
+                        BOOL imagesAdjusted = NO;
                         for (UIView *view in self.scrollView.subviews) {
                             if (view.frame.origin.x > self.moveStartFrame.origin.x) {
+                                imagesAdjusted = YES;
                                 [UIView animateWithDuration:0.6 animations:^{
                                     CGRect frame = view.frame;
                                     frame.origin.x -= 150;
                                     view.frame = frame;
                                 } completion:nil];
                             }
+                        }
+                        if (imagesAdjusted) {
+                            self.lastPictureLocation -= 150;
                         }
                     }
                 }
@@ -693,9 +702,10 @@
     [self.view addConstraints:@[heightConstraint, leftConstraint, rightConstraint, self.bottomConstraint]];
     
     self.scrollView.layer.masksToBounds = NO;
-    self.scrollViewToggleView.layer.shadowColor = [UIColor blackColor].CGColor;
-    self.scrollViewToggleView.layer.shadowOffset = CGSizeMake(5.0f, 0.0f);
-    self.scrollViewToggleView.layer.shadowOpacity = 0.5f;
+    self.scrollView.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.scrollView.layer.shadowOffset = CGSizeMake(5.0f, 0.0f);
+    self.scrollView.layer.shadowRadius = 10.0f;
+    self.scrollView.layer.shadowOpacity = 0.5f;
 }
 
 - (void)setupScrollViewAddButton
@@ -751,12 +761,10 @@
     NSLayoutConstraint *bottomPullConstraint = [NSLayoutConstraint constraintWithItem:self.scrollViewToggleView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.scrollViewAddButton attribute:NSLayoutAttributeTop multiplier:1.0 constant:0];
     [self.view addConstraints:@[heightPullConstraint, widthPullConstraint, rightPullConstraint, bottomPullConstraint]];
     
-    //UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:self.scrollViewToggleView.bounds];
     self.scrollViewToggleView.layer.masksToBounds = NO;
     self.scrollViewToggleView.layer.shadowColor = [UIColor blackColor].CGColor;
     self.scrollViewToggleView.layer.shadowOffset = CGSizeMake(5.0f, 0.0f);
     self.scrollViewToggleView.layer.shadowOpacity = 0.5f;
-    //self.scrollViewToggleView.layer.shadowPath = shadowPath.CGPath;
     
     // Start in pull up state
     self.scrollViewVisible = YES;
