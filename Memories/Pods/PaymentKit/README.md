@@ -7,9 +7,11 @@ Alternatively, we've provided a bunch of classes that you can use yourself to ad
 
 In short, PaymentKit should greatly simplify your life when dealing with iOS payments.
 
-![PaymentKitView](http://stripe.github.com/PaymentKit/screenshot.png)
+![PaymentKitView](http://stripe.github.com/PaymentKit/screenshot_ios7.png)
 
-*For purchases related to the app, such as premium features, Apple's TOS require that you use their native In-App Purchase API. PaymentKits is only for purchasing products or services outside the app.*
+*Note: If you also want to send the card data to Stripe, check out [our iOS bindings](https://github.com/stripe/stripe-ios), which are built on PaymentKit.*
+
+*For purchases that are consumed within the app (such as extra content or features), Apple's TOS require that you use their In-App Purchase API. PaymentKit is for everything else.*
 
 ## Installation
 
@@ -95,6 +97,15 @@ That's all! No further reading is required, unless you want more flexibility by 
 ## API Delegates
 
 Included are a number of `UITextFieldDelegate` delegates: `PKCardCVCDelegate`, `PKCardExpiryDelegate` and `PKCardNumberDelegate`. You can set these as the delegates of `UITextField` inputs, which ensures that input is limited and formatted.
+
+## Localization
+
+You can localize the placeholders shown in the form by adding a `PaymentKit.strings` file to your project:
+
+    "placeholder.card_number" = "1234 5678 9012 3456";
+    "placeholder.card_expiry" = "MM/YY";
+    "placeholder.card_cvc" = "CVC";
+
 
 ## PKCardNumber
 

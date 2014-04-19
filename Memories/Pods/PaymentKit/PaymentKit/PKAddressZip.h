@@ -7,18 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PKComponent.h"
 
-@interface PKAddressZip : NSObject {
+@interface PKAddressZip : PKComponent {
 @protected
-    NSString* zip;
+    NSString *_zip;
 }
 
-@property (nonatomic, readonly) NSString* string;
+@property (nonatomic, readonly) NSString *string;
 
-+ (id)addressZipWithString:(NSString *)string;
-- (id)initWithString:(NSString *)string;
-- (NSString*)string;
-- (BOOL)isValid;
-- (BOOL)isPartiallyValid;
++ (instancetype)addressZipWithString:(NSString *)string;
+- (instancetype)initWithString:(NSString *)string;
 
 @end

@@ -15,7 +15,7 @@ PODS:
   - DCKeyValueObjectMapping (1.4)
   - Lockbox (1.4.6)
   - MBProgressHUD (0.8)
-  - PaymentKit (1.0.2)
+  - PaymentKit (1.0.5)
   - Stripe (1.0.2):
     - PaymentKit
   - TWSReleaseNotesView (1.2.0)
@@ -37,8 +37,8 @@ SPEC CHECKSUMS:
   DCKeyValueObjectMapping: 39adaf0a54ff6368a22d9221db60f0696d81ad7b
   Lockbox: 56ac5c11e51d46baa4408960a5a35b355a32840e
   MBProgressHUD: 2bbc6f470111daf7f3eaa4eb12b8cbf01c4c0622
-  PaymentKit: be75a5398a9465edd84f7249a9e57d707da025fb
+  PaymentKit: 92df7c2fb4fb3b4e0c3f5fb8c8e75cc528025126
   Stripe: d939af1f258e8b69482205eafa44e0f27f3e74d6
   TWSReleaseNotesView: ea7e62a767f0d690c2e8de2ca5e6311bd66d29d7
 
-COCOAPODS: 0.29.0
+COCOAPODS: 0.31.1

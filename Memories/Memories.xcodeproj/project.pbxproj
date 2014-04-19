@@ -666,7 +666,6 @@
 				A8E53C8618C6668100C75819 /* Images.xcassets */,
 				D4DA79F514D3345A0055F672 /* Supporting Files */,
 			);
-			name = Memories;
 			path = Memories;
 			sourceTree = "<group>";
 		};
